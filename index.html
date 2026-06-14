@@ -9,7 +9,7 @@
 </head>
 <body>
 
-  <!-- Pill nav -->
+  <!-- ── Nav pill ── -->
   <nav class="nav-pill" id="navPill">
     <div class="nav-pill__inner">
       <button class="nav-pill__hamburger" id="navToggle" aria-label="Open menu" aria-expanded="false">
@@ -20,7 +20,7 @@
     </div>
   </nav>
 
-  <!-- Nav menu -->
+  <!-- ── Nav menu ── -->
   <div class="nav-menu" id="navMenu" aria-hidden="true">
     <div class="nav-menu__backdrop" id="navBackdrop" aria-hidden="true"></div>
     <div class="nav-menu__panel">
@@ -44,98 +44,126 @@
     </div>
   </div>
 
-  <!-- Bento grid -->
-  <main class="bento" id="main">
+  <div class="page">
 
-    <!-- Hero: full-bleed split with text overlay on left image -->
-    <div class="b-hero">
+    <!-- ── Hero: two images with gap, floating card on right ── -->
+    <section class="hero">
 
-      <!-- Left: image with text overlay -->
-      <div class="b-hero__left">
-        <img src="img/hero-1.jpg" alt="" loading="eager">
-        <div class="b-hero__overlay">
-          <span class="label">Los Angeles</span>
-          <h1>A Practice<br>in Real Life<br>Movement</h1>
-          <a href="coaching.html" class="arrow-link arrow-link--light">Work with Sam →</a>
-        </div>
+      <div class="hero__left">
+        <img src="img/hero-1.jpg" alt="Sam Rabon" loading="eager">
       </div>
 
-      <!-- Right: image with annotation dots -->
-      <div class="b-hero__right">
+      <div class="hero__right">
         <img src="img/hero-2.jpg" alt="" loading="eager">
-        <div class="annotation annotation--1">
-          <span class="annotation__dot"></span>
-          <span class="annotation__label">Foundations</span>
-        </div>
-        <div class="annotation annotation--2">
-          <span class="annotation__dot"></span>
-          <span class="annotation__label">Directions</span>
-        </div>
-        <div class="annotation annotation--3">
-          <span class="annotation__dot"></span>
-          <span class="annotation__label">Patterns</span>
+        <div class="hero__card">
+          <span class="hero__card-label">Los Angeles</span>
+          <h2>A Practice in Real Life Movement</h2>
+          <p>A method for bodies that still need to work in the world — built over thirty years.</p>
+          <a href="coaching.html" class="pill-cta">Work with Sam</a>
         </div>
       </div>
 
-    </div>
+    </section>
 
-    <!-- Intro: wide text block -->
-    <div class="b-intro fade-in">
-      <div class="b-intro__text">
-        <p>SamSation is not a fitness programme. It is a practice. The aim is not a harder workout — it is a body that moves with more intelligence, for longer, with less need for maintenance later.</p>
-        <p>The method is organised around twenty-one things the body does in life. We come back to each of them, on purpose, on a rhythm. The operating principle is simple: undo before you add.</p>
-        <a href="library.html" class="arrow-link">Read the method →</a>
+    <!-- ── Claim: big serif headline on background, no box ── -->
+    <section class="s-claim fade-in">
+      <span class="label">Movement — Los Angeles</span>
+      <h2>SamSation is not a fitness programme. It is a practice built around how bodies actually move in life — not in a gym.</h2>
+      <a href="library.html" class="pill-cta">Read the method</a>
+    </section>
+
+    <!-- ── Split: image left, facts + card right ── -->
+    <section class="s-split fade-in">
+      <div class="s-split__img">
+        <img src="img/hero-2.jpg" alt="">
       </div>
-      <div class="b-intro__wordmark" aria-hidden="true">SamSation</div>
-    </div>
+      <div class="s-split__meta">
+        <div class="s-split__facts">
+          <div class="s-split__fact">
+            <div class="s-split__fact-title">Foundations</div>
+            <p>Five things the body must be able to do before anything else.</p>
+          </div>
+          <div class="s-split__fact">
+            <div class="s-split__fact-title">Directions</div>
+            <p>How the body organises movement across planes and vectors.</p>
+          </div>
+          <div class="s-split__fact">
+            <div class="s-split__fact-title">Patterns</div>
+            <p>The repeating shapes that show up in every sport, every life.</p>
+          </div>
+          <div class="s-split__fact">
+            <div class="s-split__fact-title">Forces</div>
+            <p>Load, momentum, gravity — working with them, not against.</p>
+          </div>
+        </div>
+        <div class="s-split__card">
+          <span class="label label--accent">On-Demand</span>
+          <h3>The Library</h3>
+          <p>Sessions organised by the method. Work at your own pace, from anywhere.</p>
+          <a href="on-demand.html" class="pill-cta" style="margin-top:0.5rem">Explore the library</a>
+        </div>
+      </div>
+    </section>
 
-    <!-- Service cards row -->
-    <div class="b-cards">
-      <article class="b-card fade-in">
-        <span class="label">Private</span>
-        <h3>1:1 Sessions</h3>
-        <p>In Los Angeles, and online where it makes sense. For people who want to be coached well, not often.</p>
-        <a href="coaching.html" class="arrow-link">Book →</a>
-      </article>
-      <article class="b-card b-card--dark fade-in">
-        <span class="label">Group</span>
-        <h3>Lagree & Studio</h3>
-        <p>Train with the energy of a group. Join in person at Megaformer Hollywood.</p>
-        <a href="coaching.html" class="arrow-link arrow-link--light">More →</a>
-      </article>
-      <article class="b-card fade-in">
-        <span class="label">Live</span>
-        <h3>Online Sessions</h3>
-        <p>Real-time guidance, feedback, and connection — wherever you are.</p>
-        <a href="coaching.html" class="arrow-link">More →</a>
-      </article>
-    </div>
+    <!-- ── Services: no boxes, just spaced items on background ── -->
+    <section class="s-services fade-in">
+      <div class="s-services__header">
+        <span class="label">Ways to work together</span>
+        <a href="coaching.html" class="pill-cta">All services</a>
+      </div>
+      <div class="s-services__grid">
+        <div class="s-service">
+          <span class="label">Private</span>
+          <h3>1:1 Sessions</h3>
+          <p>In Los Angeles, and online where it makes sense. For people who want to be coached well, not often.</p>
+          <a href="coaching.html" class="pill-cta">Book</a>
+        </div>
+        <div class="s-service">
+          <span class="label">Group</span>
+          <h3>Lagree &amp; Studio</h3>
+          <p>Train with the energy of a group. In person at Megaformer Hollywood.</p>
+          <a href="coaching.html" class="pill-cta">More</a>
+        </div>
+        <div class="s-service">
+          <span class="label">Live</span>
+          <h3>Online Sessions</h3>
+          <p>Real-time guidance, feedback, and connection — wherever you are.</p>
+          <a href="coaching.html" class="pill-cta">More</a>
+        </div>
+      </div>
+    </section>
 
-    <!-- Retreat + testimonials row -->
-    <div class="b-lower">
-      <div class="b-retreat fade-in">
+    <!-- ── Retreat: full-bleed image with overlay caption ── -->
+    <section class="s-retreat fade-in">
+      <div class="s-retreat__inner">
         <img src="img/retreat.webp" alt="Retreat by the sea">
-        <div class="b-retreat__caption">
-          <span class="label">Retreats</span>
-          <p>Once or twice a year, in small groups, by the sea or on quiet land. A week of the practice, shared meals, and long walks.</p>
-          <a href="retreat.html" class="arrow-link">Retreats →</a>
+        <div class="s-retreat__caption">
+          <div>
+            <span class="label">Retreats</span>
+            <h3>Once or twice a year, in small groups, by the sea or on quiet land.</h3>
+          </div>
+          <div class="s-retreat__caption-right">
+            <a href="retreat.html" class="pill-cta pill-cta--light">Retreats</a>
+          </div>
         </div>
       </div>
-      <div class="b-testimonials fade-in">
-        <blockquote>
-          <p class="testimonial__quote">"Sam is in a different league. She sees movement patterns others miss. I feel stronger and more capable than ever."</p>
-          <cite class="testimonial__cite">Adam Lambert</cite>
-        </blockquote>
-        <blockquote>
-          <p class="testimonial__quote">"Training with Sam reshaped my posture, my presence, and how I move through daily life."</p>
-          <cite class="testimonial__cite">Saul Williams</cite>
-        </blockquote>
-      </div>
-    </div>
+    </section>
 
-  </main>
+    <!-- ── Testimonials: on background, no box ── -->
+    <section class="s-testimonials fade-in">
+      <blockquote>
+        <p class="testimonial__quote">"Sam is in a different league. She sees movement patterns others miss. I feel stronger and more capable than I have in years."</p>
+        <cite class="testimonial__cite">Adam Lambert</cite>
+      </blockquote>
+      <blockquote>
+        <p class="testimonial__quote">"Training with Sam reshaped my posture, my presence, and how I move through daily life."</p>
+        <cite class="testimonial__cite">Saul Williams</cite>
+      </blockquote>
+    </section>
 
-  <!-- Footer -->
+  </div><!-- /.page -->
+
+  <!-- ── Footer ── -->
   <footer class="footer">
     <div class="footer__inner">
       <div>
@@ -143,7 +171,7 @@
         <p class="footer__newsletter-text">A letter, not a newsletter — twice a month, when there is something worth saying.</p>
         <form class="footer__form" action="https://samrabon.substack.com/subscribe" method="get" target="_blank">
           <input type="email" name="email" class="footer__input" placeholder="Your email" autocomplete="email">
-          <button type="submit" class="footer__submit">Subscribe →</button>
+          <button type="submit" class="footer__submit">Subscribe</button>
         </form>
       </div>
       <div class="footer__right">
@@ -153,7 +181,6 @@
           <a href="https://samrabon.substack.com" target="_blank" rel="noopener">Substack</a>
           <a href="coaching.html#contact">Contact</a>
           <a href="privacy.html">Privacy</a>
-          <a href="terms.html">Terms</a>
         </nav>
       </div>
     </div>

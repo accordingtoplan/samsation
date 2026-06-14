@@ -47,79 +47,90 @@
   <!-- Bento grid -->
   <main class="bento" id="main">
 
-    <!-- Row 1: hero -->
-    <div class="b-img b-img-1" aria-hidden="true">
-      <img src="img/hero-1.jpg" alt="" loading="eager">
-    </div>
-    <div class="b-img b-img-2" aria-hidden="true">
-      <img src="img/hero-2.jpg" alt="" loading="eager">
-      <div class="annotation annotation--1">
-        <span class="annotation__dot"></span>
-        <span class="annotation__label">Foundations</span>
+    <!-- Hero: full-bleed split with text overlay on left image -->
+    <div class="b-hero">
+
+      <!-- Left: image with text overlay -->
+      <div class="b-hero__left">
+        <img src="img/hero-1.jpg" alt="" loading="eager">
+        <div class="b-hero__overlay">
+          <span class="label">Los Angeles</span>
+          <h1>A Practice<br>in Real Life<br>Movement</h1>
+          <a href="coaching.html" class="arrow-link arrow-link--light">Work with Sam →</a>
+        </div>
       </div>
-      <div class="annotation annotation--2">
-        <span class="annotation__dot"></span>
-        <span class="annotation__label">Directions</span>
+
+      <!-- Right: image with annotation dots -->
+      <div class="b-hero__right">
+        <img src="img/hero-2.jpg" alt="" loading="eager">
+        <div class="annotation annotation--1">
+          <span class="annotation__dot"></span>
+          <span class="annotation__label">Foundations</span>
+        </div>
+        <div class="annotation annotation--2">
+          <span class="annotation__dot"></span>
+          <span class="annotation__label">Directions</span>
+        </div>
+        <div class="annotation annotation--3">
+          <span class="annotation__dot"></span>
+          <span class="annotation__label">Patterns</span>
+        </div>
       </div>
-      <div class="annotation annotation--3">
-        <span class="annotation__dot"></span>
-        <span class="annotation__label">Patterns</span>
-      </div>
-    </div>
-    <div class="b-hero-text">
-      <span class="label">Los Angeles</span>
-      <h1>SamSation</h1>
-      <p class="hero-sub">A Practice in Real Life Movement</p>
-      <p class="hero-body">A method for bodies that still need to work in the world. Built over thirty years in studios, on stages, and in the rooms where people come back from injury.</p>
+
     </div>
 
-    <!-- Row 2: what the work is -->
+    <!-- Intro: wide text block -->
     <div class="b-intro fade-in">
       <div class="b-intro__text">
-        <p>SamSation is not a fitness programme. It is a practice. The aim is not a harder workout; it is a body that moves with more intelligence, for longer, with less need for maintenance later.</p>
-        <p>The method is organised around twenty-one things the body does in life — five foundations, five directions, four patterns, five forces, two organisers. We come back to each of them, on purpose, on a rhythm.</p>
-        <p>The operating principle is simple: undo before you add. Strength that is built on compensation is strength with a tax. We take the tax off first.</p>
+        <p>SamSation is not a fitness programme. It is a practice. The aim is not a harder workout — it is a body that moves with more intelligence, for longer, with less need for maintenance later.</p>
+        <p>The method is organised around twenty-one things the body does in life. We come back to each of them, on purpose, on a rhythm. The operating principle is simple: undo before you add.</p>
         <a href="library.html" class="arrow-link">Read the method →</a>
       </div>
+      <div class="b-intro__wordmark" aria-hidden="true">SamSation</div>
     </div>
 
-    <!-- Row 3: service cards -->
-    <article class="b-card fade-in">
-      <h3>Private practice</h3>
-      <p>1:1 sessions in Los Angeles, and online where it makes sense. For people who want to be coached well, not often.</p>
-      <a href="coaching.html" class="arrow-link">More →</a>
-    </article>
-    <article class="b-card fade-in">
-      <h3>Group</h3>
-      <p>Train with the energy of a group in Lagree and studio sessions. Join in person at Megaformer Hollywood.</p>
-      <a href="coaching.html" class="arrow-link">More →</a>
-    </article>
-    <article class="b-card fade-in">
-      <h3>Live Sessions</h3>
-      <p>Real-time guidance, feedback, and connection, wherever you are.</p>
-      <a href="coaching.html" class="arrow-link">More →</a>
-    </article>
+    <!-- Service cards row -->
+    <div class="b-cards">
+      <article class="b-card fade-in">
+        <span class="label">Private</span>
+        <h3>1:1 Sessions</h3>
+        <p>In Los Angeles, and online where it makes sense. For people who want to be coached well, not often.</p>
+        <a href="coaching.html" class="arrow-link">Book →</a>
+      </article>
+      <article class="b-card b-card--dark fade-in">
+        <span class="label">Group</span>
+        <h3>Lagree & Studio</h3>
+        <p>Train with the energy of a group. Join in person at Megaformer Hollywood.</p>
+        <a href="coaching.html" class="arrow-link arrow-link--light">More →</a>
+      </article>
+      <article class="b-card fade-in">
+        <span class="label">Live</span>
+        <h3>Online Sessions</h3>
+        <p>Real-time guidance, feedback, and connection — wherever you are.</p>
+        <a href="coaching.html" class="arrow-link">More →</a>
+      </article>
+    </div>
 
-    <!-- Row 4: retreat + testimonials -->
-    <div class="b-retreat fade-in">
-      <div class="b-retreat__img">
+    <!-- Retreat + testimonials row -->
+    <div class="b-lower">
+      <div class="b-retreat fade-in">
         <img src="img/retreat.webp" alt="Retreat by the sea">
+        <div class="b-retreat__caption">
+          <span class="label">Retreats</span>
+          <p>Once or twice a year, in small groups, by the sea or on quiet land. A week of the practice, shared meals, and long walks.</p>
+          <a href="retreat.html" class="arrow-link">Retreats →</a>
+        </div>
       </div>
-      <div class="b-retreat__caption">
-        <span class="label">Retreats</span>
-        <p>Once or twice a year, in small groups, by the sea or on quiet land. A week of the practice, shared meals, and long walks. No phones in the room during sessions.</p>
-        <a href="retreat.html" class="arrow-link">Retreats →</a>
+      <div class="b-testimonials fade-in">
+        <blockquote>
+          <p class="testimonial__quote">"Sam is in a different league. She sees movement patterns others miss. I feel stronger and more capable than ever."</p>
+          <cite class="testimonial__cite">Adam Lambert</cite>
+        </blockquote>
+        <blockquote>
+          <p class="testimonial__quote">"Training with Sam reshaped my posture, my presence, and how I move through daily life."</p>
+          <cite class="testimonial__cite">Saul Williams</cite>
+        </blockquote>
       </div>
-    </div>
-    <div class="b-testimonials fade-in">
-      <blockquote>
-        <p class="testimonial__quote">"Sam is in a different league. She sees movement patterns others miss. I feel stronger and more capable than ever."</p>
-        <cite class="testimonial__cite">Adam Lambert</cite>
-      </blockquote>
-      <blockquote>
-        <p class="testimonial__quote">"Training with Sam reshaped my posture, my presence, and how I move through daily life."</p>
-        <cite class="testimonial__cite">Saul Williams</cite>
-      </blockquote>
     </div>
 
   </main>

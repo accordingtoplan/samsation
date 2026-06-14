@@ -124,8 +124,16 @@
             obs.unobserve(entry.target);
           }
         });
-      }, { threshold: 0.07, rootMargin: '0px 0px -40px 0px' });
-      fadeEls.forEach(function (el) { obs.observe(el); });
+      }, { threshold: 0, rootMargin: '0px 0px 0px 0px' });
+      fadeEls.forEach(function (el) {
+        // If already in viewport on load, show immediately
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight) {
+          el.classList.add('is-visible');
+        } else {
+          obs.observe(el);
+        }
+      });
     }
   }
 

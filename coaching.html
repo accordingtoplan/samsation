@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coaching — SamSation</title>
+  <meta name="description" content="One-on-one training, group sessions, and live online coaching with Sam Rabon. Restore mobility, build strength, recover from injury, and create balanced movement that lasts.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ── Nav pill ── -->
+  <nav class="nav-pill" id="navPill">
+    <div class="nav-pill__inner">
+      <button class="nav-pill__hamburger" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+      <nav class="nav-pill__links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="coaching.html" aria-current="page">Coaching</a>
+        <a href="on-demand.html">On-Demand</a>
+        <a href="retreat.html">Retreat</a>
+        <a href="library.html">Library</a>
+      </nav>
+      <a href="index.html" class="nav-pill__wordmark">SamSation</a>
+    </div>
+  </nav>
+
+  <!-- ── Mobile full-screen overlay menu ── -->
+  <div class="nav-overlay" id="navOverlay" aria-hidden="true">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="coaching.html" aria-current="page">Coaching</a>
+    <a href="on-demand.html">On-Demand</a>
+    <a href="retreat.html">Retreat</a>
+    <a href="library.html">Library</a>
+    <div class="nav-overlay__foot">
+      <a href="https://www.instagram.com/samrabon" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://samrabon.substack.com" target="_blank" rel="noopener">Substack</a>
+    </div>
+  </div>
+
+
+  <div class="page">
+
+    <!-- ── Page intro ── -->
+    <section class="s-pageintro fade-in">
+      <span class="label">Coaching — In person & online</span>
+      <h1 class="s-pageintro__title">Three ways to be coached well, not often.</h1>
+      <p class="s-pageintro__lead">Private sessions, group training, and live online coaching. The same precision, care, and attention in every format, scaled to how you want to work.</p>
+    </section>
+
+    <!-- ── Private ── -->
+    <section class="s-offer fade-in" id="private">
+      <div class="s-offer__media">
+        <picture>
+          <source srcset="img/hero-session.webp" type="image/webp">
+          <img src="img/hero-session.jpg" alt="Sam coaching a private session" loading="lazy">
+        </picture>
+      </div>
+      <div class="s-offer__body">
+        <span class="label label--accent">Private</span>
+        <h2 class="s-offer__title">1:1 Sessions</h2>
+        <p class="s-offer__text">One-on-one training designed to restore mobility, build strength, recover from injury, and create balanced movement for lasting results. In person in Los Angeles, and online where it makes sense.</p>
+        <p class="s-offer__text">For people who want to be coached well, not often. Every session is built around what your body needs that day.</p>
+        <a href="#book" class="pill-cta">Book a private session</a>
+      </div>
+    </section>
+
+    <!-- ── Group ── -->
+    <section class="s-offer s-offer--reverse fade-in" id="group">
+      <div class="s-offer__media">
+        <picture>
+          <source srcset="img/hero-right.webp" type="image/webp">
+          <img src="img/hero-right.jpg" alt="Group training session" loading="lazy">
+        </picture>
+      </div>
+      <div class="s-offer__body">
+        <span class="label label--accent">Group</span>
+        <h2 class="s-offer__title">Lagree &amp; Studio</h2>
+        <p class="s-offer__text">Train with the energy of a group in Lagree and studio sessions designed to challenge and inspire. Join in person at Megaformer Hollywood for a motivating workout.</p>
+        <a href="https://www.megaformerhollywood.com" target="_blank" rel="noopener" class="pill-cta">Megaformer Hollywood</a>
+      </div>
+    </section>
+
+    <!-- ── Live Sessions ── -->
+    <section class="s-offer fade-in" id="live">
+      <div class="s-offer__media">
+        <picture>
+          <source srcset="img/hero-left.webp" type="image/webp">
+          <img src="img/hero-left.jpg" alt="Sam leading a live online session" loading="lazy">
+        </picture>
+      </div>
+      <div class="s-offer__body">
+        <span class="label label--accent">Live</span>
+        <h2 class="s-offer__title">Online Sessions</h2>
+        <p class="s-offer__text">Join live for real-time guidance, feedback, and connection, wherever you are. Each class blends strength, recovery, and mobility to help you move better and feel grounded again.</p>
+        <p class="s-offer__text">Guided by Sam in real time, you receive the same precision, care, and attention she brings to every private session. Now accessible from wherever you are.</p>
+        <a href="#book" class="pill-cta">See live times</a>
+      </div>
+    </section>
+
+    <!-- ── Booking: Acuity embed ── -->
+    <section class="s-booking fade-in" id="book">
+      <div class="s-booking__header">
+        <span class="label">Date &amp; time</span>
+        <h2 class="s-booking__title">Book a session.</h2>
+        <p class="s-booking__text">Choose a time below. Private and live sessions are scheduled through Acuity. You will receive a confirmation and a link to join.</p>
+      </div>
+      <!-- Acuity Scheduling embed — replace data-src with Sam's real Acuity URL -->
+      <iframe
+        src="https://app.acuityscheduling.com/schedule.php?owner=SAM_OWNER_ID"
+        title="Schedule a session with Sam Rabon"
+        width="100%"
+        height="800"
+        frameborder="0"
+        class="s-booking__iframe"
+        loading="lazy"></iframe>
+      <p class="s-booking__note">Powered by Acuity Scheduling</p>
+    </section>
+
+    <!-- ── Contact ── -->
+    <section class="s-contact fade-in" id="contact">
+      <div class="s-contact__inner">
+        <span class="label">Enquiries</span>
+        <h2 class="s-contact__title">Not sure where to start?</h2>
+        <p class="s-contact__text">Tell Sam a little about your body, your history, and what you are working toward. She will point you to the right way to begin.</p>
+        <a href="mailto:hello@samrabon.com" class="pill-cta">Email Sam</a>
+      </div>
+    </section>
+
+  </div><!-- /.page -->
+
+  <!-- ── Footer ── -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div>
+        <span class="label footer__newsletter-label">Stay in it</span>
+        <p class="footer__newsletter-text">A letter, not a newsletter — twice a month, when there is something worth saying.</p>
+        <form class="footer__form" action="https://samrabon.substack.com/subscribe" method="get" target="_blank">
+          <input type="email" name="email" class="footer__input" placeholder="Your email" autocomplete="email">
+          <button type="submit" class="footer__submit">Subscribe</button>
+        </form>
+      </div>
+      <div class="footer__right">
+        <p class="footer__meta">SamSation · A Practice in Real Life Movement · Los Angeles</p>
+        <nav class="footer__nav">
+          <a href="https://www.instagram.com/samrabon" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://samrabon.substack.com" target="_blank" rel="noopener">Substack</a>
+          <a href="coaching.html#contact">Contact</a>
+          <a href="privacy.html">Privacy</a>
+        </nav>
+      </div>
+    </div>
+    <div class="footer__wordmark-wrap">
+      <div class="footer__wordmark" aria-hidden="true">SamSation</div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>On-Demand — SamSation</title>
+  <meta name="description" content="Sam Rabon's on-demand programs. The same precision, organised by the method, to work at your own pace from anywhere.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ── Nav pill ── -->
+  <nav class="nav-pill" id="navPill">
+    <div class="nav-pill__inner">
+      <button class="nav-pill__hamburger" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+      <nav class="nav-pill__links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="coaching.html">Coaching</a>
+        <a href="on-demand.html" aria-current="page">On-Demand</a>
+        <a href="retreat.html">Retreat</a>
+        <a href="library.html">Library</a>
+      </nav>
+      <a href="index.html" class="nav-pill__wordmark">SamSation</a>
+    </div>
+  </nav>
+
+  <!-- ── Mobile full-screen overlay menu ── -->
+  <div class="nav-overlay" id="navOverlay" aria-hidden="true">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="coaching.html">Coaching</a>
+    <a href="on-demand.html" aria-current="page">On-Demand</a>
+    <a href="retreat.html">Retreat</a>
+    <a href="library.html">Library</a>
+    <div class="nav-overlay__foot">
+      <a href="https://www.instagram.com/samrabon" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://samrabon.substack.com" target="_blank" rel="noopener">Substack</a>
+    </div>
+  </div>
+
+
+  <div class="page">
+
+    <!-- ── Page intro ── -->
+    <section class="s-pageintro fade-in">
+      <span class="label">On-Demand — Anywhere</span>
+      <h1 class="s-pageintro__title">The practice, at your own pace.</h1>
+      <p class="s-pageintro__lead">Programs you can follow from anywhere, organised by the method. The same precision Sam brings to a private session, ready when you are.</p>
+    </section>
+
+    <!-- ── Programs ── -->
+    <section class="s-programs fade-in">
+      <div class="s-services__header">
+        <span class="label">Programs on Solin</span>
+        <a href="https://solin.stream/samrabon" target="_blank" rel="noopener" class="pill-cta">All programs</a>
+      </div>
+
+      <div class="s-programs__grid">
+        <article class="s-program">
+          <div class="s-program__media">
+            <picture>
+              <source srcset="img/hero-session.webp" type="image/webp">
+              <img src="img/hero-session.jpg" alt="Functional Strength Snacks program" loading="lazy">
+            </picture>
+          </div>
+          <div class="s-program__body">
+            <span class="label label--accent">Program</span>
+            <h2 class="s-program__title">Functional Strength Snacks</h2>
+            <p class="s-program__text">Short, complete sessions that build real strength in the patterns life uses. Designed to fit into a day, not take it over.</p>
+            <div class="s-program__foot">
+              <span class="s-program__price">$61 <s>$117</s></span>
+              <a href="https://solin.stream/samrabon" target="_blank" rel="noopener" class="pill-cta">Start</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="s-program">
+          <div class="s-program__media">
+            <picture>
+              <source srcset="img/hero-left.webp" type="image/webp">
+              <img src="img/hero-left.jpg" alt="Movement Snacks for Daily Life program" loading="lazy">
+            </picture>
+          </div>
+          <div class="s-program__body">
+            <span class="label label--accent">Program</span>
+            <h2 class="s-program__title">Movement Snacks for Daily Life</h2>
+            <p class="s-program__text">Mobility and recovery you can return to often. Small, repeatable resets that keep the body open and ready for whatever the day asks.</p>
+            <div class="s-program__foot">
+              <span class="s-program__price">$54 <s>$94</s></span>
+              <a href="https://solin.stream/samrabon" target="_blank" rel="noopener" class="pill-cta">Start</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ── Library cross-link: full-bleed ── -->
+    <section class="s-retreat fade-in">
+      <div class="s-retreat__inner">
+        <picture>
+          <source srcset="img/hero-right.webp" type="image/webp">
+          <img src="img/hero-right.jpg" alt="Sessions organised by the method" loading="lazy">
+        </picture>
+        <div class="s-retreat__caption">
+          <div>
+            <span class="label">The Library</span>
+            <h3>Every session, organised by the method. Find what your body needs.</h3>
+          </div>
+          <div class="s-retreat__caption-right">
+            <a href="library.html" class="pill-cta pill-cta--light">Browse the library</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /.page -->
+
+  <!-- ── Footer ── -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div>
+        <span class="label footer__newsletter-label">Stay in it</span>
+        <p class="footer__newsletter-text">A letter, not a newsletter — twice a month, when there is something worth saying.</p>
+        <form class="footer__form" action="https://samrabon.substack.com/subscribe" method="get" target="_blank">
+          <input type="email" name="email" class="footer__input" placeholder="Your email" autocomplete="email">
+          <button type="submit" class="footer__submit">Subscribe</button>
+        </form>
+      </div>
+      <div class="footer__right">
+        <p class="footer__meta">SamSation · A Practice in Real Life Movement · Los Angeles</p>
+        <nav class="footer__nav">
+          <a href="https://www.instagram.com/samrabon" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://samrabon.substack.com" target="_blank" rel="noopener">Substack</a>
+          <a href="coaching.html#contact">Contact</a>
+          <a href="privacy.html">Privacy</a>
+        </nav>
+      </div>
+    </div>
+    <div class="footer__wordmark-wrap">
+      <div class="footer__wordmark" aria-hidden="true">SamSation</div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

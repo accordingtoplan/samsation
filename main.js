@@ -161,23 +161,7 @@
     el.addEventListener('mouseleave', function () { el.style.transform = ''; });
   });
 
-  /* Image wipe reveal — only on below-fold images */
-  const revealImgs = document.querySelectorAll('.s-split__img, .s-retreat__inner');
-  if ('IntersectionObserver' in window && !reduced) {
-    revealImgs.forEach(function (el) {
-      el.style.clipPath   = 'inset(0 100% 0 0)';
-      el.style.transition = 'clip-path 0.9s cubic-bezier(0.77,0,0.175,1)';
-    });
-    const revObs = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.style.clipPath = 'inset(0 0% 0 0)';
-          revObs.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-    revealImgs.forEach(function (el) { revObs.observe(el); });
-  }
+  /* Image reveal — simple fade with section (no clip-path) */
 
   /* Testimonial quote entrance */
   const quotes = document.querySelectorAll('.testimonial__quote');

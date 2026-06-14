@@ -31,14 +31,16 @@
       window.requestAnimationFrame(function () {
         const y = window.scrollY;
         scrollDir = y > lastY ? 1 : -1;
+        const touch = !window.matchMedia('(pointer: fine)').matches;
 
         // Collapse when scrolling down past threshold
         if (scrollDir === 1 && y > 80) {
           collapse();
+          pill.dataset.userToggled = '';
         }
 
-        // Expand when scrolling up
-        if (scrollDir === -1) {
+        // Expand when scrolling up (desktop only — avoids fighting tap state on mobile)
+        if (scrollDir === -1 && !touch) {
           expand();
         }
 
@@ -47,11 +49,11 @@
           expand();
         }
 
-        // Expand when scroll stops (after 600ms of no scroll)
+        // Expand when scroll stops — desktop only
         clearTimeout(stopTimer);
-        stopTimer = setTimeout(function () {
-          expand();
-        }, 600);
+        if (!touch) {
+          stopTimer = setTimeout(function () { expand(); }, 600);
+        }
 
         lastY    = y;
         ticking  = false;
@@ -61,50 +63,43 @@
   }, { passive: true });
 }());
 
-/* ── Nav menu: open / close ──────────────────────────────────── */
+/* ── Nav: toggle expanded state on tap (works on mobile) ─────── */
 (function () {
-  const toggle   = document.getElementById('navToggle');
-  const close    = document.getElementById('navClose');
-  const backdrop = document.getElementById('navBackdrop');
-  const menu     = document.getElementById('navMenu');
-  const pill     = document.getElementById('navPill');
-  if (!toggle || !menu) return;
+  const toggle = document.getElementById('navToggle');
+  const pill   = document.getElementById('navPill');
+  if (!pill) return;
 
-  function openMenu() {
-    menu.classList.add('is-open');
-    menu.setAttribute('aria-hidden', 'false');
-    toggle.setAttribute('aria-expanded', 'true');
-    toggle.classList.add('is-open');
-    document.body.style.overflow = 'hidden';
+  function setOpen(open) {
+    pill.classList.toggle('is-expanded', open);
+    if (toggle) {
+      toggle.classList.toggle('is-open', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    // Tell the scroll handler the user pinned this state
+    pill.dataset.userToggled = open ? 'open' : 'closed';
   }
 
-  function closeMenu() {
-    menu.classList.remove('is-open');
-    menu.setAttribute('aria-hidden', 'true');
-    toggle.setAttribute('aria-expanded', 'false');
-    toggle.classList.remove('is-open');
-    document.body.style.overflow = '';
-  }
-
-  toggle.addEventListener('click', function (e) {
-    e.stopPropagation();
-    menu.classList.contains('is-open') ? closeMenu() : openMenu();
-  });
-
-  // Whole pill clickable when collapsed
-  if (pill) {
-    pill.addEventListener('click', function (e) {
-      if (!pill.classList.contains('is-expanded') && !e.target.closest('a')) {
-        menu.classList.contains('is-open') ? closeMenu() : openMenu();
-      }
+  if (toggle) {
+    toggle.addEventListener('click', function (e) {
+      e.stopPropagation();
+      setOpen(!pill.classList.contains('is-expanded'));
     });
   }
 
-  if (close)    close.addEventListener('click', closeMenu);
-  if (backdrop) backdrop.addEventListener('click', closeMenu);
+  // Tapping anywhere on the collapsed pill expands it
+  pill.addEventListener('click', function (e) {
+    if (e.target.closest('a')) return; // let links work
+    if (!pill.classList.contains('is-expanded')) {
+      setOpen(true);
+    }
+  });
 
+  // Close when tapping a nav link (mobile) or pressing Escape
+  pill.querySelectorAll('.nav-pill__links a').forEach(function (a) {
+    a.addEventListener('click', function () { setOpen(false); });
+  });
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') closeMenu();
+    if (e.key === 'Escape') setOpen(false);
   });
 }());
 
@@ -124,24 +119,32 @@
             obs.unobserve(entry.target);
           }
         });
-      }, { threshold: 0, rootMargin: '0px 0px 0px 0px' });
+      }, { threshold: 0, rootMargin: '0px 0px -8% 0px' });
       fadeEls.forEach(function (el) {
-        // If already in viewport on load, show immediately
         const rect = el.getBoundingClientRect();
-        if (rect.top < window.innerHeight) {
+        if (rect.top < window.innerHeight * 1.1) {
           el.classList.add('is-visible');
         } else {
           obs.observe(el);
         }
       });
     }
+    // Safety net: never leave a section invisible. Reveal anything still
+    // hidden a few seconds after load (covers no-scroll sessions / odd viewports).
+    setTimeout(function () {
+      document.querySelectorAll('.fade-in:not(.is-visible)').forEach(function (el) {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight * 1.5) el.classList.add('is-visible');
+      });
+    }, 2500);
   }
 
   const reduced = !window.matchMedia('(prefers-reduced-motion: no-preference)').matches;
+  const finePointer = window.matchMedia('(pointer: fine)').matches;
 
-  /* Parallax on hero images */
+  /* Parallax on hero images — desktop only */
   const heroImgs = document.querySelectorAll('.hero__left img, .hero__right img');
-  if (heroImgs.length && !reduced) {
+  if (heroImgs.length && !reduced && finePointer) {
     window.addEventListener('scroll', function () {
       const y = window.scrollY;
       heroImgs.forEach(function (img, i) {
@@ -150,16 +153,18 @@
     }, { passive: true });
   }
 
-  /* Magnetic pull on pill CTAs and service items */
-  document.querySelectorAll('.pill-cta, .s-service').forEach(function (el) {
-    el.addEventListener('mousemove', function (e) {
-      const r = el.getBoundingClientRect();
-      const x = (e.clientX - r.left - r.width  / 2) * 0.06;
-      const y = (e.clientY - r.top  - r.height / 2) * 0.06;
-      el.style.transform = 'translate(' + x + 'px,' + y + 'px)';
+  /* Magnetic pull — desktop pointer only */
+  if (finePointer && !reduced) {
+    document.querySelectorAll('.pill-cta, .s-service').forEach(function (el) {
+      el.addEventListener('mousemove', function (e) {
+        const r = el.getBoundingClientRect();
+        const x = (e.clientX - r.left - r.width  / 2) * 0.06;
+        const y = (e.clientY - r.top  - r.height / 2) * 0.06;
+        el.style.transform = 'translate(' + x + 'px,' + y + 'px)';
+      });
+      el.addEventListener('mouseleave', function () { el.style.transform = ''; });
     });
-    el.addEventListener('mouseleave', function () { el.style.transform = ''; });
-  });
+  }
 
   /* Image reveal — simple fade with section (no clip-path) */
 

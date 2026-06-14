@@ -248,7 +248,7 @@ a { color: inherit; text-decoration: none; }
   height: 92vh;
   min-height: 560px;
   padding: var(--gap);
-  padding-top: 0;
+  padding-top: clamp(5rem, 8vw, 7rem);
 }
 
 .hero__left,

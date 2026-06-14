@@ -489,6 +489,7 @@ a { color: inherit; text-decoration: none; }
   gap: clamp(3rem, 6vw, 6rem);
   align-items: start;
 }
+.s-testimonials--three { grid-template-columns: repeat(3, 1fr); gap: clamp(2rem, 4vw, 4rem); }
 .s-testimonials blockquote { }
 .testimonial__quote {
   font-family: var(--f-mono);
@@ -616,6 +617,7 @@ a { color: inherit; text-decoration: none; }
   .s-services__grid { grid-template-columns: 1fr; }
   .s-service { padding-right: 0; }
   .s-testimonials { grid-template-columns: 1fr; }
+  .s-testimonials--three { grid-template-columns: 1fr; }
   .s-retreat__caption { flex-direction: column; align-items: flex-start; }
   .footer__inner { grid-template-columns: 1fr; gap: 2.5rem; }
   .annotation { display: none; }
@@ -1119,4 +1121,112 @@ a { color: inherit; text-decoration: none; }
 
 @media (max-width: 960px) {
   .s-past__row { grid-template-columns: 1fr; }
+}
+
+
+/* ── Library sections (Listen Up / Reading / Expert Insights) ── */
+.s-libsection { padding: 0 var(--page-pad) var(--section); }
+.s-libsection__title {
+  font-family: var(--f-display);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  line-height: 1.0;
+  color: var(--ink);
+  margin-bottom: 2rem;
+}
+.s-libsection__head {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: start;
+  margin-bottom: 2.5rem;
+}
+.s-libsection__head .s-libsection__title { margin-bottom: 0; }
+
+/* Playlists */
+.s-playlists {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gap);
+}
+.s-playlist {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.35rem;
+  min-height: 150px;
+  padding: 1.5rem;
+  border-radius: var(--r);
+  background: var(--dark);
+  color: #fff;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+.s-playlist:hover { transform: translateY(-3px); background: #000; }
+.s-playlist__season {
+  font-family: var(--f-display);
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  line-height: 1.0;
+}
+.s-playlist__by {
+  font-family: var(--f-mono);
+  font-size: var(--t-label);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+}
+
+/* Reading list */
+.s-reading { list-style: none; }
+.s-reading__item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 1.5rem 0;
+  border-top: 1px solid rgba(28,28,26,0.12);
+}
+.s-reading__item:last-child { border-bottom: 1px solid rgba(28,28,26,0.12); }
+.s-reading__title {
+  font-family: var(--f-mono);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.4;
+}
+.s-reading__author {
+  font-family: var(--f-mono);
+  font-size: var(--t-small);
+  color: var(--ink-mid);
+}
+
+/* Expert insights */
+.s-insights {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 4vw, 3.5rem);
+}
+.s-insight { }
+.s-insight__title {
+  font-family: var(--f-mono);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 0.6rem;
+  line-height: 1.4;
+}
+.s-insight__text {
+  font-size: var(--t-small);
+  line-height: 1.7;
+  color: var(--ink-mid);
+  max-width: 46ch;
+}
+
+@media (max-width: 960px) {
+  .s-libsection__head { grid-template-columns: 1fr; }
+  .s-playlists { grid-template-columns: 1fr; }
+  .s-insights { grid-template-columns: 1fr; }
 }

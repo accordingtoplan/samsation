@@ -1,23 +1,27 @@
-/* main.js — shared across all SamSation pages */
+/* main.js — SamSation */
 
-/* ── Nav: hide on scroll down, reveal on scroll up ────────── */
+/* ── Nav: expanded on load → collapses to pill on scroll ───── */
 (function () {
   const pill = document.getElementById('navPill');
   if (!pill) return;
 
-  let lastY = 0;
+  let isExpanded = true;
   let ticking = false;
+
+  // Start expanded
+  pill.classList.add('is-expanded');
 
   window.addEventListener('scroll', function () {
     if (!ticking) {
       window.requestAnimationFrame(function () {
         const y = window.scrollY;
-        if (y > lastY && y > 80) {
-          pill.classList.add('is-hidden');
-        } else {
-          pill.classList.remove('is-hidden');
+        if (y > 60 && isExpanded) {
+          pill.classList.remove('is-expanded');
+          isExpanded = false;
+        } else if (y <= 60 && !isExpanded) {
+          pill.classList.add('is-expanded');
+          isExpanded = true;
         }
-        lastY = y;
         ticking = false;
       });
       ticking = true;
@@ -61,7 +65,7 @@
   });
 }());
 
-/* ── Fade-in on scroll (IntersectionObserver) ─────────────── */
+/* ── Fade-in on scroll ────────────────────────────────────── */
 (function () {
   const els = document.querySelectorAll('.fade-in');
   if (!els.length) return;
@@ -78,10 +82,7 @@
         observer.unobserve(entry.target);
       }
     });
-  }, {
-    threshold: 0.08,
-    rootMargin: '0px 0px -40px 0px'
-  });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
   els.forEach(function (el) { observer.observe(el); });
 }());

@@ -187,6 +187,9 @@ a { color: inherit; text-decoration: none; }
 
 /* ── Nav menu styles removed ─────────────────────────────────── */
 
+/* Full-screen overlay menu — hidden on desktop, activated in mobile MQ */
+.nav-overlay { display: none; }
+
 /* ── Page wrapper ───────────────────────────────────────────── */
 .page { max-width: 1600px; margin: 0 auto; }
 
@@ -617,37 +620,96 @@ a { color: inherit; text-decoration: none; }
   .footer__inner { grid-template-columns: 1fr; gap: 2.5rem; }
   .annotation { display: none; }
 
-  /* Nav: expanded pill becomes a full-width stacked menu on mobile */
-  .nav-pill { top: 1rem; width: calc(100% - 2rem); left: 1rem; transform: none; }
-  .nav-pill__inner { width: 100%; margin: 0 auto; }
+  /* ── Mobile nav: compact centered pill + full-screen overlay ── */
+  .nav-pill {
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    transition: transform 0.3s cubic-bezier(0.23,1,0.32,1), opacity 0.3s ease;
+  }
+  /* Hide on scroll-down */
+  .nav-pill.is-hidden {
+    transform: translateX(-50%) translateY(-150%);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* Always a compact pill on mobile — never the fat expanded bar */
+  .nav-pill .nav-pill__inner,
   .nav-pill.is-expanded .nav-pill__inner {
-    width: 100%;
-    grid-template-columns: auto 1fr auto;
-    padding: 0 1.25rem;
-  }
-  .nav-pill.is-expanded .nav-pill__links {
-    position: absolute;
-    top: calc(100% + 0.5rem);
-    left: 0;
-    right: 0;
-    flex-direction: column;
-    align-items: stretch;
+    width: auto;
+    grid-template-columns: 44px auto 44px;
+    height: 48px;
+    border-radius: var(--pill);
+    padding: 0;
+    overflow: visible;
     gap: 0;
+  }
+  .nav-pill__hamburger { width: 44px; height: 48px; grid-column: 1; }
+  .nav-pill__wordmark { grid-column: 2; padding: 0 0.75rem; }
+
+  /* Inline links never show on mobile — overlay handles nav.
+     They occupy no grid track so the wordmark stays centered between
+     the hamburger (col 1) and the empty spacer (col 3). */
+  .nav-pill.is-expanded .nav-pill__links,
+  .nav-pill__links { display: none; }
+
+  /* Full-screen overlay menu */
+  .nav-overlay {
+    display: flex;
+    position: fixed;
+    inset: 0;
+    z-index: 90;
     background: var(--accent);
-    border-radius: var(--r);
-    padding: 0.5rem 0;
-    box-shadow: 0 12px 40px rgba(0,0,0,0.18);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem var(--page-pad);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-12px);
+    transition: opacity 0.32s ease, transform 0.32s cubic-bezier(0.23,1,0.32,1), visibility 0s linear 0.32s;
   }
-  .nav-pill.is-expanded .nav-pill__links a {
-    padding: 0.85rem 1.5rem;
-    font-size: 0.8125rem;
-    text-align: left;
-    color: rgba(255,255,255,0.85);
+  .nav-overlay.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition: opacity 0.32s ease, transform 0.32s cubic-bezier(0.23,1,0.32,1), visibility 0s;
   }
-  .nav-pill.is-expanded .nav-pill__inner { overflow: visible; }
-  /* collapsed pill stays centered narrow */
-  .nav-pill:not(.is-expanded) { width: clamp(220px, 70vw, 280px); left: 50%; transform: translateX(-50%); }
-  .nav-pill:not(.is-expanded) .nav-pill__inner { overflow: hidden; }
+  .nav-overlay a {
+    font-family: var(--f-display);
+    font-size: clamp(2.25rem, 11vw, 3.25rem);
+    font-weight: 900;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    line-height: 1.18;
+    color: rgba(255,255,255,0.65);
+    transition: color 0.18s;
+  }
+  .nav-overlay a[aria-current="page"],
+  .nav-overlay a:active { color: #fff; }
+  .nav-overlay__foot {
+    position: absolute;
+    bottom: clamp(2rem, 6vh, 3.5rem);
+    left: var(--page-pad);
+    right: var(--page-pad);
+    display: flex;
+    gap: 1.5rem;
+    font-family: var(--f-mono);
+    font-size: var(--t-label);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+  }
+  .nav-overlay__foot a {
+    font-family: var(--f-mono);
+    font-size: var(--t-label);
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.55);
+  }
+  body.nav-open { overflow: hidden; }
 }
 
 @media (max-width: 540px) {

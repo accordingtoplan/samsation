@@ -1,105 +1,121 @@
 /* main.js — SamSation */
 
-/* ── Nav: always pill, expands on top/scroll-stop/scroll-up ─── */
+/* ── Nav: pill expand/collapse (desktop) + scroll-hide (mobile) ─ */
 (function () {
   const pill = document.getElementById('navPill');
   if (!pill) return;
 
-  let lastY       = 0;
-  let scrollDir   = 0; // 1 = down, -1 = up
-  let ticking     = false;
-  let stopTimer   = null;
-  let isExpanded  = true;
+  const isMobile = () => !window.matchMedia('(pointer: fine)').matches
+                      || window.matchMedia('(max-width: 960px)').matches;
 
-  function expand() {
-    if (isExpanded) return;
-    isExpanded = true;
-    pill.classList.add('is-expanded');
+  let lastY      = 0;
+  let ticking    = false;
+  let stopTimer  = null;
+  let isExpanded = false;
+
+  function expand()   { if (!isExpanded) { isExpanded = true;  pill.classList.add('is-expanded'); } }
+  function collapse() { if (isExpanded)  { isExpanded = false; pill.classList.remove('is-expanded'); } }
+
+  // Desktop loads expanded; mobile stays a compact pill (CSS overrides the width)
+  if (window.matchMedia('(pointer: fine)').matches
+      && !window.matchMedia('(max-width: 960px)').matches) {
+    expand();
+  } else {
+    isExpanded = true; // mobile: treat as "expanded" baseline so scroll logic is consistent
   }
-
-  function collapse() {
-    if (!isExpanded) return;
-    isExpanded = false;
-    pill.classList.remove('is-expanded');
-  }
-
-  // Start expanded
-  expand();
 
   window.addEventListener('scroll', function () {
-    if (!ticking) {
-      window.requestAnimationFrame(function () {
-        const y = window.scrollY;
-        scrollDir = y > lastY ? 1 : -1;
-        const touch = !window.matchMedia('(pointer: fine)').matches;
+    if (ticking) return;
+    window.requestAnimationFrame(function () {
+      const y   = window.scrollY;
+      const dir = y > lastY ? 1 : -1;
 
-        // Collapse when scrolling down past threshold
-        if (scrollDir === 1 && y > 80) {
-          collapse();
-          pill.dataset.userToggled = '';
-        }
-
-        // Expand when scrolling up (desktop only — avoids fighting tap state on mobile)
-        if (scrollDir === -1 && !touch) {
-          expand();
-        }
-
-        // Expand when at top
-        if (y <= 60) {
-          expand();
-        }
-
-        // Expand when scroll stops — desktop only
+      if (isMobile()) {
+        // Mobile: keep the compact pill, just hide it on scroll-down
+        if (dir === 1 && y > 80) pill.classList.add('is-hidden');
+        if (dir === -1 || y <= 60) pill.classList.remove('is-hidden');
+      } else {
+        // Desktop: expand/collapse pill
+        if (dir === 1 && y > 80) collapse();
+        if (dir === -1) expand();
+        if (y <= 60) expand();
         clearTimeout(stopTimer);
-        if (!touch) {
-          stopTimer = setTimeout(function () { expand(); }, 600);
-        }
+        stopTimer = setTimeout(expand, 600);
+      }
 
-        lastY    = y;
-        ticking  = false;
-      });
-      ticking = true;
-    }
+      lastY   = y;
+      ticking = false;
+    });
+    ticking = true;
   }, { passive: true });
 }());
 
-/* ── Nav: toggle expanded state on tap (works on mobile) ─────── */
+/* ── Nav menu: overlay (mobile) / expand (desktop) ───────────── */
 (function () {
-  const toggle = document.getElementById('navToggle');
-  const pill   = document.getElementById('navPill');
-  if (!pill) return;
+  const toggle  = document.getElementById('navToggle');
+  const pill    = document.getElementById('navPill');
+  const overlay = document.getElementById('navOverlay');
+  if (!toggle || !pill) return;
 
-  function setOpen(open) {
+  const isMobile = () => !window.matchMedia('(pointer: fine)').matches
+                      || window.matchMedia('(max-width: 960px)').matches;
+
+  function openOverlay() {
+    if (!overlay) return;
+    overlay.classList.add('is-open');
+    overlay.setAttribute('aria-hidden', 'false');
+    toggle.classList.add('is-open');
+    toggle.setAttribute('aria-expanded', 'true');
+    document.body.classList.add('nav-open');
+  }
+  function closeOverlay() {
+    if (!overlay) return;
+    overlay.classList.remove('is-open');
+    overlay.setAttribute('aria-hidden', 'true');
+    toggle.classList.remove('is-open');
+    toggle.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('nav-open');
+  }
+  function setExpanded(open) {
     pill.classList.toggle('is-expanded', open);
-    if (toggle) {
-      toggle.classList.toggle('is-open', open);
-      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    }
-    // Tell the scroll handler the user pinned this state
-    pill.dataset.userToggled = open ? 'open' : 'closed';
+    toggle.classList.toggle('is-open', open);
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
   }
 
-  if (toggle) {
-    toggle.addEventListener('click', function (e) {
-      e.stopPropagation();
-      setOpen(!pill.classList.contains('is-expanded'));
+  function handleToggle(e) {
+    e.stopPropagation();
+    if (isMobile()) {
+      overlay && overlay.classList.contains('is-open') ? closeOverlay() : openOverlay();
+    } else {
+      setExpanded(!pill.classList.contains('is-expanded'));
+    }
+  }
+
+  toggle.addEventListener('click', handleToggle);
+
+  // Tapping the collapsed pill body (desktop) expands it
+  pill.addEventListener('click', function (e) {
+    if (e.target.closest('a') || e.target.closest('.nav-pill__hamburger')) return;
+    if (isMobile()) {
+      openOverlay();
+    } else if (!pill.classList.contains('is-expanded')) {
+      setExpanded(true);
+    }
+  });
+
+  // Overlay links close the menu
+  if (overlay) {
+    overlay.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        if (!a.target) closeOverlay(); // internal links close; external (_blank) leave it
+      });
     });
   }
 
-  // Tapping anywhere on the collapsed pill expands it
-  pill.addEventListener('click', function (e) {
-    if (e.target.closest('a')) return; // let links work
-    if (!pill.classList.contains('is-expanded')) {
-      setOpen(true);
-    }
-  });
-
-  // Close when tapping a nav link (mobile) or pressing Escape
-  pill.querySelectorAll('.nav-pill__links a').forEach(function (a) {
-    a.addEventListener('click', function () { setOpen(false); });
-  });
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') setOpen(false);
+    if (e.key !== 'Escape') return;
+    closeOverlay();
+    if (!isMobile()) setExpanded(false);
   });
 }());
 

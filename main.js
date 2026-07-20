@@ -239,3 +239,18 @@
   }
 
 }());
+
+/* Booking reveal (coaching page): scheduler loads only on request */
+(function () {
+  var btn = document.getElementById('bookingReveal');
+  var frame = document.getElementById('bookingFrame');
+  if (!btn || !frame) return;
+  btn.addEventListener('click', function () {
+    var iframe = frame.querySelector('iframe');
+    if (iframe && !iframe.src) iframe.src = iframe.getAttribute('data-src');
+    frame.hidden = false;
+    btn.setAttribute('aria-expanded', 'true');
+    btn.style.display = 'none';
+    frame.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+})();

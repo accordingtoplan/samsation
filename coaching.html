@@ -104,23 +104,21 @@
       </div>
     </section>
 
-    <!-- ── Booking: Acuity embed ── -->
+    <!-- ── Booking: native intro, scheduler revealed on request ── -->
     <section class="s-booking fade-in" id="book">
       <div class="s-booking__header">
         <span class="label">Date &amp; time</span>
         <h2 class="s-booking__title">Book a session.</h2>
-        <p class="s-booking__text">Choose a time below. Private and live sessions are scheduled through Acuity. You will receive a confirmation and a link to join.</p>
+        <p class="s-booking__text">Choose a time that works for you. You will receive a confirmation and a link to join by email.</p>
       </div>
-      <!-- Acuity Scheduling embed — replace data-src with Sam's real Acuity URL -->
-      <iframe
-        src="https://app.acuityscheduling.com/schedule.php?owner=SAM_OWNER_ID"
-        title="Schedule a session with Sam Rabon"
-        width="100%"
-        height="800"
-        frameborder="0"
-        class="s-booking__iframe"
-        loading="lazy"></iframe>
-      <p class="s-booking__note">Powered by Acuity Scheduling</p>
+      <button type="button" class="pill-cta" id="bookingReveal" aria-expanded="false" aria-controls="bookingFrame">Choose a time</button>
+      <div class="s-booking__frame" id="bookingFrame" hidden>
+        <iframe
+          data-src="https://app.acuityscheduling.com/schedule.php?owner=SAM_OWNER_ID"
+          title="Choose a session time"
+          class="s-booking__iframe"
+          width="100%" height="760" frameborder="0"></iframe>
+      </div>
     </section>
 
     <!-- ── Contact ── -->

@@ -1451,3 +1451,14 @@ a { color: inherit; text-decoration: none; }
   .s-shelf { grid-template-columns: 1fr; gap: 2rem; }
   .s-shelf__img img { aspect-ratio: 4 / 3; }
 }
+
+/* Booking frame (Level 1): scheduler scoped + placed, no vendor chrome */
+.s-booking__frame {
+  max-width: 760px;
+  border: 1px solid rgba(28,28,26,0.15);
+  border-radius: var(--r);
+  overflow: hidden;
+  background: var(--white);
+  margin-top: 1.5rem;
+}
+.s-booking__frame iframe { display: block; }

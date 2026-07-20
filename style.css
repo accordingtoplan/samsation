@@ -1397,3 +1397,50 @@ a { color: inherit; text-decoration: none; }
 @media (max-width: 960px) {
   .hero-full img { height: clamp(440px, 80vh, 640px); }
 }
+
+/* Shelf — four products under the hero (preview v3, Dulve tiles: no card containers) */
+.s-shelf {
+  padding: 0 var(--page-pad);
+  margin-bottom: var(--section);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(1rem, 2vw, 1.75rem);
+}
+.s-shelf__item { text-decoration: none; color: var(--ink); }
+.s-shelf__img {
+  border-radius: var(--r);
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+.s-shelf__img img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.s-shelf__item:hover .s-shelf__img img { transform: scale(1.04); }
+.s-shelf__item > .label { display: block; margin-bottom: 0.4rem; }
+.s-shelf__name {
+  font-family: var(--f-display);
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: clamp(1.35rem, 2vw, 1.9rem);
+  line-height: 1;
+  letter-spacing: 0.01em;
+  margin-bottom: 0.4rem;
+  transition: color 0.25s ease;
+}
+.s-shelf__item:hover .s-shelf__name { color: var(--accent); }
+.s-shelf__meta {
+  font-family: var(--f-mono);
+  font-size: var(--t-small);
+  color: var(--ink-mid);
+}
+@media (prefers-reduced-motion: reduce) {
+  .s-shelf__img img, .s-shelf__name { transition: none; }
+  .s-shelf__item:hover .s-shelf__img img { transform: none; }
+}
+@media (max-width: 960px) {
+  .s-shelf { grid-template-columns: 1fr 1fr; gap: 1.25rem 1rem; }
+}

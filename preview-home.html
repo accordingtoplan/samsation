@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SamSation — A Practice in Real Life Movement</title>
+  <meta name="description" content="SamSation — a practice in real life movement. Private, group, and live sessions in Los Angeles and online. Prepare your body for real life.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ── Nav pill ── -->
+  <nav class="nav-pill" id="navPill">
+    <div class="nav-pill__inner">
+      <button class="nav-pill__hamburger" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+      <nav class="nav-pill__links">
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="about.html">About</a>
+        <a href="coaching.html">Coaching</a>
+        <a href="on-demand.html">On-Demand</a>
+        <a href="retreat.html">Retreat</a>
+        <a href="library.html">Library</a>
+      </nav>
+      <a href="index.html" class="nav-pill__wordmark">SamSation</a>
+    </div>
+  </nav>
+
+  <!-- ── Nav menu removed: pill expands inline ── -->
+
+  <!-- ── Mobile full-screen overlay menu ── -->
+  <div class="nav-overlay" id="navOverlay" aria-hidden="true">
+    <a href="index.html" aria-current="page">Home</a>
+    <a href="about.html">About</a>
+    <a href="coaching.html">Coaching</a>
+    <a href="on-demand.html">On-Demand</a>
+    <a href="retreat.html">Retreat</a>
+    <a href="library.html">Library</a>
+    <div class="nav-overlay__foot">
+      <a href="https://www.instagram.com/samrabon_" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://samrabon.substack.com" target="_blank" rel="noopener">Substack</a>
+    </div>
+  </div>
+
+  <div class="page">
+
+    <!-- ── Hero: two images with gap, floating card on right ── -->
+    <section class="hero">
+
+      <div class="hero__left">
+        <picture>
+          <source srcset="img/hero-left.webp" type="image/webp">
+          <img src="img/hero-left.jpg" alt="Sam Rabon" loading="eager">
+        </picture>
+      </div>
+
+      <div class="hero__right">
+        <picture>
+          <source srcset="img/hero-right.webp" type="image/webp">
+          <img src="img/hero-right.jpg" alt="" loading="eager">
+        </picture>
+        <div class="hero__card">
+          <span class="hero__card-label">Los Angeles</span>
+          <h2>A Practice in Real Life Movement</h2>
+          <p>Prepare your body for real life.</p>
+          <a href="coaching.html" class="pill-cta">Work with Sam</a>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ── Claim: big serif headline on background, no box ── -->
+    <section class="s-claim fade-in">
+      <span class="label">Movement — Los Angeles</span>
+      <h2>SamSation is not a fitness programme. It is a practice built around how bodies actually move in life — not in a gym.</h2>
+      <a href="about.html" class="pill-cta">About the practice</a>
+    </section>
+
+    <!-- ── Router: one binary decision (Open-style) ── -->
+    <section class="s-router fade-in">
+      <span class="label">Choose your way in</span>
+      <a href="coaching.html" class="s-router__opt">
+        <span class="s-router__word">In&nbsp;Person</span>
+        <span class="s-router__meta">Los Angeles — private, group, and live sessions</span>
+      </a>
+      <a href="on-demand.html" class="s-router__opt">
+        <span class="s-router__word">From&nbsp;Anywhere</span>
+        <span class="s-router__meta">On-demand programs and resources</span>
+      </a>
+    </section>
+
+    <!-- ── Ladder: the four offers as full-width rows (Sky Ting-style) ── -->
+    <section class="s-ladder fade-in">
+
+      <a href="coaching.html" class="s-ladder__row">
+        <div class="s-ladder__text">
+          <span class="label">01</span>
+          <h3 class="s-ladder__word">Coaching</h3>
+          <p class="s-ladder__meta">Private, group, and live sessions. In Los Angeles and online.</p>
+          <span class="pill-cta">Work with Sam</span>
+        </div>
+        <div class="s-ladder__img">
+          <picture>
+            <source srcset="img/hero-session.webp" type="image/webp">
+            <img src="img/hero-session.jpg" alt="Sam coaching a session" loading="lazy">
+          </picture>
+        </div>
+      </a>
+
+      <a href="on-demand.html" class="s-ladder__row s-ladder__row--text">
+        <div class="s-ladder__text">
+          <span class="label">02</span>
+          <h3 class="s-ladder__word">On-Demand</h3>
+          <p class="s-ladder__meta">Programs on Solin. Practice at your own pace, anywhere.</p>
+          <span class="pill-cta">Explore on-demand</span>
+        </div>
+      </a>
+
+      <a href="retreat.html" class="s-ladder__row s-ladder__row--reverse">
+        <div class="s-ladder__text">
+          <span class="label label--accent">03 — First access</span>
+          <h3 class="s-ladder__word">Retreat</h3>
+          <p class="s-ladder__meta">Greece · Fall 2026 · Waitlist open</p>
+          <span class="pill-cta">Join the waitlist</span>
+        </div>
+        <div class="s-ladder__img">
+          <picture>
+            <source srcset="img/retreat.webp" type="image/webp">
+            <img src="img/retreat.jpg" alt="Retreat by the sea" loading="lazy">
+          </picture>
+        </div>
+      </a>
+
+      <a href="library.html" class="s-ladder__row s-ladder__row--text">
+        <div class="s-ladder__text">
+          <span class="label">04</span>
+          <h3 class="s-ladder__word">Library</h3>
+          <p class="s-ladder__meta">Resources for strength, recovery, and longevity.</p>
+          <span class="pill-cta">Browse the library</span>
+        </div>
+      </a>
+
+    </section>
+
+    <!-- ── Services: no boxes, just spaced items on background ── -->
+    <section class="s-services fade-in">
+      <div class="s-services__header">
+        <span class="label">Ways to work together</span>
+        <a href="coaching.html" class="pill-cta">All services</a>
+      </div>
+      <div class="s-services__grid">
+        <div class="s-service">
+          <span class="label">Private</span>
+          <h3>1:1 Sessions</h3>
+          <p>In Los Angeles, and online where it makes sense. For people who want to be coached well, not often.</p>
+          <a href="coaching.html" class="pill-cta">Book</a>
+        </div>
+        <div class="s-service">
+          <span class="label">Group</span>
+          <h3>Lagree &amp; Studio</h3>
+          <p>Train with the energy of a group. In person at Megaformer Hollywood.</p>
+          <a href="coaching.html" class="pill-cta">More</a>
+        </div>
+        <div class="s-service">
+          <span class="label">Live</span>
+          <h3>Online Sessions</h3>
+          <p>Real-time guidance, feedback, and connection — wherever you are.</p>
+          <a href="coaching.html" class="pill-cta">More</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Testimonials: on background, no box ── -->
+    <section class="s-testimonials fade-in">
+      <blockquote>
+        <p class="testimonial__quote">"Sam is in a different league. She sees movement patterns others miss. I feel stronger and more capable than I have in years."</p>
+        <cite class="testimonial__cite">Adam Lambert</cite>
+      </blockquote>
+      <blockquote>
+        <p class="testimonial__quote">"Training with Sam reshaped my posture, my presence, and how I move through daily life."</p>
+        <cite class="testimonial__cite">Saul Williams</cite>
+      </blockquote>
+    </section>
+
+  </div><!-- /.page -->
+
+  <!-- ── Footer ── -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div>
+        <span class="label footer__newsletter-label">Stay in it</span>
+        <p class="footer__newsletter-text">A letter, not a newsletter — twice a month, when there is something worth saying.</p>
+        <form class="footer__form" action="https://samrabon.substack.com/subscribe" method="get" target="_blank">
+          <input type="email" name="email" class="footer__input" placeholder="Your email" autocomplete="email">
+          <button type="submit" class="footer__submit">Subscribe</button>
+        </form>
+      </div>
+      <div class="footer__right">
+        <p class="footer__meta">SamSation · A Practice in Real Life Movement · Los Angeles</p>
+        <nav class="footer__nav">
+          <a href="https://www.instagram.com/samrabon_" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://samrabon.substack.com" target="_blank" rel="noopener">Substack</a>
+          <a href="coaching.html#contact">Contact</a>
+          <a href="privacy.html">Privacy</a>
+        </nav>
+      </div>
+    </div>
+    <div class="footer__wordmark-wrap">
+      <div class="footer__wordmark" aria-hidden="true">SamSation</div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

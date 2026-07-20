@@ -1444,3 +1444,10 @@ a { color: inherit; text-decoration: none; }
 @media (max-width: 960px) {
   .s-shelf { grid-template-columns: 1fr 1fr; gap: 1.25rem 1rem; }
 }
+
+/* Shelf v4: three products; retreat lives as its own full-width module */
+.s-shelf { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 960px) {
+  .s-shelf { grid-template-columns: 1fr; gap: 2rem; }
+  .s-shelf__img img { aspect-ratio: 4 / 3; }
+}

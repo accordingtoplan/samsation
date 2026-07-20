@@ -45,29 +45,18 @@
 
   <div class="page">
 
-    <!-- ── Hero: two images with gap, floating card on right ── -->
-    <section class="hero">
-
-      <div class="hero__left">
-        <picture>
-          <source srcset="img/hero-left.webp" type="image/webp">
-          <img src="img/hero-left.jpg" alt="Sam Rabon" loading="eager">
-        </picture>
+    <!-- ── Hero: one full-bleed image, one statement ── -->
+    <section class="hero-full">
+      <picture>
+        <source srcset="img/hero-left.webp" type="image/webp">
+        <img src="img/hero-left.jpg" alt="Movement in real life" loading="eager">
+      </picture>
+      <div class="hero-full__overlay">
+        <span class="hero-full__label">Los Angeles</span>
+        <h1 class="hero-full__title">A Practice in<br>Real Life Movement</h1>
+        <p class="hero-full__line">Prepare your body for real life.</p>
+        <a href="coaching.html" class="pill-cta pill-cta--light">Work with Sam</a>
       </div>
-
-      <div class="hero__right">
-        <picture>
-          <source srcset="img/hero-right.webp" type="image/webp">
-          <img src="img/hero-right.jpg" alt="" loading="eager">
-        </picture>
-        <div class="hero__card">
-          <span class="hero__card-label">Los Angeles</span>
-          <h2>A Practice in Real Life Movement</h2>
-          <p>Prepare your body for real life.</p>
-          <a href="coaching.html" class="pill-cta">Work with Sam</a>
-        </div>
-      </div>
-
     </section>
 
     <!-- ── Claim: big serif headline on background, no box ── -->
@@ -77,70 +66,44 @@
       <a href="about.html" class="pill-cta">About the practice</a>
     </section>
 
-    <!-- ── Router: one binary decision (Open-style) ── -->
+    <!-- ── Index: all four offers, one uniform typographic list (Open-style) ── -->
     <section class="s-router fade-in">
-      <span class="label">Choose your way in</span>
+      <span class="label">Ways in</span>
       <a href="coaching.html" class="s-router__opt">
-        <span class="s-router__word">In&nbsp;Person</span>
-        <span class="s-router__meta">Los Angeles — private, group, and live sessions</span>
+        <span class="s-router__word">Coaching</span>
+        <span class="s-router__meta">Private, group, and live sessions — Los Angeles and online</span>
       </a>
       <a href="on-demand.html" class="s-router__opt">
-        <span class="s-router__word">From&nbsp;Anywhere</span>
-        <span class="s-router__meta">On-demand programs and resources</span>
+        <span class="s-router__word">On-Demand</span>
+        <span class="s-router__meta">Programs on Solin — at your own pace, anywhere</span>
+      </a>
+      <a href="retreat.html" class="s-router__opt">
+        <span class="s-router__word">Retreat</span>
+        <span class="s-router__meta">Greece — Fall 2026 — waitlist open</span>
+      </a>
+      <a href="library.html" class="s-router__opt">
+        <span class="s-router__word">Library</span>
+        <span class="s-router__meta">Resources for strength, recovery, and longevity</span>
       </a>
     </section>
 
-    <!-- ── Ladder: the four offers as full-width rows (Sky Ting-style) ── -->
-    <section class="s-ladder fade-in">
-
-      <a href="coaching.html" class="s-ladder__row">
-        <div class="s-ladder__text">
-          <span class="label">01</span>
-          <h3 class="s-ladder__word">Coaching</h3>
-          <p class="s-ladder__meta">Private, group, and live sessions. In Los Angeles and online.</p>
-          <span class="pill-cta">Work with Sam</span>
+    <!-- ── Retreat: the one full-bleed image moment (Habitas-style) ── -->
+    <section class="s-retreat fade-in">
+      <div class="s-retreat__inner">
+        <picture>
+          <source srcset="img/retreat.webp" type="image/webp">
+          <img src="img/retreat.jpg" alt="Retreat by the sea" loading="lazy">
+        </picture>
+        <div class="s-retreat__caption">
+          <div>
+            <span class="label">First access</span>
+            <h3>Greece · Fall 2026 · A small group, by the sea.</h3>
+          </div>
+          <div class="s-retreat__caption-right">
+            <a href="retreat.html" class="pill-cta pill-cta--light">Join the waitlist</a>
+          </div>
         </div>
-        <div class="s-ladder__img">
-          <picture>
-            <source srcset="img/hero-session.webp" type="image/webp">
-            <img src="img/hero-session.jpg" alt="Sam coaching a session" loading="lazy">
-          </picture>
-        </div>
-      </a>
-
-      <a href="on-demand.html" class="s-ladder__row s-ladder__row--text">
-        <div class="s-ladder__text">
-          <span class="label">02</span>
-          <h3 class="s-ladder__word">On-Demand</h3>
-          <p class="s-ladder__meta">Programs on Solin. Practice at your own pace, anywhere.</p>
-          <span class="pill-cta">Explore on-demand</span>
-        </div>
-      </a>
-
-      <a href="retreat.html" class="s-ladder__row s-ladder__row--reverse">
-        <div class="s-ladder__text">
-          <span class="label label--accent">03 — First access</span>
-          <h3 class="s-ladder__word">Retreat</h3>
-          <p class="s-ladder__meta">Greece · Fall 2026 · Waitlist open</p>
-          <span class="pill-cta">Join the waitlist</span>
-        </div>
-        <div class="s-ladder__img">
-          <picture>
-            <source srcset="img/retreat.webp" type="image/webp">
-            <img src="img/retreat.jpg" alt="Retreat by the sea" loading="lazy">
-          </picture>
-        </div>
-      </a>
-
-      <a href="library.html" class="s-ladder__row s-ladder__row--text">
-        <div class="s-ladder__text">
-          <span class="label">04</span>
-          <h3 class="s-ladder__word">Library</h3>
-          <p class="s-ladder__meta">Resources for strength, recovery, and longevity.</p>
-          <span class="pill-cta">Browse the library</span>
-        </div>
-      </a>
-
+      </div>
     </section>
 
     <!-- ── Services: no boxes, just spaced items on background ── -->

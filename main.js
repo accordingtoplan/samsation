@@ -269,3 +269,17 @@
   window.addEventListener('resize', fit);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
 })();
+
+/* Fit hero wordmark to exact hero width (mirrors footer treatment) */
+(function () {
+  var el = document.querySelector('.hero-full__wordmark span');
+  if (!el) return;
+  function fit() {
+    el.style.transform = 'none';
+    var wrap = el.parentElement;
+    el.style.transform = 'scale(' + (wrap.clientWidth / el.scrollWidth) + ')';
+  }
+  fit();
+  window.addEventListener('resize', fit);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+})();

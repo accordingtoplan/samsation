@@ -1615,3 +1615,6 @@ a:hover > .label { color: var(--accent2); }
 
 /* Accent trial: yellow mauve replacing persimmon (F, 2026-07-22) */
 :root { --accent2: #b08d94; }
+
+/* Accent dial: yellow mauve, pulled further yellow (F, 2026-07-22) */
+:root { --accent2: #b89a72; }

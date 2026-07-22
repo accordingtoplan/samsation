@@ -1618,3 +1618,25 @@ a:hover > .label { color: var(--accent2); }
 
 /* Accent dial: yellow mauve, pulled further yellow (F, 2026-07-22) */
 :root { --accent2: #b89a72; }
+
+/* ── Accent: ACID CHARTREUSE, sampled from F's reference (2026-07-22) ──
+   Light hue needs contrast handling: fills carry ink text, on-light text uses deep cut. */
+:root {
+  --accent2: #cfdd30;
+  --accent2-deep: #8f9c15;
+}
+/* Text accents on light ground: deep cut for legibility */
+.label--accent, .s-program-facts { color: var(--accent2-deep); }
+.s-shelf__item:hover .s-shelf__name { color: var(--accent2-deep); }
+.nav-pill__links a:hover { color: var(--accent2); }
+.footer__nav a:hover { color: var(--accent2); }
+.overlay__link:hover { color: var(--accent2); }
+/* Fills: chartreuse with ink text (white would vanish) */
+.pill-cta:hover { background: var(--accent2); color: var(--ink); border-color: var(--accent2); }
+.pill-cta--light:hover { background: var(--accent2); color: var(--ink); border-color: var(--accent2); }
+.s-retreat .pill-cta--light { background: var(--accent2); border-color: var(--accent2); color: var(--ink); }
+.footer .pill-cta, .footer button { background: var(--accent2); border-color: var(--accent2); color: var(--ink); }
+.footer__submit:hover { background: #fff; color: var(--ink); }
+.s-program-quote { border-left-color: var(--accent2-deep); }
+/* On-dark: full chartreuse (retreat caption label sits on imagery) */
+.s-retreat__caption .label--accent { color: var(--accent2); }

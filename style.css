@@ -3,7 +3,7 @@
    Aesthetic ref: dulve-in.com — open, airy, no boxes
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@900&family=Courier+Prime:wght@400;700&display=swap');
 
 :root {
   --bg:      #f0ede7;
@@ -1508,4 +1508,16 @@ h1, h2, h3, h4,
 :root {
   --f: 'Courier Prime', 'Courier New', Courier, monospace;
   --f-mono: 'Courier Prime', 'Courier New', Courier, monospace;
+}
+
+/* System update cont. — headline face bolder/boxier per F (matches live footer wordmark) */
+:root {
+  --f-display: 'Archivo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+h1, h2, h3, h4,
+.hero-full__title, .s-router__word, .s-ladder__word, .s-shelf__name,
+.s-pageintro__title, .s-offer__title, .s-program__title, .s-booking__title,
+.s-contact__title, .s-claim h2, .s-retreat__caption h3, .footer__wordmark,
+.nav__wordmark, .overlay__link {
+  font-weight: 900;
 }

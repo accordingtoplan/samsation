@@ -1607,3 +1607,8 @@ a:hover > .label { color: var(--accent2); }
   height: 100%;
   object-fit: cover;
 }
+
+/* Hero LA image: keep the leaping figure in frame on portrait crops */
+@media (max-width: 960px) {
+  .hero-full img { object-position: 65% 40%; }
+}

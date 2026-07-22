@@ -1531,3 +1531,6 @@ h1, h2, h3, h4,
 .footer .pill-cta, .footer button { background: var(--accent2); border-color: var(--accent2); color: #fff; }
 .s-program-facts { color: var(--accent2); }
 .s-program-quote { border-left-color: var(--accent2); }
+
+/* Specificity fix: accent label must win inside the retreat caption overlay */
+.s-retreat__caption .label--accent { color: var(--accent2); }

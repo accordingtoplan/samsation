@@ -254,3 +254,18 @@
     frame.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 })();
+
+/* Fit footer wordmark to exact full container width */
+(function () {
+  var wm = document.querySelector('.footer__wordmark');
+  if (!wm) return;
+  function fit() {
+    wm.style.transform = 'none';
+    var wrap = wm.parentElement;
+    var scale = wrap.clientWidth / wm.scrollWidth;
+    wm.style.transform = 'scale(' + scale + ')';
+  }
+  fit();
+  window.addEventListener('resize', fit);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+})();

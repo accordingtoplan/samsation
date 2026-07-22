@@ -1534,3 +1534,20 @@ h1, h2, h3, h4,
 
 /* Specificity fix: accent label must win inside the retreat caption overlay */
 .s-retreat__caption .label--accent { color: var(--accent2); }
+
+/* Footer wordmark: exact full width (JS-fitted, see main.js fitWordmark) */
+.footer__wordmark-wrap { overflow: hidden; padding: 0; }
+.footer__wordmark {
+  display: block;
+  white-space: nowrap;
+  line-height: 0.8;
+  letter-spacing: -0.01em;
+  width: max-content;
+  transform-origin: left bottom;
+}
+
+/* Wordmark bleeds edge-to-edge past footer padding */
+.footer__wordmark-wrap {
+  margin-left: calc(-1 * var(--page-pad));
+  margin-right: calc(-1 * var(--page-pad));
+}

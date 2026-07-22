@@ -1521,3 +1521,13 @@ h1, h2, h3, h4,
 .nav__wordmark, .overlay__link {
   font-weight: 900;
 }
+
+/* ── Second brand color: PERSIMMON (F's pick, 2026-07-22) ──
+   Jobs only: status, access, aliveness. Never decoration. */
+:root { --accent2: #d94f2b; }
+.label--accent { color: var(--accent2); }
+.s-shelf__item:hover .s-shelf__name { color: var(--accent2); }
+.s-retreat .pill-cta--light { background: var(--accent2); border-color: var(--accent2); color: #fff; }
+.footer .pill-cta, .footer button { background: var(--accent2); border-color: var(--accent2); color: #fff; }
+.s-program-facts { color: var(--accent2); }
+.s-program-quote { border-left-color: var(--accent2); }

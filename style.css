@@ -1483,3 +1483,23 @@ a { color: inherit; text-decoration: none; }
   max-width: 44ch;
 }
 .s-program-quote__by { display: block; color: var(--ink-mid); margin-top: 0.4rem; }
+
+/* ══════════════════════════════════════════
+   SYSTEM UPDATE — 2026-07 (F's direction)
+   Helvetica Neue Bold headlines · grey bg · zero radius
+   Appended override block; original system above preserved for rollback.
+   ══════════════════════════════════════════ */
+:root {
+  --bg: #e8e8e6;
+  --f-display: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --r: 0;
+  --pill: 0;
+}
+* { border-radius: 0 !important; }
+h1, h2, h3, h4,
+.hero-full__title, .s-router__word, .s-ladder__word, .s-shelf__name,
+.s-pageintro__title, .s-offer__title, .s-program__title, .s-booking__title,
+.s-contact__title, .s-claim h2, .s-retreat__caption h3, .footer__wordmark,
+.nav__wordmark, .overlay__link {
+  font-weight: 700;
+}

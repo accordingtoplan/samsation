@@ -1667,3 +1667,27 @@ a:hover > .label { color: var(--accent2); }
   --accent2: #d94f2b;
   --accent2-deep: #b8401f;
 }
+
+/* ── Retreat as a full COLOR FIELD: cobalt world, white type, persimmon accents ──
+   (replaces the too-subtle accent-only scoping; F, 2026-07-22) */
+.page-retreat {
+  --bg: #2a58c8;
+  --ink: #ffffff;
+  --ink-mid: rgba(255,255,255,0.78);
+  --ink-dim: rgba(255,255,255,0.5);
+  --accent2: #d94f2b;
+  --accent2-deep: #d94f2b;
+}
+.page-retreat body, body.page-retreat { background: var(--bg); }
+/* Hardcoded charcoal borders/colors flip to white on the field */
+.page-retreat .pill-cta {
+  color: #fff;
+  border-color: rgba(255,255,255,0.55);
+}
+.page-retreat .pill-cta:hover { background: var(--accent2); color: #fff; border-color: var(--accent2); }
+.page-retreat .s-router__opt,
+.page-retreat a { color: var(--ink); }
+.page-retreat .label { color: rgba(255,255,255,0.65); }
+.page-retreat .label--accent { color: #ffd9cd; }
+/* Footer stays the green identity block */
+.page-retreat .footer { background: var(--accent); }

@@ -1656,3 +1656,14 @@ a:hover > .label { color: var(--accent2); }
 .s-shelf__item:hover .s-shelf__name { color: var(--accent2); }
 .s-program-quote { border-left-color: var(--accent2); }
 .s-retreat__caption .label--accent { color: var(--accent2); }
+
+/* ── EXPERIMENT: page-scoped accent, Retreat = Mediterranean cobalt (F, 2026-07-22) ──
+   Identity layer (footer/nav) stays persimmon; page content carries the local hue. */
+.page-retreat {
+  --accent2: #2a58c8;
+  --accent2-deep: #1e3f94;
+}
+.page-retreat .footer {
+  --accent2: #d94f2b;
+  --accent2-deep: #b8401f;
+}

@@ -1640,3 +1640,19 @@ a:hover > .label { color: var(--accent2); }
 .s-program-quote { border-left-color: var(--accent2-deep); }
 /* On-dark: full chartreuse (retreat caption label sits on imagery) */
 .s-retreat__caption .label--accent { color: var(--accent2); }
+
+/* ── Accent FINAL: back to bright orange/persimmon (F, 2026-07-22) ──
+   Persimmon is mid-value: white text on fills works again; deep cut for small text on light. */
+:root {
+  --accent2: #d94f2b;
+  --accent2-deep: #b8401f;
+}
+.pill-cta:hover { background: var(--accent2); color: #fff; border-color: var(--accent2); }
+.pill-cta--light:hover { background: #fff; color: var(--accent2); border-color: #fff; }
+.s-retreat .pill-cta--light { background: var(--accent2); border-color: var(--accent2); color: #fff; }
+.footer .pill-cta, .footer button { background: var(--accent2); border-color: var(--accent2); color: #fff; }
+.footer__submit:hover { background: #fff; color: var(--accent2); }
+.label--accent, .s-program-facts { color: var(--accent2); }
+.s-shelf__item:hover .s-shelf__name { color: var(--accent2); }
+.s-program-quote { border-left-color: var(--accent2); }
+.s-retreat__caption .label--accent { color: var(--accent2); }

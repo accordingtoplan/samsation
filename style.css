@@ -2536,6 +2536,7 @@ a > .label {
   width: 50%;
   height: 100%;
   object-fit: cover;
+  object-position: center bottom;
   filter: grayscale(1);
 }
 /* Keep the two videos side by side (not stacked) at every width — stacking

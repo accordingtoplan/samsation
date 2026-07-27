@@ -2684,3 +2684,56 @@ a > .label {
   .s-shelf__img video { transition: none; }
   .s-shelf__item:hover .s-shelf__img video { transform: none; }
 }
+
+/* ── ABOUT: peer testimonials brought up to the site's bold quote
+   voice (same weight as the homepage carousel's .ts-quote), kept as a
+   static 3-up grid per F's direction — no carousel, no copy changes ── */
+.testimonial__quote {
+  font-family: var(--f-display) !important;
+  font-size: clamp(1.05rem, 1.7vw, 1.5rem) !important;
+  font-weight: 900 !important;
+  text-transform: uppercase !important;
+  line-height: 1.2 !important;
+  letter-spacing: 0.01em !important;
+  color: var(--ink) !important;
+}
+
+/* ── ABOUT: bio module, matches the Retreat sticky-split pattern ──
+   Same mechanism as .s-rdl on retreat.html: image is a plain div with
+   an inline background-image (not an <img>), which sidesteps the
+   global img{height:100%} reset that was forcing the portrait into a
+   landscape crop and cutting off the top of Sam's head/face. Height
+   stays auto (not the retreat modules' fixed clamp) because the bio
+   copy + coaching card run longer than a retreat module's short text
+   block — a fixed height + overflow:hidden would clip content.     ── */
+.s-bio {
+  display: grid;
+  grid-template-columns: 55fr 45fr;
+  gap: var(--gap);
+  padding: 0 var(--gap);
+}
+.s-bio__img {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  align-self: start;
+  background-size: cover;
+  background-position: center top;
+}
+.s-bio__body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+  padding: clamp(2rem, 4vw, 3rem) 0;
+}
+@media (max-width: 860px) {
+  .s-bio { grid-template-columns: 1fr; padding: 0; }
+  .s-bio__img {
+    position: relative;
+    top: auto;
+    height: 100vw;
+    align-self: auto;
+  }
+  .s-bio__body { padding: clamp(2rem, 4vw, 3rem) var(--page-pad); }
+}

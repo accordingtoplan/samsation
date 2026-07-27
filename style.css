@@ -1785,3 +1785,22 @@ a:hover > .label { color: var(--accent2); }
 @media (max-width: 960px) {
   .s-comingsoon__row { grid-template-columns: 1fr; gap: 2.5rem; }
 }
+
+/* ── Newsletter intro, in Sam's words (About page) ──────────── */
+.s-newsletter-intro {
+  padding: var(--section) var(--page-pad);
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.s-newsletter-intro__prose {
+  margin: 1.25rem 0 1.75rem;
+}
+.s-newsletter-intro__prose p {
+  font-size: clamp(1.1rem, 1.6vw, 1.35rem);
+  line-height: 1.6;
+  color: var(--ink);
+}

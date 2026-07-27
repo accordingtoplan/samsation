@@ -2173,11 +2173,10 @@ a > .label {
 
 /* ── Footer ticker: full-width patterns band at top of footer ── */
 .footer__ticker {
-  /* Bleed past footer's horizontal padding to touch both edges */
   margin: 0 calc(-1 * var(--page-pad));
-  padding: 1.25rem var(--page-pad);
+  padding: 2rem var(--page-pad);
   overflow: hidden;
-  border-bottom: 1px solid rgba(255,255,255,0.15);
+  border-bottom: 1px solid rgba(255,255,255,0.35);
 }
 .footer__ticker .s-ticker__track {
   display: flex;
@@ -2194,11 +2193,11 @@ a > .label {
   font-size: var(--t-label);
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.5);
+  color: #fff;
   white-space: nowrap;
 }
 .footer__ticker .s-ticker__item .glyph {
-  color: rgba(255,255,255,0.3);
+  color: rgba(255,255,255,0.6);
 }
 @media (prefers-reduced-motion: reduce) {
   .footer__ticker .s-ticker__track { animation: none; }

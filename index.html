@@ -12,29 +12,41 @@
 </head>
 <body>
 
-  <!-- ── Glyph sprite: abstract movement marks, one gesture per pattern ── -->
+  <!-- ── Glyph sprite: small figures, one gesture per pattern ── -->
   <svg style="display:none" aria-hidden="true">
-    <!-- STEP: the arc of rising — one fluid ascending curve, no staircase -->
+    <!-- STEP: a figure mid-stride — the gait pattern, forked legs and a swinging arm -->
     <symbol id="glyph-step" viewBox="0 0 32 32" fill="none">
-      <path d="M5 27 C10 24 16 18 27 7" stroke-linecap="round"/>
+      <circle cx="11" cy="6.5" r="2.8" fill="currentColor" stroke="none"/>
+      <path d="M11 9.5 L18 18" stroke-linecap="round"/>
+      <path d="M18 18 L27 25" stroke-linecap="round"/>
+      <path d="M18 18 L9 27" stroke-linecap="round"/>
+      <path d="M13.5 11.5 L21 8" stroke-linecap="round"/>
     </symbol>
-    <!-- HINGE: two limbs at a joint — the geometry of bending, nothing more -->
+    <!-- HINGE: a figure bent forward at the hip, straight legs, arm hanging with gravity -->
     <symbol id="glyph-hinge" viewBox="0 0 32 32" fill="none">
-      <path d="M5 5 L16 24 L27 10" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="23.5" cy="7" r="2.8" fill="currentColor" stroke="none"/>
+      <path d="M9 15 L22 10.5" stroke-linecap="round"/>
+      <path d="M9 15 L9 27" stroke-linecap="round"/>
+      <path d="M17.5 12 L14 24" stroke-linecap="round"/>
     </symbol>
-    <!-- ROTATE: an orbital arc — nearly closed, perpetually continuing -->
+    <!-- ROTATE: a near-complete orbit with a clear arrowhead — direction, not just curve -->
     <symbol id="glyph-rotate" viewBox="0 0 32 32" fill="none">
-      <path d="M26 8 A12 12 0 1 1 8 26" stroke-linecap="round"/>
+      <path d="M25 12 A10 10 0 1 1 11.5 8.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M11.5 8.2 L7.2 9.6 M11.5 8.2 L11.1 3.7" stroke-linecap="round" stroke-linejoin="round"/>
     </symbol>
-    <!-- REACH: the line of maximum extension, terminated at its limit -->
+    <!-- REACH: a figure extended fully toward a point, standing stance -->
     <symbol id="glyph-reach" viewBox="0 0 32 32" fill="none">
-      <path d="M5 27 L26 5" stroke-linecap="round"/>
-      <path d="M26 5 L26 13 M26 5 L18 5" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="9" cy="8" r="2.8" fill="currentColor" stroke="none"/>
+      <path d="M9.5 11 L14 20" stroke-linecap="round"/>
+      <path d="M14 20 L9 27 M14 20 L18.5 27" stroke-linecap="round"/>
+      <path d="M11.5 13 L26 5" stroke-linecap="round"/>
+      <circle cx="27.5" cy="4.2" r="1.6" fill="currentColor" stroke="none"/>
     </symbol>
-    <!-- SHIFT: two offset parallel bars — the visual fact of lateral displacement -->
+    <!-- SHIFT: a figure with hips displaced sideways — the lateral weight shift -->
     <symbol id="glyph-shift" viewBox="0 0 32 32" fill="none">
-      <path d="M4 13 L22 13" stroke-linecap="round"/>
-      <path d="M10 21 L28 21" stroke-linecap="round"/>
+      <circle cx="14" cy="6" r="2.8" fill="currentColor" stroke="none"/>
+      <path d="M14 9 C19.5 14 8.5 17.5 14 23" stroke-linecap="round"/>
+      <path d="M14 23 L8.5 28 M14 23 L20 28" stroke-linecap="round"/>
     </symbol>
   </svg>
 
@@ -130,62 +142,6 @@
       </a>
     </section>
 
-    <!-- ── Patterns module: full-height, own section ── -->
-    <section class="s-patterns-module fade-in">
-      <div class="s-patterns-module__inner">
-        <h2 class="s-patterns-module__title">The Patterns<br>of Daily Life</h2>
-        <div class="s-patterns-module__row">
-          <div class="s-patterns-module__item">
-            <svg class="glyph glyph--88" aria-hidden="true"><use href="#glyph-step"></use></svg>
-            <span>Step</span>
-          </div>
-          <div class="s-patterns-module__item">
-            <svg class="glyph glyph--88" aria-hidden="true"><use href="#glyph-hinge"></use></svg>
-            <span>Hinge</span>
-          </div>
-          <div class="s-patterns-module__item">
-            <svg class="glyph glyph--88" aria-hidden="true"><use href="#glyph-rotate"></use></svg>
-            <span>Rotate</span>
-          </div>
-          <div class="s-patterns-module__item">
-            <svg class="glyph glyph--88" aria-hidden="true"><use href="#glyph-reach"></use></svg>
-            <span>Reach</span>
-          </div>
-          <div class="s-patterns-module__item">
-            <svg class="glyph glyph--88" aria-hidden="true"><use href="#glyph-shift"></use></svg>
-            <span>Shift</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ── Claim: full-width, directly after glyphs ── -->
-    <section class="s-claim fade-in">
-      <span class="label">Movement · Los Angeles</span>
-      <h2>SamSation is not a fitness programme. It is a practice built around how bodies actually move in life, not in a gym.</h2>
-      <a href="about.html" class="pill-cta">About the practice</a>
-    </section>
-
-    <!-- ── Retreat: the one full-bleed image moment (Habitas-style) ── -->
-    <section class="s-retreat fade-in">
-      <div class="s-retreat__inner">
-        <picture>
-          <source srcset="img/hero-greece.webp" type="image/webp">
-          <img src="img/hero-greece.jpg" alt="Stone terrace overlooking the Aegean, Kythnos island in the distance">
-        </picture>
-        <span class="s-retreat__badge">Retreats</span>
-        <div class="s-retreat__caption">
-          <div>
-            <span class="label label--accent"><span class="live-dot" aria-hidden="true"></span>First access</span>
-            <h3>Greece · Fall 2026 · A small group, by the sea.</h3>
-          </div>
-          <div class="s-retreat__caption-right">
-            <a href="retreat.html" class="pill-cta pill-cta--light">Join the waitlist</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- ── Testimonials: auto-carousel, arrows flank quote, whole slide is CTA ── -->
     <section class="s-testimonials-slide fade-in" aria-label="Client testimonials">
 
@@ -258,6 +214,62 @@
 
       </div><!-- /.ts-stage -->
 
+    </section>
+
+    <!-- ── Claim: full-width statement, after testimonials ── -->
+    <section class="s-claim s-claim--green fade-in">
+      <span class="label">Movement · Los Angeles</span>
+      <h2>SamSation is not a fitness programme. It is a practice built around how bodies actually move in life, not in a gym.</h2>
+      <a href="about.html" class="pill-cta pill-cta--light">About the practice</a>
+    </section>
+
+    <!-- ── Retreat: the one full-bleed image moment (Habitas-style) ── -->
+    <section class="s-retreat fade-in">
+      <div class="s-retreat__inner">
+        <picture>
+          <source srcset="img/hero-greece.webp" type="image/webp">
+          <img src="img/hero-greece.jpg" alt="Stone terrace overlooking the Aegean, Kythnos island in the distance">
+        </picture>
+        <span class="s-retreat__badge">Retreats</span>
+        <div class="s-retreat__caption">
+          <div>
+            <span class="label label--accent"><span class="live-dot" aria-hidden="true"></span>First access</span>
+            <h3>Greece · Fall 2026 · A small group, by the sea.</h3>
+          </div>
+          <div class="s-retreat__caption-right">
+            <a href="retreat.html" class="pill-cta pill-cta--light">Join the waitlist</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Patterns module: full-height, own section ── -->
+    <section class="s-patterns-module fade-in">
+      <div class="s-patterns-module__inner">
+        <h2 class="s-patterns-module__title">The Patterns<br>of Daily Life</h2>
+        <div class="s-patterns-module__row">
+          <div class="s-patterns-module__item">
+            <svg class="glyph glyph--88" aria-hidden="true"><use href="#glyph-step"></use></svg>
+            <span>Step</span>
+          </div>
+          <div class="s-patterns-module__item">
+            <svg class="glyph glyph--88" aria-hidden="true"><use href="#glyph-hinge"></use></svg>
+            <span>Hinge</span>
+          </div>
+          <div class="s-patterns-module__item">
+            <svg class="glyph glyph--88" aria-hidden="true"><use href="#glyph-rotate"></use></svg>
+            <span>Rotate</span>
+          </div>
+          <div class="s-patterns-module__item">
+            <svg class="glyph glyph--88" aria-hidden="true"><use href="#glyph-reach"></use></svg>
+            <span>Reach</span>
+          </div>
+          <div class="s-patterns-module__item">
+            <svg class="glyph glyph--88" aria-hidden="true"><use href="#glyph-shift"></use></svg>
+            <span>Shift</span>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- ── On-Demand: full-bleed video moment, before footer (Retreats treatment) ── -->

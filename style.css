@@ -1831,7 +1831,7 @@ a > .label {
 .glyph {
   display: inline-block;
   stroke: currentColor;
-  stroke-width: 1.5;
+  stroke-width: 2.25;
   fill: none;
   stroke-linecap: square;
   stroke-linejoin: miter;
@@ -1840,7 +1840,7 @@ a > .label {
 }
 .glyph--40 { width: 40px; height: 40px; }
 .glyph--20 { width: 20px; height: 20px; }
-.glyph--14 { width: 14px; height: 14px; stroke-width: 1.75; }
+.glyph--14 { width: 14px; height: 14px; stroke-width: 2.25; }
 
 .s-patterns__item { color: var(--ink); }
 
@@ -2393,7 +2393,7 @@ a > .label {
   }
 }
 /* ── Glyph size: 56px display variant for homepage patterns ── */
-.glyph--56 { width: 56px; height: 56px; stroke-width: 1.25; }
+.glyph--56 { width: 56px; height: 56px; stroke-width: 2; }
 
 /* ── s-patterns--hero: centered, full-width, larger spacing ── */
 .s-patterns--hero {
@@ -2651,7 +2651,7 @@ a > .label {
 }
 .s-patterns-module .glyph {
   color: var(--bg) !important;
-  stroke-width: 1.5;
+  stroke-width: 2.75;
 }
 .glyph--88 { width: 88px !important; height: 88px !important; }
 
@@ -2738,3 +2738,16 @@ a > .label {
   }
   .s-bio__body { padding: clamp(2rem, 4vw, 3rem) var(--page-pad); }
 }
+
+/* ── Homepage claim: green background variant ──────────────────
+   .s-claim itself is shared with about/library/retreat (cream, dark
+   type) — this modifier only applies where index.html adds the
+   `s-claim--green` class, so the other pages are untouched. */
+.s-claim--green {
+  background: var(--accent);
+  border-radius: var(--r);
+  margin: 0 var(--gap) var(--section);
+  padding: var(--section) var(--page-pad);
+}
+.s-claim--green .label { color: rgba(240,237,231,0.6); }
+.s-claim--green h2 { color: var(--bg); }

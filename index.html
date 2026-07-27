@@ -164,16 +164,74 @@
     </section>
 
 
-    <!-- ── Testimonials: on background, no box ── -->
-    <section class="s-testimonials fade-in">
-      <blockquote>
-        <p class="testimonial__quote">"Sam is in a different league. She sees movement patterns others miss. I feel stronger and more capable than I have in years."</p>
-        <cite class="testimonial__cite">Adam Lambert</cite>
-      </blockquote>
-      <blockquote>
-        <p class="testimonial__quote">"Training with Sam reshaped my posture, my presence, and how I move through daily life."</p>
-        <cite class="testimonial__cite">Saul Williams</cite>
-      </blockquote>
+    <!-- ── Testimonials: slideshow, headline font, CTA per quote ── -->
+    <section class="s-testimonials-slide fade-in" aria-label="Client testimonials">
+      <div class="ts-track" aria-live="polite">
+
+        <div class="ts-slide" aria-hidden="false">
+          <blockquote>
+            <p class="ts-quote">"Sam fine-tunes the body like an instrument, ensuring precision, power, and longevity. Training with Sam reshaped my posture, my presence, and how I move through daily life."</p>
+            <footer class="ts-foot">
+              <cite class="ts-cite">Saul Williams</cite>
+              <a href="coaching.html#private" class="ts-cta">Book a private session</a>
+            </footer>
+          </blockquote>
+        </div>
+
+        <div class="ts-slide" aria-hidden="true">
+          <blockquote>
+            <p class="ts-quote">"She sees movement patterns others miss. I feel stronger and more capable than ever."</p>
+            <footer class="ts-foot">
+              <cite class="ts-cite">Adam Lambert</cite>
+              <a href="coaching.html#private" class="ts-cta">Book a private session</a>
+            </footer>
+          </blockquote>
+        </div>
+
+        <div class="ts-slide" aria-hidden="true">
+          <blockquote>
+            <p class="ts-quote">"Removed shoulder limitations and improved my singing performance. Her guidance is a game-changer for both body and mind."</p>
+            <footer class="ts-foot">
+              <cite class="ts-cite">Aijia Grammer</cite>
+              <a href="coaching.html" class="ts-cta">Work with Sam</a>
+            </footer>
+          </blockquote>
+        </div>
+
+        <div class="ts-slide" aria-hidden="true">
+          <blockquote>
+            <p class="ts-quote">"Her method seamlessly integrates strength, mobility, and healing. We collaborate and confidently exchange clients, knowing they are in the best hands."</p>
+            <footer class="ts-foot">
+              <cite class="ts-cite">Dr. Jocelyne Miranda</cite>
+              <a href="about.html" class="ts-cta">Meet Sam</a>
+            </footer>
+          </blockquote>
+        </div>
+
+        <div class="ts-slide" aria-hidden="true">
+          <blockquote>
+            <p class="ts-quote">"Her precision has given me longevity in my career. Every session is exactly what my body needs."</p>
+            <footer class="ts-foot">
+              <cite class="ts-cite">NBA Player</cite>
+              <a href="on-demand.html" class="ts-cta">Practice anywhere</a>
+            </footer>
+          </blockquote>
+        </div>
+
+      </div><!-- /.ts-track -->
+
+      <div class="ts-controls">
+        <button class="ts-prev" aria-label="Previous testimonial">←</button>
+        <div class="ts-dots" role="tablist">
+          <button class="ts-dot ts-dot--active" role="tab" aria-selected="true"  aria-label="Testimonial 1"></button>
+          <button class="ts-dot" role="tab" aria-selected="false" aria-label="Testimonial 2"></button>
+          <button class="ts-dot" role="tab" aria-selected="false" aria-label="Testimonial 3"></button>
+          <button class="ts-dot" role="tab" aria-selected="false" aria-label="Testimonial 4"></button>
+          <button class="ts-dot" role="tab" aria-selected="false" aria-label="Testimonial 5"></button>
+        </div>
+        <button class="ts-next" aria-label="Next testimonial">→</button>
+      </div>
+
     </section>
 
     <!-- ── Pattern ticker: the five patterns of daily life, always moving ── -->

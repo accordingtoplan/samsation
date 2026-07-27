@@ -2392,3 +2392,34 @@ a > .label {
     justify-content: flex-start;
   }
 }
+/* ── Glyph size: 56px display variant for homepage patterns ── */
+.glyph--56 { width: 56px; height: 56px; stroke-width: 1.25; }
+
+/* ── s-patterns--hero: centered, full-width, larger spacing ── */
+.s-patterns--hero {
+  text-align: center;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+.s-patterns--hero .s-patterns__row {
+  max-width: none;
+  justify-content: center;
+  margin: 0 auto;
+  gap: 2rem;
+  grid-template-columns: repeat(5, auto);
+}
+.s-patterns--hero .s-patterns__item {
+  align-items: center;
+}
+@media (max-width: 640px) {
+  .s-patterns--hero .s-patterns__row {
+    grid-template-columns: repeat(3, auto);
+    gap: 2rem 1.5rem;
+  }
+}
+
+/* ── s-claim full-width headline override ── */
+.s-claim h2 { max-width: none; }
+
+/* ── Glyph strokes: ensure round linecaps/joins on new 32×32 glyphs ── */
+.glyph { stroke-linecap: round; stroke-linejoin: round; }

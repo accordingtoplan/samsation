@@ -2491,3 +2491,10 @@ a > .label {
 }
 .s-rdl--past .s-rdl__title { color: var(--ink-mid); }
 .s-rdl--past .s-rdl__sub { color: var(--ink-dim); }
+
+/* ── Claim: green background matching footer ── */
+.s-claim { background: var(--accent); }
+.s-claim h2 { color: var(--bg) !important; }
+.s-claim .label { color: rgba(240,237,231,0.55); }
+.s-claim .pill-cta { background: var(--bg); border-color: var(--bg); color: var(--accent); }
+.s-claim .pill-cta:hover { background: transparent; border-color: var(--bg); color: var(--bg); }

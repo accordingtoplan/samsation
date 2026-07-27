@@ -2423,3 +2423,23 @@ a > .label {
 
 /* ── Glyph strokes: ensure round linecaps/joins on new 32×32 glyphs ── */
 .glyph { stroke-linecap: round; stroke-linejoin: round; }
+
+/* ── Hero: full-cover link makes entire module clickable ── */
+.hero-full__cover-link {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: block;
+}
+/* Keep overlay content and pill above the cover link */
+.hero-full__wordmark,
+.hero-full__overlay { z-index: 2; }
+.hero-full__overlay .pill-cta { position: relative; z-index: 3; }
+
+/* ── Retreat: match hero height ── */
+.s-retreat__inner {
+  min-height: clamp(520px, 92vh, 900px);
+}
+@media (max-width: 960px) {
+  .s-retreat__inner { min-height: clamp(440px, 80vh, 640px); }
+}

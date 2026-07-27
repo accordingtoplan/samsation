@@ -2167,3 +2167,37 @@ a > .label {
 }
 
 /* Morocco: see object-position rule in s-retreat-module__image block above */
+
+/* ── Footer ticker: full-width patterns band at top of footer ── */
+.footer__ticker {
+  /* Bleed past footer's horizontal padding to touch both edges */
+  margin: calc(-1 * clamp(3rem, 6vw, 5rem)) calc(-1 * var(--page-pad)) 0;
+  padding: 1.25rem var(--page-pad);
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+.footer__ticker .s-ticker__track {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  width: max-content;
+  animation: ticker 32s linear infinite;
+}
+.footer__ticker .s-ticker__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  font-family: var(--f-mono);
+  font-size: var(--t-label);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  white-space: nowrap;
+}
+.footer__ticker .s-ticker__item .glyph {
+  color: rgba(255,255,255,0.3);
+}
+@media (prefers-reduced-motion: reduce) {
+  .footer__ticker .s-ticker__track { animation: none; }
+}

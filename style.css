@@ -2443,3 +2443,40 @@ a > .label {
 @media (max-width: 960px) {
   .s-retreat__inner { min-height: clamp(440px, 80vh, 640px); }
 }
+
+/* ── s-rdl consistency pass: one module size, real gaps ──────────
+   Every module: identical fixed height, image cover-fills its half,
+   clear gap between modules, no divider borders.                ── */
+.s-rdl,
+.s-rdl--flip {
+  height: clamp(560px, 90vh, 860px);
+  min-height: 0;
+  border-top: none;
+  margin: 0 0 clamp(4rem, 8vw, 7rem) 0;
+  overflow: hidden;
+}
+.s-rdl__img {
+  height: 100% !important;
+  min-height: 0;
+}
+.s-rdl__body {
+  min-height: 0;
+  height: 100%;
+  justify-content: center;
+  padding: clamp(2.5rem, 4vw, 4rem) clamp(2rem, 5vw, 5rem);
+  overflow: hidden;
+}
+/* Tighten body type slightly so all five fit one module height */
+.s-rdl__title { font-size: clamp(2.6rem, 5vw, 5rem); }
+.s-rdl__sub { margin-bottom: 1.5rem; }
+.s-rdl__facts { margin: 1.5rem 0 2rem; }
+
+@media (max-width: 860px) {
+  .s-rdl,
+  .s-rdl--flip {
+    height: auto;
+    margin: 0 0 clamp(3rem, 8vw, 4rem) 0;
+  }
+  .s-rdl__img { height: 70vw !important; }
+  .s-rdl__body { height: auto; padding: 2rem var(--page-pad) 0.5rem; }
+}

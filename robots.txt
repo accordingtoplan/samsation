@@ -1,0 +1,6 @@
+# Staging: pages carry noindex meta until samrabon.com DNS cutover.
+# At cutover: remove the noindex meta tags, re-point URLs, keep Allow.
+User-agent: *
+Allow: /
+
+Sitemap: https://samsation.accordingtoplan.co/sitemap.xml

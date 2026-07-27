@@ -2480,3 +2480,14 @@ a > .label {
   .s-rdl__img { height: 70vw !important; }
   .s-rdl__body { height: auto; padding: 2rem var(--page-pad) 0.5rem; }
 }
+
+/* ── Past retreats: separated + muted so archive reads apart from offer ── */
+.s-past-head {
+  padding: clamp(5rem, 10vw, 9rem) var(--page-pad) clamp(2rem, 4vw, 3rem);
+}
+.s-rdl--past .s-rdl__img {
+  filter: grayscale(1);
+  opacity: 0.85;
+}
+.s-rdl--past .s-rdl__title { color: var(--ink-mid); }
+.s-rdl--past .s-rdl__sub { color: var(--ink-dim); }

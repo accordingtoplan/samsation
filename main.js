@@ -308,7 +308,7 @@
 
   function advance() { goTo(current + 1); }
 
-  function startTimer() { timer = setInterval(advance, 6000); }
+  function startTimer() { timer = setInterval(advance, 3000); }
   function resetTimer()  { clearInterval(timer); startTimer(); }
 
   /* Arrow clicks: stop event so the <a> slide doesn't navigate */

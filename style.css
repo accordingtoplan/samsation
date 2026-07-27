@@ -2012,15 +2012,11 @@ a > .label {
 }
 .s-retreat-module__image {
   width: 100%;
-  aspect-ratio: 16 / 7;
-  overflow: hidden;
-  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  margin: 0 0 clamp(2.5rem, 5vw, 4rem) 0;
 }
 .s-retreat-module__image img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 40%;
+  height: auto;
   display: block;
 }
 .s-retreat-module__body {
@@ -2143,12 +2139,12 @@ a > .label {
 }
 
 @media (max-width: 720px) {
-  .s-retreat-module__image { aspect-ratio: 4 / 3; }
   .s-retreat-module__facts { gap: 1.5rem 2.5rem; }
   .s-comingsoon__row { grid-template-columns: 1fr; gap: 2.5rem; }
 }
 
-/* Morocco image — portrait source, bias toward top to keep roofline */
+/* Morocco image — portrait source, natural dimensions */
 #morocco .s-retreat-module__image img {
-  object-position: center 20%;
+  width: 100%;
+  height: auto;
 }

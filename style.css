@@ -1903,7 +1903,7 @@ a > .label {
 
 /* ── TESTIMONIALS CAROUSEL ───────────────────────────────────── */
 .s-testimonials-slide {
-  padding: var(--section) var(--page-pad);
+  padding: clamp(2.5rem, 5vw, 4.5rem) var(--page-pad);
 }
 /* Stage: 3-col row for arrows + track, then dots row spanning all */
 .ts-stage {

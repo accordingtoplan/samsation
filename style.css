@@ -2664,3 +2664,22 @@ a > .label {
   }
   .glyph--88 { width: 64px !important; height: 64px !important; }
 }
+
+/* ── Shelf: On-Demand card uses a video instead of a still image ──
+   Mirrors every .s-shelf__img img rule scattered above so the video
+   card sizes, crops, and hovers identically to the other two cards. */
+.s-shelf__img video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  transition: transform var(--dur-slow) var(--ease);
+}
+.s-shelf__item:hover .s-shelf__img video { transform: scale(1.04); }
+@media (max-width: 780px) {
+  .s-shelf__img video { aspect-ratio: 4 / 3; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .s-shelf__img video { transition: none; }
+  .s-shelf__item:hover .s-shelf__img video { transform: none; }
+}

@@ -2739,15 +2739,10 @@ a > .label {
   .s-bio__body { padding: clamp(2rem, 4vw, 3rem) var(--page-pad); }
 }
 
-/* ── Homepage claim: green background variant ──────────────────
-   .s-claim itself is shared with about/library/retreat (cream, dark
-   type) — this modifier only applies where index.html adds the
-   `s-claim--green` class, so the other pages are untouched. */
-.s-claim--green {
-  background: var(--accent);
-  border-radius: var(--r);
-  margin: 0 var(--gap) var(--section);
-  padding: var(--section) var(--page-pad);
-}
-.s-claim--green .label { color: rgba(240,237,231,0.6); }
-.s-claim--green h2 { color: var(--bg); }
+/* ── Homepage claim: green headline, no box ─────────────────────
+   .s-claim itself is shared with about/library/retreat (cream
+   background, dark type) — this modifier only applies where
+   index.html adds the `s-claim--green` class, so the other pages
+   are untouched. F tried a full green card here first, then asked
+   for no box — just the headline set in the brand green instead. */
+.s-claim--green h2 { color: var(--accent); }

@@ -1886,26 +1886,35 @@ a > .label {
   .s-ticker__track { animation: none; }
 }
 
-/* ── TESTIMONIALS SLIDESHOW ──────────────────────────────────── */
+/* ── TESTIMONIALS CAROUSEL ───────────────────────────────────── */
 .s-testimonials-slide {
   padding: var(--section) var(--page-pad);
-  overflow: hidden;
+}
+/* Stage: arrow · quote · arrow in one row */
+.ts-stage {
+  display: grid;
+  grid-template-columns: 2rem 1fr 2rem;
+  align-items: center;
+  gap: clamp(1rem, 2.5vw, 2rem);
 }
 .ts-track {
   position: relative;
   min-height: 18rem;
 }
+/* Each slide is an <a> — the whole card is the CTA */
 .ts-slide {
   position: absolute;
   inset: 0;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
+  text-decoration: none;
   opacity: 0;
-  transform: translateY(1.5rem);
-  transition: opacity 0.55s var(--ease), transform 0.55s var(--ease);
+  transform: translateY(1rem);
+  transition: opacity 0.5s var(--ease), transform 0.5s var(--ease);
   pointer-events: none;
   visibility: hidden;
+  cursor: pointer;
 }
 .ts-slide[aria-hidden="false"] {
   opacity: 1;
@@ -1914,16 +1923,19 @@ a > .label {
   visibility: visible;
   position: relative;
 }
+/* Hover: quote dims slightly, cta brightens */
+.ts-slide:hover .ts-quote { color: var(--ink-mid); }
+.ts-slide:hover .ts-cta   { color: var(--accent2); }
 .ts-quote {
   font-family: var(--f-display);
-  font-size: clamp(1.45rem, 3.5vw, 2.4rem);
+  font-size: clamp(1.45rem, 3.2vw, 2.3rem);
   font-weight: 900;
   text-transform: uppercase;
   line-height: 1.15;
   letter-spacing: 0.01em;
   color: var(--ink);
-  margin-bottom: 2rem;
-  max-width: 34ch;
+  margin-bottom: 1.75rem;
+  transition: color var(--dur-fast) var(--ease);
 }
 .ts-foot {
   display: flex;
@@ -1945,39 +1957,31 @@ a > .label {
   font-size: var(--t-label);
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--ink);
-  text-decoration: none;
-  border-bottom: 1px solid var(--ink-dim);
-  padding-bottom: 0.15em;
-  transition: color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
+  color: var(--ink-mid);
+  transition: color var(--dur-fast) var(--ease);
 }
-.ts-cta:hover {
-  color: var(--accent2);
-  border-color: var(--accent2);
-}
-/* Controls */
-.ts-controls {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  margin-top: 2.5rem;
-}
+/* Arrow buttons — flanking the quote */
 .ts-prev, .ts-next {
   background: none;
   border: none;
   font-family: var(--f-mono);
   font-size: 1.1rem;
-  color: var(--ink-mid);
+  color: var(--ink-dim);
   cursor: pointer;
   padding: 0;
   line-height: 1;
+  align-self: center;
   transition: color var(--dur-fast) var(--ease);
+  flex-shrink: 0;
 }
 .ts-prev:hover, .ts-next:hover { color: var(--accent2); }
+/* Dot strip below the stage */
 .ts-dots {
   display: flex;
   gap: 0.6rem;
   align-items: center;
+  margin-top: 2rem;
+  padding-left: calc(2rem + clamp(1rem, 2.5vw, 2rem)); /* align with quote left edge */
 }
 .ts-dot {
   width: 5px;
@@ -1994,9 +1998,11 @@ a > .label {
   transform: scale(1.6);
 }
 @media (max-width: 600px) {
-  .ts-track { min-height: 24rem; }
-  .ts-quote { font-size: clamp(1.2rem, 6vw, 1.6rem); }
-  .ts-foot { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  .ts-stage { grid-template-columns: 1.5rem 1fr 1.5rem; gap: 0.75rem; }
+  .ts-track { min-height: 26rem; }
+  .ts-quote { font-size: clamp(1.2rem, 5.5vw, 1.6rem); }
+  .ts-foot { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+  .ts-dots { padding-left: calc(1.5rem + 0.75rem); }
 }
 @media (prefers-reduced-motion: reduce) {
   .ts-slide { transition: opacity 0.2s; transform: none !important; }

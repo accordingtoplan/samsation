@@ -311,11 +311,12 @@
   function startTimer() { timer = setInterval(advance, 6000); }
   function resetTimer()  { clearInterval(timer); startTimer(); }
 
-  prev.addEventListener('click', function () { goTo(current - 1); resetTimer(); });
-  next.addEventListener('click', function () { goTo(current + 1); resetTimer(); });
+  /* Arrow clicks: stop event so the <a> slide doesn't navigate */
+  prev.addEventListener('click', function (e) { e.preventDefault(); e.stopPropagation(); goTo(current - 1); resetTimer(); });
+  next.addEventListener('click', function (e) { e.preventDefault(); e.stopPropagation(); goTo(current + 1); resetTimer(); });
 
   dots.forEach(function (dot, i) {
-    dot.addEventListener('click', function () { goTo(i); resetTimer(); });
+    dot.addEventListener('click', function (e) { e.stopPropagation(); goTo(i); resetTimer(); });
   });
 
   /* Pause on hover */

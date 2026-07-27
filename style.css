@@ -2017,7 +2017,9 @@ a > .label {
 }
 @media (prefers-reduced-motion: reduce) {
   .ts-slide { transition: opacity 0.2s; transform: none !important; }
-/* ── Retreat module — editorial layout (replaces s-retreat-hero + s-split) ── */
+}
+
+/* ── Retreat module — editorial layout (replaces s-retreat-hero + s-split) ──/
 .s-retreat-module {
   padding: 0 0 clamp(5rem, 10vw, 9rem);
 }
@@ -2201,3 +2203,175 @@ a > .label {
 @media (prefers-reduced-motion: reduce) {
   .footer__ticker .s-ticker__track { animation: none; }
 }
+/* ── s-rdl: Rhode-style sticky-image retreat detail layout ─────
+   Left: image sticks to viewport as right column scrolls.
+   Right: label, title, sub, body copy, fact row, CTA.
+   On mobile both stack vertically, image first.           ───── */
+.s-rdl {
+  display: grid;
+  grid-template-columns: 55fr 45fr;
+  min-height: 100vh;
+  border-top: 1px solid rgba(28,28,26,0.08);
+}
+.s-rdl--flip {
+  grid-template-columns: 45fr 55fr;
+  direction: rtl;
+}
+.s-rdl--flip > * { direction: ltr; }
+
+.s-rdl__img {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  align-self: start;
+}
+.s-rdl--flip .s-rdl__img {
+  order: 2;
+}
+.s-rdl__img img {
+  position: absolute !important;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center center;
+}
+/* Morocco portrait — center on the villa */
+#morocco .s-rdl__img img {
+  object-position: center 30% !important;
+}
+
+.s-rdl__body {
+  padding: clamp(4rem, 8vw, 7rem) clamp(2rem, 5vw, 5rem);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+}
+.s-rdl--flip .s-rdl__body {
+  order: 1;
+}
+
+.s-rdl__title {
+  font-family: var(--f-display);
+  font-size: clamp(3rem, 6vw, 6rem);
+  font-weight: 900;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  line-height: 1.0;
+  color: var(--ink);
+  margin: 0.5rem 0 0;
+}
+.s-rdl__sub {
+  font-family: var(--f-display);
+  font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--ink-mid);
+  line-height: 1.2;
+  margin: 0.5rem 0 2rem;
+}
+.s-rdl__text {
+  font-family: var(--f-mono);
+  font-size: clamp(0.82rem, 1vw, 0.95rem);
+  line-height: 1.8;
+  color: var(--ink-mid);
+  max-width: 44ch;
+  margin: 0 0 0.85rem;
+}
+.s-rdl__facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem clamp(2rem, 4vw, 3.5rem);
+  margin: 2rem 0 2.5rem;
+}
+.s-rdl__fact { display: flex; flex-direction: column; }
+.s-rdl__fact dt {
+  font-family: var(--f-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+  margin-bottom: 0.2rem;
+}
+.s-rdl__fact dd {
+  font-family: var(--f-mono);
+  font-size: 0.82rem;
+  color: var(--ink);
+  margin: 0;
+  line-height: 1.5;
+}
+
+@media (max-width: 860px) {
+  .s-rdl,
+  .s-rdl--flip {
+    grid-template-columns: 1fr;
+    direction: ltr;
+    min-height: auto;
+    overflow: hidden;
+    width: 100%;
+  }
+  .s-rdl__img {
+    position: relative !important;
+    height: 70vw !important;
+    top: auto !important;
+    width: 100% !important;
+  }
+  .s-rdl__body { width: 100%; }
+  .s-rdl--flip .s-rdl__img { order: unset; }
+  .s-rdl--flip .s-rdl__body { order: unset; }
+}
+
+/* ── s-rdl image fix: override global img reset inside sticky container ──
+   The global img{height:100%} expands the container; we need the container
+   to set its own height and the img to fill it via absolute positioning.   */
+.s-rdl__img {
+  position: sticky !important;
+  top: 0 !important;
+  height: 100vh !important;
+  overflow: hidden !important;
+  align-self: start !important;
+}
+.s-rdl__img img {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+}
+/* Per-location object-position overrides */
+#morocco   .s-rdl__img img { object-position: center 30% !important; }
+#pantelleria .s-rdl__img img { object-position: center 25% !important; }
+#pipa      .s-rdl__img img { object-position: center 30% !important; }
+
+@media (max-width: 860px) {
+  .s-rdl__img {
+    position: relative !important;
+    height: 70vw !important;
+    top: auto !important;
+  }
+}
+
+/* ── s-rdl inner image wrapper — isolates the absolute img from the
+   sticky container so global img{height:100%} can't expand it ── */
+.s-rdl__img-inner {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  overflow: hidden !important;
+}
+.s-rdl__img-inner img {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+}
+#morocco     .s-rdl__img-inner img { object-position: center 30% !important; }
+#pantelleria .s-rdl__img-inner img { object-position: center 25% !important; }
+#pipa        .s-rdl__img-inner img { object-position: center 30% !important; }

@@ -2526,14 +2526,20 @@ a > .label {
   justify-content: flex-end;
   background: rgba(28,28,26,0.06);
 }
-.s-ondemand__video {
+.s-ondemand__videos {
   position: absolute;
   inset: 0;
-  width: 100%;
+  display: flex;
+}
+.s-ondemand__video {
+  flex: 1 1 50%;
+  width: 50%;
   height: 100%;
   object-fit: cover;
   filter: grayscale(1);
 }
+/* Keep the two videos side by side (not stacked) at every width — stacking
+   would put the bottom clip directly behind the bottom-anchored caption. */
 .s-ondemand__badge {
   position: absolute;
   top: clamp(1.5rem, 3vw, 2.5rem);

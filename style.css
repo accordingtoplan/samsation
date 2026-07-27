@@ -2374,3 +2374,21 @@ a > .label {
 #morocco     .s-rdl__img-inner img { object-position: center 30% !important; }
 #pantelleria .s-rdl__img-inner img { object-position: center 25% !important; }
 #pipa        .s-rdl__img-inner img { object-position: center 30% !important; }
+
+/* ── s-rdl refinement: consistent 50/50 split, vertically centered copy ──
+   The copy is short so sticky adds nothing; treat each module as a full-
+   viewport static split with the body centered. Cleaner, calmer.       ── */
+.s-rdl,
+.s-rdl--flip {
+  grid-template-columns: 1fr 1fr;
+}
+.s-rdl__body {
+  justify-content: center;   /* vertical centering in the column */
+  min-height: 100vh;
+}
+@media (max-width: 860px) {
+  .s-rdl__body {
+    min-height: auto;
+    justify-content: flex-start;
+  }
+}

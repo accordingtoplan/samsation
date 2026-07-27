@@ -258,21 +258,27 @@
 
     </section>
 
-    <!-- ── On-Demand: Solin video preview, before footer ── -->
+    <!-- ── On-Demand: full-bleed video moment, before footer (Retreats treatment) ── -->
     <section class="s-ondemand fade-in">
-      <div class="s-ondemand__video">
+      <div class="s-ondemand__inner">
         <video
+          class="s-ondemand__video"
           src="video/solin-ondemand.mp4"
           poster="img/solin-ondemand-poster.jpg"
           autoplay muted loop playsinline
           aria-label="Preview of a Solin on-demand session">
         </video>
-      </div>
-      <div class="s-ondemand__body">
-        <span class="label">On-Demand · Solin</span>
-        <h2 class="s-ondemand__title">The practice,<br>at your own pace.</h2>
-        <p class="s-ondemand__text">Programs you can follow from anywhere. The same precision Sam brings to a private session, guided step by step, ready when you are.</p>
-        <a href="on-demand.html" class="pill-cta">Explore programs</a>
+        <span class="s-ondemand__badge">On-Demand</span>
+        <div class="s-ondemand__caption">
+          <div>
+            <span class="label">Solin</span>
+            <h2 class="s-ondemand__title">The practice,<br>at your own pace.</h2>
+            <p class="s-ondemand__text">Programs you can follow from anywhere. The same precision Sam brings to a private session, guided step by step, ready when you are.</p>
+          </div>
+          <div class="s-ondemand__caption-right">
+            <a href="on-demand.html" class="pill-cta pill-cta--light">Explore programs</a>
+          </div>
+        </div>
       </div>
     </section>
 

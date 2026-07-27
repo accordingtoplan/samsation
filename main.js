@@ -284,36 +284,54 @@
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
 })();
 
-/* ── Testimonials Slideshow ─────────────────────────────────── */
+/* ── Testimonials Carousel ──────────────────────────────────── */
 (function () {
   var section = document.querySelector('.s-testimonials-slide');
   if (!section) return;
 
-  var slides = Array.from(section.querySelectorAll('.ts-slide'));
-  var dots   = Array.from(section.querySelectorAll('.ts-dot'));
-  var prev   = section.querySelector('.ts-prev');
-  var next   = section.querySelector('.ts-next');
+  var slides  = Array.from(section.querySelectorAll('.ts-slide'));
+  var dots    = Array.from(section.querySelectorAll('.ts-dot'));
+  var prevBtn = section.querySelector('.ts-prev');
+  var nextBtn = section.querySelector('.ts-next');
   var current = 0;
   var timer;
+  var DURATION = 500; /* must match CSS transition ms */
 
   function goTo(idx) {
-    slides[current].setAttribute('aria-hidden', 'true');
-    dots[current].classList.remove('ts-dot--active');
-    dots[current].setAttribute('aria-selected', 'false');
+    if (idx === current) return;
+    var old = current;
     current = (idx + slides.length) % slides.length;
+
+    /* Exit old slide to the left */
+    slides[old].classList.remove('is-active');
+    slides[old].classList.add('is-exit');
+    slides[old].setAttribute('aria-hidden', 'true');
+
+    /* Bring new slide in from the right */
     slides[current].setAttribute('aria-hidden', 'false');
+    /* Force reflow so transition fires from translateX(100%) */
+    slides[current].getBoundingClientRect();
+    slides[current].classList.add('is-active');
+
+    /* Clean up exit class once animation is done */
+    setTimeout(function () {
+      slides[old].classList.remove('is-exit');
+    }, DURATION);
+
+    /* Dots */
+    dots[old].classList.remove('ts-dot--active');
+    dots[old].setAttribute('aria-selected', 'false');
     dots[current].classList.add('ts-dot--active');
     dots[current].setAttribute('aria-selected', 'true');
   }
 
   function advance() { goTo(current + 1); }
-
   function startTimer() { timer = setInterval(advance, 3000); }
-  function resetTimer()  { clearInterval(timer); startTimer(); }
+  function resetTimer() { clearInterval(timer); startTimer(); }
 
-  /* Arrow clicks: stop event so the <a> slide doesn't navigate */
-  prev.addEventListener('click', function (e) { e.preventDefault(); e.stopPropagation(); goTo(current - 1); resetTimer(); });
-  next.addEventListener('click', function (e) { e.preventDefault(); e.stopPropagation(); goTo(current + 1); resetTimer(); });
+  /* Arrows — stop propagation so the <a> slide doesn't navigate */
+  prevBtn.addEventListener('click', function (e) { e.preventDefault(); e.stopPropagation(); goTo(current - 1); resetTimer(); });
+  nextBtn.addEventListener('click', function (e) { e.preventDefault(); e.stopPropagation(); goTo(current + 1); resetTimer(); });
 
   dots.forEach(function (dot, i) {
     dot.addEventListener('click', function (e) { e.stopPropagation(); goTo(i); resetTimer(); });

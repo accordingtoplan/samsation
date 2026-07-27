@@ -1890,18 +1890,26 @@ a > .label {
 .s-testimonials-slide {
   padding: var(--section) var(--page-pad);
 }
-/* Stage: arrow · quote · arrow in one row */
+/* Stage: 3-col row for arrows + track, then dots row spanning all */
 .ts-stage {
   display: grid;
   grid-template-columns: 2rem 1fr 2rem;
+  grid-template-rows: auto auto;
   align-items: center;
-  gap: clamp(1rem, 2.5vw, 2rem);
+  gap: clamp(1rem, 2.5vw, 2rem) clamp(1rem, 2.5vw, 2rem);
 }
+.ts-prev { grid-column: 1; grid-row: 1; }
+.ts-track { grid-column: 2; grid-row: 1; }
+.ts-next  { grid-column: 3; grid-row: 1; }
+.ts-dots  { grid-column: 1 / -1; grid-row: 2; margin-top: 0.5rem; }
+
+/* Track clips the horizontal slide */
 .ts-track {
   position: relative;
   min-height: 18rem;
+  overflow: hidden;
 }
-/* Each slide is an <a> — the whole card is the CTA */
+/* Each slide is an <a> — off-screen right by default */
 .ts-slide {
   position: absolute;
   inset: 0;
@@ -1909,21 +1917,25 @@ a > .label {
   flex-direction: column;
   justify-content: center;
   text-decoration: none;
-  opacity: 0;
-  transform: translateY(1rem);
-  transition: opacity 0.5s var(--ease), transform 0.5s var(--ease);
+  cursor: pointer;
+  transform: translateX(100%);
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   pointer-events: none;
   visibility: hidden;
-  cursor: pointer;
 }
-.ts-slide[aria-hidden="false"] {
-  opacity: 1;
-  transform: translateY(0);
+/* Active slide — in view */
+.ts-slide.is-active {
+  transform: translateX(0);
   pointer-events: auto;
   visibility: visible;
-  position: relative;
 }
-/* Hover: quote dims slightly, cta brightens */
+/* Exiting slide — slide out to left */
+.ts-slide.is-exit {
+  transform: translateX(-100%);
+  visibility: visible;
+  pointer-events: none;
+}
+/* Hover: quote dims, cta brightens */
 .ts-slide:hover .ts-quote { color: var(--ink-mid); }
 .ts-slide:hover .ts-cta   { color: var(--accent2); }
 .ts-quote {
@@ -1960,7 +1972,7 @@ a > .label {
   color: var(--ink-mid);
   transition: color var(--dur-fast) var(--ease);
 }
-/* Arrow buttons — flanking the quote */
+/* Arrow buttons */
 .ts-prev, .ts-next {
   background: none;
   border: none;
@@ -1975,12 +1987,11 @@ a > .label {
   flex-shrink: 0;
 }
 .ts-prev:hover, .ts-next:hover { color: var(--accent2); }
-/* Dot strip below the stage */
+/* Dots — centered in their row */
 .ts-dots {
   display: flex;
   gap: 0.6rem;
   align-items: center;
-  margin-top: 2rem;
   justify-content: center;
 }
 .ts-dot {
@@ -1999,10 +2010,9 @@ a > .label {
 }
 @media (max-width: 600px) {
   .ts-stage { grid-template-columns: 1.5rem 1fr 1.5rem; gap: 0.75rem; }
-  .ts-track { min-height: 26rem; }
+  .ts-track { min-height: 28rem; }
   .ts-quote { font-size: clamp(1.2rem, 5.5vw, 1.6rem); }
   .ts-foot { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
-  .ts-dots { justify-content: center; }
 }
 @media (prefers-reduced-motion: reduce) {
   .ts-slide { transition: opacity 0.2s; transform: none !important; }

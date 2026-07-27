@@ -2794,3 +2794,16 @@ a > .label {
 @media (max-width: 960px) {
   .s-playlist-embeds { grid-template-columns: 1fr; gap: 2rem; }
 }
+
+/* ── Library: Reading + Expert Insights now real links (2026-07-28) ──
+   .s-reading__title and .s-insight__text link, and the Jill Miller
+   "deep dive" inline link, all match the live samrabon.com hrefs
+   exactly (fetched and verified, not guessed). Same canonical hover
+   as everywhere else on the site; the global `a { color: inherit;
+   text-decoration: none; }` reset means these need no other change
+   to sit exactly where the old plain <span>/<h3> text used to. */
+.s-reading__title:hover,
+.s-insight__title a:hover,
+.s-insight__text a:hover {
+  color: var(--accent2);
+}

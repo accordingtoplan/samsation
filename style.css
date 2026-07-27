@@ -2013,11 +2013,24 @@ a > .label {
 .s-retreat-module__image {
   width: 100%;
   margin: 0 0 clamp(2.5rem, 5vw, 4rem) 0;
+  overflow: hidden;
+  height: clamp(300px, 56vw, 800px) !important;
+  max-height: clamp(300px, 56vw, 800px) !important;
+  position: relative;
 }
 .s-retreat-module__image img {
-  width: 100%;
-  height: auto;
+  position: absolute !important;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
   display: block;
+  object-fit: cover !important;
+  object-position: center center;
+}
+
+/* Morocco: portrait image — center on house (upper half of image) */
+#morocco .s-retreat-module__image img {
+  object-position: center 35% !important;
 }
 .s-retreat-module__body {
   padding: 0 var(--page-pad);
@@ -2143,8 +2156,4 @@ a > .label {
   .s-comingsoon__row { grid-template-columns: 1fr; gap: 2.5rem; }
 }
 
-/* Morocco image — portrait source, natural dimensions */
-#morocco .s-retreat-module__image img {
-  width: 100%;
-  height: auto;
-}
+/* Morocco: see object-position rule in s-retreat-module__image block above */

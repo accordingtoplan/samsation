@@ -2674,6 +2674,7 @@ a > .label {
   width: 100%;
   aspect-ratio: 4 / 5;
   object-fit: cover;
+  object-position: center bottom;
   transition: transform var(--dur-slow) var(--ease);
 }
 .s-shelf__item:hover .s-shelf__img video { transform: scale(1.04); }

@@ -1573,3 +1573,11 @@ img[loading="lazy"].is-loaded { opacity: 1; }
 .s-shelf__img video { transition: transform 1.2s var(--ease); }
 .s-shelf__item:hover .s-shelf__img img,
 .s-shelf__item:hover .s-shelf__img video { transform: scale(1.07) translateY(-1.2%); }
+
+/* Pencil grain: turbulence displacement on glyphs (v3 hand-drawn pass).
+   Ticker glyphs excluded — too small for displacement. */
+.glyph { filter: url(#pencil); }
+.s-ticker__item .glyph { filter: none; }
+/* v3.1 per F: a tad finer, a bit more wobble (filter scale 1.1->1.8 in sprite) */
+.glyph { stroke-width: 0.95; }
+.s-patterns-module .glyph { stroke-width: 1.1; }

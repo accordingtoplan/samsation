@@ -1336,3 +1336,80 @@ a > .label {
   .s-shelf__item:hover .s-shelf__img img,
   .s-shelf__item:hover .s-shelf__img video { transform: none; }
 }
+
+/* ── HOMEPAGE · LIBRARY MUSIC BAND (appended 2026-07-28) ────── */
+.s-music {
+  padding: 0;
+}
+.s-music__inner {
+  position: relative;
+  overflow: hidden;
+  min-height: clamp(520px, 92vh, 900px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background: var(--wash);
+}
+.s-music__inner picture {
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  display: block;
+}
+.s-music__inner img {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: grayscale(1);
+}
+.s-music__caption {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  z-index: 2;
+  padding: clamp(2rem, 4vw, 3.5rem);
+  background: var(--scrim-up);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+}
+.s-music__caption .label { margin-bottom: 0.5rem; }
+.s-music__title {
+  font-size: var(--t-h3);
+  color: #fff;
+  max-width: 24ch;
+  margin-bottom: 0.5rem;
+}
+.s-music__text {
+  font-family: var(--f-mono);
+  font-size: var(--t-small);
+  color: rgba(255,255,255,0.75);
+  line-height: 1.5;
+  max-width: 40ch;
+}
+.s-music__caption-right {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1rem;
+  width: min(380px, 100%);
+}
+.s-music__embed {
+  width: 100%;
+  border: 0;
+  border-radius: 12px;
+  display: block;
+}
+@media (max-width: 720px) {
+  .s-music__inner { min-height: clamp(440px, 120vw, 640px); }
+  .s-music__caption {
+    flex-direction: column;
+    align-items: flex-start;
+    /* caption is taller on mobile, so double the same scrim token for legibility */
+    background: var(--scrim-up), var(--scrim-up);
+  }
+  .s-music__caption-right { align-items: flex-start; width: 100%; }
+}

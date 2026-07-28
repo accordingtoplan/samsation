@@ -162,26 +162,6 @@ h1, h2, h3, h4,
   border-color: #fff;
 }
 
-.s-shelf__badge,
-.s-retreat__badge,
-.s-ondemand__badge {
-  position: absolute;
-  top: clamp(1.5rem, 3vw, 2.5rem);
-  left: clamp(1.5rem, 3vw, 2.5rem);
-  z-index: 2;
-  font-family: var(--f-mono);
-  font-size: var(--t-label);
-  text-transform: uppercase;
-  letter-spacing: var(--ls-label);
-  color: var(--ink);
-  background: var(--bg);
-  padding: 0.5rem 0.9rem;
-}
-.s-shelf__badge {
-  top: clamp(0.85rem, 1.6vw, 1.25rem);
-  left: clamp(0.85rem, 1.6vw, 1.25rem);
-  padding: 0.4em 0.75em;
-}
 
 /* Inline text link — the third and last link form (CTA, nav/label link, text link) */
 .text-link {

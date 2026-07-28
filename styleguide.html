@@ -94,8 +94,8 @@
       <div class="sg-type-row"><span class="sg-token">--t-lead</span><span style="font-size:var(--t-lead);color:var(--ink-mid)">Page-intro lead. The same precision Sam brings to a private session.</span></div>
       <div class="sg-type-row"><span class="sg-token">--t-body</span><span style="font-size:var(--t-body);color:var(--ink-mid)">Body prose, 1rem, line-height 1.6 to 1.8.</span></div>
       <div class="sg-type-row"><span class="sg-token">--t-body · 700</span><span style="font-size:var(--t-body);font-weight:700">Emphasized mono title (reading list, insights)</span></div>
-      <div class="sg-type-row"><span class="sg-token">--t-small</span><span style="font-size:var(--t-small);color:var(--ink-mid)">Captions, facts, meta lines, module text.</span></div>
-      <div class="sg-type-row"><span class="sg-token">--t-label</span><span class="label" style="margin:0">Labels · CTAs · Nav · 0.12em tracking</span></div>
+      <div class="sg-type-row"><span class="sg-token">--t-small</span><span style="font-size:var(--t-small);color:var(--ink-mid)">Captions, facts, meta lines, module text. Bold: CTA text.</span></div>
+      <div class="sg-type-row"><span class="sg-token">--t-label</span><span class="label" style="margin:0">Labels · Nav · Badges · 0.12em tracking</span></div>
     </section>
 
     <!-- ── LABELS ── -->
@@ -117,12 +117,12 @@
     <!-- ── BUTTONS ── -->
     <section class="sg-section">
       <h2 class="sg-h">Buttons</h2>
-      <p class="sg-note">One component, one rule of context: on the grey, the CTA is outlined ink; on imagery and dark fields it is solid persimmon. Hover always swaps to the other state. The footer Subscribe is the same solid form. There are no other button styles.</p>
+      <p class="sg-note">One component, one rule of context: on the grey, the CTA is outlined ink; on imagery and dark fields it is solid persimmon. Hover always swaps to the other state. The footer Subscribe is the same solid form. CTAs sit one type step above labels (--t-small, bold) so a control never dresses like a caption. Inline references use .text-link. There are no other button or link styles.</p>
       <div class="sg-row" style="align-items:center">
         <a href="#" class="pill-cta" onclick="return false">Standard CTA</a>
         <span class="sg-dark"><a href="#" class="pill-cta pill-cta--light" onclick="return false">On imagery / dark</a></span>
         <span class="sg-green"><button class="footer__submit" type="button">Subscribe</button></span>
-        <a href="#" onclick="return false" style="font-family:var(--f-mono);font-size:var(--t-small);text-decoration:underline;text-underline-offset:3px">Inline text link</a>
+        <a href="#" class="text-link" onclick="return false" style="font-family:var(--f-mono);font-size:var(--t-small)">Inline text link</a>
       </div>
     </section>
 
@@ -154,11 +154,13 @@
     <section class="sg-section">
       <h2 class="sg-h">Space &amp; shape</h2>
       <ul class="sg-rules">
-        <li>--page-pad clamp(1.5rem, 4vw, 4rem) for content sections. --gap 10px for full-bleed module margins. --section clamp(5rem, 10vw, 9rem) between sections.</li>
+        <li>Two vertical rhythms only: --section clamp(5rem, 10vw, 9rem) inside padded text sections, --section-sm clamp(4rem, 8vw, 7rem) between full-bleed modules. --page-pad for horizontal padding, --gap 10px for bleed margins.</li>
         <li>Zero border radius, site-wide. No pills, no rounded cards, square favicon, square dot.</li>
         <li>Hairlines are rgba(28,28,26,0.12), always 1px, always full-width within their section.</li>
         <li>Two breakpoints: 960px (layout stacks, mobile nav) and 560px (small-phone refinements).</li>
-        <li>Keyboard focus is a 2px persimmon outline, offset 2px, on every link, button, and input.</li>
+        <li>Keyboard focus is a 2px persimmon outline, offset 2px, on every link, button, and input. Every page starts with a skip-to-content link, visible only on focus.</li>
+        <li>Every tap target is at least 24px tall: nav and footer links carry invisible padding, carousel dots have a 24px hit area around the 5px mark.</li>
+        <li>Three link forms and no more: the CTA, the label/nav link, and the underlined .text-link for inline references.</li>
       </ul>
     </section>
 

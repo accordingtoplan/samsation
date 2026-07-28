@@ -1404,3 +1404,20 @@ a > .label {
   }
   .s-music__caption-right { align-items: flex-start; width: 100%; }
 }
+
+/* ── 26 · CONTACT FORM (About #contact) — tokens only ───────── */
+.contact-form { display: grid; gap: 1.5rem; max-width: 60ch; }
+.contact-form__row { display: grid; gap: 0.5rem; }
+.contact-form__input {
+  font-family: var(--f-mono);
+  font-size: var(--t-body);
+  line-height: var(--lh-mono);
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid var(--hairline);
+  border-radius: var(--r);
+  padding: 0.75rem 0.9rem;
+  width: 100%;
+}
+.contact-form__input:focus { border-color: var(--accent2); }
+.contact-form__textarea { resize: vertical; min-height: 9rem; }

@@ -343,3 +343,19 @@
 
   startTimer();
 })();
+
+/* ── About contact form — composes an email to hello@samrabon.com ── */
+(function () {
+  var form = document.getElementById('contact-form');
+  if (!form) return;
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var name = form.name.value.trim();
+    var email = form.email.value.trim();
+    var msg = form.message.value.trim();
+    var body = msg + '\n\n' + name + '\n' + email;
+    window.location.href = 'mailto:hello@samrabon.com'
+      + '?subject=' + encodeURIComponent('Enquiry from ' + name)
+      + '&body=' + encodeURIComponent(body);
+  });
+})();

@@ -71,14 +71,13 @@
         <div class="sg-swatch"><div class="sg-swatch__chip" style="background:var(--ink)"></div><span class="sg-token">--ink · #1c1c1a</span></div>
         <div class="sg-swatch"><div class="sg-swatch__chip" style="background:var(--accent)"></div><span class="sg-token">--accent · #1a8a44</span></div>
         <div class="sg-swatch"><div class="sg-swatch__chip" style="background:var(--accent2)"></div><span class="sg-token">--accent2 · #d94f2b</span></div>
-        <div class="sg-swatch"><div class="sg-swatch__chip" style="background:var(--accent2-deep)"></div><span class="sg-token">--accent2-deep · #b8401f</span></div>
         <div class="sg-swatch"><div class="sg-swatch__chip" style="background:var(--ink-mid)"></div><span class="sg-token">--ink-mid · 55%</span></div>
         <div class="sg-swatch"><div class="sg-swatch__chip" style="background:var(--ink-dim)"></div><span class="sg-token">--ink-dim · 35%</span></div>
       </div>
       <ul class="sg-rules">
         <li>Green is identity: footer, cites, the patterns module. It does not do hovers.</li>
         <li>Persimmon has a job description: status, access, aliveness, plus every hover and rollover. Roughly 5% of any page. Never decoration.</li>
-        <li>White text on persimmon fills. On light grey, small persimmon text uses --accent2-deep for contrast.</li>
+        <li>One orange. White text on persimmon fills, always. Keep persistent persimmon text large enough to read on the grey; if a small line of it looks weak, the answer is layout, not a second orange.</li>
         <li>One grey, one green, one orange. Color is not where this site gets its personality.</li>
       </ul>
     </section>
@@ -86,20 +85,17 @@
     <!-- ── TYPE ── -->
     <section class="sg-section">
       <h2 class="sg-h">Type</h2>
-      <p class="sg-note">Two faces only. Archivo 900, all-caps, for every display moment. Courier Prime for everything else: body, nav, labels, facts, captions. Display sizes snap to six steps; mono to seven. There is no seventh display size.</p>
+      <p class="sg-note">Two faces only. Archivo 900, all-caps, for every display moment. Courier Prime for everything else: body, nav, labels, facts, captions. Four display steps, four mono steps, eight sizes on the whole site. There is no ninth.</p>
 
       <div class="sg-type-row"><span class="sg-token">--t-hero</span><span style="font-family:var(--f-display);font-weight:900;text-transform:uppercase;font-size:var(--t-hero);line-height:1">Hero</span></div>
       <div class="sg-type-row"><span class="sg-token">--t-display</span><span style="font-family:var(--f-display);font-weight:900;text-transform:uppercase;font-size:var(--t-display);line-height:1">Page title</span></div>
       <div class="sg-type-row"><span class="sg-token">--t-h2</span><span style="font-family:var(--f-display);font-weight:900;text-transform:uppercase;font-size:var(--t-h2);line-height:1">Section title</span></div>
-      <div class="sg-type-row"><span class="sg-token">--t-h3</span><span style="font-family:var(--f-display);font-weight:900;text-transform:uppercase;font-size:var(--t-h3);line-height:1">Module title</span></div>
-      <div class="sg-type-row"><span class="sg-token">--t-h4</span><span style="font-family:var(--f-display);font-weight:900;text-transform:uppercase;font-size:var(--t-h4);line-height:1">Shelf name</span></div>
-      <div class="sg-type-row"><span class="sg-token">--t-h5</span><span style="font-family:var(--f-display);font-weight:900;text-transform:uppercase;font-size:var(--t-h5);line-height:1.2">Subtitle, quote-as-display</span></div>
+      <div class="sg-type-row"><span class="sg-token">--t-h3</span><span style="font-family:var(--f-display);font-weight:900;text-transform:uppercase;font-size:var(--t-h3);line-height:1">Module title · quote · shelf name</span></div>
       <div class="sg-type-row"><span class="sg-token">--t-lead</span><span style="font-size:var(--t-lead);color:var(--ink-mid)">Page-intro lead. The same precision Sam brings to a private session.</span></div>
       <div class="sg-type-row"><span class="sg-token">--t-body</span><span style="font-size:var(--t-body);color:var(--ink-mid)">Body prose, 1rem, line-height 1.6 to 1.8.</span></div>
-      <div class="sg-type-row"><span class="sg-token">--t-mono-lg</span><span style="font-size:var(--t-mono-lg);font-weight:700">Emphasized mono title (reading list, insights)</span></div>
+      <div class="sg-type-row"><span class="sg-token">--t-body · 700</span><span style="font-size:var(--t-body);font-weight:700">Emphasized mono title (reading list, insights)</span></div>
       <div class="sg-type-row"><span class="sg-token">--t-small</span><span style="font-size:var(--t-small);color:var(--ink-mid)">Captions, facts, meta lines, module text.</span></div>
       <div class="sg-type-row"><span class="sg-token">--t-label</span><span class="label" style="margin:0">Labels · CTAs · Nav · 0.12em tracking</span></div>
-      <div class="sg-type-row"><span class="sg-token">--t-micro</span><span style="font-size:var(--t-micro);font-family:var(--f-mono);letter-spacing:var(--ls-label);text-transform:uppercase;color:var(--ink-mid)">Fact-row dt only</span></div>
     </section>
 
     <!-- ── LABELS ── -->
@@ -107,20 +103,21 @@
       <h2 class="sg-h">Labels</h2>
       <div class="sg-row" style="align-items:center">
         <span class="label" style="margin:0">Standard label</span>
+        <span style="position:relative;display:inline-block"><span class="s-shelf__badge" style="position:static;display:inline-block">Badge</span></span>
         <span class="label label--accent" style="margin:0">Accent label</span>
-        <span class="label label--accent" style="margin:0"><span class="live-dot" aria-hidden="true"></span>First access</span>
         <span class="label" style="margin:0;display:inline-flex;align-items:center;gap:0.5em"><svg class="glyph glyph--14" style="color:var(--ink-dim)"><use href="#glyph-hinge"></use></svg>Page eyebrow</span>
       </div>
       <ul class="sg-rules">
-        <li>Accent labels mark status and access only (First access, Join). The breathing dot is square, 7px, and means liveness.</li>
+        <li>Accent labels mark status and access only (First access, Join). Nothing else decorates a label. The breathing-dot experiment is retired.</li>
         <li>Each inner page carries its glyph in the intro eyebrow: About/Hinge, Coaching/Step, On-Demand/Shift, Retreat/Reach, Library/Rotate.</li>
+        <li>Badges are grey chips naming a module on imagery (Private, Live, Retreats, On-Demand). Top-left, always. They name, they never link.</li>
       </ul>
     </section>
 
     <!-- ── BUTTONS ── -->
     <section class="sg-section">
       <h2 class="sg-h">Buttons</h2>
-      <p class="sg-note">One component: .pill-cta. Outlined, mono, uppercase, zero radius. Hover fills persimmon with white text. The --light variant sits on imagery and dark fields. There are no other button styles; the footer Subscribe is the one solid persimmon fill.</p>
+      <p class="sg-note">One component, one rule of context: on the grey, the CTA is outlined ink; on imagery and dark fields it is solid persimmon. Hover always swaps to the other state. The footer Subscribe is the same solid form. There are no other button styles.</p>
       <div class="sg-row" style="align-items:center">
         <a href="#" class="pill-cta" onclick="return false">Standard CTA</a>
         <span class="sg-dark"><a href="#" class="pill-cta pill-cta--light" onclick="return false">On imagery / dark</a></span>
@@ -135,7 +132,7 @@
       <ul class="sg-rules">
         <li>One curve: --ease cubic-bezier(0.23,1,0.32,1). Three durations: --dur-fast 0.2s (color), --dur-med 0.35s (name color shifts), --dur-slow 0.6s (image scale, fade-ins).</li>
         <li>Every rollover on the site resolves to persimmon. Current-page nav stays white: that is a state, not a rollover.</li>
-        <li>Image hovers scale 1.03–1.04, never more. The ticker runs 32s linear. The breathing dot breathes at 4s.</li>
+        <li>Image hovers scale 1.03–1.04, never more. The ticker runs 32s linear.</li>
         <li>Everything honours prefers-reduced-motion.</li>
       </ul>
     </section>
@@ -161,6 +158,7 @@
         <li>Zero border radius, site-wide. No pills, no rounded cards, square favicon, square dot.</li>
         <li>Hairlines are rgba(28,28,26,0.12), always 1px, always full-width within their section.</li>
         <li>Two breakpoints: 960px (layout stacks, mobile nav) and 560px (small-phone refinements).</li>
+        <li>Keyboard focus is a 2px persimmon outline, offset 2px, on every link, button, and input.</li>
       </ul>
     </section>
 

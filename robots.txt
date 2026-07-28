@@ -3,4 +3,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://samsation.accordingtoplan.co/sitemap.xml
+Sitemap: https://samsation.co/sitemap.xml

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SamSation · Design System</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Guide chrome only — not part of the site system */
+    .sg { max-width: 1100px; margin: 0 auto; padding: clamp(3rem, 6vw, 5rem) var(--page-pad) var(--section); }
+    .sg-section { border-top: 1px solid var(--hairline); padding: clamp(2.5rem, 5vw, 4rem) 0; }
+    .sg-h { font-family: var(--f-display); font-weight: 900; text-transform: uppercase; font-size: var(--t-h2); margin-bottom: 2rem; }
+    .sg-note { font-family: var(--f-mono); font-size: var(--t-small); color: var(--ink-mid); line-height: var(--lh-mono); max-width: 64ch; margin-bottom: 2rem; }
+    .sg-row { display: flex; flex-wrap: wrap; gap: 1.5rem; align-items: flex-end; margin-bottom: 2rem; }
+    .sg-token { font-family: var(--f-mono); font-size: var(--t-label); letter-spacing: var(--ls-label); text-transform: uppercase; color: var(--ink-dim); display: block; margin-top: 0.5rem; }
+    .sg-swatch { width: 140px; }
+    .sg-swatch__chip { height: 90px; border: 1px solid var(--hairline); }
+    .sg-type-row { border-top: 1px solid var(--hairline); padding: 1.25rem 0; display: grid; grid-template-columns: 220px 1fr; gap: 2rem; align-items: baseline; }
+    .sg-type-row .sg-token { margin: 0; }
+    .sg-dark { background: var(--ink); padding: 2rem; display: inline-flex; gap: 1.5rem; align-items: center; }
+    .sg-green { background: var(--accent); padding: 2rem; display: inline-flex; gap: 1.5rem; align-items: center; }
+    .sg-rules li { font-family: var(--f-mono); font-size: var(--t-small); line-height: var(--lh-mono); color: var(--ink); margin-bottom: 0.85rem; max-width: 70ch; list-style: none; padding-left: 1.25rem; position: relative; }
+    .sg-rules li::before { content: "·"; position: absolute; left: 0; color: var(--accent2); }
+    .sg-mod { border-top: 1px solid var(--hairline); padding: 1.1rem 0; display: grid; grid-template-columns: 240px 1fr; gap: 2rem; }
+    .sg-mod strong { font-family: var(--f-mono); font-size: var(--t-small); font-weight: 700; }
+    .sg-mod span { font-family: var(--f-mono); font-size: var(--t-small); color: var(--ink-mid); line-height: var(--lh-mono); }
+    @media (max-width: 700px) { .sg-type-row, .sg-mod { grid-template-columns: 1fr; gap: 0.5rem; } }
+  </style>
+</head>
+<body>
+
+  <svg style="display:none" aria-hidden="true">
+    <symbol id="glyph-step" viewBox="0 0 32 32" fill="none">
+      <ellipse cx="10" cy="23" rx="5" ry="3.2" transform="rotate(-25 10 23)" fill="currentColor" stroke="none"/>
+      <ellipse cx="21" cy="10" rx="5" ry="3.2" transform="rotate(-25 21 10)" fill="currentColor" stroke="none"/>
+    </symbol>
+    <symbol id="glyph-hinge" viewBox="0 0 32 32" fill="none">
+      <path d="M11 6 L11 18" stroke-linecap="round"/>
+      <path d="M11 18 L25 23" stroke-linecap="round"/>
+      <circle cx="11" cy="18" r="2.1" fill="currentColor" stroke="none"/>
+    </symbol>
+    <symbol id="glyph-rotate" viewBox="0 0 32 32" fill="none">
+      <path d="M25 12 A10 10 0 1 1 11.5 8.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M11.5 8.2 L7.2 9.6 M11.5 8.2 L11.1 3.7" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="16.3" cy="17" r="1.4" fill="currentColor" stroke="none"/>
+    </symbol>
+    <symbol id="glyph-reach" viewBox="0 0 32 32" fill="none">
+      <path d="M7.5 24.5 L25 8" stroke-linecap="round"/>
+      <circle cx="7" cy="25" r="2" fill="currentColor" stroke="none"/>
+      <circle cx="25.5" cy="7.5" r="3" fill="currentColor" stroke="none"/>
+    </symbol>
+    <symbol id="glyph-shift" viewBox="0 0 32 32" fill="none">
+      <path d="M6 12 L17 12" stroke-linecap="round"/>
+      <path d="M15 20 L26 20" stroke-linecap="round"/>
+    </symbol>
+  </svg>
+
+  <main class="sg">
+
+    <span class="label">SamSation · Design System · v2 · 2026-07</span>
+    <h1 class="s-pageintro__title">One system, six pages.</h1>
+    <p class="sg-note">The living reference for samrabon.com. Everything on this page is rendered by the production style.css, so if it looks right here, it is right on the site. New work uses these tokens and components only. No raw hex values, no new font sizes, no new button styles.</p>
+
+    <!-- ── COLOR ── -->
+    <section class="sg-section">
+      <h2 class="sg-h">Color</h2>
+      <div class="sg-row">
+        <div class="sg-swatch"><div class="sg-swatch__chip" style="background:var(--bg)"></div><span class="sg-token">--bg · #e8e8e6</span></div>
+        <div class="sg-swatch"><div class="sg-swatch__chip" style="background:var(--ink)"></div><span class="sg-token">--ink · #1c1c1a</span></div>
+        <div class="sg-swatch"><div class="sg-swatch__chip" style="background:var(--accent)"></div><span class="sg-token">--accent · #1a8a44</span></div>
+        <div class="sg-swatch"><div class="sg-swatch__chip" style="background:var(--accent2)"></div><span class="sg-token">--accent2 · #d94f2b</span></div>
+        <div class="sg-swatch"><div class="sg-swatch__chip" style="background:var(--accent2-deep)"></div><span class="sg-token">--accent2-deep · #b8401f</span></div>
+        <div class="sg-swatch"><div class="sg-swatch__chip" style="background:var(--ink-mid)"></div><span class="sg-token">--ink-mid · 55%</span></div>
+        <div class="sg-swatch"><div class="sg-swatch__chip" style="background:var(--ink-dim)"></div><span class="sg-token">--ink-dim · 35%</span></div>
+      </div>
+      <ul class="sg-rules">
+        <li>Green is identity: footer, cites, the patterns module. It does not do hovers.</li>
+        <li>Persimmon has a job description: status, access, aliveness, plus every hover and rollover. Roughly 5% of any page. Never decoration.</li>
+        <li>White text on persimmon fills. On light grey, small persimmon text uses --accent2-deep for contrast.</li>
+        <li>One grey, one green, one orange. Color is not where this site gets its personality.</li>
+      </ul>
+    </section>
+
+    <!-- ── TYPE ── -->
+    <section class="sg-section">
+      <h2 class="sg-h">Type</h2>
+      <p class="sg-note">Two faces only. Archivo 900, all-caps, for every display moment. Courier Prime for everything else: body, nav, labels, facts, captions. Display sizes snap to six steps; mono to seven. There is no seventh display size.</p>
+
+      <div class="sg-type-row"><span class="sg-token">--t-hero</span><span style="font-family:var(--f-display);font-weight:900;text-transform:uppercase;font-size:var(--t-hero);line-height:1">Hero</span></div>
+      <div class="sg-type-row"><span class="sg-token">--t-display</span><span style="font-family:var(--f-display);font-weight:900;text-transform:uppercase;font-size:var(--t-display);line-height:1">Page title</span></div>
+      <div class="sg-type-row"><span class="sg-token">--t-h2</span><span style="font-family:var(--f-display);font-weight:900;text-transform:uppercase;font-size:var(--t-h2);line-height:1">Section title</span></div>
+      <div class="sg-type-row"><span class="sg-token">--t-h3</span><span style="font-family:var(--f-display);font-weight:900;text-transform:uppercase;font-size:var(--t-h3);line-height:1">Module title</span></div>
+      <div class="sg-type-row"><span class="sg-token">--t-h4</span><span style="font-family:var(--f-display);font-weight:900;text-transform:uppercase;font-size:var(--t-h4);line-height:1">Shelf name</span></div>
+      <div class="sg-type-row"><span class="sg-token">--t-h5</span><span style="font-family:var(--f-display);font-weight:900;text-transform:uppercase;font-size:var(--t-h5);line-height:1.2">Subtitle, quote-as-display</span></div>
+      <div class="sg-type-row"><span class="sg-token">--t-lead</span><span style="font-size:var(--t-lead);color:var(--ink-mid)">Page-intro lead. The same precision Sam brings to a private session.</span></div>
+      <div class="sg-type-row"><span class="sg-token">--t-body</span><span style="font-size:var(--t-body);color:var(--ink-mid)">Body prose, 1rem, line-height 1.6 to 1.8.</span></div>
+      <div class="sg-type-row"><span class="sg-token">--t-mono-lg</span><span style="font-size:var(--t-mono-lg);font-weight:700">Emphasized mono title (reading list, insights)</span></div>
+      <div class="sg-type-row"><span class="sg-token">--t-small</span><span style="font-size:var(--t-small);color:var(--ink-mid)">Captions, facts, meta lines, module text.</span></div>
+      <div class="sg-type-row"><span class="sg-token">--t-label</span><span class="label" style="margin:0">Labels · CTAs · Nav · 0.12em tracking</span></div>
+      <div class="sg-type-row"><span class="sg-token">--t-micro</span><span style="font-size:var(--t-micro);font-family:var(--f-mono);letter-spacing:var(--ls-label);text-transform:uppercase;color:var(--ink-mid)">Fact-row dt only</span></div>
+    </section>
+
+    <!-- ── LABELS ── -->
+    <section class="sg-section">
+      <h2 class="sg-h">Labels</h2>
+      <div class="sg-row" style="align-items:center">
+        <span class="label" style="margin:0">Standard label</span>
+        <span class="label label--accent" style="margin:0">Accent label</span>
+        <span class="label label--accent" style="margin:0"><span class="live-dot" aria-hidden="true"></span>First access</span>
+        <span class="label" style="margin:0;display:inline-flex;align-items:center;gap:0.5em"><svg class="glyph glyph--14" style="color:var(--ink-dim)"><use href="#glyph-hinge"></use></svg>Page eyebrow</span>
+      </div>
+      <ul class="sg-rules">
+        <li>Accent labels mark status and access only (First access, Join). The breathing dot is square, 7px, and means liveness.</li>
+        <li>Each inner page carries its glyph in the intro eyebrow: About/Hinge, Coaching/Step, On-Demand/Shift, Retreat/Reach, Library/Rotate.</li>
+      </ul>
+    </section>
+
+    <!-- ── BUTTONS ── -->
+    <section class="sg-section">
+      <h2 class="sg-h">Buttons</h2>
+      <p class="sg-note">One component: .pill-cta. Outlined, mono, uppercase, zero radius. Hover fills persimmon with white text. The --light variant sits on imagery and dark fields. There are no other button styles; the footer Subscribe is the one solid persimmon fill.</p>
+      <div class="sg-row" style="align-items:center">
+        <a href="#" class="pill-cta" onclick="return false">Standard CTA</a>
+        <span class="sg-dark"><a href="#" class="pill-cta pill-cta--light" onclick="return false">On imagery / dark</a></span>
+        <span class="sg-green"><button class="footer__submit" type="button">Subscribe</button></span>
+        <a href="#" onclick="return false" style="font-family:var(--f-mono);font-size:var(--t-small);text-decoration:underline;text-underline-offset:3px">Inline text link</a>
+      </div>
+    </section>
+
+    <!-- ── MOTION ── -->
+    <section class="sg-section">
+      <h2 class="sg-h">Motion</h2>
+      <ul class="sg-rules">
+        <li>One curve: --ease cubic-bezier(0.23,1,0.32,1). Three durations: --dur-fast 0.2s (color), --dur-med 0.35s (name color shifts), --dur-slow 0.6s (image scale, fade-ins).</li>
+        <li>Every rollover on the site resolves to persimmon. Current-page nav stays white: that is a state, not a rollover.</li>
+        <li>Image hovers scale 1.03–1.04, never more. The ticker runs 32s linear. The breathing dot breathes at 4s.</li>
+        <li>Everything honours prefers-reduced-motion.</li>
+      </ul>
+    </section>
+
+    <!-- ── GLYPHS ── -->
+    <section class="sg-section">
+      <h2 class="sg-h">Glyphs</h2>
+      <p class="sg-note">STEP · HINGE · ROTATE · REACH · SHIFT. Verbatim from Sam's Movement Snacks for Daily Life on Solin, her actual method drawn, not an invented framework. One SVG sprite per page, referenced via &lt;use&gt;. Sizes: 14 (eyebrows, ticker), 40 (reserved), 88 (patterns module).</p>
+      <div class="sg-row" style="align-items:center;gap:2.5rem">
+        <svg class="glyph glyph--40"><use href="#glyph-step"></use></svg>
+        <svg class="glyph glyph--40"><use href="#glyph-hinge"></use></svg>
+        <svg class="glyph glyph--40"><use href="#glyph-rotate"></use></svg>
+        <svg class="glyph glyph--40"><use href="#glyph-reach"></use></svg>
+        <svg class="glyph glyph--40"><use href="#glyph-shift"></use></svg>
+      </div>
+    </section>
+
+    <!-- ── SPACE ── -->
+    <section class="sg-section">
+      <h2 class="sg-h">Space &amp; shape</h2>
+      <ul class="sg-rules">
+        <li>--page-pad clamp(1.5rem, 4vw, 4rem) for content sections. --gap 10px for full-bleed module margins. --section clamp(5rem, 10vw, 9rem) between sections.</li>
+        <li>Zero border radius, site-wide. No pills, no rounded cards, square favicon, square dot.</li>
+        <li>Hairlines are rgba(28,28,26,0.12), always 1px, always full-width within their section.</li>
+        <li>Two breakpoints: 960px (layout stacks, mobile nav) and 560px (small-phone refinements).</li>
+      </ul>
+    </section>
+
+    <!-- ── MODULES ── -->
+    <section class="sg-section">
+      <h2 class="sg-h">Module inventory</h2>
+      <p class="sg-note">The canonical layout patterns. Before designing a new section, reuse one of these.</p>
+      <div class="sg-mod"><strong>hero-full</strong><span>Full-bleed image, wordmark bookend on top, statement bottom-left over gradient, one CTA. Homepage only.</span></div>
+      <div class="sg-mod"><strong>s-shelf</strong><span>3-up product tiles: image (4:5), verb label, name, flat mono descriptor. No card containers.</span></div>
+      <div class="sg-mod"><strong>s-claim</strong><span>Full-width display statement on the grey. --green modifier sets the headline in brand green.</span></div>
+      <div class="sg-mod"><strong>s-retreat</strong><span>Full-bleed image band with bottom gradient caption, badge top-left, CTA right. The "one special thing" moment.</span></div>
+      <div class="sg-mod"><strong>s-rdl</strong><span>50/50 editorial split, fixed height, copy vertically centred; --flip alternates sides, --past mutes to grayscale archive. Retreat detail pages.</span></div>
+      <div class="sg-mod"><strong>s-offer</strong><span>55/45 image + copy row with hairline top. Coaching offers, On-Demand programs (+ facts line and Sam quote).</span></div>
+      <div class="sg-mod"><strong>s-pageintro</strong><span>Inner-page opener: glyph eyebrow, display title, mono lead.</span></div>
+      <div class="sg-mod"><strong>s-bio</strong><span>Sticky-image 55/45 split for long-copy pages (About).</span></div>
+      <div class="sg-mod"><strong>s-testimonials / ts-*</strong><span>Static 2- or 3-up quote grid, or the homepage carousel. Quotes speak in the display voice, cites in green.</span></div>
+      <div class="sg-mod"><strong>s-patterns-module</strong><span>Green field, display title, five 88px glyphs. The brand's method moment.</span></div>
+      <div class="sg-mod"><strong>s-ondemand</strong><span>Full-bleed split-video band with gradient caption. Video is grayscale.</span></div>
+      <div class="sg-mod"><strong>s-libsection</strong><span>Library lists: mono-title reading rows, insight pairs, Spotify embeds. Hairline-separated, no cards.</span></div>
+      <div class="sg-mod"><strong>footer</strong><span>Green field: ticker band, letter + subscribe, nav, full-width fitted wordmark. Closes every page identically.</span></div>
+    </section>
+
+    <!-- ── EDITORIAL ── -->
+    <section class="sg-section">
+      <h2 class="sg-h">Editorial rules</h2>
+      <ul class="sg-rules">
+        <li>No em-dashes anywhere. Middot (·) separates titles, labels, facts. Commas, colons, periods in prose. En-dashes stay in numeric ranges (30–40 min).</li>
+        <li>Never invent copy in Sam's voice. Live samrabon.com and her Solin pages are the source of truth. Flag the unverifiable.</li>
+        <li>No prices on this site. Solin owns pricing.</li>
+        <li>Verify at 1280px and 390px before every push.</li>
+      </ul>
+    </section>
+
+  </main>
+</body>
+</html>

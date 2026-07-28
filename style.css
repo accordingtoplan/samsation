@@ -1,43 +1,96 @@
-/* =====================================================   SamSation — style.css
-   Aesthetic ref: dulve-in.com — open, airy, no boxes
-   ============================================================ */
+/* ════════════════════════════════════════════════════════════════
+   SamSation — style.css
+   DESIGN SYSTEM v2 — consolidated 2026-07-28 (sanctioned rewrite,
+   supersedes the append-only history; git is the rollback path).
+
+   The system in one breath:
+   Archivo 900 all-caps display · Courier Prime mono everything else
+   Grey #e8e8e6 · charcoal ink · green identity · persimmon rollovers
+   Zero border radius, site-wide. Accent2 ≈ 5% of any page:
+   status, access, aliveness — plus every hover. Never decoration.
+
+   Rules of engagement:
+   · New styles use tokens below. No raw hex, no raw clamp() sizes.
+   · One button component: .pill-cta (+ --light). No new CTA styles.
+   · One hover language: everything rolls over to persimmon.
+   · One motion language: --ease + --dur-fast/med/slow.
+   · Living reference: /styleguide.html
+   ════════════════════════════════════════════════════════════════ */
 
 @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@900&family=Courier+Prime:wght@400;700&display=swap');
 
+/* ── 1 · TOKENS ─────────────────────────────────────────────── */
 :root {
-  --bg:      #f0ede7;
-  --ink:     #1c1c1a;
-  --ink-mid: rgba(28,28,26,0.55);
-  --ink-dim: rgba(28,28,26,0.35);
-  --accent:  #1a8a44;
-  --dark:    #141410;
-  --white:   #fff;
+  /* Color */
+  --bg:       #e8e8e6;
+  --ink:      #1c1c1a;
+  --ink-mid:  rgba(28,28,26,0.55);
+  --ink-dim:  rgba(28,28,26,0.35);
+  --hairline: rgba(28,28,26,0.12);
+  --accent:   #1a8a44;            /* green — identity (footer, cites) */
+  --accent2:  #d94f2b;            /* persimmon — status/access/hover  */
+  --accent2-deep: #b8401f;        /* persimmon for small text on grey */
+  --dark:     #141410;
+  --white:    #fff;
+  --wash:     rgba(28,28,26,0.05);/* image placeholders, quiet cards  */
 
-  --f:       'Space Mono', monospace;
-  --f-display: 'Big Shoulders Display', 'Arial Black', sans-serif;
-  --f-mono:  'Space Mono', monospace;
+  /* Type families */
+  --f:        'Courier Prime', 'Courier New', Courier, monospace;
+  --f-mono:   'Courier Prime', 'Courier New', Courier, monospace;
+  --f-display:'Archivo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
-  --t-display: clamp(2.5rem, 5vw, 4.5rem);
+  /* Type scale — display (Archivo 900, all-caps) */
+  --t-hero:    clamp(2.75rem, 7.5vw, 6.5rem);  /* homepage hero statement   */
+  --t-display: clamp(2.5rem, 5.5vw, 5.25rem);  /* page titles, claims, s-rdl */
+  --t-h2:      clamp(2rem, 4vw, 3.5rem);       /* section titles            */
+  --t-h3:      clamp(1.5rem, 2.8vw, 2.5rem);   /* module/caption titles     */
+  --t-h4:      clamp(1.35rem, 2vw, 1.9rem);    /* shelf names, small titles */
+  --t-h5:      clamp(1.1rem, 1.7vw, 1.5rem);   /* subtitles, quote-as-display */
+
+  /* Type scale — mono */
+  --t-lead:    clamp(1rem, 1.5vw, 1.25rem);    /* page-intro leads          */
   --t-body:    1rem;
+  --t-mono-lg: 1.0625rem;                      /* emphasized mono titles    */
   --t-small:   0.875rem;
-  --t-label:   0.6875rem;
+  --t-label:   0.6875rem;                      /* labels, ctas, nav         */
+  --t-micro:   0.65rem;                        /* fact-row dt               */
 
+  /* Letter-spacing */
+  --ls-display: 0.01em;   /* hero + display sizes            */
+  --ls-caps:    0.02em;   /* h2–h5 all-caps                  */
+  --ls-label:   0.12em;   /* uppercase mono labels           */
+
+  /* Line-height */
+  --lh-display: 1.0;
+  --lh-tight:   1.2;
+  --lh-body:    1.6;
+  --lh-mono:    1.7;
+  --lh-prose:   1.8;
+
+  /* Space */
   --page-pad: clamp(1.5rem, 4vw, 4rem);
   --section:  clamp(5rem, 10vw, 9rem);
   --gap:      10px;
-  --r:        16px;
-  --pill:     100px;
   --nav-h:    52px;
+
+  /* Shape — zero radius is the system */
+  --r: 0;
+
+  /* Motion */
+  --ease:     cubic-bezier(0.23,1,0.32,1);
+  --dur-fast: 0.2s;
+  --dur-med:  0.35s;
+  --dur-slow: 0.6s;
 }
 
-/* ── Reset ──────────────────────────────────────────────────── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* ── 2 · RESET ──────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; border-radius: 0; }
 html { -webkit-text-size-adjust: 100%; }
 
 body {
   font-family: var(--f);
   font-size: var(--t-body);
-  line-height: 1.6;
+  line-height: var(--lh-body);
   color: var(--ink);
   background: var(--bg);
   -webkit-font-smoothing: antialiased;
@@ -48,20 +101,35 @@ picture { display: contents; }
 button { cursor: pointer; border: none; background: none; font: inherit; color: inherit; }
 a { color: inherit; text-decoration: none; }
 
-/* ── Global type ────────────────────────────────────────────── */
+/* ── 3 · TYPE COMPONENTS ────────────────────────────────────── */
+/* Display voice: one rule for family/weight/case; sizes per class. */
+h1, h2, h3, h4,
+.hero-full__title, .s-shelf__name, .s-pageintro__title, .s-offer__title,
+.s-booking__title, .s-contact__title, .s-claim h2, .s-retreat__caption h3,
+.s-libsection__title, .s-ondemand__title, .s-patterns-module__title,
+.s-rdl__title, .s-rdl__sub, .ts-quote, .testimonial__quote, .footer__wordmark {
+  font-family: var(--f-display);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: var(--ls-caps);
+  line-height: var(--lh-display);
+  color: var(--ink);
+}
+
+/* Label: uppercase mono eyebrow */
 .label {
   font-family: var(--f-mono);
   font-size: var(--t-label);
   font-weight: 400;
-  letter-spacing: 0.13em;
+  letter-spacing: var(--ls-label);
   text-transform: uppercase;
   color: var(--ink-dim);
   display: block;
   margin-bottom: 1.25rem;
 }
+.label--accent { color: var(--accent2); }
 
-.label--accent { color: var(--accent); }
-
+/* ── 4 · BUTTON — the one CTA component ─────────────────────── */
 .pill-cta {
   display: inline-flex;
   align-items: center;
@@ -69,18 +137,16 @@ a { color: inherit; text-decoration: none; }
   font-family: var(--f-mono);
   font-size: var(--t-label);
   font-weight: 400;
-  letter-spacing: 0.1em;
+  letter-spacing: var(--ls-label);
   text-transform: uppercase;
   color: var(--ink);
   border: 1px solid rgba(28,28,26,0.25);
-  border-radius: var(--pill);
   padding: 0.55em 1.1em;
-  transition: background 0.2s, color 0.2s, border-color 0.2s;
 }
 .pill-cta:hover {
-  background: var(--ink);
-  color: var(--bg);
-  border-color: var(--ink);
+  background: var(--accent2);
+  color: #fff;
+  border-color: var(--accent2);
 }
 .pill-cta--light {
   color: #fff;
@@ -88,21 +154,19 @@ a { color: inherit; text-decoration: none; }
 }
 .pill-cta--light:hover {
   background: #fff;
-  color: var(--ink);
+  color: var(--accent2);
   border-color: #fff;
 }
 
-/* ── Nav pill ───────────────────────────────────────────────── */
+/* ── 5 · NAV ────────────────────────────────────────────────── */
 .nav-pill {
   position: fixed;
   top: 1.25rem;
   left: 50%;
   transform: translateX(-50%);
   z-index: 100;
-  transition: transform 0.25s cubic-bezier(0.23,1,0.32,1);
+  transition: transform 0.25s var(--ease);
 }
-
-/* Pill state (after scroll) */
 .nav-pill__inner {
   position: relative;
   display: grid;
@@ -111,22 +175,15 @@ a { color: inherit; text-decoration: none; }
   height: var(--nav-h);
   width: clamp(220px, 22vw, 280px);
   background: var(--accent);
-  border-radius: var(--pill);
-  transition: width 0.4s cubic-bezier(0.4,0,0.2,1),
-              border-radius 0.4s cubic-bezier(0.4,0,0.2,1),
-              padding 0.3s ease;
+  transition: width 0.4s cubic-bezier(0.4,0,0.2,1), padding 0.3s ease;
   overflow: hidden;
   cursor: pointer;
 }
-
-/* Expanded state (on load / at top) */
 .nav-pill.is-expanded .nav-pill__inner {
   width: min(780px, calc(100vw - 2rem));
-  border-radius: var(--r);
   grid-template-columns: auto 1fr auto;
   padding: 0 1.5rem;
 }
-
 .nav-pill__hamburger {
   display: flex;
   flex-direction: column;
@@ -147,307 +204,188 @@ a { color: inherit; text-decoration: none; }
 }
 .nav-pill__hamburger.is-open span:first-child { transform: translateY(3.25px) rotate(45deg); }
 .nav-pill__hamburger.is-open span:last-child  { transform: translateY(-3.25px) rotate(-45deg); }
-
 .nav-pill__wordmark {
   text-align: center;
   font-family: var(--f-mono);
-  font-size: 0.6875rem;
+  font-size: var(--t-label);
   font-weight: 500;
-  letter-spacing: 0.12em;
+  letter-spacing: var(--ls-label);
   text-transform: uppercase;
   color: #fff;
   white-space: nowrap;
 }
-
-/* Inline links — only visible when expanded */
 .nav-pill__links {
   display: none;
   align-items: center;
   justify-content: center;
   gap: 2rem;
 }
-.nav-pill.is-expanded .nav-pill__links {
-  display: flex;
-}
+.nav-pill.is-expanded .nav-pill__links { display: flex; }
 .nav-pill__links a {
   font-family: var(--f-mono);
   font-size: var(--t-label);
   font-weight: 500;
-  letter-spacing: 0.1em;
+  letter-spacing: var(--ls-label);
   text-transform: uppercase;
   color: rgba(255,255,255,0.7);
-  transition: color 0.15s;
   white-space: nowrap;
 }
-.nav-pill__links a:hover,
-.nav-pill__links a[aria-current="page"] { color: #fff; }
-
+.nav-pill__links a:hover { color: var(--accent2); }
+.nav-pill__links a[aria-current="page"] { color: #fff; } /* state, not rollover */
 .nav-pill__spacer { width: var(--nav-h); flex-shrink: 0; }
 
-/* ── Nav menu styles removed ─────────────────────────────────── */
-
-/* Full-screen overlay menu — hidden on desktop, activated in mobile MQ */
+/* Full-screen overlay menu — activated in the mobile MQ */
 .nav-overlay { display: none; }
 
-/* ── Page wrapper ───────────────────────────────────────────── */
+/* ── 6 · PAGE WRAPPER ───────────────────────────────────────── */
 .page { max-width: 1600px; margin: 0 auto; }
 
-/* ── HERO ───────────────────────────────────────────────────── */
-.hero {
-  display: grid;
-  grid-template-columns: 55% 1fr;
-  gap: var(--gap);
-  height: 92vh;
-  min-height: 560px;
-  padding: var(--gap);
-  padding-top: clamp(5rem, 8vw, 7rem);
-}
-
-.hero__left,
-.hero__right {
+/* ── 7 · HERO (homepage, full-bleed) ────────────────────────── */
+.hero-full {
   position: relative;
-  border-radius: var(--r);
+  margin: var(--gap) var(--gap) var(--section);
   overflow: hidden;
-  background: rgba(28,28,26,0.06);
 }
-
-.hero__left img,
-.hero__right img {
-  position: absolute;
-  inset: 0;
-  object-position: center top;
-}
-
-/* floating card on right image — like Dulve's product card */
-.hero__card {
-  position: absolute;
-  bottom: 1.5rem;
-  right: 1.5rem;
-  left: 1.5rem;
-  background: var(--bg);
-  border-radius: var(--r);
-  padding: 1.5rem;
-  z-index: 2;
-}
-.hero__card-label {
-  font-family: var(--f-mono);
-  font-size: var(--t-label);
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--ink-dim);
+.hero-full img {
   display: block;
-  margin-bottom: 0.5rem;
-}
-.hero__card h2 {
-  font-family: var(--f-display);
-  font-size: clamp(1.25rem, 2vw, 1.75rem);
-  font-weight: 900;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  line-height: 1.05;
-  color: var(--ink);
-  margin-bottom: 0.5rem;
-}
-.hero__card p {
-  font-size: var(--t-small);
-  color: var(--ink-mid);
-  line-height: 1.6;
-  margin-bottom: 1.25rem;
-}
-
-/* ── CLAIM SECTION (sits directly on background, no box) ────── */
-.s-claim {
-  padding: var(--section) var(--page-pad);
-}
-.s-claim h2 {
-  font-family: var(--f-display);
-  font-size: clamp(2.75rem, 5.5vw, 5.5rem);
-  font-weight: 900;
-  letter-spacing: 0.01em;
-  text-transform: uppercase;
-  line-height: 1.0;
-  color: var(--ink);
-  max-width: 900px;
-  margin-bottom: 2.5rem;
-}
-
-/* ── SPLIT SECTION: large image left, product card right ────── */
-.s-split {
-  display: grid;
-  grid-template-columns: 60% 1fr;
-  gap: var(--gap);
-  padding: 0 var(--gap);
-  align-items: stretch;
-}
-.s-split__img {
-  position: relative;
-  border-radius: var(--r);
-  overflow: hidden;
-  min-height: 520px;
-  background: rgba(28,28,26,0.06);
-}
-.s-split__img img {
-  position: absolute;
-  inset: 0;
-  object-position: center;
-}
-.s-split__meta {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 2rem;
-}
-.s-split__facts {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0;
-}
-.s-split__fact {
-  padding: 1.5rem 0;
-  border-top: 1px solid rgba(28,28,26,0.1);
-}
-.s-split__fact:nth-child(odd) { padding-right: 1.5rem; }
-.s-split__fact-title {
-  font-family: var(--f-mono);
-  font-size: var(--t-label);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--ink-dim);
-  margin-bottom: 0.4rem;
-}
-.s-split__fact p {
-  font-size: var(--t-small);
-  color: var(--ink-mid);
-  line-height: 1.6;
-}
-.s-split__card {
-  background: rgba(28,28,26,0.04);
-  border-radius: var(--r);
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-.s-split__card .label { margin-bottom: 0; }
-.s-split__card h3 {
-  font-family: var(--f-display);
-  font-size: clamp(1.5rem, 2.5vw, 2.25rem);
-  font-weight: 900;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  line-height: 1.0;
-  color: var(--ink);
-}
-.s-split__card p {
-  font-size: var(--t-small);
-  color: var(--ink-mid);
-  line-height: 1.65;
-}
-
-/* ── FULL-BLEED IMAGE SECTION (with annotation dots) ────────── */
-.s-fullbleed {
-  position: relative;
-  margin: var(--section) 0;
-  min-height: 80vh;
-  overflow: hidden;
-}
-.s-fullbleed img {
   width: 100%;
-  height: 100%;
-  min-height: 80vh;
+  height: clamp(520px, 92vh, 900px);
   object-fit: cover;
-  object-position: center;
-  display: block;
 }
-.annotation {
+.hero-full__overlay {
   position: absolute;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+  inset: 0;
   z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding: clamp(1.5rem, 4vw, 3.5rem);
+  background: linear-gradient(to bottom, rgba(20,20,16,0.35) 0%, rgba(20,20,16,0) 22%),
+              linear-gradient(to top, rgba(20,20,16,0.55) 0%, rgba(20,20,16,0) 45%);
 }
-.annotation__dot {
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 0 3px rgba(240,237,231,0.9);
-  flex-shrink: 0;
-}
-.annotation__label {
+.hero-full__label {
   font-family: var(--f-mono);
   font-size: var(--t-label);
-  font-weight: 500;
-  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--ink);
-  background: rgba(240,237,231,0.88);
-  padding: 0.3em 0.75em;
-  border-radius: var(--pill);
-  white-space: nowrap;
+  letter-spacing: var(--ls-label);
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 0.75rem;
 }
-.annotation--1 { top: 20%; left: 8%; }
-.annotation--2 { top: 45%; left: 52%; }
-.annotation--3 { bottom: 25%; left: 20%; }
-
-/* ── SERVICES SECTION (no boxes — just spaced items on bg) ──── */
-.s-services {
-  padding: var(--section) var(--page-pad);
-}
-.s-services__header {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  margin-bottom: 4rem;
-}
-.s-services__header h2 {
-  font-family: var(--f-display);
-  font-size: clamp(1.5rem, 3vw, 2.75rem);
-  font-weight: 900;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  line-height: 1.0;
-  color: var(--ink);
-}
-.s-services__grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0;
-}
-.s-service {
-  padding: 2.5rem 0;
-  border-top: 1px solid rgba(28,28,26,0.12);
-  padding-right: 3rem;
-}
-.s-service .label { margin-bottom: 1rem; }
-.s-service h3 {
-  font-family: var(--f-display);
-  font-size: clamp(1.75rem, 2.8vw, 2.75rem);
-  font-weight: 900;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  line-height: 1.0;
-  color: var(--ink);
+.hero-full__title {
+  color: var(--white);
+  font-size: var(--t-hero);
+  letter-spacing: var(--ls-display);
+  line-height: 0.95;
   margin-bottom: 1rem;
 }
-.s-service p {
+.hero-full__line {
+  font-family: var(--f-mono);
   font-size: var(--t-small);
-  color: var(--ink-mid);
-  line-height: 1.75;
-  margin-bottom: 1.75rem;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 1.5rem;
+}
+.hero-full__cover-link {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: block;
+}
+.hero-full__overlay .pill-cta { position: relative; z-index: 3; }
+
+/* Hero wordmark: full-width SAMSATION bookend (JS-fitted, see main.js) */
+.hero-full__wordmark {
+  position: absolute;
+  top: clamp(3.2rem, 6vw, 4.5rem);
+  left: 0;
+  right: 0;
+  z-index: 2;
+  overflow: hidden;
+  pointer-events: none;
+}
+.hero-full__wordmark span {
+  display: block;
+  font-family: var(--f-display);
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 100px; /* JS-fitted to viewport width */
+  line-height: 0.8;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  width: max-content;
+  transform-origin: left top;
 }
 
-/* ── RETREAT ────────────────────────────────────────────────── */
+/* ── 8 · SHELF (homepage products, 3-up, Dulve tiles) ───────── */
+.s-shelf {
+  padding: 0 var(--page-pad);
+  margin-bottom: var(--section);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1rem, 2vw, 1.75rem);
+}
+.s-shelf__item { text-decoration: none; color: var(--ink); }
+.s-shelf__img {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+.s-shelf__badge {
+  position: absolute;
+  top: clamp(0.85rem, 1.6vw, 1.25rem);
+  left: clamp(0.85rem, 1.6vw, 1.25rem);
+  z-index: 2;
+  font-family: var(--f-mono);
+  font-size: var(--t-label);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-label);
+  color: var(--ink);
+  background: var(--bg);
+  padding: 0.4em 0.75em;
+}
+.s-shelf__img img,
+.s-shelf__img video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+.s-shelf__img video { object-position: center bottom; }
+.s-shelf__item:hover .s-shelf__img img,
+.s-shelf__item:hover .s-shelf__img video { transform: scale(1.04); }
+.s-shelf__item > .label { display: block; margin-bottom: 0.4rem; }
+.s-shelf__name {
+  font-size: var(--t-h4);
+  letter-spacing: var(--ls-display);
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+.s-shelf__item:hover .s-shelf__name { color: var(--accent2); }
+.s-shelf__meta {
+  font-family: var(--f-mono);
+  font-size: var(--t-small);
+  color: var(--ink-mid);
+}
+
+/* ── 9 · CLAIM ──────────────────────────────────────────────── */
+.s-claim { padding: var(--section) var(--page-pad); }
+.s-claim h2 {
+  font-size: var(--t-display);
+  letter-spacing: var(--ls-display);
+  margin-bottom: 2.5rem;
+}
+.s-claim--green h2 { color: var(--accent); }
+
+/* ── 10 · RETREAT BAND (homepage + inner pages) ─────────────── */
 .s-retreat {
   padding: 0 var(--gap);
   margin-bottom: var(--section);
 }
 .s-retreat__inner {
   position: relative;
-  border-radius: var(--r);
   overflow: hidden;
-  min-height: 60vh;
+  min-height: clamp(520px, 92vh, 900px);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -456,6 +394,19 @@ a { color: inherit; text-decoration: none; }
   position: absolute;
   inset: 0;
   object-position: center center;
+}
+.s-retreat__badge {
+  position: absolute;
+  top: clamp(1.5rem, 3vw, 2.5rem);
+  left: clamp(1.5rem, 3vw, 2.5rem);
+  z-index: 2;
+  font-family: var(--f-mono);
+  font-size: var(--t-label);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-label);
+  color: var(--ink);
+  background: var(--bg);
+  padding: 0.5rem 0.9rem;
 }
 .s-retreat__caption {
   position: relative;
@@ -468,19 +419,65 @@ a { color: inherit; text-decoration: none; }
   gap: 2rem;
 }
 .s-retreat__caption .label { color: rgba(255,255,255,0.5); margin-bottom: 0.5rem; }
+.s-retreat__caption .label--accent { color: var(--accent2); }
 .s-retreat__caption h3 {
-  font-family: var(--f-display);
-  font-size: clamp(1.5rem, 2.8vw, 2.75rem);
-  font-weight: 900;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
+  font-size: var(--t-h3);
   color: #fff;
   max-width: 24ch;
-  line-height: 1.0;
 }
 .s-retreat__caption-right { flex-shrink: 0; }
+.s-retreat .pill-cta--light {
+  background: var(--accent2);
+  border-color: var(--accent2);
+  color: #fff;
+}
 
-/* ── TESTIMONIALS (on background, no box) ───────────────────── */
+/* ── 11 · PATTERNS MODULE (green box, glyph row) ────────────── */
+.s-patterns-module {
+  padding: 0 var(--gap);
+  margin-bottom: var(--section);
+}
+.s-patterns-module__inner {
+  background: var(--accent);
+  min-height: clamp(260px, 46vh, 450px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: clamp(2rem, 4vw, 3.5rem) clamp(2rem, 5vw, 4rem);
+  gap: clamp(1.75rem, 3.5vw, 3rem);
+}
+.s-patterns-module__title {
+  font-size: var(--t-h2);
+  line-height: 0.95;
+  color: var(--bg);
+}
+.s-patterns-module__row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: clamp(2rem, 4.5vw, 4.5rem);
+  width: 100%;
+}
+.s-patterns-module__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  flex: 0 0 auto;
+}
+.s-patterns-module__item span {
+  font-family: var(--f-mono);
+  font-size: var(--t-label);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-label);
+  color: rgba(232,232,230,0.6);
+}
+.s-patterns-module .glyph { color: var(--bg); stroke-width: 2.75; }
+
+/* ── 12 · TESTIMONIALS ──────────────────────────────────────── */
+/* Static grid (About): quotes speak in the display voice */
 .s-testimonials {
   padding: var(--section) var(--page-pad);
   display: grid;
@@ -489,29 +486,103 @@ a { color: inherit; text-decoration: none; }
   align-items: start;
 }
 .s-testimonials--three { grid-template-columns: repeat(3, 1fr); gap: clamp(2rem, 4vw, 4rem); }
-.s-testimonials blockquote { }
 .testimonial__quote {
-  font-family: var(--f-mono);
-  font-size: clamp(0.9rem, 1.4vw, 1.1rem);
-  font-weight: 400;
-  line-height: 1.75;
-  color: var(--ink-mid);
+  font-size: var(--t-h5);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-display);
   margin-bottom: 1.25rem;
 }
 .testimonial__cite {
   font-family: var(--f-mono);
   font-size: var(--t-label);
   font-weight: 500;
-  letter-spacing: 0.12em;
+  letter-spacing: var(--ls-label);
   text-transform: uppercase;
   color: var(--accent);
 }
 
-/* ── FOOTER ─────────────────────────────────────────────────── */
+/* Carousel (homepage) */
+.s-testimonials-slide { padding: clamp(2.5rem, 5vw, 4.5rem) var(--page-pad); }
+.ts-stage {
+  display: grid;
+  grid-template-columns: 2rem 1fr 2rem;
+  grid-template-rows: auto auto;
+  align-items: center;
+  gap: clamp(1rem, 2.5vw, 2rem) clamp(1rem, 2.5vw, 2rem);
+}
+.ts-prev { grid-column: 1; grid-row: 1; }
+.ts-track { grid-column: 2; grid-row: 1; position: relative; min-height: 18rem; overflow: hidden; }
+.ts-next  { grid-column: 3; grid-row: 1; }
+.ts-dots  { grid-column: 1 / -1; grid-row: 2; margin-top: 0.5rem; }
+.ts-slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-decoration: none;
+  cursor: pointer;
+  transform: translateX(100%);
+  transition: transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94);
+  pointer-events: none;
+  visibility: hidden;
+}
+.ts-slide.is-active { transform: translateX(0); pointer-events: auto; visibility: visible; }
+.ts-slide.is-exit   { transform: translateX(-100%); visibility: visible; pointer-events: none; }
+.ts-slide:hover .ts-quote { color: var(--ink-mid); }
+.ts-slide:hover .ts-cta   { color: var(--accent2); }
+.ts-quote {
+  font-size: var(--t-h3);
+  line-height: 1.15;
+  letter-spacing: var(--ls-display);
+  margin-bottom: 1.75rem;
+}
+.ts-foot { display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; }
+.ts-cite {
+  font-family: var(--f-mono);
+  font-size: var(--t-label);
+  font-weight: 500;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--accent);
+  font-style: normal;
+}
+.ts-cta {
+  font-family: var(--f-mono);
+  font-size: var(--t-label);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--ink-mid);
+}
+.ts-prev, .ts-next {
+  font-family: var(--f-mono);
+  font-size: 1.7rem;
+  color: var(--ink-mid);
+  padding: 0;
+  line-height: 1;
+  align-self: center;
+  flex-shrink: 0;
+}
+.ts-prev:hover, .ts-next:hover { color: var(--accent2); }
+.ts-dots { display: flex; gap: 0.6rem; align-items: center; justify-content: center; }
+.ts-dot {
+  width: 5px;
+  height: 5px;
+  background: var(--ink-dim);
+  padding: 0;
+}
+.ts-dot--active { background: var(--ink); transform: scale(1.6); }
+
+/* ── 13 · FOOTER ────────────────────────────────────────────── */
 .footer {
   background: var(--accent);
-  border-radius: var(--r) var(--r) 0 0;
   padding: 0 var(--page-pad) 0;
+}
+.footer__ticker {
+  margin: 0 calc(-1 * var(--page-pad));
+  padding: 2rem var(--page-pad);
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255,255,255,0.35);
 }
 .footer__inner {
   display: grid;
@@ -524,7 +595,7 @@ a { color: inherit; text-decoration: none; }
 .footer__newsletter-label { color: rgba(255,255,255,0.5); margin-bottom: 0.5rem; }
 .footer__newsletter-text {
   font-size: var(--t-small);
-  line-height: 1.75;
+  line-height: var(--lh-mono);
   max-width: 36ch;
   color: rgba(255,255,255,0.6);
   margin-bottom: 2rem;
@@ -536,7 +607,6 @@ a { color: inherit; text-decoration: none; }
   padding: 0.75rem 1rem;
   background: rgba(255,255,255,0.15);
   border: none;
-  border-radius: var(--pill);
   font-family: var(--f);
   font-size: var(--t-small);
   color: #fff;
@@ -545,2182 +615,80 @@ a { color: inherit; text-decoration: none; }
 .footer__input::placeholder { color: rgba(255,255,255,0.4); }
 .footer__submit {
   padding: 0.75rem 1.5rem;
-  background: #fff;
-  color: var(--accent);
-  border-radius: var(--pill);
+  background: var(--accent2);
+  color: #fff;
   font-family: var(--f-mono);
   font-size: var(--t-label);
   font-weight: 500;
-  letter-spacing: 0.07em;
+  letter-spacing: var(--ls-label);
   white-space: nowrap;
-  transition: opacity 0.2s;
 }
-.footer__submit:hover { opacity: 0.85; }
+.footer__submit:hover { background: #fff; color: var(--accent2); }
+.footer .pill-cta { background: var(--accent2); border-color: var(--accent2); color: #fff; }
 .footer__right { display: flex; flex-direction: column; justify-content: space-between; gap: 2rem; }
 .footer__meta { font-size: var(--t-label); letter-spacing: 0.04em; color: rgba(255,255,255,0.35); }
 .footer__nav { display: flex; flex-wrap: wrap; gap: 0.5rem 2rem; }
 .footer__nav a {
   font-family: var(--f-mono);
   font-size: var(--t-label);
-  letter-spacing: 0.08em;
+  letter-spacing: var(--ls-label);
   text-transform: uppercase;
   color: rgba(255,255,255,0.5);
-  transition: color 0.15s;
 }
-.footer__nav a:hover { color: #fff; }
+.footer__nav a:hover { color: var(--accent2); }
 .footer__wordmark-wrap {
-  padding: 2.5rem 0 2rem;
+  padding: 0;
+  margin-left: calc(-1 * var(--page-pad));
+  margin-right: calc(-1 * var(--page-pad));
   text-align: center;
   overflow: hidden;
 }
 .footer__wordmark {
-  font-family: var(--f-display);
-  font-size: clamp(5rem, 16vw, 13rem);
-  font-weight: 900;
-  line-height: 1;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
+  display: block;
+  font-size: clamp(5rem, 16vw, 13rem); /* JS-fitted to viewport width */
+  line-height: 0.8;
+  letter-spacing: -0.01em;
   color: rgba(255,255,255,0.12);
   user-select: none;
   white-space: nowrap;
-}
-
-/* ── Fade in ────────────────────────────────────────────────── */
-.fade-in {
-  opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-.fade-in.is-visible { opacity: 1; transform: translateY(0); }
-
-/* Safety net: if JS fails, show everything */
-@media (prefers-reduced-motion: reduce) {
-  .fade-in { opacity: 1; transform: none; }
-}
-
-/* ── Responsive ─────────────────────────────────────────────── */
-@media (max-width: 960px) {
-  :root { --page-pad: 1.5rem; --section: clamp(3.5rem, 7vw, 5rem); }
-
-  .hero {
-    grid-template-columns: 1fr;
-    height: auto;
-    padding-top: clamp(6rem, 16vw, 7rem);
-  }
-  .hero__left  { min-height: 70vw; }
-  .hero__right { min-height: 110vw; }
-  .hero__card { left: 1rem; right: 1rem; bottom: 1rem; padding: 1.25rem; }
-
-  .s-split { grid-template-columns: 1fr; }
-  .s-split__img { min-height: 70vw; }
-  .s-split__facts { grid-template-columns: 1fr 1fr; }
-  .s-services__grid { grid-template-columns: 1fr; }
-  .s-service { padding-right: 0; }
-  .s-testimonials { grid-template-columns: 1fr; }
-  .s-testimonials--three { grid-template-columns: 1fr; }
-  .s-retreat__caption { flex-direction: column; align-items: flex-start; }
-  .footer__inner { grid-template-columns: 1fr; gap: 2.5rem; }
-  .annotation { display: none; }
-
-  /* ── Mobile nav: compact centered pill + full-screen overlay ── */
-  .nav-pill {
-    top: 1rem;
-    left: 50%;
-    transform: translateX(-50%);
-    width: auto;
-    transition: transform 0.3s cubic-bezier(0.23,1,0.32,1), opacity 0.3s ease;
-  }
-  /* Hide on scroll-down */
-  .nav-pill.is-hidden {
-    transform: translateX(-50%) translateY(-150%);
-    opacity: 0;
-    pointer-events: none;
-  }
-
-  /* Always a compact pill on mobile — never the fat expanded bar */
-  .nav-pill .nav-pill__inner,
-  .nav-pill.is-expanded .nav-pill__inner {
-    width: auto;
-    grid-template-columns: 44px auto 44px;
-    height: 48px;
-    border-radius: var(--pill);
-    padding: 0;
-    overflow: visible;
-    gap: 0;
-  }
-  .nav-pill__hamburger { width: 44px; height: 48px; grid-column: 1; }
-  .nav-pill__wordmark { grid-column: 2; padding: 0 0.75rem; }
-
-  /* Inline links never show on mobile — overlay handles nav.
-     They occupy no grid track so the wordmark stays centered between
-     the hamburger (col 1) and the empty spacer (col 3). */
-  .nav-pill.is-expanded .nav-pill__links,
-  .nav-pill__links { display: none; }
-
-  /* Full-screen overlay menu */
-  .nav-overlay {
-    display: flex;
-    position: fixed;
-    inset: 0;
-    z-index: 90;
-    background: var(--accent);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 2rem var(--page-pad);
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-12px);
-    transition: opacity 0.32s ease, transform 0.32s cubic-bezier(0.23,1,0.32,1), visibility 0s linear 0.32s;
-  }
-  .nav-overlay.is-open {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-    transition: opacity 0.32s ease, transform 0.32s cubic-bezier(0.23,1,0.32,1), visibility 0s;
-  }
-  .nav-overlay a {
-    font-family: var(--f-display);
-    font-size: clamp(2.25rem, 11vw, 3.25rem);
-    font-weight: 900;
-    letter-spacing: 0.01em;
-    text-transform: uppercase;
-    line-height: 1.18;
-    color: rgba(255,255,255,0.65);
-    transition: color 0.18s;
-  }
-  .nav-overlay a[aria-current="page"],
-  .nav-overlay a:active { color: #fff; }
-  .nav-overlay__foot {
-    position: absolute;
-    bottom: clamp(2rem, 6vh, 3.5rem);
-    left: var(--page-pad);
-    right: var(--page-pad);
-    display: flex;
-    gap: 1.5rem;
-    font-family: var(--f-mono);
-    font-size: var(--t-label);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.55);
-  }
-  .nav-overlay__foot a {
-    font-family: var(--f-mono);
-    font-size: var(--t-label);
-    font-weight: 400;
-    letter-spacing: 0.1em;
-    color: rgba(255,255,255,0.55);
-  }
-  body.nav-open { overflow: hidden; }
-}
-
-@media (max-width: 540px) {
-  .hero__card h2 { font-size: 1.35rem; }
-  .s-split__facts { grid-template-columns: 1fr; }
-  .s-claim h2 { font-size: clamp(2rem, 9vw, 2.75rem); }
-  .footer__form { flex-direction: column; max-width: 100%; }
-  .footer__submit { width: 100%; }
-  .footer__wordmark { font-size: clamp(3.5rem, 22vw, 6rem); }
-}
-
-
-/* =====================================================   INNER PAGES — added for About, Coaching, On-Demand,
-   Retreat, Library. Reuses existing tokens only.
-   ============================================================ */
-
-/* ── Page intro (shared) ────────────────────────────────────── */
-.s-pageintro {
-  padding: clamp(8rem, 14vw, 12rem) var(--page-pad) var(--section);
-  max-width: 1100px;
-}
-.s-pageintro__title {
-  font-family: var(--f-display);
-  font-size: clamp(2.5rem, 5vw, 5rem);
-  font-weight: 900;
-  letter-spacing: 0.01em;
-  text-transform: uppercase;
-  line-height: 1.0;
-  color: var(--ink);
-  max-width: 18ch;
-  margin-bottom: 2rem;
-}
-.s-pageintro__lead {
-  font-size: clamp(1rem, 1.5vw, 1.25rem);
-  line-height: 1.7;
-  color: var(--ink-mid);
-  max-width: 60ch;
-}
-
-/* ── Prose block (About bio) ────────────────────────────────── */
-.s-prose p {
-  font-size: var(--t-body);
-  line-height: 1.8;
-  color: var(--ink-mid);
-  margin-bottom: 1.25rem;
-}
-.s-prose p:last-child { margin-bottom: 0; }
-
-/* ── Offer rows (Coaching: Private / Group / Live) ──────────── */
-.s-offer {
-  display: grid;
-  grid-template-columns: 55% 1fr;
-  gap: clamp(2rem, 5vw, 5rem);
-  align-items: center;
-  padding: var(--section) var(--page-pad);
-  border-top: 1px solid rgba(28,28,26,0.1);
-}
-.s-offer--reverse .s-offer__media { order: 2; }
-.s-offer__media {
-  position: relative;
-  border-radius: var(--r);
-  overflow: hidden;
-  min-height: 480px;
-  background: rgba(28,28,26,0.06);
-}
-.s-offer__media img {
-  position: absolute;
-  inset: 0;
-  object-position: center;
-}
-.s-offer__title {
-  font-family: var(--f-display);
-  font-size: clamp(2rem, 4vw, 3.5rem);
-  font-weight: 900;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  line-height: 1.0;
-  color: var(--ink);
-  margin: 0.75rem 0 1.5rem;
-}
-.s-offer__text {
-  font-size: var(--t-body);
-  line-height: 1.8;
-  color: var(--ink-mid);
-  margin-bottom: 1.25rem;
-  max-width: 50ch;
-}
-.s-offer__text + .pill-cta { margin-top: 0.75rem; }
-
-/* ── Booking (Acuity) ───────────────────────────────────────── */
-.s-booking {
-  padding: var(--section) var(--page-pad);
-  border-top: 1px solid rgba(28,28,26,0.1);
-}
-.s-booking__header { max-width: 60ch; margin-bottom: 3rem; }
-.s-booking__title {
-  font-family: var(--f-display);
-  font-size: clamp(2rem, 4vw, 3.5rem);
-  font-weight: 900;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  line-height: 1.0;
-  color: var(--ink);
-  margin-bottom: 1.25rem;
-}
-.s-booking__text {
-  font-size: var(--t-body);
-  line-height: 1.8;
-  color: var(--ink-mid);
-}
-.s-booking__iframe {
-  width: 100%;
-  border: none;
-  border-radius: var(--r);
-  background: rgba(28,28,26,0.04);
-  min-height: 800px;
-}
-.s-booking__note {
-  font-family: var(--f-mono);
-  font-size: var(--t-label);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--ink-dim);
-  margin-top: 1.25rem;
-}
-
-/* ── Contact ────────────────────────────────────────────────── */
-.s-contact {
-  padding: var(--section) var(--page-pad);
-}
-.s-contact__inner { max-width: 60ch; }
-.s-contact__title {
-  font-family: var(--f-display);
-  font-size: clamp(1.75rem, 3.5vw, 3rem);
-  font-weight: 900;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  line-height: 1.0;
-  color: var(--ink);
-  margin-bottom: 1.25rem;
-}
-.s-contact__text {
-  font-size: var(--t-body);
-  line-height: 1.8;
-  color: var(--ink-mid);
-  margin-bottom: 2rem;
-}
-
-/* ── Programs (On-Demand) ───────────────────────────────────── */
-.s-programs { padding: var(--section) var(--page-pad); }
-.s-programs__grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--gap);
-}
-.s-program {
-  display: flex;
-  flex-direction: column;
-  background: rgba(28,28,26,0.04);
-  border-radius: var(--r);
-  overflow: hidden;
-}
-.s-program__media {
-  position: relative;
-  aspect-ratio: 16 / 10;
-  overflow: hidden;
-  background: rgba(28,28,26,0.06);
-}
-.s-program__media img { position: absolute; inset: 0; }
-.s-program__body {
-  padding: clamp(1.5rem, 3vw, 2.5rem);
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  flex: 1;
-}
-.s-program__title {
-  font-family: var(--f-display);
-  font-size: clamp(1.5rem, 2.5vw, 2.25rem);
-  font-weight: 900;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  line-height: 1.0;
-  color: var(--ink);
-}
-.s-program__text {
-  font-size: var(--t-small);
-  line-height: 1.7;
-  color: var(--ink-mid);
-  flex: 1;
-}
-.s-program__foot {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  margin-top: 0.5rem;
-}
-.s-program__price {
-  font-family: var(--f-mono);
-  font-size: var(--t-small);
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  color: var(--ink);
-}
-.s-program__price s { color: var(--ink-dim); font-weight: 400; margin-left: 0.4em; }
-
-/* ── Retreat hero (full-bleed) ──────────────────────────────── */
-.s-retreat-hero {
-  padding: clamp(5rem, 8vw, 7rem) var(--gap) 0;
-}
-.s-retreat-hero__inner {
-  position: relative;
-  border-radius: var(--r);
-  overflow: hidden;
-  min-height: 78vh;
-  display: flex;
-  align-items: flex-end;
-}
-.s-retreat-hero__inner img {
-  position: absolute;
-  inset: 0;
-  object-position: center;
-}
-.s-retreat-hero__caption {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  padding: clamp(2rem, 5vw, 4rem);
-  background: linear-gradient(to top, rgba(10,10,8,0.72) 0%, transparent 100%);
-}
-.s-retreat-hero__title {
-  font-family: var(--f-display);
-  font-size: clamp(2.25rem, 5vw, 4.5rem);
-  font-weight: 900;
-  letter-spacing: 0.01em;
-  text-transform: uppercase;
-  line-height: 1.0;
-  color: #fff;
-  max-width: 20ch;
-}
-.label--on-dark { color: rgba(255,255,255,0.6); }
-
-/* ── Pillars (Library) ──────────────────────────────────────── */
-.s-pillars { padding: 0 var(--page-pad) var(--section); }
-.s-pillars__grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0;
-}
-.s-pillar {
-  padding: clamp(2rem, 4vw, 3rem) 0;
-  border-top: 1px solid rgba(28,28,26,0.12);
-  padding-right: clamp(1.5rem, 4vw, 4rem);
-}
-.s-pillar__index {
-  font-family: var(--f-mono);
-  font-size: var(--t-label);
-  letter-spacing: 0.12em;
-  color: var(--accent);
-  display: block;
-  margin-bottom: 1rem;
-}
-.s-pillar__title {
-  font-family: var(--f-display);
-  font-size: clamp(1.75rem, 3vw, 2.75rem);
-  font-weight: 900;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  line-height: 1.0;
-  color: var(--ink);
-  margin-bottom: 1rem;
-}
-.s-pillar__text {
-  font-size: var(--t-small);
-  line-height: 1.75;
-  color: var(--ink-mid);
-  max-width: 42ch;
-}
-
-/* ── Inner-page responsive ──────────────────────────────────── */
-@media (max-width: 960px) {
-  .s-offer { grid-template-columns: 1fr; }
-  .s-offer--reverse .s-offer__media { order: 0; }
-  .s-offer__media { min-height: 70vw; }
-  .s-programs__grid { grid-template-columns: 1fr; }
-  .s-pillars__grid { grid-template-columns: 1fr; }
-  .s-pillar { padding-right: 0; }
-  .s-pageintro { padding-top: clamp(6rem, 12vw, 8rem); }
-}
-
-/* ── Retreat hero meta row (date / location) ────────────────── */
-.s-retreat-hero__meta {
-  position: absolute;
-  top: clamp(1.25rem, 3vw, 2rem);
-  left: clamp(1.5rem, 3vw, 2.5rem);
-  right: clamp(1.5rem, 3vw, 2.5rem);
-  z-index: 2;
-  display: flex;
-  justify-content: space-between;
-  font-family: var(--f-mono);
-  font-size: var(--t-label);
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #fff;
-}
-
-/* ── Retreat: what's included grid ──────────────────────────── */
-.s-retreat-incl { padding: var(--section) var(--page-pad); }
-.s-retreat-incl__grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 0;
-}
-.s-incl {
-  padding: clamp(1.5rem, 3vw, 2rem) 0;
-  border-top: 1px solid rgba(28,28,26,0.12);
-  padding-right: 1.5rem;
-}
-.s-incl .label { margin-bottom: 1rem; }
-.s-incl p {
-  font-size: var(--t-small);
-  line-height: 1.7;
-  color: var(--ink-mid);
-}
-
-@media (max-width: 960px) {
-  .s-retreat-incl__grid { grid-template-columns: 1fr; }
-  .s-incl { padding-right: 0; }
-}
-
-/* ── Retreat: split meta-first ordering ─────────────────────── */
-.s-split__meta--first { order: -1; }
-@media (max-width: 960px) {
-  .s-split__meta--first { order: 0; }
-}
-
-/* ── Retreat: overlay card on split image ───────────────────── */
-.s-split__img { position: relative; }
-.s-split__overlay-card {
-  position: absolute;
-  left: 1.25rem;
-  right: 1.25rem;
-  bottom: 1.25rem;
-  background: var(--bg);
-  border-radius: var(--r);
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  z-index: 2;
-}
-.s-split__overlay-card .label { margin-bottom: 0; }
-.s-split__overlay-card h3 {
-  font-family: var(--f-display);
-  font-size: clamp(1.5rem, 2.5vw, 2.25rem);
-  font-weight: 900;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  line-height: 1.0;
-  color: var(--ink);
-}
-.s-split__overlay-card p {
-  font-size: var(--t-small);
-  color: var(--ink-mid);
-  line-height: 1.6;
-}
-
-/* ── Past retreats ──────────────────────────────────────────── */
-.s-past { padding: var(--section) var(--page-pad); }
-.s-past__row {
-  display: grid;
-  grid-template-columns: 45% 1fr;
-  gap: clamp(2rem, 5vw, 5rem);
-  align-items: center;
-  border-top: 1px solid rgba(28,28,26,0.12);
-  padding-top: clamp(2rem, 4vw, 3rem);
-}
-.s-past__media {
-  position: relative;
-  border-radius: var(--r);
-  overflow: hidden;
-  aspect-ratio: 4 / 3;
-  background: rgba(28,28,26,0.06);
-}
-.s-past__media img { position: absolute; inset: 0; }
-.s-past__title {
-  font-family: var(--f-display);
-  font-size: clamp(1.75rem, 3vw, 2.75rem);
-  font-weight: 900;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  line-height: 1.0;
-  color: var(--ink);
-  margin: 0.5rem 0 1.25rem;
-}
-.s-past__text {
-  font-size: var(--t-small);
-  line-height: 1.75;
-  color: var(--ink-mid);
-  margin-bottom: 1.25rem;
-  max-width: 56ch;
-}
-.s-past__text + .pill-cta { margin-top: 0.5rem; }
-
-@media (max-width: 960px) {
-  .s-past__row { grid-template-columns: 1fr; }
-}
-
-
-/* ── Library sections (Listen Up / Reading / Expert Insights) ── */
-.s-libsection { padding: 0 var(--page-pad) var(--section); }
-.s-libsection__title {
-  font-family: var(--f-display);
-  font-size: clamp(2rem, 4vw, 3.5rem);
-  font-weight: 900;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  line-height: 1.0;
-  color: var(--ink);
-  margin-bottom: 2rem;
-}
-.s-libsection__head {
-  display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: clamp(2rem, 5vw, 5rem);
-  align-items: start;
-  margin-bottom: 2.5rem;
-}
-.s-libsection__head .s-libsection__title { margin-bottom: 0; }
-
-/* Playlists */
-.s-playlists {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--gap);
-}
-.s-playlist {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  gap: 0.35rem;
-  min-height: 150px;
-  padding: 1.5rem;
-  border-radius: var(--r);
-  background: var(--dark);
-  color: #fff;
-  transition: transform 0.2s ease, background 0.2s ease;
-}
-.s-playlist:hover { transform: translateY(-3px); background: #000; }
-.s-playlist__season {
-  font-family: var(--f-display);
-  font-size: clamp(1.5rem, 2.5vw, 2rem);
-  font-weight: 900;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  line-height: 1.0;
-}
-.s-playlist__by {
-  font-family: var(--f-mono);
-  font-size: var(--t-label);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.55);
-}
-
-/* Reading list */
-.s-reading { list-style: none; }
-.s-reading__item {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-  padding: 1.5rem 0;
-  border-top: 1px solid rgba(28,28,26,0.12);
-}
-.s-reading__item:last-child { border-bottom: 1px solid rgba(28,28,26,0.12); }
-.s-reading__title {
-  font-family: var(--f-mono);
-  font-size: 1.0625rem;
-  font-weight: 700;
-  color: var(--ink);
-  line-height: 1.4;
-}
-.s-reading__author {
-  font-family: var(--f-mono);
-  font-size: var(--t-small);
-  color: var(--ink-mid);
-}
-
-/* Expert insights */
-.s-insights {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(2rem, 4vw, 3.5rem);
-}
-.s-insight { }
-.s-insight__title {
-  font-family: var(--f-mono);
-  font-size: 1.0625rem;
-  font-weight: 700;
-  color: var(--ink);
-  margin-bottom: 0.6rem;
-  line-height: 1.4;
-}
-.s-insight__text {
-  font-size: var(--t-small);
-  line-height: 1.7;
-  color: var(--ink-mid);
-  max-width: 46ch;
-}
-
-@media (max-width: 960px) {
-  .s-libsection__head { grid-template-columns: 1fr; }
-  .s-playlists { grid-template-columns: 1fr; }
-  .s-insights { grid-template-columns: 1fr; }
-}
-
-/* ══════════════════════════════════════════
-   HOMEPAGE PREVIEW — router + ladder
-   (preview-home.html — appended, nothing above modified)
-   ══════════════════════════════════════════ */
-
-/* Router: one binary decision */
-.s-router {
-  padding: 0 var(--page-pad);
-  margin-bottom: var(--section);
-}
-.s-router > .label { display: block; margin-bottom: 1.25rem; }
-.s-router__opt {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 1.5rem;
-  padding: clamp(1.25rem, 3vw, 2.25rem) 0;
-  border-top: 1px solid rgba(28,28,26,0.18);
-  text-decoration: none;
-  color: var(--ink);
-}
-.s-router__opt:last-child { border-bottom: 1px solid rgba(28,28,26,0.18); }
-.s-router__word {
-  font-family: var(--f-display);
-  font-weight: 900;
-  text-transform: uppercase;
-  font-size: clamp(2.75rem, 8vw, 7.5rem);
-  line-height: 0.95;
-  letter-spacing: 0.01em;
-  transition: color 0.25s ease, transform 0.35s ease;
-}
-.s-router__meta {
-  font-family: var(--f-mono);
-  font-size: var(--t-small);
-  color: var(--ink-mid);
-  text-align: right;
-  max-width: 24ch;
-  flex-shrink: 0;
-}
-.s-router__opt:hover .s-router__word {
-  color: var(--accent);
-  transform: translateX(0.35rem);
-}
-
-/* Ladder: four offers as open rows */
-.s-ladder {
-  padding: 0 var(--page-pad);
-  margin-bottom: var(--section);
-  display: flex;
-  flex-direction: column;
-  gap: clamp(3rem, 7vw, 6rem);
-}
-.s-ladder__row {
-  display: grid;
-  grid-template-columns: 1fr 1.15fr;
-  gap: clamp(1.5rem, 4vw, 4rem);
-  align-items: center;
-  text-decoration: none;
-  color: var(--ink);
-}
-.s-ladder__row--reverse { grid-template-columns: 1.15fr 1fr; }
-.s-ladder__row--reverse .s-ladder__text { order: 2; }
-.s-ladder__row--reverse .s-ladder__img { order: 1; }
-.s-ladder__row--text { grid-template-columns: 1fr; }
-.s-ladder__text > .label { display: block; margin-bottom: 1rem; }
-.s-ladder__word {
-  font-family: var(--f-display);
-  font-weight: 900;
-  text-transform: uppercase;
-  font-size: clamp(3rem, 9vw, 8.5rem);
-  line-height: 0.92;
-  letter-spacing: 0.01em;
-  margin-bottom: 1rem;
-  transition: color 0.25s ease;
-}
-.s-ladder__row:hover .s-ladder__word { color: var(--accent); }
-.s-ladder__meta {
-  font-family: var(--f-mono);
-  font-size: var(--t-small);
-  color: var(--ink-mid);
-  max-width: 42ch;
-  margin-bottom: 1.5rem;
-  line-height: 1.7;
-}
-.s-ladder__img {
-  border-radius: var(--r);
-  overflow: hidden;
-}
-.s-ladder__img img {
-  display: block;
-  width: 100%;
-  height: clamp(280px, 42vw, 560px);
-  object-fit: cover;
-  transition: transform 0.6s ease;
-}
-.s-ladder__row:hover .s-ladder__img img { transform: scale(1.03); }
-@media (prefers-reduced-motion: reduce) {
-  .s-router__word, .s-ladder__word, .s-ladder__img img { transition: none; }
-  .s-router__opt:hover .s-router__word { transform: none; }
-  .s-ladder__row:hover .s-ladder__img img { transform: none; }
-}
-
-@media (max-width: 960px) {
-  .s-ladder__row,
-  .s-ladder__row--reverse { grid-template-columns: 1fr; }
-  .s-ladder__row--reverse .s-ladder__text { order: 1; }
-  .s-ladder__row--reverse .s-ladder__img { order: 2; }
-  .s-ladder__img img { height: clamp(220px, 55vw, 380px); }
-  .s-router__opt {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
-  }
-  .s-router__meta { text-align: left; max-width: none; }
-}
-
-/* Hero — single full-bleed image (preview v2) */
-.hero-full {
-  position: relative;
-  margin: calc(var(--gap)) var(--gap) var(--section);
-  border-radius: var(--r);
-  overflow: hidden;
-}
-.hero-full img {
-  display: block;
-  width: 100%;
-  height: clamp(520px, 92vh, 900px);
-  object-fit: cover;
-}
-.hero-full__overlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: flex-start;
-  padding: clamp(1.5rem, 4vw, 3.5rem);
-  background: linear-gradient(to top, rgba(20,20,16,0.55) 0%, rgba(20,20,16,0.0) 45%);
-}
-.hero-full__label {
-  font-family: var(--f-mono);
-  font-size: var(--t-label);
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: rgba(255,255,255,0.85);
-  margin-bottom: 0.75rem;
-}
-.hero-full__title {
-  font-family: var(--f-display);
-  font-weight: 900;
-  text-transform: uppercase;
-  color: var(--white);
-  font-size: clamp(2.75rem, 7.5vw, 6.5rem);
-  line-height: 0.95;
-  letter-spacing: 0.01em;
-  margin-bottom: 1rem;
-}
-.hero-full__line {
-  font-family: var(--f-mono);
-  font-size: var(--t-small);
-  color: rgba(255,255,255,0.9);
-  margin-bottom: 1.5rem;
-}
-@media (max-width: 960px) {
-  .hero-full img { height: clamp(440px, 80vh, 640px); }
-}
-
-/* Shelf — four products under the hero (preview v3, Dulve tiles: no card containers) */
-.s-shelf {
-  padding: 0 var(--page-pad);
-  margin-bottom: var(--section);
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: clamp(1rem, 2vw, 1.75rem);
-}
-.s-shelf__item { text-decoration: none; color: var(--ink); }
-.s-shelf__img {
-  position: relative;
-  border-radius: var(--r);
-  overflow: hidden;
-  margin-bottom: 1rem;
-}
-.s-shelf__badge {
-  position: absolute;
-  top: clamp(0.85rem, 1.6vw, 1.25rem);
-  left: clamp(0.85rem, 1.6vw, 1.25rem);
-  z-index: 2;
-  font-family: var(--f-mono);
-  font-size: var(--t-label);
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--ink);
-  background: var(--bg);
-  padding: 0.4em 0.75em;
-}
-.s-shelf__img img {
-  display: block;
-  width: 100%;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-  transition: transform 0.6s ease;
-}
-.s-shelf__item:hover .s-shelf__img img { transform: scale(1.04); }
-.s-shelf__item > .label { display: block; margin-bottom: 0.4rem; }
-.s-shelf__name {
-  font-family: var(--f-display);
-  font-weight: 900;
-  text-transform: uppercase;
-  font-size: clamp(1.35rem, 2vw, 1.9rem);
-  line-height: 1;
-  letter-spacing: 0.01em;
-  margin-bottom: 0.4rem;
-  transition: color 0.25s ease;
-}
-.s-shelf__item:hover .s-shelf__name { color: var(--accent); }
-.s-shelf__meta {
-  font-family: var(--f-mono);
-  font-size: var(--t-small);
-  color: var(--ink-mid);
-}
-@media (prefers-reduced-motion: reduce) {
-  .s-shelf__img img, .s-shelf__name { transition: none; }
-  .s-shelf__item:hover .s-shelf__img img { transform: none; }
-}
-@media (max-width: 960px) {
-  .s-shelf { grid-template-columns: 1fr 1fr; gap: 1.25rem 1rem; }
-}
-
-/* Shelf v4: three products; retreat lives as its own full-width module */
-.s-shelf { grid-template-columns: repeat(3, 1fr); }
-@media (max-width: 960px) {
-  .s-shelf { grid-template-columns: 1fr; gap: 2rem; }
-  .s-shelf__img img { aspect-ratio: 4 / 3; }
-}
-
-/* Booking frame (Level 1): scheduler scoped + placed, no vendor chrome */
-.s-booking__frame {
-  max-width: 760px;
-  border: 1px solid rgba(28,28,26,0.15);
-  border-radius: var(--r);
-  overflow: hidden;
-  background: var(--white);
-  margin-top: 1.5rem;
-}
-.s-booking__frame iframe { display: block; }
-
-/* Program facts + quote (on-demand, verified Solin content) */
-.s-program-facts {
-  font-family: var(--f-mono);
-  font-size: var(--t-label);
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--accent);
-  margin-bottom: 1rem;
-}
-.s-program-quote {
-  font-family: var(--f-mono);
-  font-size: var(--t-small);
-  line-height: 1.7;
-  color: var(--ink);
-  border-left: 2px solid var(--accent);
-  padding-left: 1rem;
-  margin: 1.25rem 0 1.5rem;
-  max-width: 44ch;
-}
-.s-program-quote__by { display: block; color: var(--ink-mid); margin-top: 0.4rem; }
-
-/* ══════════════════════════════════════════
-   SYSTEM UPDATE — 2026-07 (F's direction)
-   Helvetica Neue Bold headlines · grey bg · zero radius
-   Appended override block; original system above preserved for rollback.
-   ══════════════════════════════════════════ */
-:root {
-  --bg: #e8e8e6;
-  --f-display: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  --r: 0;
-  --pill: 0;
-}
-* { border-radius: 0 !important; }
-h1, h2, h3, h4,
-.hero-full__title, .s-router__word, .s-ladder__word, .s-shelf__name,
-.s-pageintro__title, .s-offer__title, .s-program__title, .s-booking__title,
-.s-contact__title, .s-claim h2, .s-retreat__caption h3, .footer__wordmark,
-.nav__wordmark, .overlay__link {
-  font-weight: 700;
-}
-
-/* System update cont. — mono matched to live samrabon.com (Courier Prime) */
-:root {
-  --f: 'Courier Prime', 'Courier New', Courier, monospace;
-  --f-mono: 'Courier Prime', 'Courier New', Courier, monospace;
-}
-
-/* System update cont. — headline face bolder/boxier per F (matches live footer wordmark) */
-:root {
-  --f-display: 'Archivo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-}
-h1, h2, h3, h4,
-.hero-full__title, .s-router__word, .s-ladder__word, .s-shelf__name,
-.s-pageintro__title, .s-offer__title, .s-program__title, .s-booking__title,
-.s-contact__title, .s-claim h2, .s-retreat__caption h3, .footer__wordmark,
-.nav__wordmark, .overlay__link {
-  font-weight: 900;
-}
-
-/* ── Second brand color: PERSIMMON (F's pick, 2026-07-22) ──
-   Jobs only: status, access, aliveness. Never decoration. */
-:root { --accent2: #d94f2b; }
-.label--accent { color: var(--accent2); }
-.s-shelf__item:hover .s-shelf__name { color: var(--accent2); }
-.s-retreat .pill-cta--light { background: var(--accent2); border-color: var(--accent2); color: #fff; }
-.footer .pill-cta, .footer button { background: var(--accent2); border-color: var(--accent2); color: #fff; }
-.s-program-facts { color: var(--accent2); }
-.s-program-quote { border-left-color: var(--accent2); }
-
-/* Specificity fix: accent label must win inside the retreat caption overlay */
-.s-retreat__caption .label--accent { color: var(--accent2); }
-
-/* Footer wordmark: exact full width (JS-fitted, see main.js fitWordmark) */
-.footer__wordmark-wrap { overflow: hidden; padding: 0; }
-.footer__wordmark {
-  display: block;
-  white-space: nowrap;
-  line-height: 0.8;
-  letter-spacing: -0.01em;
   width: max-content;
   transform-origin: left bottom;
 }
 
-/* Wordmark bleeds edge-to-edge past footer padding */
-.footer__wordmark-wrap {
-  margin-left: calc(-1 * var(--page-pad));
-  margin-right: calc(-1 * var(--page-pad));
+/* ── 14 · PAGE INTRO (inner pages) ──────────────────────────── */
+.s-pageintro {
+  padding: clamp(8rem, 14vw, 12rem) var(--page-pad) var(--section);
+  max-width: 1100px;
 }
-
-/* Hover states consolidated into one canonical block at the end of this
-   file (Consistency pass, 2026-07-27) — see that block for the live rules. */
-
-/* ── Hero wordmark: full-width SAMSATION bookend (mirrors footer) ── */
-.hero-full__wordmark {
-  position: absolute;
-  top: clamp(3.2rem, 6vw, 4.5rem);
-  left: 0;
-  right: 0;
-  overflow: hidden;
-  pointer-events: none;
-}
-.hero-full__wordmark span {
-  display: block;
-  font-family: var(--f-display);
-  font-weight: 900;
-  text-transform: uppercase;
-  color: #fff;
-  font-size: 100px;
-  line-height: 0.8;
-  letter-spacing: -0.01em;
-  white-space: nowrap;
-  width: max-content;
-  transform-origin: left top;
-}
-.hero-full__overlay {
-  background: linear-gradient(to bottom, rgba(20,20,16,0.35) 0%, rgba(20,20,16,0) 22%),
-              linear-gradient(to top, rgba(20,20,16,0.55) 0%, rgba(20,20,16,0) 45%);
-}
-
-/* Program module video: same footprint as picture media */
-.s-offer__media video {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* Hero LA image: keep the leaping figure in frame on portrait crops */
-@media (max-width: 960px) {
-  .hero-full img { object-position: 65% 40%; }
-}
-
-/* Color journey (terracotta → persimmon → yellow mauve → acid chartreuse →
-   persimmon final) is logged in Notion. The trial blocks that lived here are
-   removed; --accent2/--accent2-deep are set once, and all hover rollovers
-   live in the one canonical block at the end of this file. */
-
-/* ── EXPERIMENT: page-scoped accent, Retreat = Mediterranean cobalt (F, 2026-07-22) ──
-   Identity layer (footer/nav) stays persimmon; page content carries the local hue. */
-.page-retreat {
-  --accent2: #2a58c8;
-  --accent2-deep: #1e3f94;
-}
-.page-retreat .footer {
-  --accent2: #d94f2b;
-  --accent2-deep: #b8401f;
-}
-
-/* ── Retreat as a full COLOR FIELD: cobalt world, white type, persimmon accents ──
-   (replaces the too-subtle accent-only scoping; F, 2026-07-22) */
-.page-retreat {
-  --bg: #2a58c8;
-  --ink: #ffffff;
-  --ink-mid: rgba(255,255,255,0.78);
-  --ink-dim: rgba(255,255,255,0.5);
-  --accent2: #d94f2b;
-  --accent2-deep: #d94f2b;
-}
-.page-retreat body, body.page-retreat { background: var(--bg); }
-/* Hardcoded charcoal borders/colors flip to white on the field */
-.page-retreat .pill-cta {
-  color: #fff;
-  border-color: rgba(255,255,255,0.55);
-}
-.page-retreat .pill-cta:hover { background: var(--accent2); color: #fff; border-color: var(--accent2); }
-.page-retreat .s-router__opt,
-.page-retreat a { color: var(--ink); }
-.page-retreat .label { color: rgba(255,255,255,0.65); }
-.page-retreat .label--accent { color: #ffd9cd; }
-/* Footer stays the green identity block */
-.page-retreat .footer { background: var(--accent); }
-
-/* ── Micro-graphics system: pattern glyphs + breathing dot (prototype, 2026-07-22) ── */
-.s-patterns {
-  padding: 0 var(--page-pad);
-  margin-bottom: var(--section);
-}
-.s-patterns > .label { display: block; margin-bottom: 1.5rem; }
-.s-patterns__row {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 1rem;
-  max-width: 720px;
-}
-.s-patterns__item {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.75rem;
-}
-.s-patterns__item span {
-  font-family: var(--f-mono);
-  font-size: var(--t-label);
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--ink-mid);
-}
-@media (max-width: 960px) {
-  .s-patterns__row { grid-template-columns: repeat(3, 1fr); gap: 1.5rem 1rem; }
-}
-
-/* Breathing dot: liveness indicator, square per zero-radius system */
-.live-dot {
-  display: inline-block;
-  width: 7px;
-  height: 7px;
-  background: var(--accent2);
-  margin-right: 0.5em;
-  vertical-align: 6%;
-  animation: breath 4s ease-in-out infinite;
-}
-@keyframes breath {
-  0%, 100% { transform: scale(1); opacity: 0.65; }
-  50% { transform: scale(1.3); opacity: 1; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .live-dot { animation: none; opacity: 1; }
-}
-
-/* ── Coming soon locations (Retreat page) ───────────────────── */
-.s-comingsoon { padding: var(--section) var(--page-pad); }
-.s-comingsoon__lead {
-  font-size: var(--t-small);
-  color: var(--ink-mid);
-  line-height: 1.6;
-  max-width: 56ch;
-  margin-top: 0.5rem;
-}
-.s-comingsoon__row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(2rem, 5vw, 4rem);
-  border-top: 1px solid rgba(28,28,26,0.12);
-  padding-top: clamp(2rem, 4vw, 3rem);
-}
-.s-comingsoon__card { display: flex; flex-direction: column; align-items: flex-start; }
-.s-comingsoon__title {
-  font-family: var(--f-display);
-  font-size: clamp(1.5rem, 2.4vw, 2.25rem);
-  font-weight: 900;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  line-height: 1.0;
-  color: var(--ink);
-  margin: 0.5rem 0 1rem;
-}
-.s-comingsoon__text {
-  font-size: var(--t-small);
-  line-height: 1.75;
-  color: var(--ink-mid);
-  margin-bottom: 1.25rem;
-  max-width: 48ch;
-}
-
-@media (max-width: 960px) {
-  .s-comingsoon__row { grid-template-columns: 1fr; gap: 2.5rem; }
-}
-
-/* ── Newsletter intro, in Sam's words (About page) ──────────── */
-.s-newsletter-intro {
-  padding: var(--section) var(--page-pad);
-  max-width: 640px;
-  margin: 0 auto;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.s-newsletter-intro__prose {
-  margin: 1.25rem 0 1.75rem;
-}
-.s-newsletter-intro__prose p {
-  font-size: clamp(1.1rem, 1.6vw, 1.35rem);
-  line-height: 1.6;
-  color: var(--ink);
-}
-
-/* =====================================================   SYSTEM UPDATE — 2026-07-27 (F's direction)
-   Consistency pass: one canonical hover/rollover system, one
-   motion language, glyphs promoted to a reusable brand-mark
-   system used across homepage, nav-adjacent page intros, and a
-   footer-band ticker. This block supersedes the fragmented
-   hover-override history earlier in the file (color journey is
-   logged in Notion, not re-litigated here).
-   ============================================================ */
-
-:root {
-  --ease: cubic-bezier(0.23,1,0.32,1);
-  --dur-fast: 0.2s;
-  --dur-med: 0.35s;
-  --dur-slow: 0.6s;
-}
-
-/* ── Canonical hover / rollover system ──
-   Every rollover on the site resolves to persimmon (--accent2).
-   Filled elements invert white/persimmon; text-only links go
-   straight to persimmon; current-page nav stays white (a state,
-   not a rollover). */
-.pill-cta:hover {
-  background: var(--accent2);
-  color: #fff;
-  border-color: var(--accent2);
-}
-.pill-cta--light:hover {
-  background: #fff;
-  color: var(--accent2);
-  border-color: #fff;
-}
-.nav-pill__links a:hover { color: var(--accent2); }
-.nav-pill__links a[aria-current="page"] { color: #fff; }
-.footer__nav a:hover { color: var(--accent2); }
-.footer__submit:hover { background: #fff; color: var(--accent2); opacity: 1; }
-.overlay__link:hover { color: var(--accent2); }
-.nav-overlay a:hover { color: var(--accent2); }
-.s-playlist:hover { background: var(--accent2); transform: translateY(-3px); }
-.s-router__opt:hover .s-router__word { color: var(--accent2); transform: translateX(0.35rem); }
-.s-ladder__row:hover .s-ladder__word { color: var(--accent2); }
-.s-shelf__item:hover .s-shelf__name { color: var(--accent2); }
-.s-shelf__item:hover .s-shelf__img img { transform: scale(1.04); }
-.s-ladder__row:hover .s-ladder__img img { transform: scale(1.03); }
-a:hover > .label { color: var(--accent2); }
-
-/* ── Canonical motion timing ── one curve, three durations, used
-   by every hover-triggered color/scale/translate on the site. */
-.pill-cta,
-.pill-cta--light,
-.footer__submit,
-.nav-pill__links a,
-.footer__nav a,
-.overlay__link,
-.nav-overlay a,
-a > .label {
-  transition: background var(--dur-fast) ease,
-              color var(--dur-fast) ease,
-              border-color var(--dur-fast) ease,
-              opacity var(--dur-fast) ease;
-}
-.s-playlist { transition: transform var(--dur-fast) ease, background var(--dur-fast) ease; }
-.s-router__word { transition: color var(--dur-med) ease, transform var(--dur-med) var(--ease); }
-.s-ladder__word,
-.s-shelf__name { transition: color var(--dur-med) ease; }
-.s-shelf__img img,
-.s-ladder__img img { transition: transform var(--dur-slow) var(--ease); }
-
-@media (prefers-reduced-motion: reduce) {
-  .s-router__word, .s-ladder__word, .s-shelf__name,
-  .s-shelf__img img, .s-ladder__img img, .s-playlist {
-    transition: none;
-  }
-  .s-shelf__item:hover .s-shelf__img img,
-  .s-ladder__row:hover .s-ladder__img img,
-  .s-router__opt:hover .s-router__word,
-  .s-playlist:hover {
-    transform: none;
-  }
-}
-
-/* ── Glyph system: shared brand-mark vocabulary ──
-   STEP · HINGE · ROTATE · REACH · SHIFT — verbatim language from
-   Sam's Movement Snacks for Daily Life on Solin, not an invented
-   framework. Defined once per page as an SVG sprite (see the
-   hidden <svg><symbol> block just inside <body>), referenced by
-   <use> everywhere so there is exactly one drawing of each mark.
-   Three sizes: 40px hero strip, 20px page-intro stamp (currently
-   unused, reserved for a larger module treatment), 14px inline
-   eyebrow / ticker mark. */
-.glyph {
-  display: inline-block;
-  stroke: currentColor;
-  stroke-width: 2.25;
-  fill: none;
-  stroke-linecap: square;
-  stroke-linejoin: miter;
-  flex-shrink: 0;
-  vertical-align: middle;
-}
-.glyph--40 { width: 40px; height: 40px; }
-.glyph--20 { width: 20px; height: 20px; }
-.glyph--14 { width: 14px; height: 14px; stroke-width: 2.25; }
-
-.s-patterns__item { color: var(--ink); }
-
-/* Page-intro eyebrow: label line gets the page's glyph, tying
-   every inner page back to the homepage pattern vocabulary. */
 .s-pageintro__eyebrow {
   display: inline-flex;
   align-items: center;
   gap: 0.5em;
 }
 .s-pageintro__eyebrow .glyph { color: var(--ink-dim); }
-
-/* ── Pattern ticker: slow marquee above the footer, every page ── */
-.s-ticker {
-  overflow: hidden;
-  border-top: 1px solid rgba(28,28,26,0.12);
-  padding: 1.5rem 0;
-  margin: 0 var(--page-pad) var(--section);
+.s-pageintro__title {
+  font-size: var(--t-display);
+  letter-spacing: var(--ls-display);
+  max-width: 18ch;
+  margin-bottom: 2rem;
 }
-.s-ticker__track {
-  display: flex;
-  align-items: center;
-  gap: 3rem;
-  width: max-content;
-  animation: ticker 32s linear infinite;
-}
-.s-ticker__item {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6em;
-  font-family: var(--f-mono);
-  font-size: var(--t-label);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+.s-pageintro__lead {
+  font-size: var(--t-lead);
+  line-height: var(--lh-mono);
   color: var(--ink-mid);
-  white-space: nowrap;
-}
-.s-ticker__item .glyph { color: var(--ink-dim); }
-@keyframes ticker {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .s-ticker__track { animation: none; }
+  max-width: 60ch;
 }
 
-/* ── TESTIMONIALS CAROUSEL ───────────────────────────────────── */
-.s-testimonials-slide {
-  padding: clamp(2.5rem, 5vw, 4.5rem) var(--page-pad);
-}
-/* Stage: 3-col row for arrows + track, then dots row spanning all */
-.ts-stage {
-  display: grid;
-  grid-template-columns: 2rem 1fr 2rem;
-  grid-template-rows: auto auto;
-  align-items: center;
-  gap: clamp(1rem, 2.5vw, 2rem) clamp(1rem, 2.5vw, 2rem);
-}
-.ts-prev { grid-column: 1; grid-row: 1; }
-.ts-track { grid-column: 2; grid-row: 1; }
-.ts-next  { grid-column: 3; grid-row: 1; }
-.ts-dots  { grid-column: 1 / -1; grid-row: 2; margin-top: 0.5rem; }
-
-/* Track clips the horizontal slide */
-.ts-track {
-  position: relative;
-  min-height: 18rem;
-  overflow: hidden;
-}
-/* Each slide is an <a> — off-screen right by default */
-.ts-slide {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-decoration: none;
-  cursor: pointer;
-  transform: translateX(100%);
-  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  pointer-events: none;
-  visibility: hidden;
-}
-/* Active slide — in view */
-.ts-slide.is-active {
-  transform: translateX(0);
-  pointer-events: auto;
-  visibility: visible;
-}
-/* Exiting slide — slide out to left */
-.ts-slide.is-exit {
-  transform: translateX(-100%);
-  visibility: visible;
-  pointer-events: none;
-}
-/* Hover: quote dims, cta brightens */
-.ts-slide:hover .ts-quote { color: var(--ink-mid); }
-.ts-slide:hover .ts-cta   { color: var(--accent2); }
-.ts-quote {
-  font-family: var(--f-display);
-  font-size: clamp(1.45rem, 3.2vw, 2.3rem);
-  font-weight: 900;
-  text-transform: uppercase;
-  line-height: 1.15;
-  letter-spacing: 0.01em;
-  color: var(--ink);
-  margin-bottom: 1.75rem;
-  transition: color var(--dur-fast) var(--ease);
-}
-.ts-foot {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-  flex-wrap: wrap;
-}
-.ts-cite {
-  font-family: var(--f-mono);
-  font-size: var(--t-label);
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--accent);
-  font-style: normal;
-}
-.ts-cta {
-  font-family: var(--f-mono);
-  font-size: var(--t-label);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+/* ── 15 · PROSE (About bio) ─────────────────────────────────── */
+.s-prose p {
+  font-size: var(--t-body);
+  line-height: var(--lh-prose);
   color: var(--ink-mid);
-  transition: color var(--dur-fast) var(--ease);
+  margin-bottom: 1.25rem;
 }
-/* Arrow buttons */
-.ts-prev, .ts-next {
-  background: none;
-  border: none;
-  font-family: var(--f-mono);
-  font-size: 1.7rem;
-  color: var(--ink-mid);
-  cursor: pointer;
-  padding: 0;
-  line-height: 1;
-  align-self: center;
-  transition: color var(--dur-fast) var(--ease);
-  flex-shrink: 0;
-}
-.ts-prev:hover, .ts-next:hover { color: var(--accent2); }
-/* Dots — centered in their row */
-.ts-dots {
-  display: flex;
-  gap: 0.6rem;
-  align-items: center;
-  justify-content: center;
-}
-.ts-dot {
-  width: 5px;
-  height: 5px;
-  background: var(--ink-dim);
-  border: none;
-  border-radius: 0;
-  cursor: pointer;
-  padding: 0;
-  transition: background var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
-}
-.ts-dot--active {
-  background: var(--ink);
-  transform: scale(1.6);
-}
-@media (max-width: 600px) {
-  .ts-stage { grid-template-columns: 1.5rem 1fr 1.5rem; gap: 0.75rem; }
-  .ts-track { min-height: 28rem; }
-  .ts-quote { font-size: clamp(1.2rem, 5.5vw, 1.6rem); }
-  .ts-foot { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .ts-slide { transition: opacity 0.2s; transform: none !important; }
-}
+.s-prose p:last-child { margin-bottom: 0; }
 
-/* ── Retreat module — editorial layout (replaces s-retreat-hero + s-split) ──/
-.s-retreat-module {
-  padding: 0 0 clamp(5rem, 10vw, 9rem);
-}
-.s-retreat-module__image {
-  width: 100%;
-  margin: 0 0 clamp(2.5rem, 5vw, 4rem) 0;
-  overflow: hidden;
-  height: clamp(300px, 56vw, 800px) !important;
-  max-height: clamp(300px, 56vw, 800px) !important;
-  position: relative;
-}
-.s-retreat-module__image img {
-  position: absolute !important;
-  inset: 0;
-  width: 100% !important;
-  height: 100% !important;
-  display: block;
-  object-fit: cover !important;
-  object-position: center center;
-}
-
-/* Morocco: portrait image — center on house (upper half of image) */
-#morocco .s-retreat-module__image img {
-  object-position: center 35% !important;
-}
-.s-retreat-module__body {
-  padding: 0 var(--page-pad);
-  max-width: 860px;
-}
-.s-retreat-module__header {
-  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
-}
-.s-retreat-module__title {
-  font-family: var(--f-display);
-  font-size: clamp(2.2rem, 5vw, 4.5rem);
-  font-weight: 900;
-  letter-spacing: 0.01em;
-  text-transform: uppercase;
-  line-height: 1.0;
-  color: var(--ink);
-  margin: 0.6rem 0 0;
-}
-.s-retreat-module__intro {
-  font-size: clamp(1rem, 1.4vw, 1.15rem);
-  line-height: 1.75;
-  color: var(--ink-mid);
-  max-width: 64ch;
-  margin: 0 0 1rem;
-}
-.s-retreat-module__facts {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0 clamp(2rem, 5vw, 4rem);
-  margin: clamp(2rem, 4vw, 3rem) 0 clamp(2rem, 4vw, 3rem);
-}
-.s-retreat-module__fact {
-  display: flex;
-  flex-direction: column;
-  min-width: 120px;
-}
-.s-retreat-module__fact dt {
-  font-family: var(--f-mono);
-  font-size: 0.65rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--ink-mid);
-  margin-bottom: 0.3rem;
-}
-.s-retreat-module__fact dd {
-  font-family: var(--f-mono);
-  font-size: 0.85rem;
-  line-height: 1.5;
-  color: var(--ink);
-  margin: 0;
-}
-
-/* ── Coming soon — lighter version ── */
-.s-comingsoon {
-  padding: clamp(4rem, 8vw, 7rem) var(--page-pad);
-}
-.s-comingsoon .label { margin-bottom: clamp(2rem, 4vw, 3rem); }
-.s-comingsoon__row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(2rem, 5vw, 5rem);
-}
-.s-comingsoon__card {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-.s-comingsoon__title {
-  font-family: var(--f-display);
-  font-size: clamp(1.4rem, 2vw, 2rem);
-  font-weight: 900;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  line-height: 1.05;
-  color: var(--ink);
-  margin: 0 0 0.75rem;
-}
-.s-comingsoon__text {
-  font-family: var(--f-mono);
-  font-size: 0.82rem;
-  line-height: 1.75;
-  color: var(--ink-mid);
-  margin: 0 0 1rem;
-  max-width: 38ch;
-}
-.s-comingsoon__link {
-  font-family: var(--f-mono);
-  font-size: 0.78rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--ink);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-.s-comingsoon__link:hover { color: var(--accent2); }
-
-/* ── Past retreats — text-only ── */
-.s-past-text {
-  padding: clamp(4rem, 8vw, 7rem) var(--page-pad);
-  border-top: 1px solid rgba(28,28,26,0.1);
-}
-.s-past-text .label { margin-bottom: clamp(2rem, 3vw, 2.5rem); }
-.s-past-text__item { max-width: 640px; }
-.s-past-text__meta {
-  display: block;
-  font-family: var(--f-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--ink-mid);
-  margin-bottom: 0.85rem;
-}
-.s-past-text__desc {
-  font-family: var(--f-mono);
-  font-size: 0.88rem;
-  line-height: 1.8;
-  color: var(--ink-mid);
-  margin: 0 0 1.1rem;
-}
-
-@media (max-width: 720px) {
-  .s-retreat-module__facts { gap: 1.5rem 2.5rem; }
-  .s-comingsoon__row { grid-template-columns: 1fr; gap: 2.5rem; }
-}
-
-/* Morocco: see object-position rule in s-retreat-module__image block above */
-
-/* ── Footer ticker: full-width patterns band at top of footer ── */
-.footer__ticker {
-  margin: 0 calc(-1 * var(--page-pad));
-  padding: 2rem var(--page-pad);
-  overflow: hidden;
-  border-bottom: 1px solid rgba(255,255,255,0.35);
-}
-.footer__ticker .s-ticker__track {
-  display: flex;
-  align-items: center;
-  gap: 3rem;
-  width: max-content;
-  animation: ticker 32s linear infinite;
-}
-.footer__ticker .s-ticker__item {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6em;
-  font-family: var(--f-mono);
-  font-size: var(--t-label);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: #fff;
-  white-space: nowrap;
-}
-.footer__ticker .s-ticker__item .glyph {
-  color: rgba(255,255,255,0.6);
-}
-@media (prefers-reduced-motion: reduce) {
-  .footer__ticker .s-ticker__track { animation: none; }
-}
-/* ── s-rdl: Rhode-style sticky-image retreat detail layout ─────
-   Left: image sticks to viewport as right column scrolls.
-   Right: label, title, sub, body copy, fact row, CTA.
-   On mobile both stack vertically, image first.           ───── */
-.s-rdl {
-  display: grid;
-  grid-template-columns: 55fr 45fr;
-  min-height: 100vh;
-  border-top: 1px solid rgba(28,28,26,0.08);
-}
-.s-rdl--flip {
-  grid-template-columns: 45fr 55fr;
-  direction: rtl;
-}
-.s-rdl--flip > * { direction: ltr; }
-
-.s-rdl__img {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  overflow: hidden;
-  align-self: start;
-}
-.s-rdl--flip .s-rdl__img {
-  order: 2;
-}
-.s-rdl__img img {
-  position: absolute !important;
-  inset: 0;
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover !important;
-  object-position: center center;
-}
-/* Morocco portrait — center on the villa */
-#morocco .s-rdl__img img {
-  object-position: center 30% !important;
-}
-
-.s-rdl__body {
-  padding: clamp(4rem, 8vw, 7rem) clamp(2rem, 5vw, 5rem);
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0;
-}
-.s-rdl--flip .s-rdl__body {
-  order: 1;
-}
-
-.s-rdl__title {
-  font-family: var(--f-display);
-  font-size: clamp(3rem, 6vw, 6rem);
-  font-weight: 900;
-  letter-spacing: 0.01em;
-  text-transform: uppercase;
-  line-height: 1.0;
-  color: var(--ink);
-  margin: 0.5rem 0 0;
-}
-.s-rdl__sub {
-  font-family: var(--f-display);
-  font-size: clamp(1.1rem, 1.8vw, 1.5rem);
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
-  color: var(--ink-mid);
-  line-height: 1.2;
-  margin: 0.5rem 0 2rem;
-}
-.s-rdl__text {
-  font-family: var(--f-mono);
-  font-size: clamp(0.82rem, 1vw, 0.95rem);
-  line-height: 1.8;
-  color: var(--ink-mid);
-  max-width: 44ch;
-  margin: 0 0 0.85rem;
-}
-.s-rdl__facts {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem clamp(2rem, 4vw, 3.5rem);
-  margin: 2rem 0 2.5rem;
-}
-.s-rdl__fact { display: flex; flex-direction: column; }
-.s-rdl__fact dt {
-  font-family: var(--f-mono);
-  font-size: 0.62rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink-mid);
-  margin-bottom: 0.2rem;
-}
-.s-rdl__fact dd {
-  font-family: var(--f-mono);
-  font-size: 0.82rem;
-  color: var(--ink);
-  margin: 0;
-  line-height: 1.5;
-}
-
-@media (max-width: 860px) {
-  .s-rdl,
-  .s-rdl--flip {
-    grid-template-columns: 1fr;
-    direction: ltr;
-    min-height: auto;
-    overflow: hidden;
-    width: 100%;
-  }
-  .s-rdl__img {
-    position: relative !important;
-    height: 70vw !important;
-    top: auto !important;
-    width: 100% !important;
-  }
-  .s-rdl__body { width: 100%; }
-  .s-rdl--flip .s-rdl__img { order: unset; }
-  .s-rdl--flip .s-rdl__body { order: unset; }
-}
-
-/* ── s-rdl image fix: override global img reset inside sticky container ──
-   The global img{height:100%} expands the container; we need the container
-   to set its own height and the img to fill it via absolute positioning.   */
-.s-rdl__img {
-  position: sticky !important;
-  top: 0 !important;
-  height: 100vh !important;
-  overflow: hidden !important;
-  align-self: start !important;
-}
-.s-rdl__img img {
-  position: absolute !important;
-  inset: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover !important;
-  object-position: center center !important;
-}
-/* Per-location object-position overrides */
-#morocco   .s-rdl__img img { object-position: center 30% !important; }
-#pantelleria .s-rdl__img img { object-position: center 25% !important; }
-#pipa      .s-rdl__img img { object-position: center 30% !important; }
-
-@media (max-width: 860px) {
-  .s-rdl__img {
-    position: relative !important;
-    height: 70vw !important;
-    top: auto !important;
-  }
-}
-
-/* ── s-rdl inner image wrapper — isolates the absolute img from the
-   sticky container so global img{height:100%} can't expand it ── */
-.s-rdl__img-inner {
-  position: absolute !important;
-  inset: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-  overflow: hidden !important;
-}
-.s-rdl__img-inner img {
-  position: absolute !important;
-  inset: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover !important;
-  object-position: center center !important;
-}
-#morocco     .s-rdl__img-inner img { object-position: center 30% !important; }
-#pantelleria .s-rdl__img-inner img { object-position: center 25% !important; }
-#pipa        .s-rdl__img-inner img { object-position: center 30% !important; }
-
-/* ── s-rdl refinement: consistent 50/50 split, vertically centered copy ──
-   The copy is short so sticky adds nothing; treat each module as a full-
-   viewport static split with the body centered. Cleaner, calmer.       ── */
-.s-rdl,
-.s-rdl--flip {
-  grid-template-columns: 1fr 1fr;
-}
-.s-rdl__body {
-  justify-content: center;   /* vertical centering in the column */
-  min-height: 100vh;
-}
-@media (max-width: 860px) {
-  .s-rdl__body {
-    min-height: auto;
-    justify-content: flex-start;
-  }
-}
-/* ── Glyph size: 56px display variant for homepage patterns ── */
-.glyph--56 { width: 56px; height: 56px; stroke-width: 2; }
-
-/* ── s-patterns--hero: centered, full-width, larger spacing ── */
-.s-patterns--hero {
-  text-align: center;
-  padding-bottom: 0;
-  margin-bottom: 0;
-}
-.s-patterns--hero .s-patterns__row {
-  max-width: none;
-  justify-content: center;
-  margin: 0 auto;
-  gap: 2rem;
-  grid-template-columns: repeat(5, auto);
-}
-.s-patterns--hero .s-patterns__item {
-  align-items: center;
-}
-@media (max-width: 640px) {
-  .s-patterns--hero .s-patterns__row {
-    grid-template-columns: repeat(3, auto);
-    gap: 2rem 1.5rem;
-  }
-}
-
-/* ── s-claim full-width headline override ── */
-.s-claim h2 { max-width: none; }
-
-/* ── Glyph strokes: ensure round linecaps/joins on new 32×32 glyphs ── */
-.glyph { stroke-linecap: round; stroke-linejoin: round; }
-
-/* ── Hero: full-cover link makes entire module clickable ── */
-.hero-full__cover-link {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  display: block;
-}
-/* Keep overlay content and pill above the cover link */
-.hero-full__wordmark,
-.hero-full__overlay { z-index: 2; }
-.hero-full__overlay .pill-cta { position: relative; z-index: 3; }
-
-/* ── Retreat: match hero height ── */
-.s-retreat__inner {
-  min-height: clamp(520px, 92vh, 900px);
-}
-@media (max-width: 960px) {
-  .s-retreat__inner { min-height: clamp(440px, 80vh, 640px); }
-}
-
-/* ── s-rdl consistency pass: one module size, real gaps ──────────
-   Every module: identical fixed height, image cover-fills its half,
-   clear gap between modules, no divider borders.                ── */
-.s-rdl,
-.s-rdl--flip {
-  height: clamp(560px, 90vh, 860px);
-  min-height: 0;
-  border-top: none;
-  margin: 0 0 clamp(4rem, 8vw, 7rem) 0;
-  overflow: hidden;
-}
-.s-rdl__img {
-  height: 100% !important;
-  min-height: 0;
-}
-.s-rdl__body {
-  min-height: 0;
-  height: 100%;
-  justify-content: center;
-  padding: clamp(2.5rem, 4vw, 4rem) clamp(2rem, 5vw, 5rem);
-  overflow: hidden;
-}
-/* Tighten body type slightly so all five fit one module height */
-.s-rdl__title { font-size: clamp(2.6rem, 5vw, 5rem); }
-.s-rdl__sub { margin-bottom: 1.5rem; }
-.s-rdl__facts { margin: 1.5rem 0 2rem; }
-
-@media (max-width: 860px) {
-  .s-rdl,
-  .s-rdl--flip {
-    height: auto;
-    margin: 0 0 clamp(3rem, 8vw, 4rem) 0;
-  }
-  .s-rdl__img { height: 70vw !important; }
-  .s-rdl__body { height: auto; padding: 2rem var(--page-pad) 0.5rem; }
-}
-
-/* ── Past retreats: separated + muted so archive reads apart from offer ── */
-.s-past-head {
-  padding: clamp(5rem, 10vw, 9rem) var(--page-pad) clamp(2rem, 4vw, 3rem);
-}
-.s-rdl--past .s-rdl__img {
-  filter: grayscale(1);
-  opacity: 0.85;
-}
-.s-rdl--past .s-rdl__title { color: var(--ink-mid); }
-.s-rdl--past .s-rdl__sub { color: var(--ink-dim); }
-
-/* ── Claim: green background matching footer ── */
-/* Claim green-background treatment (705b22c) reverted per F 2026-07-27:
-   green claim sitting directly on green footer read as one bleed. */
-
-/* ── Retreat: corner badge naming the module ── */
-.s-retreat__badge {
-  position: absolute;
-  top: clamp(1.5rem, 3vw, 2.5rem);
-  left: clamp(1.5rem, 3vw, 2.5rem);
-  z-index: 2;
-  font-family: var(--f-mono);
-  font-size: var(--t-label);
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--ink);
-  background: var(--bg);
-  padding: 0.5rem 0.9rem;
-}
-
-/* ── On-Demand module: full-bleed video moment, before footer (Retreats treatment) ── */
-.s-ondemand {
-  padding: 0 var(--gap);
-  margin-bottom: var(--section);
-}
-.s-ondemand__inner {
-  position: relative;
-  border-radius: var(--r);
-  overflow: hidden;
-  aspect-ratio: 16 / 9;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  background: rgba(28,28,26,0.06);
-}
-.s-ondemand__videos {
-  position: absolute;
-  inset: 0;
-  display: flex;
-}
-.s-ondemand__video {
-  flex: 1 1 50%;
-  width: 50%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center bottom;
-  filter: grayscale(1);
-}
-/* Keep the two videos side by side (not stacked) at every width — stacking
-   would put the bottom clip directly behind the bottom-anchored caption. */
-.s-ondemand__badge {
-  position: absolute;
-  top: clamp(1.5rem, 3vw, 2.5rem);
-  left: clamp(1.5rem, 3vw, 2.5rem);
-  z-index: 2;
-  font-family: var(--f-mono);
-  font-size: var(--t-label);
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--ink);
-  background: var(--bg);
-  padding: 0.5rem 0.9rem;
-}
-.s-ondemand__caption {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 2;
-  padding: clamp(2rem, 4vw, 3.5rem);
-  background: linear-gradient(to top, rgba(10,10,8,0.7) 0%, transparent 100%);
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 2rem;
-}
-.s-ondemand__caption .label { color: rgba(255,255,255,0.5); margin-bottom: 0.5rem; }
-.s-ondemand__title {
-  font-family: var(--f-display);
-  font-weight: 900;
-  font-size: clamp(1.5rem, 2.8vw, 2.75rem);
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  color: #fff;
-  max-width: 24ch;
-  line-height: 1.0;
-  margin-bottom: 0.5rem;
-}
-.s-ondemand__text {
-  font-family: var(--f-mono);
-  font-size: var(--t-small);
-  color: rgba(255,255,255,0.75);
-  line-height: 1.5;
-  max-width: 40ch;
-}
-.s-ondemand__caption-right { flex-shrink: 0; }
-@media (max-width: 960px) {
-  .s-ondemand__caption { flex-direction: column; align-items: flex-start; }
-}
-@media (max-width: 780px) {
-  /* Strict 16:9 is too short to hold the stacked caption once type wraps —
-     let the module grow taller on small screens, same trade-off s-retreat
-     already makes between its desktop and mobile min-heights. */
-  .s-ondemand__inner { aspect-ratio: auto; min-height: clamp(480px, 120vw, 640px); }
-}
-
-/* ── Patterns module: standalone green box, half hero height ──
-   Rebuilt clean (prior block was lost to a rebase conflict).
-   Title in display font, glyphs off-white in a single row. ── */
-.s-patterns-module {
-  padding: 0 var(--gap);
-  margin-bottom: var(--section);
-}
-.s-patterns-module__inner {
-  background: var(--accent) !important;
-  border-radius: var(--r);
-  min-height: clamp(260px, 46vh, 450px) !important;
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: center !important;
-  align-items: center !important;
-  text-align: center;
-  padding: clamp(2rem, 4vw, 3.5rem) clamp(2rem, 5vw, 4rem);
-  gap: clamp(1.75rem, 3.5vw, 3rem);
-}
-.s-patterns-module__title {
-  font-family: var(--f-display) !important;
-  font-weight: 900 !important;
-  font-size: clamp(2.25rem, 4.5vw, 3.75rem) !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.02em !important;
-  line-height: 0.95 !important;
-  color: var(--bg) !important;
-  margin: 0;
-}
-.s-patterns-module__row {
-  display: flex !important;
-  flex-direction: row !important;
-  flex-wrap: nowrap !important;
-  align-items: flex-start !important;
-  justify-content: center !important;
-  gap: clamp(2rem, 4.5vw, 4.5rem);
-  width: 100%;
-}
-.s-patterns-module__item {
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  gap: 1rem !important;
-  flex: 0 0 auto;
-}
-.s-patterns-module__item span {
-  font-family: var(--f-mono) !important;
-  font-size: var(--t-label) !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.14em !important;
-  color: rgba(240,237,231,0.6) !important;
-}
-.s-patterns-module .glyph {
-  color: var(--bg) !important;
-  stroke-width: 2.75;
-}
-.glyph--88 { width: 88px !important; height: 88px !important; }
-
-@media (max-width: 780px) {
-  .s-patterns-module__inner { min-height: clamp(220px, 40vh, 320px) !important; }
-}
-@media (max-width: 560px) {
-  .s-patterns-module__row {
-    flex-wrap: wrap !important;
-    gap: 2rem 2.25rem;
-  }
-  .glyph--88 { width: 64px !important; height: 64px !important; }
-}
-
-/* ── Shelf: On-Demand card uses a video instead of a still image ──
-   Mirrors every .s-shelf__img img rule scattered above so the video
-   card sizes, crops, and hovers identically to the other two cards. */
-.s-shelf__img video {
-  display: block;
-  width: 100%;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-  object-position: center bottom;
-  transition: transform var(--dur-slow) var(--ease);
-}
-.s-shelf__item:hover .s-shelf__img video { transform: scale(1.04); }
-@media (max-width: 780px) {
-  .s-shelf__img video { aspect-ratio: 4 / 3; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .s-shelf__img video { transition: none; }
-  .s-shelf__item:hover .s-shelf__img video { transform: none; }
-}
-
-/* ── ABOUT: peer testimonials brought up to the site's bold quote
-   voice (same weight as the homepage carousel's .ts-quote), kept as a
-   static 3-up grid per F's direction — no carousel, no copy changes ── */
-.testimonial__quote {
-  font-family: var(--f-display) !important;
-  font-size: clamp(1.05rem, 1.7vw, 1.5rem) !important;
-  font-weight: 900 !important;
-  text-transform: uppercase !important;
-  line-height: 1.2 !important;
-  letter-spacing: 0.01em !important;
-  color: var(--ink) !important;
-}
-
-/* ── ABOUT: bio module, matches the Retreat sticky-split pattern ──
-   Same mechanism as .s-rdl on retreat.html: image is a plain div with
-   an inline background-image (not an <img>), which sidesteps the
-   global img{height:100%} reset that was forcing the portrait into a
-   landscape crop and cutting off the top of Sam's head/face. Height
-   stays auto (not the retreat modules' fixed clamp) because the bio
-   copy + coaching card run longer than a retreat module's short text
-   block — a fixed height + overflow:hidden would clip content.     ── */
+/* ── 16 · BIO SPLIT (About, sticky image) ───────────────────── */
 .s-bio {
   display: grid;
   grid-template-columns: 55fr 45fr;
@@ -2742,46 +710,321 @@ a > .label {
   gap: 2rem;
   padding: clamp(2rem, 4vw, 3rem) 0;
 }
-@media (max-width: 860px) {
-  .s-bio { grid-template-columns: 1fr; padding: 0; }
-  .s-bio__img {
-    position: relative;
-    top: auto;
-    height: 100vw;
-    align-self: auto;
-  }
-  .s-bio__body { padding: clamp(2rem, 4vw, 3rem) var(--page-pad); }
+
+/* Quiet info card (About: coaching card) */
+.s-split__card {
+  background: var(--wash);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.s-split__card .label { margin-bottom: 0; }
+.s-split__card h3 { font-size: var(--t-h3); }
+.s-split__card p {
+  font-size: var(--t-small);
+  color: var(--ink-mid);
+  line-height: var(--lh-body);
 }
 
-/* ── Homepage claim: green headline, no box ─────────────────────
-   .s-claim itself is shared with about/library/retreat (cream
-   background, dark type) — this modifier only applies where
-   index.html adds the `s-claim--green` class, so the other pages
-   are untouched. F tried a full green card here first, then asked
-   for no box — just the headline set in the brand green instead. */
-.s-claim--green h2 { color: var(--accent); }
+/* ── 17 · OFFER ROWS (Coaching, On-Demand programs) ─────────── */
+.s-offer {
+  display: grid;
+  grid-template-columns: 55% 1fr;
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: center;
+  padding: var(--section) var(--page-pad);
+  border-top: 1px solid var(--hairline);
+}
+.s-offer--reverse .s-offer__media { order: 2; }
+.s-offer__media {
+  position: relative;
+  overflow: hidden;
+  min-height: 480px;
+  background: var(--wash);
+}
+.s-offer__media img {
+  position: absolute;
+  inset: 0;
+  object-position: center;
+}
+.s-offer__media video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.s-offer__title {
+  font-size: var(--t-h2);
+  margin: 0.75rem 0 1.5rem;
+}
+.s-offer__text {
+  font-size: var(--t-body);
+  line-height: var(--lh-prose);
+  color: var(--ink-mid);
+  margin-bottom: 1.25rem;
+  max-width: 50ch;
+}
+.s-offer__text + .pill-cta { margin-top: 0.75rem; }
 
-/* ── Library: real Spotify playlist embeds (2026-07-28) ──────────
-   Replaces the old .s-playlist placeholder tiles (dark boxes with
-   invented "Nov/Oct/Summer 2025" season labels + dead # links).
-   .s-playlist and its children are left defined above, unused, as
-   the rollback path. New pattern: open layout, no card background —
-   a mono title (the real Spotify playlist name) sits above each
-   embed, same voice as .s-reading__title / .s-insight__title. The
-   Spotify iframe supplies its own dark UI, so no extra framing. */
+/* Program facts + verbatim Sam quote (On-Demand) */
+.s-program-facts {
+  font-family: var(--f-mono);
+  font-size: var(--t-label);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-label);
+  color: var(--accent2);
+  margin-bottom: 1rem;
+}
+.s-program-quote {
+  font-family: var(--f-mono);
+  font-size: var(--t-small);
+  line-height: var(--lh-mono);
+  color: var(--ink);
+  border-left: 2px solid var(--accent2);
+  padding-left: 1rem;
+  margin: 1.25rem 0 1.5rem;
+  max-width: 44ch;
+}
+.s-program-quote__by { display: block; color: var(--ink-mid); margin-top: 0.4rem; }
+
+/* Section wrapper + header row (On-Demand) */
+.s-programs { padding: var(--section) var(--page-pad); }
+.s-services__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 4rem;
+}
+.s-services__header h2 { font-size: var(--t-h2); }
+
+/* ── 18 · BOOKING (Coaching, Acuity) ────────────────────────── */
+.s-booking {
+  padding: var(--section) var(--page-pad);
+  border-top: 1px solid var(--hairline);
+}
+.s-booking__header { max-width: 60ch; margin-bottom: 3rem; }
+.s-booking__title {
+  font-size: var(--t-h2);
+  margin-bottom: 1.25rem;
+}
+.s-booking__text {
+  font-size: var(--t-body);
+  line-height: var(--lh-prose);
+  color: var(--ink-mid);
+}
+.s-booking__iframe {
+  width: 100%;
+  border: none;
+  background: var(--wash);
+  min-height: 800px;
+}
+.s-booking__frame {
+  max-width: 760px;
+  border: 1px solid rgba(28,28,26,0.15);
+  overflow: hidden;
+  background: var(--white);
+  margin-top: 1.5rem;
+}
+.s-booking__frame iframe { display: block; }
+
+/* ── 19 · CONTACT ───────────────────────────────────────────── */
+.s-contact { padding: var(--section) var(--page-pad); }
+.s-contact__inner { max-width: 60ch; }
+.s-contact__title {
+  font-size: var(--t-h2);
+  margin-bottom: 1.25rem;
+}
+.s-contact__text {
+  font-size: var(--t-body);
+  line-height: var(--lh-prose);
+  color: var(--ink-mid);
+  margin-bottom: 2rem;
+}
+
+/* ── 20 · RETREAT DETAIL (s-rdl, 50/50 editorial split) ─────── */
+.s-rdl,
+.s-rdl--flip {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: clamp(560px, 90vh, 860px);
+  margin: 0 0 clamp(4rem, 8vw, 7rem) 0;
+  overflow: hidden;
+}
+.s-rdl--flip { direction: rtl; }
+.s-rdl--flip > * { direction: ltr; }
+.s-rdl__img {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+}
+.s-rdl__img img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+/* Per-location crops */
+#morocco     .s-rdl__img img { object-position: center 30%; }
+#pantelleria .s-rdl__img img { object-position: center 25%; }
+#pipa        .s-rdl__img img { object-position: center 30%; }
+.s-rdl__body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  height: 100%;
+  padding: clamp(2.5rem, 4vw, 4rem) clamp(2rem, 5vw, 5rem);
+  overflow: hidden;
+}
+.s-rdl__title {
+  font-size: var(--t-display);
+  letter-spacing: var(--ls-display);
+  margin: 0.5rem 0 0;
+}
+.s-rdl__sub {
+  font-size: var(--t-h5);
+  color: var(--ink-mid);
+  line-height: var(--lh-tight);
+  margin: 0.5rem 0 1.5rem;
+}
+.s-rdl__text {
+  font-family: var(--f-mono);
+  font-size: var(--t-small);
+  line-height: var(--lh-prose);
+  color: var(--ink-mid);
+  max-width: 44ch;
+  margin: 0 0 0.85rem;
+}
+.s-rdl__facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem clamp(2rem, 4vw, 3.5rem);
+  margin: 1.5rem 0 2rem;
+}
+.s-rdl__fact { display: flex; flex-direction: column; }
+.s-rdl__fact dt {
+  font-family: var(--f-mono);
+  font-size: var(--t-micro);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--ink-mid);
+  margin-bottom: 0.2rem;
+}
+.s-rdl__fact dd {
+  font-family: var(--f-mono);
+  font-size: var(--t-small);
+  color: var(--ink);
+  margin: 0;
+  line-height: 1.5;
+}
+/* Past retreats: muted archive */
+.s-rdl--past .s-rdl__img { filter: grayscale(1); opacity: 0.85; }
+.s-rdl--past .s-rdl__title { color: var(--ink-mid); }
+.s-rdl--past .s-rdl__sub { color: var(--ink-dim); }
+.s-past-head { padding: clamp(5rem, 10vw, 9rem) var(--page-pad) clamp(2rem, 4vw, 3rem); }
+
+/* ── 21 · ON-DEMAND VIDEO MODULE (full-bleed, homepage-style) ─ */
+.s-ondemand {
+  padding: 0 var(--gap);
+  margin-bottom: var(--section);
+}
+.s-ondemand__inner {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background: var(--wash);
+}
+.s-ondemand__videos { position: absolute; inset: 0; display: flex; }
+.s-ondemand__video {
+  flex: 1 1 50%;
+  width: 50%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center bottom;
+  filter: grayscale(1);
+}
+.s-ondemand__badge {
+  position: absolute;
+  top: clamp(1.5rem, 3vw, 2.5rem);
+  left: clamp(1.5rem, 3vw, 2.5rem);
+  z-index: 2;
+  font-family: var(--f-mono);
+  font-size: var(--t-label);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-label);
+  color: var(--ink);
+  background: var(--bg);
+  padding: 0.5rem 0.9rem;
+}
+.s-ondemand__caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  padding: clamp(2rem, 4vw, 3.5rem);
+  background: linear-gradient(to top, rgba(10,10,8,0.7) 0%, transparent 100%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+}
+.s-ondemand__caption .label { color: rgba(255,255,255,0.5); margin-bottom: 0.5rem; }
+.s-ondemand__title {
+  font-size: var(--t-h3);
+  color: #fff;
+  max-width: 24ch;
+  margin-bottom: 0.5rem;
+}
+.s-ondemand__text {
+  font-family: var(--f-mono);
+  font-size: var(--t-small);
+  color: rgba(255,255,255,0.75);
+  line-height: 1.5;
+  max-width: 40ch;
+}
+.s-ondemand__caption-right { flex-shrink: 0; }
+
+/* ── 22 · LIBRARY ───────────────────────────────────────────── */
+.s-libsection { padding: 0 var(--page-pad) var(--section); }
+.s-libsection__title {
+  font-size: var(--t-h2);
+  margin-bottom: 2rem;
+}
+.s-libsection__head {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: start;
+  margin-bottom: 2.5rem;
+}
+.s-libsection__head .s-libsection__title { margin-bottom: 0; }
+
+/* Mono titles opt back out of the global display voice */
+.s-playlist-embed__name,
+.s-reading__title,
+.s-insight__title {
+  text-transform: none;
+  letter-spacing: normal;
+  line-height: 1.4;
+}
+
+/* Spotify playlist embeds */
 .s-playlist-embeds {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--gap);
 }
-.s-playlist-embed {
-  display: flex;
-  flex-direction: column;
-  gap: 0.85rem;
-}
+.s-playlist-embed { display: flex; flex-direction: column; gap: 0.85rem; }
 .s-playlist-embed__name {
   font-family: var(--f-mono);
-  font-size: 1.0625rem;
+  font-size: var(--t-mono-lg);
   font-weight: 700;
   color: var(--ink);
 }
@@ -2791,31 +1034,313 @@ a > .label {
   height: 152px;
   border: none;
 }
-@media (max-width: 960px) {
-  .s-playlist-embeds { grid-template-columns: 1fr; gap: 2rem; }
+
+/* Reading list */
+.s-reading { list-style: none; }
+.s-reading__item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--hairline);
+}
+.s-reading__item:last-child { border-bottom: 1px solid var(--hairline); }
+.s-reading__title {
+  font-family: var(--f-mono);
+  font-size: var(--t-mono-lg);
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.4;
+}
+.s-reading__title:hover { color: var(--accent2); }
+.s-reading__author {
+  font-family: var(--f-mono);
+  font-size: var(--t-small);
+  color: var(--ink-mid);
 }
 
-/* ── Library: Reading + Expert Insights now real links (2026-07-28) ──
-   .s-reading__title and .s-insight__text link, and the Jill Miller
-   "deep dive" inline link, all match the live samrabon.com hrefs
-   exactly (fetched and verified, not guessed). Same canonical hover
-   as everywhere else on the site; the global `a { color: inherit;
-   text-decoration: none; }` reset means these need no other change
-   to sit exactly where the old plain <span>/<h3> text used to. */
-.s-reading__title:hover,
+/* Expert insights */
+.s-insights {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 4vw, 3.5rem);
+}
+.s-insight__title {
+  font-family: var(--f-mono);
+  font-size: var(--t-mono-lg);
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 0.6rem;
+  line-height: 1.4;
+}
+.s-insight__text {
+  font-size: var(--t-small);
+  line-height: var(--lh-mono);
+  color: var(--ink-mid);
+  max-width: 46ch;
+}
 .s-insight__title a:hover,
-.s-insight__text a:hover {
-  color: var(--accent2);
+.s-insight__text a:hover { color: var(--accent2); }
+
+/* ── 23 · NEWSLETTER INTRO (About, Sam's words) ─────────────── */
+.s-newsletter-intro {
+  padding: var(--section) var(--page-pad);
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.s-newsletter-intro__prose { margin: 1.25rem 0 1.75rem; }
+.s-newsletter-intro__prose p {
+  font-size: var(--t-lead);
+  line-height: var(--lh-body);
+  color: var(--ink);
 }
 
-/* ── s-rdl mobile repair: restore single-column stack under 860px ──
-   The unguarded "consistent 50/50 split" refinement block re-applied
-   grid-template-columns: 1fr 1fr at ALL widths, overriding the 860px
-   stack rule above it in the cascade. Append-only fix per repo rule. */
-@media (max-width: 860px) {
+/* ── 24 · GLYPH SYSTEM (STEP · HINGE · ROTATE · REACH · SHIFT) ─
+   Verbatim from Sam's Movement Snacks for Daily Life on Solin.
+   One SVG sprite per page (<symbol> defs in <body>), used via <use>. */
+.glyph {
+  display: inline-block;
+  stroke: currentColor;
+  stroke-width: 2.25;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+.glyph--14 { width: 14px; height: 14px; }
+.glyph--40 { width: 40px; height: 40px; }
+.glyph--88 { width: 88px; height: 88px; }
+
+/* Breathing dot: liveness indicator, square per zero-radius system */
+.live-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  background: var(--accent2);
+  margin-right: 0.5em;
+  vertical-align: 6%;
+  animation: breath 4s ease-in-out infinite;
+}
+@keyframes breath {
+  0%, 100% { transform: scale(1); opacity: 0.65; }
+  50% { transform: scale(1.3); opacity: 1; }
+}
+
+/* Ticker track (lives inside .footer__ticker) */
+.s-ticker__track {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  width: max-content;
+  animation: ticker 32s linear infinite;
+}
+.s-ticker__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  font-family: var(--f-mono);
+  font-size: var(--t-label);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: #fff;
+  white-space: nowrap;
+}
+.s-ticker__item .glyph { color: rgba(255,255,255,0.6); }
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ── 25 · MOTION ────────────────────────────────────────────── */
+.fade-in {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity var(--dur-slow) ease, transform var(--dur-slow) ease;
+}
+.fade-in.is-visible { opacity: 1; transform: translateY(0); }
+
+/* One curve, three durations, every rollover */
+.pill-cta,
+.footer__submit,
+.nav-pill__links a,
+.footer__nav a,
+.nav-overlay a,
+.s-reading__title,
+.s-insight__title a,
+.s-insight__text a,
+.ts-cta,
+.ts-quote,
+.ts-prev, .ts-next,
+a > .label {
+  transition: background var(--dur-fast) ease,
+              color var(--dur-fast) ease,
+              border-color var(--dur-fast) ease,
+              opacity var(--dur-fast) ease;
+}
+.ts-dot { transition: background var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease); }
+.s-shelf__name { transition: color var(--dur-med) ease; }
+.s-shelf__img img,
+.s-shelf__img video { transition: transform var(--dur-slow) var(--ease); }
+a:hover > .label { color: var(--accent2); }
+
+/* ── 26 · RESPONSIVE ── two breakpoints: 960 (stack) · 560 (small) */
+@media (max-width: 960px) {
+  :root { --page-pad: 1.5rem; --section: clamp(3.5rem, 7vw, 5rem); }
+
+  /* Hero */
+  .hero-full img { height: clamp(440px, 80vh, 640px); object-position: 65% 40%; }
+
+  /* Shelf */
+  .s-shelf { grid-template-columns: 1fr; gap: 2rem; }
+  .s-shelf__img img,
+  .s-shelf__img video { aspect-ratio: 4 / 3; }
+
+  /* Retreat band */
+  .s-retreat__inner { min-height: clamp(440px, 80vh, 640px); }
+  .s-retreat__caption { flex-direction: column; align-items: flex-start; }
+
+  /* Splits stack */
+  .s-offer { grid-template-columns: 1fr; }
+  .s-offer--reverse .s-offer__media { order: 0; }
+  .s-offer__media { min-height: 70vw; }
+  .s-testimonials,
+  .s-testimonials--three { grid-template-columns: 1fr; }
+  .s-libsection__head { grid-template-columns: 1fr; }
+  .s-playlist-embeds { grid-template-columns: 1fr; gap: 2rem; }
+  .s-insights { grid-template-columns: 1fr; }
+  .s-pageintro { padding-top: clamp(6rem, 12vw, 8rem); }
+  .footer__inner { grid-template-columns: 1fr; gap: 2.5rem; }
+
+  /* Bio split */
+  .s-bio { grid-template-columns: 1fr; padding: 0; }
+  .s-bio__img { position: relative; top: auto; height: 100vw; align-self: auto; }
+  .s-bio__body { padding: clamp(2rem, 4vw, 3rem) var(--page-pad); }
+
+  /* Retreat detail stacks, image first */
   .s-rdl,
   .s-rdl--flip {
     grid-template-columns: 1fr;
     direction: ltr;
+    height: auto;
+    margin: 0 0 clamp(3rem, 8vw, 4rem) 0;
   }
+  .s-rdl__img { height: 70vw; }
+  .s-rdl__body { height: auto; padding: 2rem var(--page-pad) 0.5rem; }
+  .s-rdl__facts { gap: 1.5rem 2.5rem; }
+
+  /* On-Demand video module grows taller than 16:9 */
+  .s-ondemand__inner { aspect-ratio: auto; min-height: clamp(480px, 120vw, 640px); }
+  .s-ondemand__caption { flex-direction: column; align-items: flex-start; }
+
+  /* Patterns module */
+  .s-patterns-module__inner { min-height: clamp(220px, 40vh, 320px); }
+
+  /* ── Mobile nav: compact centered pill + full-screen overlay ── */
+  .nav-pill {
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    transition: transform 0.3s var(--ease), opacity 0.3s ease;
+  }
+  .nav-pill.is-hidden {
+    transform: translateX(-50%) translateY(-150%);
+    opacity: 0;
+    pointer-events: none;
+  }
+  .nav-pill .nav-pill__inner,
+  .nav-pill.is-expanded .nav-pill__inner {
+    width: auto;
+    grid-template-columns: 44px auto 44px;
+    height: 48px;
+    padding: 0;
+    overflow: visible;
+    gap: 0;
+  }
+  .nav-pill__hamburger { width: 44px; height: 48px; grid-column: 1; }
+  .nav-pill__wordmark { grid-column: 2; padding: 0 0.75rem; }
+  .nav-pill.is-expanded .nav-pill__links,
+  .nav-pill__links { display: none; }
+
+  .nav-overlay {
+    display: flex;
+    position: fixed;
+    inset: 0;
+    z-index: 90;
+    background: var(--accent);
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem var(--page-pad);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-12px);
+    transition: opacity 0.32s ease, transform 0.32s var(--ease), visibility 0s linear 0.32s;
+  }
+  .nav-overlay.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition: opacity 0.32s ease, transform 0.32s var(--ease), visibility 0s;
+  }
+  .nav-overlay a {
+    font-family: var(--f-display);
+    font-size: var(--t-display);
+    font-weight: 900;
+    letter-spacing: var(--ls-display);
+    text-transform: uppercase;
+    line-height: 1.18;
+    color: rgba(255,255,255,0.65);
+  }
+  .nav-overlay a[aria-current="page"],
+  .nav-overlay a:active { color: #fff; }
+  .nav-overlay__foot {
+    position: absolute;
+    bottom: clamp(2rem, 6vh, 3.5rem);
+    left: var(--page-pad);
+    right: var(--page-pad);
+    display: flex;
+    gap: 1.5rem;
+    font-family: var(--f-mono);
+    font-size: var(--t-label);
+    letter-spacing: var(--ls-label);
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+  }
+  .nav-overlay__foot a {
+    font-family: var(--f-mono);
+    font-size: var(--t-label);
+    font-weight: 400;
+    letter-spacing: var(--ls-label);
+    color: rgba(255,255,255,0.55);
+  }
+  body.nav-open { overflow: hidden; }
+}
+
+@media (max-width: 560px) {
+  .footer__form { flex-direction: column; max-width: 100%; }
+  .footer__submit { width: 100%; }
+  .footer__wordmark { font-size: clamp(3.5rem, 22vw, 6rem); }
+  .ts-stage { grid-template-columns: 1.5rem 1fr 1.5rem; gap: 0.75rem; }
+  .ts-track { min-height: 28rem; }
+  .ts-foot { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+  .s-patterns-module__row { flex-wrap: wrap; gap: 2rem 2.25rem; }
+  .glyph--88 { width: 64px; height: 64px; }
+}
+
+/* ── 27 · REDUCED MOTION ────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .fade-in { opacity: 1; transform: none; }
+  .live-dot { animation: none; opacity: 1; }
+  .s-ticker__track { animation: none; }
+  .ts-slide { transition: opacity 0.2s; transform: none !important; }
+  .s-shelf__name,
+  .s-shelf__img img,
+  .s-shelf__img video { transition: none; }
+  .s-shelf__item:hover .s-shelf__img img,
+  .s-shelf__item:hover .s-shelf__img video { transform: none; }
 }

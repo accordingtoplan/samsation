@@ -75,8 +75,8 @@
         <div class="sg-swatch"><div class="sg-swatch__chip" style="background:var(--ink-dim)"></div><span class="sg-token">--ink-dim · 35%</span></div>
       </div>
       <ul class="sg-rules">
-        <li>Green is identity: footer, cites, the patterns module. It does not do hovers.</li>
-        <li>Persimmon has a job description: status, access, aliveness, plus every hover and rollover. Roughly 5% of any page. Never decoration.</li>
+        <li>Green is identity: footer, the patterns module, and testimonial names. It does not do hovers.</li>
+        <li>Persimmon is the signal layer: every label, every button outline, every hover fill, the current page in the nav. If it is orange, it orients or responds. Never body copy, never headlines.</li>
         <li>One orange. White text on persimmon fills, always. Keep persistent persimmon text large enough to read on the grey; if a small line of it looks weak, the answer is layout, not a second orange.</li>
         <li>One grey, one green, one orange. Color is not where this site gets its personality.</li>
       </ul>
@@ -102,12 +102,11 @@
     <section class="sg-section">
       <h2 class="sg-h">Labels</h2>
       <div class="sg-row" style="align-items:center">
-        <span class="label" style="margin:0">Standard label</span>
-        <span class="label label--accent" style="margin:0">Accent label</span>
+        <span class="label" style="margin:0">Label · always persimmon</span>
         <span class="label" style="margin:0;display:inline-flex;align-items:center;gap:0.5em"><svg class="glyph glyph--14" style="color:var(--ink-dim)"><use href="#glyph-hinge"></use></svg>Page eyebrow</span>
       </div>
       <ul class="sg-rules">
-        <li>Accent labels mark status and access only (First access, Join). Nothing else decorates a label. The breathing-dot experiment is retired.</li>
+        <li>All labels are persimmon, all the time, on every surface. There is no second label color.</li>
         <li>Each inner page carries its glyph in the intro eyebrow: About/Hinge, Coaching/Step, On-Demand/Shift, Retreat/Reach, Library/Rotate.</li>
         <li>No chips, no badges. A filled rectangle with padding is a button; nothing that only names things gets that shape. Module names live in caption labels.</li>
       </ul>
@@ -116,11 +115,11 @@
     <!-- ── BUTTONS ── -->
     <section class="sg-section">
       <h2 class="sg-h">Buttons</h2>
-      <p class="sg-note">One component, one rule of context: on the grey, the CTA is outlined ink; on imagery and dark fields it is solid persimmon. Hover always swaps to the other state. The footer Subscribe is the same solid form. CTAs sit one type step above labels (--t-small, bold) so a control never dresses like a caption. Inline references use .text-link. There are no other button or link styles.</p>
+      <p class="sg-note">One component, one rule of context: on the grey, the CTA is outlined ink; on imagery and dark fields it is solid persimmon. Hover always swaps to the other state. The footer Subscribe is the same solid form. CTAs sit one type step above labels (--t-small, bold) so a control never dresses like a caption. The persimmon outline says pressable; the fill is the response. Inline references use .text-link. There are no other button or link styles.</p>
       <div class="sg-row" style="align-items:center">
         <a href="#" class="pill-cta" onclick="return false">Standard CTA</a>
-        <span class="sg-dark"><a href="#" class="pill-cta pill-cta--light" onclick="return false">On imagery / dark</a></span>
-        <span class="sg-green"><button class="footer__submit" type="button">Subscribe</button></span>
+        <span class="sg-dark"><a href="#" class="pill-cta" onclick="return false">Same on dark</a></span>
+        <span class="sg-green"><button class="footer__submit" type="button">Same on green</button></span>
         <a href="#" class="text-link" onclick="return false" style="font-family:var(--f-mono);font-size:var(--t-small)">Inline text link</a>
       </div>
     </section>
@@ -157,7 +156,7 @@
         <li>Zero border radius, site-wide. No pills, no rounded cards, square favicon, square dot.</li>
         <li>Hairlines are rgba(28,28,26,0.12), always 1px, always full-width within their section.</li>
         <li>Two breakpoints: 960px (layout stacks, mobile nav) and 560px (small-phone refinements).</li>
-        <li>Keyboard focus is a 2px persimmon outline, offset 2px, on every link, button, and input. Every page starts with a skip-to-content link, visible only on focus.</li>
+        <li>Keyboard focus is a 2px persimmon outline, offset 2px, on every link, button, and input. Every page starts with a skip-to-content link, visible only on focus. In the nav, the current page holds the hover color: orange means you are here.</li>
         <li>Every tap target is at least 24px tall: nav and footer links carry invisible padding, carousel dots have a 24px hit area around the 5px mark.</li>
         <li>Three link forms and no more: the CTA, the label/nav link, and the underlined .text-link for inline references.</li>
       </ul>
@@ -175,7 +174,7 @@
       
       <div class="sg-mod"><strong>s-pageintro</strong><span>Inner-page opener: glyph eyebrow, display title, mono lead.</span></div>
       <div class="sg-mod"><strong>s-bio</strong><span>Same 50/50 full-bleed split, sticky full-height image for long-copy pages (About).</span></div>
-      <div class="sg-mod"><strong>s-testimonials / ts-*</strong><span>Static 2- or 3-up quote grid, or the homepage carousel. Quotes speak in the display voice, cites in green.</span></div>
+      <div class="sg-mod"><strong>s-testimonials / ts-*</strong><span>Static 2- or 3-up quote grid, or the homepage carousel. Quotes speak in the display voice; cites are green, first and last name only, never a job title, never italic.</span></div>
       <div class="sg-mod"><strong>s-patterns-module</strong><span>Green field, display title, five 88px glyphs. The brand's method moment.</span></div>
       <div class="sg-mod"><strong>s-ondemand</strong><span>Full-bleed split-video band with gradient caption. Video is grayscale.</span></div>
       <div class="sg-mod"><strong>s-libsection</strong><span>Library lists: mono-title reading rows, insight pairs, Spotify embeds. Hairline-separated, no cards.</span></div>

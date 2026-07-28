@@ -1340,11 +1340,12 @@ a > .label {
 /* ── HOMEPAGE · LIBRARY MUSIC BAND (appended 2026-07-28) ────── */
 .s-music {
   padding: 0;
+  margin-bottom: var(--section-sm);
 }
 .s-music__inner {
   position: relative;
   overflow: hidden;
-  min-height: clamp(520px, 92vh, 900px);
+  min-height: clamp(420px, 64vh, 620px);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -1360,8 +1361,9 @@ a > .label {
   filter: grayscale(1);
 }
 .s-music__caption {
-  position: absolute;
-  left: 0; right: 0; bottom: 0;
+  /* in flow: the band grows with the caption (352px embed), video sits behind */
+  position: relative;
+  margin-top: auto;
   z-index: 2;
   padding: clamp(2rem, 4vw, 3.5rem);
   background: var(--scrim-up);
@@ -1384,16 +1386,10 @@ a > .label {
   line-height: 1.5;
   max-width: 40ch;
 }
-.s-music__caption-right {
-  flex-shrink: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 1rem;
-  width: min(380px, 100%);
-}
+.s-music__caption-right { flex-shrink: 0; }
 .s-music__embed {
-  width: 100%;
+  width: min(420px, 100%);
+  margin-top: 1.25rem;
   border: 0;
   border-radius: 12px;
   display: block;
@@ -1401,9 +1397,6 @@ a > .label {
 @media (max-width: 720px) {
   .s-music__inner { min-height: clamp(440px, 120vw, 640px); }
   .s-music__caption {
-    /* caption grows past the min-height on mobile (352px embed): keep it in flow so the band stretches with it */
-    position: static;
-    margin-top: auto;
     flex-direction: column;
     align-items: flex-start;
     /* caption is taller on mobile, so double the same scrim token for legibility */

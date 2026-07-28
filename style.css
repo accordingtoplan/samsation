@@ -2807,3 +2807,15 @@ a > .label {
 .s-insight__text a:hover {
   color: var(--accent2);
 }
+
+/* ── s-rdl mobile repair: restore single-column stack under 860px ──
+   The unguarded "consistent 50/50 split" refinement block re-applied
+   grid-template-columns: 1fr 1fr at ALL widths, overriding the 860px
+   stack rule above it in the cascade. Append-only fix per repo rule. */
+@media (max-width: 860px) {
+  .s-rdl,
+  .s-rdl--flip {
+    grid-template-columns: 1fr;
+    direction: ltr;
+  }
+}

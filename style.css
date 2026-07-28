@@ -1421,3 +1421,15 @@ a > .label {
 }
 .contact-form__input:focus { border-color: var(--accent2); }
 .contact-form__textarea { resize: vertical; min-height: 9rem; }
+
+/* ── 27 · LINKED HEADLINES + MEDIA ──────────────────────────────
+   Every module headline and its image/video link to the module's
+   CTA target. Headline hover joins the canonical persimmon hover
+   language; media links stay visually quiet. */
+.hl-link { color: inherit; text-decoration: none; transition: color var(--dur-fast) var(--ease); }
+.hl-link:hover { color: var(--accent2); }
+.media-link { display: block; color: inherit; text-decoration: none; }
+.s-offer__media .media-link, .s-offer__media .media-link picture { height: 100%; }
+a.s-bio__img { display: block; }
+.s-music__cover { position: absolute; inset: 0; z-index: 1; }
+a.s-rdl__img { display: block; }

@@ -23,7 +23,7 @@
   <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
   <link rel="icon" type="image/png" sizes="64x64" href="img/favicon-64.png">
   <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
-  <link rel="stylesheet" href="style.css?v=20260728-5">
+  <link rel="stylesheet" href="style.css?v=20260728-6">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -298,9 +298,9 @@
       <a href="on-demand.html" class="s-shelf__item">
         <div class="s-shelf__img">
           <video
-            src="video/solin-ondemand.mp4"
+            data-src="video/solin-ondemand.mp4" preload="none"
             poster="img/solin-ondemand-poster.jpg"
-            autoplay muted loop playsinline
+            muted loop playsinline
             aria-label="Sam training, preview of an On-Demand program">
           </video>
         </div>
@@ -374,16 +374,16 @@
         <div class="s-ondemand__videos">
           <video
             class="s-ondemand__video"
-            src="video/solin-ondemand.mp4"
+            data-src="video/solin-ondemand.mp4" preload="none"
             poster="img/solin-ondemand-poster.jpg"
-            autoplay muted loop playsinline
+            muted loop playsinline
             aria-label="Preview of a Solin on-demand session">
           </video>
           <video
             class="s-ondemand__video"
-            src="video/sam-solin-reel.mp4"
+            data-src="video/sam-solin-reel.mp4" preload="none"
             poster="img/sam-solin-reel-poster.jpg"
-            autoplay muted loop playsinline
+            muted loop playsinline
             aria-label="Sam leading a Solin on-demand session">
           </video>
         </div>
@@ -407,9 +407,9 @@
         <a class="s-music__cover" href="library.html" aria-label="Visit the library"></a>
         <video
           class="s-music__video"
-          src="video/library-music.mp4"
+          data-src="video/library-music.mp4" preload="none"
           poster="img/library-music-poster.jpg"
-          autoplay muted loop playsinline
+          muted loop playsinline
           aria-label="Dancers moving barefoot on the grass"></video>
         <div class="s-music__caption">
           <div>

@@ -1433,3 +1433,61 @@ a > .label {
 a.s-bio__img { display: block; }
 .s-music__cover { position: absolute; inset: 0; z-index: 1; }
 a.s-rdl__img { display: block; }
+
+/* ── 28 · MOTION v2: staggered reveals, image settle, blur-up ──
+   fade-in now uses the system curve; grids stagger their children;
+   module imagery settles from a 1.04 scale as its section reveals;
+   lazy images fade in from --wash on decode. All of it collapses
+   under prefers-reduced-motion (existing rule keeps .fade-in inert). */
+.fade-in { transform: translateY(24px); transition: opacity var(--dur-slow) var(--ease), transform var(--dur-slow) var(--ease); }
+
+/* Staggered children: product shelf, About peer testimonials */
+.s-shelf.fade-in .s-shelf__item,
+.s-testimonials--three.fade-in blockquote {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity var(--dur-slow) var(--ease), transform var(--dur-slow) var(--ease);
+}
+.s-shelf.fade-in.is-visible .s-shelf__item,
+.s-testimonials--three.fade-in.is-visible blockquote { opacity: 1; transform: translateY(0); }
+.s-shelf.fade-in.is-visible .s-shelf__item:nth-child(2),
+.s-testimonials--three.fade-in.is-visible blockquote:nth-child(2) { transition-delay: 0.08s; }
+.s-shelf.fade-in.is-visible .s-shelf__item:nth-child(3),
+.s-testimonials--three.fade-in.is-visible blockquote:nth-child(3) { transition-delay: 0.16s; }
+
+/* Image settle on reveal (module imagery only, never the hero) */
+.fade-in .s-offer__media img,
+.fade-in .s-rdl__img img,
+.fade-in .s-retreat__inner img,
+.fade-in .s-shelf__img img,
+.fade-in .s-shelf__img video {
+  transform: scale(1.04);
+  transition: transform var(--dur-slow) var(--ease);
+}
+.fade-in.is-visible .s-offer__media img,
+.fade-in.is-visible .s-rdl__img img,
+.fade-in.is-visible .s-retreat__inner img,
+.fade-in.is-visible .s-shelf__img img,
+.fade-in.is-visible .s-shelf__img video { transform: scale(1); }
+
+/* Blur-up: lazy images arrive on --wash, fade in on decode */
+img[loading="lazy"] { opacity: 0; transition: opacity var(--dur-slow) var(--ease); background: var(--wash); }
+img[loading="lazy"].is-loaded { opacity: 1; }
+
+/* Bio portrait now a real <img> inside the sticky frame */
+.s-bio__img { overflow: hidden; }
+.s-bio__img img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+
+/* Fire Island crop (was inline on the old background div) */
+#fire-island .s-rdl__img img { object-position: center 60%; }
+
+@media (prefers-reduced-motion: reduce) {
+  .s-shelf.fade-in .s-shelf__item,
+  .s-testimonials--three.fade-in blockquote,
+  .fade-in .s-offer__media img,
+  .fade-in .s-rdl__img img,
+  .fade-in .s-retreat__inner img,
+  .fade-in .s-shelf__img img,
+  .fade-in .s-shelf__img video { opacity: 1; transform: none; transition: none; }
+  img[loading="lazy"] { opacity: 1; transition: none; }
+}

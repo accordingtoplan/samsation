@@ -359,3 +359,37 @@
       + '&body=' + encodeURIComponent(body);
   });
 })();
+
+/* ── Motion v2: deferred video loading + lazy-image blur-up ── */
+(function () {
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Videos: load when near the viewport, then play (unless reduced motion) */
+  var vids = Array.from(document.querySelectorAll('video[data-src], video source[data-src]')).map(function (el) {
+    return el.tagName === 'SOURCE' ? el.closest('video') : el;
+  });
+  vids = vids.filter(function (v, i) { return vids.indexOf(v) === i; });
+  function loadVideo(v) {
+    if (v.dataset.src) { v.src = v.dataset.src; delete v.dataset.src; }
+    v.querySelectorAll('source[data-src]').forEach(function (s) { s.src = s.dataset.src; s.removeAttribute('data-src'); });
+    v.load();
+    if (!reduced) { var p = v.play(); if (p) p.catch(function () {}); }
+  }
+  if (!('IntersectionObserver' in window)) {
+    vids.forEach(loadVideo);
+  } else {
+    var vObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { loadVideo(e.target); vObs.unobserve(e.target); }
+      });
+    }, { rootMargin: '300px 0px' });
+    vids.forEach(function (v) { vObs.observe(v); });
+  }
+
+  /* Lazy images: mark loaded for the blur-up fade */
+  document.querySelectorAll('img[loading="lazy"]').forEach(function (img) {
+    if (img.complete && img.naturalWidth) { img.classList.add('is-loaded'); return; }
+    img.addEventListener('load', function () { img.classList.add('is-loaded'); }, { once: true });
+    img.addEventListener('error', function () { img.classList.add('is-loaded'); }, { once: true });
+  });
+})();

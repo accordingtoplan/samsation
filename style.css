@@ -1565,33 +1565,11 @@ img[loading="lazy"].is-loaded { opacity: 1; }
 /* Optical sizing: tiny ticker glyphs keep a heavier weight to stay legible */
 .s-ticker__item .glyph { stroke-width: 2; }
 
-/* ── 29 · RANGE-OF-MOTION HOVER ARCS (shelf tiles, desktop only) ─
-   The designed micro-graphic from the glyph system: a single arc
-   draws over the tile image on hover, ~400ms on the system curve.
-   White ink on imagery, glyph stroke language. Pointer + hover
-   devices only; inert under prefers-reduced-motion. */
-.s-shelf__img { position: relative; }
-.s-shelf__arc {
-  position: absolute;
-  inset: 12%;
-  width: 76%;
-  height: 76%;
-  pointer-events: none;
-  display: none;
-}
-.s-shelf__arc path {
-  fill: none;
-  stroke: #fff;
-  stroke-width: 1.5;
-  stroke-linecap: round;
-  stroke-dasharray: 117;
-  stroke-dashoffset: 117;
-}
-@media (hover: hover) and (pointer: fine) {
-  .s-shelf__arc { display: block; }
-  .s-shelf__arc path { transition: stroke-dashoffset 0.4s var(--ease); }
-  .s-shelf__item:hover .s-shelf__arc path { stroke-dashoffset: 0; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .s-shelf__arc { display: none; }
-}
+/* ── 29 · SHELF TILE HOVER: slow image drift ─────────────────
+   The whole image eases into a quiet drift while hovered:
+   a touch more scale and a slight upward float, on a long
+   duration so it reads as movement, not a snap. */
+.s-shelf__img img,
+.s-shelf__img video { transition: transform 1.2s var(--ease); }
+.s-shelf__item:hover .s-shelf__img img,
+.s-shelf__item:hover .s-shelf__img video { transform: scale(1.07) translateY(-1.2%); }

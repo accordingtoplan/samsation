@@ -953,8 +953,7 @@ h1, h2, h3, h4,
   margin: 0;
   line-height: 1.5;
 }
-/* Past retreats: muted archive */
-.s-rdl--past .s-rdl__img { filter: grayscale(1); opacity: 0.85; }
+/* Past retreats: muted type, imagery keeps its color (F, 2026-07-28) */
 .s-rdl--past .s-rdl__title { color: var(--ink-mid); }
 .s-rdl--past .s-rdl__sub { color: var(--ink-dim); }
 .s-past-head { padding: 0 var(--page-pad) clamp(2rem, 4vw, 3rem); }

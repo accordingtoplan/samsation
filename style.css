@@ -538,7 +538,12 @@ h1, h2, h3, h4,
 .ts-slide.is-active { transform: translateX(0); pointer-events: auto; visibility: visible; }
 .ts-slide.is-exit   { transform: translateX(-100%); visibility: visible; pointer-events: none; }
 .ts-slide:hover .ts-quote { color: var(--ink-mid); }
-.ts-slide:hover .ts-cta   { color: var(--accent2); }
+/* Whole slide is the link: hovering it fires the button's own hover */
+.ts-slide:hover .pill-cta {
+  background: var(--accent2);
+  color: #fff;
+  border-color: var(--accent2);
+}
 .ts-quote {
   font-size: var(--t-h3);
   line-height: 1.15;
@@ -554,13 +559,6 @@ h1, h2, h3, h4,
   text-transform: uppercase;
   color: var(--accent);
   font-style: normal;
-}
-.ts-cta {
-  font-family: var(--f-mono);
-  font-size: var(--t-label);
-  letter-spacing: var(--ls-label);
-  text-transform: uppercase;
-  color: var(--ink-mid);
 }
 .ts-prev, .ts-next {
   font-family: var(--f-mono);
@@ -1177,7 +1175,6 @@ h1, h2, h3, h4,
 .s-reading__title,
 .s-insight__title a,
 .s-insight__text a,
-.ts-cta,
 .ts-quote,
 .ts-prev, .ts-next,
 a > .label {

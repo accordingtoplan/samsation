@@ -1556,3 +1556,11 @@ img[loading="lazy"].is-loaded { opacity: 1; }
 @media (max-width: 900px) {
   .s-retreat__inner { min-height: clamp(380px, 64vh, 540px); }
 }
+
+/* ── 3x · GLYPH REFINEMENT — drawn/fine pass (F, 2026-07-28) ─
+   Thinner line weight site-wide; filled marks converted to outlines
+   in the sprite. Overrides section 24 base weights. */
+.glyph { stroke-width: 1.1; }
+.s-patterns-module .glyph { stroke-width: 1.3; }
+/* Optical sizing: tiny ticker glyphs keep a heavier weight to stay legible */
+.s-ticker__item .glyph { stroke-width: 2; }

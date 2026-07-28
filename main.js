@@ -393,3 +393,19 @@
     img.addEventListener('error', function () { img.classList.add('is-loaded'); }, { once: true });
   });
 })();
+
+/* ── Ticker: clone items until the track covers any viewport width ──
+   The CSS animation slides the track by -50%, so the track must be at
+   least 2× the viewport wide or a gap opens on large screens. */
+(function () {
+  document.querySelectorAll('.s-ticker__track').forEach(function (track) {
+    var originals = Array.prototype.slice.call(track.children);
+    var guard = 0;
+    while (track.scrollWidth < window.innerWidth * 2 && guard < 10) {
+      originals.forEach(function (item) {
+        track.appendChild(item.cloneNode(true));
+      });
+      guard++;
+    }
+  });
+})();

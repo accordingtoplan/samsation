@@ -1491,3 +1491,62 @@ img[loading="lazy"].is-loaded { opacity: 1; }
   .fade-in .s-shelf__img video { opacity: 1; transform: none; transition: none; }
   img[loading="lazy"] { opacity: 1; transition: none; }
 }
+/* ── 28 · FOOTER v2: labeled columns + bottom row (append-only) ── */
+.footer__inner--cols {
+  grid-template-columns: 1.4fr 1fr 1fr;
+  border-bottom: none;
+  padding-bottom: clamp(2.5rem, 4vw, 4rem);
+}
+.footer .label { color: rgba(255,255,255,0.9); }  /* persimmon fails contrast on green */
+.footer__col-label {
+  display: block;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(255,255,255,0.25);
+}
+.footer__newsletter-label {
+  display: block;
+  padding-bottom: 0.75rem;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(255,255,255,0.25);
+}
+.footer__nav--stack { flex-direction: column; align-items: flex-start; gap: 0.25rem; }
+.footer__inner--cols .footer__nav a { color: rgba(255,255,255,0.85); }
+.footer__inner--cols .footer__nav a:hover { color: #fff; }
+.footer__inner--cols .footer__nav a[aria-current="page"] { color: rgba(255,255,255,0.45); pointer-events: none; }
+.footer__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem 2rem;
+  flex-wrap: wrap;
+  padding: 1.25rem 0;
+  border-top: 1px solid rgba(255,255,255,0.15);
+}
+.footer__meta { margin: 0; }
+.footer__privacy {
+  font-family: var(--f-mono);
+  font-size: var(--t-label);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+}
+.footer__privacy:hover { color: #fff; }
+@media (max-width: 900px) {
+  .footer__inner--cols { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+  .footer__col--news { grid-column: 1 / -1; }
+}
+@media (max-width: 560px) {
+  .footer__inner--cols { grid-template-columns: 1fr 1fr; }
+}
+
+/* Footer v2.1: contrast bump per F 2026-07-28 */
+.footer__inner--cols .footer__nav a { color: #fff; }
+.footer__inner--cols .footer__nav a:hover { color: rgba(255,255,255,0.7); }
+.footer__newsletter-text { color: rgba(255,255,255,0.85); }
+.footer__meta { color: rgba(255,255,255,0.75); }
+.footer__privacy { color: rgba(255,255,255,0.75); }
+.footer__col-label, .footer__newsletter-label { border-bottom-color: rgba(255,255,255,0.4); }
+.footer .label { color: #fff; }
+.footer__input { background: rgba(255,255,255,0.5); color: var(--ink); }
+.footer__input::placeholder { color: rgba(28,28,26,0.55); }

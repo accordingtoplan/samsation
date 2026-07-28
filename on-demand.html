@@ -210,8 +210,8 @@
       </div>
     </div>
 
-    <div class="footer__inner">
-      <div>
+    <div class="footer__inner footer__inner--cols">
+      <div class="footer__col footer__col--news">
         <span class="label footer__newsletter-label">Stay in it</span>
         <p class="footer__newsletter-text">A letter, not a newsletter. Twice a month, when there is something worth saying.</p>
         <form class="footer__form" action="https://samrabon.substack.com/subscribe" method="get" target="_blank">
@@ -219,15 +219,29 @@
           <button type="submit" class="footer__submit">Subscribe</button>
         </form>
       </div>
-      <div class="footer__right">
-        <p class="footer__meta">SamSation · A Practice in Real Life Movement · Los Angeles</p>
-        <nav class="footer__nav">
+      <nav class="footer__col" aria-label="Footer site navigation">
+        <span class="label footer__col-label">Explore</span>
+        <div class="footer__nav footer__nav--stack">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="coaching.html">Coaching</a>
+          <a href="on-demand.html" aria-current="page">On-Demand</a>
+          <a href="retreat.html">Retreat</a>
+          <a href="library.html">Library</a>
+        </div>
+      </nav>
+      <div class="footer__col">
+        <span class="label footer__col-label">Connect</span>
+        <div class="footer__nav footer__nav--stack">
           <a href="https://www.instagram.com/samrabon_" target="_blank" rel="noopener">Instagram</a>
           <a href="https://samrabon.substack.com" target="_blank" rel="noopener">Substack</a>
           <a href="about.html#contact">Contact</a>
-          <a href="privacy.html">Privacy</a>
-        </nav>
+        </div>
       </div>
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__meta">SamSation · A Practice in Real Life Movement · Los Angeles</p>
+      <a class="footer__privacy" href="privacy.html">Privacy</a>
     </div>
     <div class="footer__wordmark-wrap">
       <div class="footer__wordmark" aria-hidden="true">SamSation</div>

@@ -1550,3 +1550,9 @@ img[loading="lazy"].is-loaded { opacity: 1; }
 .footer .label { color: #fff; }
 .footer__input { background: rgba(255,255,255,0.5); color: var(--ink); }
 .footer__input::placeholder { color: rgba(28,28,26,0.55); }
+
+/* Retreat module: reduced height per F 2026-07-28 */
+.s-retreat__inner { min-height: clamp(440px, 72vh, 720px); }
+@media (max-width: 900px) {
+  .s-retreat__inner { min-height: clamp(380px, 64vh, 540px); }
+}

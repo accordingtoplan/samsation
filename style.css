@@ -1581,3 +1581,15 @@ img[loading="lazy"].is-loaded { opacity: 1; }
 /* v3.1 per F: a tad finer, a bit more wobble (filter scale 1.1->1.8 in sprite) */
 .glyph { stroke-width: 0.95; }
 .s-patterns-module .glyph { stroke-width: 1.1; }
+
+/* v3.2 per F: quote voice. Titles get caps; spoken sentences get sentence case.
+   Quotes, testimonials, and claims keep the display family/weight/size —
+   only case, tracking, and leading change. Long lines were unreadable in caps,
+   worst in the rotating carousel and stacked mobile columns. */
+.ts-quote,
+.testimonial__quote,
+.s-claim h2 {
+  text-transform: none;
+  letter-spacing: -0.01em;
+  line-height: 1.18;
+}

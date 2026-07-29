@@ -1593,3 +1593,11 @@ img[loading="lazy"].is-loaded { opacity: 1; }
   letter-spacing: -0.01em;
   line-height: 1.18;
 }
+
+/* ── 29 · BOOKING CTA IN NAV + ON-DEMAND PRICING NOTE ───────────
+   Book link in the pill nav and overlay reads as the one accent
+   action; pricing note sits under the Programs header. Append-only. */
+.nav-pill__links a.nav-link--book { color: var(--accent2); }
+.nav-pill__links a.nav-link--book:hover { color: #fff; }
+.nav-overlay a.nav-link--book { color: var(--accent2); }
+.s-programs__note { margin-top: 0.75rem; opacity: 0.8; }

@@ -409,3 +409,18 @@
     }
   });
 })();
+
+/* ── Booking deep-link: #book auto-opens the scheduler ──
+   Covers direct links (IG bio, Substack) and in-page "Book" nav clicks. */
+(function () {
+  function openBooking() {
+    var btn = document.getElementById('bookingReveal');
+    var frame = document.getElementById('bookingFrame');
+    if (!btn || !frame || !frame.hidden) return;
+    btn.click();
+  }
+  if (location.hash === '#book') openBooking();
+  window.addEventListener('hashchange', function () {
+    if (location.hash === '#book') openBooking();
+  });
+})();

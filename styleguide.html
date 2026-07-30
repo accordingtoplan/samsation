@@ -35,6 +35,13 @@
     .sg-mark__tile svg { width: 44px; height: 44px; }
     .sg-marks--small svg { width: 20px; height: 20px; color: var(--ink); }
     .sg-marks--small { gap: 1.25rem; align-items: center; }
+    /* Color chart (appended 2026-07-30) */
+    .sg-chart { display: flex; flex-wrap: wrap; margin-bottom: 2rem; border: 1px solid var(--hairline); }
+    .sg-chart__col { flex: 1 1 180px; min-height: 440px; padding: 1.5rem; display: flex; flex-direction: column; }
+    .sg-chart__name { font-family: var(--f-display); font-weight: 900; text-transform: uppercase; font-size: 1.1rem; letter-spacing: var(--ls-caps); line-height: 1.15; }
+    .sg-chart__vals { margin-top: auto; font-family: var(--f-mono); font-size: var(--t-label); letter-spacing: var(--ls-label); text-transform: uppercase; line-height: 1.9; }
+    .sg-chart__use { font-family: var(--f-mono); font-size: var(--t-label); letter-spacing: var(--ls-label); text-transform: uppercase; margin-top: 1rem; opacity: .75; }
+    @media (max-width: 700px) { .sg-chart__col { flex-basis: 100%; min-height: 220px; } }
   </style>
 
 </head>
@@ -79,19 +86,39 @@
     <!-- ── COLOR ── -->
     <section class="sg-section">
       <h2 class="sg-h">Color</h2>
-      <div class="sg-row">
-        <div class="sg-swatch"><div class="sg-swatch__chip" style="background:var(--bg)"></div><span class="sg-token">--bg · #e8e8e6</span></div>
-        <div class="sg-swatch"><div class="sg-swatch__chip" style="background:var(--ink)"></div><span class="sg-token">--ink · #1c1c1a</span></div>
-        <div class="sg-swatch"><div class="sg-swatch__chip" style="background:var(--accent)"></div><span class="sg-token">--accent · #1a8a44</span></div>
-        <div class="sg-swatch"><div class="sg-swatch__chip" style="background:var(--accent2)"></div><span class="sg-token">--accent2 · #d94f2b</span></div>
-        <div class="sg-swatch"><div class="sg-swatch__chip" style="background:var(--ink-mid)"></div><span class="sg-token">--ink-mid · 55%</span></div>
-        <div class="sg-swatch"><div class="sg-swatch__chip" style="background:var(--ink-dim)"></div><span class="sg-token">--ink-dim · 35%</span></div>
+      <div class="sg-chart">
+        <div class="sg-chart__col" style="background:#e8e8e6;color:#1c1c1a">
+          <span class="sg-chart__name">Studio<br>Grey</span>
+          <div class="sg-chart__vals">R232 G232 B230<br>C0 M0 Y1 K9<br>HEX E8E8E6<br>--bg</div>
+          <div class="sg-chart__use">Ground · every page</div>
+        </div>
+        <div class="sg-chart__col" style="background:#1c1c1a;color:#e8e8e6">
+          <span class="sg-chart__name">Ink</span>
+          <div class="sg-chart__vals">R28 G28 B26<br>C0 M0 Y7 K89<br>HEX 1C1C1A<br>--ink</div>
+          <div class="sg-chart__use">Type · footer · marks</div>
+        </div>
+        <div class="sg-chart__col" style="background:#1a8a44;color:#e8e8e6">
+          <span class="sg-chart__name">Practice<br>Green</span>
+          <div class="sg-chart__vals">R26 G138 B68<br>C81 M0 Y51 K46<br>HEX 1A8A44<br>--accent</div>
+          <div class="sg-chart__use">Identity · footer · cites</div>
+        </div>
+        <div class="sg-chart__col" style="background:#d94f2b;color:#fff">
+          <span class="sg-chart__name">Persimmon</span>
+          <div class="sg-chart__vals">R217 G79 B43<br>C0 M64 Y80 K15<br>HEX D94F2B<br>--accent2</div>
+          <div class="sg-chart__use">Signal · labels · hovers</div>
+        </div>
+        <div class="sg-chart__col" style="background:#52f296;color:#1c1c1a">
+          <span class="sg-chart__name">Live<br>Green</span>
+          <div class="sg-chart__vals">R82 G242 B150<br>C66 M0 Y38 K5<br>HEX 52F296<br>--accent3</div>
+          <div class="sg-chart__use">Rare · live · access</div>
+        </div>
       </div>
       <ul class="sg-rules">
         <li>Green is identity: footer, the patterns module, and testimonial names. It does not do hovers.</li>
         <li>Persimmon is the signal layer: every label, every button outline, every hover fill, the current page in the nav. If it is orange, it orients or responds. Never body copy, never headlines.</li>
         <li>One orange. White text on persimmon fills, always. Keep persistent persimmon text large enough to read on the grey; if a small line of it looks weak, the answer is layout, not a second orange.</li>
         <li>One grey, one green, one orange. Color is not where this site gets its personality.</li>
+        <li>Live Green is the exception layer: reserved for the few moments that are genuinely live or scarce — live-session status, retreat access, first-access flags. Ink text on it, always. If it appears more than once per page, it has stopped being an exception.</li>
       </ul>
     </section>
 

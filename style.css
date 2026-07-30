@@ -1770,3 +1770,8 @@ body { padding-top: var(--topbar-h); }
   .s-shelf--v2 .s-shelf__meta,
   .s-shelf--v2 .s-shelf__cta { transition: none; }
 }
+
+/* ── Live Green — special-highlight accent (appended 2026-07-30) ── */
+:root {
+  --accent3: #52f296; /* neon — rare highlights only: live status, access moments. Ink text on it, always. */
+}

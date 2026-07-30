@@ -1775,3 +1775,11 @@ body { padding-top: var(--topbar-h); }
 :root {
   --accent3: #52f296; /* neon — rare highlights only: live status, access moments. Ink text on it, always. */
 }
+
+/* ── Checker rule — structural pattern device (appended 2026-07-30) ── */
+.checker-rule {
+  height: 16px;
+  background: conic-gradient(var(--checker-c, var(--accent)) 25%, transparent 0 50%, var(--checker-c, var(--accent)) 0 75%, transparent 0) 0 0 / 16px 16px;
+}
+.checker-rule--ink  { --checker-c: var(--ink); }
+.checker-rule--live { --checker-c: var(--accent3); }

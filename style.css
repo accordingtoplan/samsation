@@ -1660,8 +1660,9 @@ html[data-theme="dark"] .s-booking__frame { background: #1e211c; border-color: r
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--accent);
-  color: #fff;
+  background: var(--bg);
+  border-bottom: 1px solid var(--hairline);
+  color: var(--ink-mid);
   font-family: var(--f-mono);
   font-size: var(--t-label);
   font-weight: 500;
@@ -1677,4 +1678,3 @@ html[data-theme="dark"] .s-booking__frame { background: #1e211c; border-color: r
 body { padding-top: var(--topbar-h); }
 .nav-pill { top: calc(1.25rem + var(--topbar-h)); }
 .nav-overlay { z-index: 120; }
-html[data-theme="dark"] .topbar { background: var(--accent); color: #fff; }

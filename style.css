@@ -1601,3 +1601,49 @@ img[loading="lazy"].is-loaded { opacity: 1; }
 .nav-pill__links a.nav-link--book:hover { color: #fff; }
 .nav-overlay a.nav-link--book { color: var(--accent2); }
 .s-programs__note { margin-top: 0.75rem; opacity: 0.8; }
+
+/* ── 21 · KASUMI — COLOR MODES ──────────────────────────────────
+   Added 2026-07-30. Two grounds, one system: Kasumi (light) and
+   Kasumi Ink (dark). Default follows prefers-color-scheme; the nav
+   square overrides and remembers. Tokens only — components untouched. */
+:root {
+  --ground: linear-gradient(180deg,#efece4 0%,#e8e7de 22%,#dbe2d2 45%,#c6d6ba 68%,#a9c69b 88%,#93bb84 100%);
+  --footer-grad: linear-gradient(160deg,#0b4f2c 0%,#1a8a44 55%,#3aa85e 100%);
+}
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --bg:       #15201a;
+  --ink:      #ece9e0;
+  --ink-mid:  rgba(236,233,224,0.6);
+  --ink-dim:  rgba(236,233,224,0.4);
+  --hairline: rgba(236,233,224,0.16);
+  --accent:   #1f9a4e;   /* green, lifted for dark ground */
+  --accent2:  #e05a32;   /* persimmon, lifted */
+  --wash:     rgba(236,233,224,0.06);
+  --ground: linear-gradient(180deg,#141412 0%,#161a15 30%,#15251b 58%,#123423 82%,#0f4028 100%);
+  --footer-grad: linear-gradient(160deg,#0f4028 0%,#1a8a44 70%,#2c9c52 100%);
+}
+body {
+  background-color: var(--bg);
+  background-image: var(--ground);
+  background-attachment: fixed;
+  transition: color var(--dur-med) var(--ease);
+}
+.footer { background: var(--footer-grad, var(--accent)); }
+
+/* Nav mode toggle — the square dot, outlined in light, filled in dark */
+.mode-toggle {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.55rem 0;
+  color: rgba(255,255,255,0.7);
+}
+.mode-toggle:hover { color: var(--accent2); }
+.mode-toggle .dot {
+  width: 10px; height: 10px;
+  border: 1.5px solid currentColor;
+  display: inline-block;
+}
+html[data-theme="dark"] .mode-toggle .dot { background: currentColor; }
+html[data-theme="dark"] .s-booking__frame { background: #1e211c; border-color: rgba(236,233,224,0.16); }
+.nav-overlay .mode-toggle { color: inherit; }

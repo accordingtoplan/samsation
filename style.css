@@ -1647,3 +1647,34 @@ body {
 html[data-theme="dark"] .mode-toggle .dot { background: currentColor; }
 html[data-theme="dark"] .s-booking__frame { background: #1e211c; border-color: rgba(236,233,224,0.16); }
 .nav-overlay .mode-toggle { color: inherit; }
+
+/* ── 30 · TOP BAR: booking band above the nav (Rhode-style) ─────
+   Fixed slim band at the very top; nav pill and page shift down
+   by its height. Replaces the Book link in the nav. Append-only. */
+:root { --topbar-h: 2.5rem; }
+.topbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 110;
+  height: var(--topbar-h);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent);
+  color: #fff;
+  font-family: var(--f-mono);
+  font-size: var(--t-label);
+  font-weight: 500;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  text-align: center;
+  padding: 0 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.topbar:hover { color: var(--accent2); }
+body { padding-top: var(--topbar-h); }
+.nav-pill { top: calc(1.25rem + var(--topbar-h)); }
+.nav-overlay { z-index: 120; }
+html[data-theme="dark"] .topbar { background: var(--accent); color: #fff; }

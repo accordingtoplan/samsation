@@ -79,7 +79,7 @@
 
   <main class="sg">
 
-    <span class="label">SamSation · Design System · v2 · 2026-07</span>
+    <span class="label">SamSation · Design System · v3 · 2026-07-30</span>
     <h1 class="s-pageintro__title">One system, six pages.</h1>
     <p class="sg-note">The living reference for samrabon.com. Everything on this page is rendered by the production style.css, so if it looks right here, it is right on the site. New work uses these tokens and components only. No raw hex values, no new font sizes, no new button styles.</p>
 
@@ -87,37 +87,38 @@
     <section class="sg-section">
       <h2 class="sg-h">Color</h2>
       <div class="sg-chart">
-        <div class="sg-chart__col" style="background:#e8e8e6;color:#1c1c1a">
-          <span class="sg-chart__name">Studio<br>Grey</span>
-          <div class="sg-chart__vals">R232 G232 B230<br>C0 M0 Y1 K9<br>HEX E8E8E6<br>--bg</div>
-          <div class="sg-chart__use">Ground · every page</div>
+        <div class="sg-chart__col" style="background:#15201a;color:#ece9e0">
+          <span class="sg-chart__name">Kasumi<br>Ink</span>
+          <div class="sg-chart__vals">R21 G32 B26<br>C34 M0 Y19 K87<br>HEX 15201A<br>--bg</div>
+          <div class="sg-chart__use">Ground · every page · deepens to green via --ground gradient</div>
         </div>
-        <div class="sg-chart__col" style="background:#1c1c1a;color:#e8e8e6">
-          <span class="sg-chart__name">Ink</span>
-          <div class="sg-chart__vals">R28 G28 B26<br>C0 M0 Y7 K89<br>HEX 1C1C1A<br>--ink</div>
-          <div class="sg-chart__use">Type · footer · marks</div>
+        <div class="sg-chart__col" style="background:#ece9e0;color:#15201a">
+          <span class="sg-chart__name">Chalk</span>
+          <div class="sg-chart__vals">R236 G233 B224<br>C0 M1 Y5 K7<br>HEX ECE9E0<br>--ink</div>
+          <div class="sg-chart__use">Type · marks · hairlines</div>
         </div>
-        <div class="sg-chart__col" style="background:#1a8a44;color:#e8e8e6">
+        <div class="sg-chart__col" style="background:#1f9a4e;color:#ece9e0">
           <span class="sg-chart__name">Practice<br>Green</span>
-          <div class="sg-chart__vals">R26 G138 B68<br>C81 M0 Y51 K46<br>HEX 1A8A44<br>--accent</div>
-          <div class="sg-chart__use">Identity · footer · cites</div>
+          <div class="sg-chart__vals">R31 G154 B78<br>C80 M0 Y49 K40<br>HEX 1F9A4E<br>--accent</div>
+          <div class="sg-chart__use">Identity · footer · cites · checker</div>
         </div>
-        <div class="sg-chart__col" style="background:#d94f2b;color:#fff">
+        <div class="sg-chart__col" style="background:#e05a32;color:#fff">
           <span class="sg-chart__name">Persimmon</span>
-          <div class="sg-chart__vals">R217 G79 B43<br>C0 M64 Y80 K15<br>HEX D94F2B<br>--accent2</div>
+          <div class="sg-chart__vals">R224 G90 B50<br>C0 M60 Y78 K12<br>HEX E05A32<br>--accent2</div>
           <div class="sg-chart__use">Signal · labels · hovers</div>
         </div>
-        <div class="sg-chart__col" style="background:#52f296;color:#1c1c1a">
+        <div class="sg-chart__col" style="background:#52f296;color:#15201a">
           <span class="sg-chart__name">Live<br>Green</span>
           <div class="sg-chart__vals">R82 G242 B150<br>C66 M0 Y38 K5<br>HEX 52F296<br>--accent3</div>
           <div class="sg-chart__use">Rare · live · access</div>
         </div>
       </div>
+      <p class="sg-note">Kasumi Ink is the site, full stop (2026-07-30). The retired light system — Studio Grey #E8E8E6 ground, Ink #1C1C1A type, Practice Green #1A8A44, Persimmon #D94F2B — stays on record here for anything that needs a light ground off-site until reviewed.</p>
       <ul class="sg-rules">
         <li>Green is identity: footer, the patterns module, and testimonial names. It does not do hovers.</li>
         <li>Persimmon is the signal layer: every label, every button outline, every hover fill, the current page in the nav. If it is orange, it orients or responds. Never body copy, never headlines.</li>
         <li>One orange. White text on persimmon fills, always. Keep persistent persimmon text large enough to read on the grey; if a small line of it looks weak, the answer is layout, not a second orange.</li>
-        <li>One grey, one green, one orange. Color is not where this site gets its personality.</li>
+        <li>One ground, two greens, one orange. Practice Green is identity, Live Green is the exception, Persimmon signals. Color is still not where this site gets its personality.</li>
         <li>Live Green is the exception layer: reserved for the few moments that are genuinely live or scarce — live-session status, retreat access, first-access flags. Ink text on it, always. If it appears more than once per page, it has stopped being an exception.</li>
       </ul>
     </section>

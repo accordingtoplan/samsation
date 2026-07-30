@@ -425,24 +425,3 @@
   });
 })();
 
-/* Kasumi color-mode toggle — square in the nav, remembers per visitor */
-(function () {
-  function make() {
-    var b = document.createElement('button');
-    b.className = 'mode-toggle';
-    b.setAttribute('aria-label', 'Switch color mode');
-    b.innerHTML = '<span class="dot" aria-hidden="true"></span>';
-    b.addEventListener('click', function (e) {
-      e.stopPropagation();
-      var d = document.documentElement;
-      var t = d.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-      d.setAttribute('data-theme', t);
-      try { localStorage.setItem('samsation-theme', t); } catch (err) {}
-    });
-    return b;
-  }
-  var links = document.querySelector('.nav-pill__links');
-  if (links) links.insertBefore(make(), links.querySelector('.nav-link--book'));
-  var overlay = document.querySelector('.nav-overlay');
-  if (overlay) overlay.insertBefore(make(), overlay.querySelector('.nav-overlay__foot'));
-})();

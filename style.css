@@ -1602,15 +1602,11 @@ img[loading="lazy"].is-loaded { opacity: 1; }
 .nav-overlay a.nav-link--book { color: var(--accent2); }
 .s-programs__note { margin-top: 0.75rem; opacity: 0.8; }
 
-/* ── 21 · KASUMI — COLOR MODES ──────────────────────────────────
-   Added 2026-07-30. Two grounds, one system: Kasumi (light) and
-   Kasumi Ink (dark). Default follows prefers-color-scheme; the nav
-   square overrides and remembers. Tokens only — components untouched. */
+/* ── 21 · KASUMI INK — DARK GROUND (default) ────────────────────
+   2026-07-30: shipped with a light/dark switcher; 2026-07-30 (pt 2)
+   F direction: switcher removed, Kasumi Ink is the site, full stop.
+   Token overrides below win the cascade over the light :root block. */
 :root {
-  --ground: linear-gradient(180deg,#efece4 0%,#e8e7de 22%,#dbe2d2 45%,#c6d6ba 68%,#a9c69b 88%,#93bb84 100%);
-  --footer-grad: linear-gradient(160deg,#0b4f2c 0%,#1a8a44 55%,#3aa85e 100%);
-}
-html[data-theme="dark"] {
   color-scheme: dark;
   --bg:       #15201a;
   --ink:      #ece9e0;
@@ -1627,26 +1623,9 @@ body {
   background-color: var(--bg);
   background-image: var(--ground);
   background-attachment: fixed;
-  transition: color var(--dur-med) var(--ease);
 }
-.footer { background: var(--footer-grad, var(--accent)); }
-
-/* Nav mode toggle — the square dot, outlined in light, filled in dark */
-.mode-toggle {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.55rem 0;
-  color: rgba(255,255,255,0.7);
-}
-.mode-toggle:hover { color: var(--accent2); }
-.mode-toggle .dot {
-  width: 10px; height: 10px;
-  border: 1.5px solid currentColor;
-  display: inline-block;
-}
-html[data-theme="dark"] .mode-toggle .dot { background: currentColor; }
-html[data-theme="dark"] .s-booking__frame { background: #1e211c; border-color: rgba(236,233,224,0.16); }
-.nav-overlay .mode-toggle { color: inherit; }
+.footer { background: var(--footer-grad); }
+.s-booking__frame { background: #1e211c; border-color: rgba(236,233,224,0.16); }
 
 /* ── 30 · TOP BAR: booking band above the nav (Rhode-style) ─────
    Fixed slim band at the very top; nav pill and page shift down

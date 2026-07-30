@@ -23,7 +23,7 @@
   <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
   <link rel="icon" type="image/png" sizes="64x64" href="img/favicon-64.png">
   <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
-  <link rel="stylesheet" href="style.css?v=20260730-5">
+  <link rel="stylesheet" href="style.css?v=20260730-6">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -62,7 +62,7 @@
   <a class="skip-link" href="#main">Skip to content</a>
 
   <!-- ── Top bar: booking, Rhode-style announcement band ── -->
-  <a class="topbar" href="#book">Book a session &middot; Los Angeles + online</a>
+  <a class="topbar" href="#book">Book a live online session</a>
 
   <!-- ── Glyph sprite: minimal geometric marks, one motif per pattern —
        no figures, just the object/gesture each pattern is named for ── -->
@@ -147,26 +147,43 @@
     <!-- ── Private ── -->
     <section class="s-offer fade-in" id="private">
       <div class="s-offer__media">
-        <a class="media-link" href="#book" aria-label="1:1 Sessions — book"><picture>
+        <a class="media-link" href="#contact" aria-label="1:1 Sessions — enquire"><picture>
           <source srcset="img/coach-11.webp" type="image/webp">
           <img src="img/coach-11.jpg" alt="Sam coaching a private session" loading="lazy">
         </picture></a>
       </div>
       <div class="s-offer__body">
         <span class="label label--accent">Private</span>
-        <h2 class="s-offer__title"><a class="hl-link" href="#book">1:1 Sessions</a></h2>
+        <h2 class="s-offer__title"><a class="hl-link" href="#contact">1:1 Sessions</a></h2>
         <p class="s-offer__text">One-on-one training designed to restore mobility, build strength, recover from injury, and create balanced movement for lasting results. In person in Los Angeles, and online where it makes sense.</p>
         <p class="s-offer__text">For people who want to be coached well, not often. Every session is built around what your body needs that day.</p>
-        <a href="#book" class="pill-cta">Book a private session</a>
+        <a href="#contact" class="pill-cta">Enquire about 1:1 sessions</a>
+      </div>
+    </section>
+
+    <!-- ── Live Sessions ── -->
+    <section class="s-offer fade-in" id="live">
+      <div class="s-offer__media">
+        <a class="media-link" href="#book" aria-label="Online Sessions — see live times"><picture>
+          <source srcset="img/sam-hillside.webp" type="image/webp">
+          <img src="img/sam-hillside.jpg" alt="A group in motion on a hillside above Los Angeles" loading="lazy">
+        </picture></a>
+      </div>
+      <div class="s-offer__body">
+        <span class="label label--accent">Live</span>
+        <h2 class="s-offer__title"><a class="hl-link" href="#book">Online Sessions</a></h2>
+        <p class="s-offer__text">Join live for real-time guidance, feedback, and connection, wherever you are. Each class blends strength, recovery, and mobility to help you move better and feel grounded again.</p>
+        <p class="s-offer__text">Guided by Sam in real time, you receive the same precision, care, and attention she brings to every private session. Now accessible from wherever you are.</p>
+        <a href="#book" class="pill-cta">See live times</a>
       </div>
     </section>
 
     <!-- ── Booking: scheduler open by default, iframe lazy-loads near viewport ── -->
     <section class="s-booking fade-in" id="book">
       <div class="s-booking__header">
-        <span class="label">Date &amp; time</span>
-        <h2 class="s-booking__title">Book a session.</h2>
-        <p class="s-booking__text">Choose a time that works for you. You will receive a confirmation and a link to join by email.</p>
+        <span class="label">Live online &middot; Date &amp; time</span>
+        <h2 class="s-booking__title">Book a live session.</h2>
+        <p class="s-booking__text">Choose a live online session. You will receive a confirmation and a link to join by email.</p>
       </div>
       <div class="s-booking__frame" id="bookingFrame">
         <iframe
@@ -193,22 +210,6 @@
       </div>
     </section>
 
-    <!-- ── Live Sessions ── -->
-    <section class="s-offer fade-in" id="live">
-      <div class="s-offer__media">
-        <a class="media-link" href="#book" aria-label="Online Sessions — see live times"><picture>
-          <source srcset="img/sam-hillside.webp" type="image/webp">
-          <img src="img/sam-hillside.jpg" alt="A group in motion on a hillside above Los Angeles" loading="lazy">
-        </picture></a>
-      </div>
-      <div class="s-offer__body">
-        <span class="label label--accent">Live</span>
-        <h2 class="s-offer__title"><a class="hl-link" href="#book">Online Sessions</a></h2>
-        <p class="s-offer__text">Join live for real-time guidance, feedback, and connection, wherever you are. Each class blends strength, recovery, and mobility to help you move better and feel grounded again.</p>
-        <p class="s-offer__text">Guided by Sam in real time, you receive the same precision, care, and attention she brings to every private session. Now accessible from wherever you are.</p>
-        <a href="#book" class="pill-cta">See live times</a>
-      </div>
-    </section>
 
 
     <!-- ── Contact ── -->

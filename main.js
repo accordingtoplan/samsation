@@ -425,3 +425,23 @@
   });
 })();
 
+
+/* ── Booking v2: scheduler open by default, iframe loads near viewport ──
+   Replaces the reveal button. Loads immediately for #book deep links. */
+(function () {
+  var frame = document.getElementById('bookingFrame');
+  if (!frame) return;
+  var iframe = frame.querySelector('iframe[data-src]');
+  if (!iframe) return;
+  function load() {
+    if (!iframe.src) iframe.src = iframe.getAttribute('data-src');
+  }
+  if (location.hash === '#book' || !('IntersectionObserver' in window)) { load(); return; }
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { load(); obs.disconnect(); }
+    });
+  }, { rootMargin: '600px 0px' });
+  obs.observe(frame);
+  window.addEventListener('hashchange', function () { if (location.hash === '#book') load(); });
+})();

@@ -446,27 +446,3 @@
   var overlay = document.querySelector('.nav-overlay');
   if (overlay) overlay.insertBefore(make(), overlay.querySelector('.nav-overlay__foot'));
 })();
-
-/* ── Shelf v2: hover-video prototype (fine pointer only) ──
-   data-hover-src keeps these out of the Motion v2 lazy loader;
-   the clip loads on first mouseenter, plays on hover, pauses off. */
-(function () {
-  if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
-  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  document.querySelectorAll('.s-shelf__hovervid').forEach(function (v) {
-    var item = v.closest('.s-shelf__item');
-    if (!item) return;
-    item.addEventListener('mouseenter', function () {
-      if (v.dataset.hoverSrc) {
-        v.src = v.dataset.hoverSrc; delete v.dataset.hoverSrc;
-        v.addEventListener('canplay', function () {
-          if (!reduced && item.matches(':hover')) { var p = v.play(); if (p) p.catch(function () {}); }
-        }, { once: true });
-        v.load();
-        return;
-      }
-      if (!reduced) { var p = v.play(); if (p) p.catch(function () {}); }
-    });
-    item.addEventListener('mouseleave', function () { v.pause(); });
-  });
-})();

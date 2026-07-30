@@ -1791,9 +1791,3 @@ body { padding-top: var(--topbar-h); }
   .s-shelf--v2 .s-shelf__meta,
   .s-shelf--v2 .s-shelf__cta { transition: none; }
 }
-
-/* Shelf v2 prototype: video hover on tile 1 */
-.s-shelf--v2 .s-shelf__hovervid {
-  width: 100%; height: 100%;
-  object-fit: cover;
-}

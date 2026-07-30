@@ -1633,12 +1633,18 @@ body {
 .footer { background: var(--footer-grad); }
 html[data-theme="dark"] .s-booking__frame { background: #1e211c; border-color: rgba(236,233,224,0.16); }
 
-/* Nav mode toggle — square dot: outlined in light, filled in dark */
+/* Mode toggle — fixed square at the right end of the topbar band.
+   Always visible (the pill links collapse; the band never does).
+   Outlined square in light, filled in dark. */
 .mode-toggle {
+  position: fixed;
+  top: 0; right: 0;
+  z-index: 111;
+  height: var(--topbar-h, 2.5rem);
   display: inline-flex;
   align-items: center;
-  padding: 0.55rem 0;
-  color: rgba(255,255,255,0.7);
+  padding: 0 1rem;
+  color: var(--ink-mid);
 }
 .mode-toggle:hover { color: var(--accent2); }
 .mode-toggle .dot {
@@ -1647,7 +1653,6 @@ html[data-theme="dark"] .s-booking__frame { background: #1e211c; border-color: r
   display: inline-block;
 }
 html[data-theme="dark"] .mode-toggle .dot { background: currentColor; }
-.nav-overlay .mode-toggle { color: inherit; }
 
 /* ── 30 · TOP BAR: booking band above the nav (Rhode-style) ─────
    Fixed slim band at the very top; nav pill and page shift down

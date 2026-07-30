@@ -88,33 +88,33 @@
     <section class="sg-section">
       <h2 class="sg-h">Color</h2>
       <div class="sg-chart">
-        <div class="sg-chart__col" style="background:#15201a;color:#ece9e0">
-          <span class="sg-chart__name">Kasumi<br>Ink</span>
-          <div class="sg-chart__vals">R21 G32 B26<br>C34 M0 Y19 K87<br>HEX 15201A<br>--bg</div>
-          <div class="sg-chart__use">Ground · every page · deepens to green via --ground gradient</div>
+        <div class="sg-chart__col" style="background:var(--bg);color:var(--ink)">
+          <span class="sg-chart__name">Ground<br>Kasumi</span>
+          <div class="sg-chart__vals">LIGHT HEX E8E8E6<br>haze&rarr;moss via --ground<br>DARK HEX 15201A<br>ink&rarr;forest via --ground<br>--bg &middot; --ground</div>
+          <div class="sg-chart__use">Every page &middot; this column shows the active mode</div>
         </div>
-        <div class="sg-chart__col" style="background:#ece9e0;color:#15201a">
-          <span class="sg-chart__name">Chalk</span>
-          <div class="sg-chart__vals">R236 G233 B224<br>C0 M1 Y5 K7<br>HEX ECE9E0<br>--ink</div>
-          <div class="sg-chart__use">Type · marks · hairlines</div>
+        <div class="sg-chart__col" style="background:var(--ink);color:var(--bg)">
+          <span class="sg-chart__name">Ink /<br>Chalk</span>
+          <div class="sg-chart__vals">LIGHT HEX 1C1C1A<br>DARK HEX ECE9E0<br>--ink</div>
+          <div class="sg-chart__use">Type &middot; marks &middot; hairlines</div>
         </div>
-        <div class="sg-chart__col" style="background:#1f9a4e;color:#ece9e0">
+        <div class="sg-chart__col" style="background:var(--accent);color:#ece9e0">
           <span class="sg-chart__name">Practice<br>Green</span>
-          <div class="sg-chart__vals">R31 G154 B78<br>C80 M0 Y49 K40<br>HEX 1F9A4E<br>--accent</div>
-          <div class="sg-chart__use">Identity · footer · cites · checker</div>
+          <div class="sg-chart__vals">LIGHT HEX 1A8A44<br>DARK HEX 1F9A4E<br>--accent</div>
+          <div class="sg-chart__use">Identity &middot; footer &middot; cites &middot; checker</div>
         </div>
-        <div class="sg-chart__col" style="background:#e05a32;color:#fff">
+        <div class="sg-chart__col" style="background:var(--accent2);color:#fff">
           <span class="sg-chart__name">Persimmon</span>
-          <div class="sg-chart__vals">R224 G90 B50<br>C0 M60 Y78 K12<br>HEX E05A32<br>--accent2</div>
-          <div class="sg-chart__use">Signal · labels · hovers</div>
+          <div class="sg-chart__vals">LIGHT HEX D94F2B<br>DARK HEX E05A32<br>--accent2</div>
+          <div class="sg-chart__use">Signal &middot; labels &middot; hovers</div>
         </div>
-        <div class="sg-chart__col" style="background:#52f296;color:#15201a">
+        <div class="sg-chart__col" style="background:var(--accent3);color:#15201a">
           <span class="sg-chart__name">Live<br>Green</span>
-          <div class="sg-chart__vals">R82 G242 B150<br>C66 M0 Y38 K5<br>HEX 52F296<br>--accent3</div>
-          <div class="sg-chart__use">Rare · live · access</div>
+          <div class="sg-chart__vals">R82 G242 B150<br>HEX 52F296<br>both modes<br>--accent3</div>
+          <div class="sg-chart__use">Rare &middot; live &middot; access</div>
         </div>
       </div>
-      <p class="sg-note">Kasumi Ink is the site, full stop (2026-07-30). The retired light system — Studio Grey #E8E8E6 ground, Ink #1C1C1A type, Practice Green #1A8A44, Persimmon #D94F2B — stays on record here for anything that needs a light ground off-site until reviewed.</p>
+      <p class="sg-note">Two modes, one system (2026-07-30 pt 3): Kasumi light is the default for every visitor; Kasumi Ink is one square away &mdash; the toggle at the right end of the booking band, remembered per visitor. Both grounds are slow gradients, never flat. Every component styles itself with tokens, so nothing on this page (or the site) knows which mode it is in. Flip the square above to proof this page in both. Open item: Live Green sits on the dark ground by design &mdash; its behavior on the light ground is unreviewed; keep it inside dark surfaces (footer, dark modules) until it is.</p>
       <ul class="sg-rules">
         <li>Green is identity: footer, the patterns module, and testimonial names. It does not do hovers.</li>
         <li>Persimmon is the signal layer: every label, every button outline, every hover fill, the current page in the nav. If it is orange, it orients or responds. Never body copy, never headlines.</li>
@@ -291,5 +291,6 @@
     </section>
 
   </main>
+  <script src="main.js"></script>
 </body>
 </html>

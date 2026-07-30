@@ -1678,3 +1678,122 @@ html[data-theme="dark"] .s-booking__frame { background: #1e211c; border-color: r
 body { padding-top: var(--topbar-h); }
 .nav-pill { top: calc(1.25rem + var(--topbar-h)); }
 .nav-overlay { z-index: 120; }
+
+/* ── 30 · SHELF v2 — Rhode-structure port, SamSation surface ──
+   The tile IS the image. Label + title overlaid top-left, format
+   lines overlaid bottom-left, soft scrims for legibility.
+   Hover (fine pointer): alternate portrait swaps in, formats
+   yield to a full-width CTA bar. Touch: static, CTA visible. */
+.s-shelf--v2 .s-shelf__item {
+  position: relative;
+  overflow: hidden;
+}
+.s-shelf--v2 .s-shelf__img { margin-bottom: 0; }
+.s-shelf--v2 .s-shelf__img img,
+.s-shelf--v2 .s-shelf__img video { aspect-ratio: 4 / 5; }
+
+/* scrims: quiet gradients top + bottom, never a box */
+.s-shelf--v2 .s-shelf__item::before,
+.s-shelf--v2 .s-shelf__item::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+.s-shelf--v2 .s-shelf__item::before {
+  top: 0; height: 32%;
+  background: linear-gradient(to bottom, rgba(28,28,26,0.45), transparent);
+}
+.s-shelf--v2 .s-shelf__item::after {
+  bottom: 0; height: 30%;
+  background: linear-gradient(to top, rgba(28,28,26,0.45), transparent);
+}
+
+.s-shelf--v2 .s-shelf__head {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  z-index: 4;
+  padding: 1.1rem 1.1rem 0;
+}
+.s-shelf--v2 .s-shelf__head .label { color: #fff; margin-bottom: 0.4rem; }
+.s-shelf--v2 .s-shelf__name { color: #fff; margin-bottom: 0; }
+
+.s-shelf--v2 .s-shelf__hoverimg {
+  display: block;              /* override global picture{display:contents} */
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  opacity: 0;
+  pointer-events: none;
+}
+.s-shelf--v2 .s-shelf__hoverimg img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.s-shelf--v2 .s-shelf__meta {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  z-index: 4;
+  padding: 0 1.1rem 1rem;
+  color: #fff;
+  line-height: 1.7;
+}
+.s-shelf--v2 .s-shelf__cta {
+  font-family: var(--f-mono);
+  font-size: var(--t-small);
+  font-weight: 700;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+}
+
+/* Fine pointer: the reveal */
+@media (hover: hover) and (pointer: fine) {
+  .s-shelf--v2 .s-shelf__cta {
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.4em;
+    padding: 0.9em 1.1em;
+    background: var(--bg);
+    color: var(--accent2);
+    opacity: 0;
+    transform: translateY(0.5rem);
+    transition: opacity var(--dur-med) ease, transform var(--dur-med) var(--ease);
+  }
+  .s-shelf--v2 .s-shelf__hoverimg { transition: opacity var(--dur-med) ease; }
+  .s-shelf--v2 .s-shelf__meta { transition: opacity var(--dur-med) ease; }
+  .s-shelf--v2 .s-shelf__item:hover .s-shelf__hoverimg { opacity: 1; }
+  .s-shelf--v2 .s-shelf__item:hover .s-shelf__meta { opacity: 0; }
+  .s-shelf--v2 .s-shelf__item:hover .s-shelf__cta { opacity: 1; transform: translateY(0); }
+  .s-shelf--v2 .s-shelf__cta:hover { background: var(--accent2); color: #fff; }
+}
+
+/* Touch / coarse pointer: no reveal, CTA sits above the formats */
+@media (hover: none), (pointer: coarse) {
+  .s-shelf--v2 .s-shelf__hoverimg { display: none; }
+  .s-shelf--v2 .s-shelf__meta { padding-bottom: 3rem; }
+  .s-shelf--v2 .s-shelf__cta {
+    position: absolute;
+    right: 1.1rem; bottom: 1rem;
+    z-index: 5;
+    color: #fff;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .s-shelf--v2 .s-shelf__hoverimg,
+  .s-shelf--v2 .s-shelf__meta,
+  .s-shelf--v2 .s-shelf__cta { transition: none; }
+}
+
+/* Shelf v2 prototype: video hover on tile 1 */
+.s-shelf--v2 .s-shelf__hovervid {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}

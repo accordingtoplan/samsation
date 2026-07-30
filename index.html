@@ -23,7 +23,7 @@
   <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
   <link rel="icon" type="image/png" sizes="64x64" href="img/favicon-64.png">
   <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
-  <link rel="stylesheet" href="style.css?v=20260730-2">
+  <link rel="stylesheet" href="style.css?v=20260730-3">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -280,30 +280,48 @@
 
     </section>
     <!-- ── Shelf: the four products under the hero (Rhode-style, no boxes) ── -->
-    <section class="s-shelf fade-in">
+    <section class="s-shelf s-shelf--v2 fade-in">
       <a href="coaching.html#private" class="s-shelf__item">
+        <div class="s-shelf__head">
+          <span class="label">One to one</span>
+          <h2 class="s-shelf__name">Private Sessions</h2>
+        </div>
         <div class="s-shelf__img">
           <picture>
             <source srcset="img/hero-session.webp" type="image/webp">
             <img src="img/hero-session.jpg" alt="Private session with Sam" loading="lazy">
           </picture>
         </div>
-        <span class="label">Book</span>
-        <h2 class="s-shelf__name">Private Sessions</h2>
-        <p class="s-shelf__meta">1:1 · Los Angeles + online</p>
+        <video class="s-shelf__hoverimg s-shelf__hovervid"
+          data-hover-src="img/sam-rotation-web.mp4"
+          poster="img/sam-rotation-poster.jpg"
+          muted loop playsinline preload="none" aria-hidden="true"></video>
+        <p class="s-shelf__meta">1:1 in Los Angeles<br>1:1 online</p>
+        <span class="s-shelf__cta">Book a session <span aria-hidden="true">&rarr;</span></span>
       </a>
       <a href="coaching.html#live" class="s-shelf__item">
+        <div class="s-shelf__head">
+          <span class="label">Real time</span>
+          <h2 class="s-shelf__name">Live Sessions</h2>
+        </div>
         <div class="s-shelf__img">
           <picture>
             <source srcset="img/sam-beach.webp" type="image/webp">
             <img src="img/sam-beach.jpg" alt="Sam training on the beach" loading="lazy">
           </picture>
         </div>
-        <span class="label">Join</span>
-        <h2 class="s-shelf__name">Live Sessions</h2>
-        <p class="s-shelf__meta">Real-time · from anywhere</p>
+        <picture class="s-shelf__hoverimg">
+          <source srcset="img/sam-beach-tight.webp" type="image/webp">
+          <img src="img/sam-beach-tight.jpg" alt="" loading="lazy" aria-hidden="true">
+        </picture>
+        <p class="s-shelf__meta">Group class in Los Angeles<br>Live online, group or 1:1</p>
+        <span class="s-shelf__cta">See the schedule <span aria-hidden="true">&rarr;</span></span>
       </a>
       <a href="on-demand.html" class="s-shelf__item">
+        <div class="s-shelf__head">
+          <span class="label">Anytime</span>
+          <h2 class="s-shelf__name">On-Demand</h2>
+        </div>
         <div class="s-shelf__img">
           <video
             data-src="video/solin-ondemand.mp4" preload="none"
@@ -312,9 +330,12 @@
             aria-label="Sam training, preview of an On-Demand program">
           </video>
         </div>
-        <span class="label">Practice</span>
-        <h2 class="s-shelf__name">On-Demand</h2>
-        <p class="s-shelf__meta">Programs on Solin · anytime</p>
+        <picture class="s-shelf__hoverimg">
+          <source srcset="img/sam-strength.webp" type="image/webp">
+          <img src="img/sam-strength.jpg" alt="" loading="lazy" aria-hidden="true">
+        </picture>
+        <p class="s-shelf__meta">Functional Strength Snacks<br>Movement Snacks for Daily Life</p>
+        <span class="s-shelf__cta">Explore the programs <span aria-hidden="true">&rarr;</span></span>
       </a>
     </section>
 

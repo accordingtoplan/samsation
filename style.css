@@ -1945,3 +1945,49 @@ body { padding-top: var(--topbar-h); }
   .nav-pill { transition: translate 0.3s var(--ease); }
   .nav-pill.is-hidden { translate: 0 calc(-100% - var(--topbar-h, 0px)); }
 }
+
+/* ── 33 · CTA placement: bottom-right closes the module (append-only) ──
+   Rule: the pill is the last thing in a module, card, or box, and it sits
+   at the bottom-right — the reading eye exits where the action is.
+   Reference execution: the homepage retreat band. */
+
+/* Flex-column bodies: pin to the right (and to the bottom where the column stretches). */
+.s-offer__body > .pill-cta,
+.s-rdl__body > .pill-cta,
+.s-newsletter-intro > .pill-cta,
+.s-split__card > .pill-cta { align-self: flex-end; }
+.s-split__card > .pill-cta { margin-top: auto; }
+
+/* Block-flow modules: same result via auto left margin. */
+.s-claim > .pill-cta,
+.s-contact__inner > a.pill-cta {
+  display: block;
+  width: fit-content;
+  margin-left: auto;
+}
+
+/* Hero: CTA bottom-right of the full-bleed image, mirroring the retreat band. */
+.hero-full__overlay { position: absolute; } /* restated for clarity; already set */
+.hero-full__overlay .pill-cta {
+  position: absolute;
+  right: clamp(1.5rem, 4vw, 3.5rem);
+  bottom: clamp(1.5rem, 4vw, 3.5rem);
+}
+
+/* Quotes: carousel slide foot — cite left, CTA right, one baseline row. */
+.ts-foot { justify-content: space-between; }
+
+/* Shelf tiles, fine pointer: the reveal bar's CTA content aligns right. */
+@media (hover: hover) and (pointer: fine) {
+  .s-shelf--v2 .s-shelf__cta { justify-content: flex-end; }
+}
+
+/* Mobile: quote foot stacks; the pill still exits bottom-right. */
+@media (max-width: 720px) {
+  .ts-foot .pill-cta { align-self: flex-end; }
+  /* Hero tagline clears the absolute pill so the two never overlap. */
+  .hero-full__line { margin-bottom: 3.5rem; }
+}
+
+/* Where to begin: the text CTA exits bottom-right of its card too. */
+.s-needs__item .s-needs__cta { align-self: flex-end; }

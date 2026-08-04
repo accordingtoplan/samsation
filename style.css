@@ -1988,3 +1988,23 @@ body { padding-top: var(--topbar-h); }
 
 /* Where to begin: the text CTA exits bottom-right of its card too. */
 .s-needs__item .s-needs__cta { align-self: flex-end; }
+
+/* ── 34 · Back to the flat ground (append-only, F 2026-08-04) ──
+   Gradients out: the Kasumi haze→moss ground and the footer gradient.
+   Bright green out: the full-width header bar goes quiet (bg ground,
+   ink links). Identity green stays where the styleguide puts it —
+   flat footer, patterns module, cites, overlay menu. */
+:root, html[data-theme="dark"] {
+  --ground: none;
+  --footer-grad: none;
+}
+body { background-image: none; }
+.footer { background: var(--accent); }
+
+/* Header: quiet bar on the page ground */
+.nav-pill__inner { background: var(--bg); }
+.nav-pill__wordmark { color: var(--ink); }
+.nav-pill__hamburger span { background: var(--ink); }
+.nav-pill__links a { color: var(--ink-mid); }
+.nav-pill__links a:hover,
+.nav-pill__links a[aria-current="page"] { color: var(--accent2); }

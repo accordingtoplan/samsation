@@ -1845,3 +1845,98 @@ body { padding-top: var(--topbar-h); }
 @media (max-width: 720px) {
   .s-press__link { grid-template-columns: 1fr; gap: 0.35rem; }
 }
+
+/* ══ 2026-08-04 · Apoticari-inspired refinements (append-only) ══ */
+
+/* ── Header v2: full-width bar, links left, wordmark centered ── */
+@media (min-width: 961px) {
+  .nav-pill {
+    top: var(--topbar-h, 0px);
+    left: 0;
+    width: 100%;
+    transform: none !important;
+    transition: none;
+  }
+  .nav-pill__inner,
+  .nav-pill.is-expanded .nav-pill__inner {
+    width: 100%;
+    grid-template-columns: 1fr;
+    padding: 0 var(--page-pad);
+    cursor: default;
+    transition: none;
+  }
+  .nav-pill__hamburger { display: none; }
+  .nav-pill__links,
+  .nav-pill.is-expanded .nav-pill__links {
+    display: flex;
+    justify-content: flex-start;
+    gap: 2.25rem;
+  }
+  .nav-pill__wordmark {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .nav-pill__spacer { display: none; }
+}
+
+/* ── Air: more vertical room around statement + testimonial sections ── */
+.s-claim { padding-block: calc(var(--section) * 1.4); }
+.s-testimonials-slide { padding-block: calc(var(--section-sm) * 1.6); }
+
+/* ── Testimonials: crossfade instead of slide, calmer read ── */
+.ts-slide {
+  transform: none !important;
+  transition: opacity 0.9s ease;
+  opacity: 0;
+}
+.ts-slide.is-active { opacity: 1; }
+.ts-slide.is-exit   { opacity: 0; visibility: visible; }
+
+/* ── Where to begin: entry by need ── */
+.s-needs { padding: var(--section-sm) var(--page-pad); }
+.s-needs__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(1rem, 2.5vw, 2rem);
+  margin-top: 2rem;
+}
+.s-needs__item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.5rem 0 1.25rem;
+  border-top: 1px solid var(--ink, #1c1c1a);
+  text-decoration: none;
+}
+.s-needs__name {
+  font-family: var(--f-display);
+  font-size: var(--t-h3);
+  line-height: 1.05;
+  letter-spacing: var(--ls-display);
+  color: var(--ink);
+}
+.s-needs__line {
+  font-family: var(--f-mono);
+  font-size: var(--t-label);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--ink-mid);
+}
+.s-needs__item .s-needs__cta {
+  margin-top: auto;
+  font-family: var(--f-mono);
+  font-size: var(--t-label);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.s-needs__item:hover .s-needs__name { color: var(--accent); }
+.s-needs__item:hover .s-needs__cta { color: var(--accent2); }
+@media (max-width: 960px) {
+  .s-needs__grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  .s-needs__grid { grid-template-columns: 1fr; }
+}

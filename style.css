@@ -2008,3 +2008,12 @@ body { background-image: none; }
 .nav-pill__links a { color: var(--ink-mid); }
 .nav-pill__links a:hover,
 .nav-pill__links a[aria-current="page"] { color: var(--accent2); }
+
+/* ── 35 · Header back to identity green (append-only, F 2026-08-04) ──
+   Reverses §34's quiet header only; flat grounds stay. */
+.nav-pill__inner { background: var(--accent); }
+.nav-pill__wordmark { color: #fff; }
+.nav-pill__hamburger span { background: #fff; }
+.nav-pill__links a { color: rgba(255,255,255,0.7); }
+.nav-pill__links a:hover,
+.nav-pill__links a[aria-current="page"] { color: var(--accent2); }

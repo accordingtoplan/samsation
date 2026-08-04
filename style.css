@@ -1927,9 +1927,11 @@ body { padding-top: var(--topbar-h); }
   font-size: var(--t-label);
   letter-spacing: var(--ls-label);
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--ink-mid);
+  transition: color var(--dur-med, 0.3s) ease;
 }
-.s-needs__item:hover .s-needs__name { color: var(--accent); }
+.s-needs__name { transition: color var(--dur-med, 0.3s) ease; }
+.s-needs__item:hover .s-needs__name { color: var(--accent2); }
 .s-needs__item:hover .s-needs__cta { color: var(--accent2); }
 @media (max-width: 960px) {
   .s-needs__grid { grid-template-columns: 1fr 1fr; }

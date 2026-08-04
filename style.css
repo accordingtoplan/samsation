@@ -1940,3 +1940,9 @@ body { padding-top: var(--topbar-h); }
 @media (max-width: 560px) {
   .s-needs__grid { grid-template-columns: 1fr; }
 }
+
+/* ── Header v2: hide on scroll-down, return on scroll-up (desktop) ── */
+@media (min-width: 961px) {
+  .nav-pill { transition: translate 0.3s var(--ease); }
+  .nav-pill.is-hidden { translate: 0 calc(-100% - var(--topbar-h, 0px)); }
+}

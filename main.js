@@ -35,12 +35,9 @@
         if (dir === 1 && y > 80) pill.classList.add('is-hidden');
         if (dir === -1 || y <= 60) pill.classList.remove('is-hidden');
       } else {
-        // Desktop: expand/collapse pill
-        if (dir === 1 && y > 80) collapse();
-        if (dir === -1) expand();
-        if (y <= 60) expand();
-        clearTimeout(stopTimer);
-        stopTimer = setTimeout(expand, 600);
+        // Desktop: hide the bar on scroll-down, bring it back on scroll-up
+        if (dir === 1 && y > 80) pill.classList.add('is-hidden');
+        if (dir === -1 || y <= 60) pill.classList.remove('is-hidden');
       }
 
       lastY   = y;

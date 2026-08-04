@@ -1885,11 +1885,8 @@ body { padding-top: var(--topbar-h); }
 .s-claim { padding-block: calc(var(--section) * 1.4); }
 .s-testimonials-slide { padding-block: calc(var(--section-sm) * 1.6); }
 
-/* ── Testimonials: names carry more weight ── */
-.ts-cite {
-  font-size: clamp(1rem, 1.4vw, 1.25rem);
-  color: var(--ink);
-}
+/* ── Testimonials: cite override removed 2026-08-04 — styleguide doctrine
+   holds: cites are --t-label mono, green, first + last name only. ── */
 
 /* ── Where to begin: entry by need ── */
 .s-needs { padding: var(--section-sm) var(--page-pad); }

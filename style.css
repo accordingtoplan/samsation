@@ -1816,3 +1816,32 @@ body { padding-top: var(--topbar-h); }
 #live .s-offer__media img { object-position: 32% 50%; }
 #group .s-offer__media img { object-position: 58% 30%; }
 #functional-strength-snacks .s-offer__media img { object-position: 50% 50%; }
+
+/* ── 32 · About: press list (append-only) ──
+   Quiet row list. Pub name = mono label in ink; descriptor = small ink-mid.
+   Whole row rolls over to persimmon, per the one-hover-language rule. */
+.s-press { padding: 0 var(--page-pad) var(--section); }
+.s-press > .label { display: block; margin-bottom: 1.5rem; }
+.s-press__list { list-style: none; margin: 0; padding: 0; }
+.s-press__list li { border-top: 1px solid rgba(28,28,26,0.15); }
+.s-press__list li:last-child { border-bottom: 1px solid rgba(28,28,26,0.15); }
+.s-press__link {
+  display: grid;
+  grid-template-columns: minmax(11rem, 16rem) 1fr;
+  gap: 1rem 2rem;
+  align-items: baseline;
+  padding: 1.1rem 0;
+}
+.s-press__pub {
+  font-family: var(--f-mono);
+  font-size: var(--t-label);
+  font-weight: 500;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+}
+.s-press__desc { font-size: var(--t-small); color: var(--ink-mid); }
+.s-press__link:hover .s-press__pub,
+.s-press__link:hover .s-press__desc { color: var(--accent2); }
+@media (max-width: 720px) {
+  .s-press__link { grid-template-columns: 1fr; gap: 0.35rem; }
+}

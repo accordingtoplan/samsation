@@ -1810,3 +1810,7 @@ body { padding-top: var(--topbar-h); }
 }
 .checker-rule--ink  { --checker-c: var(--ink); }
 .checker-rule--live { --checker-c: var(--accent3); }
+
+/* ── 31 · Coaching: online-sessions image framing (append-only) ──
+   Portrait source; bias the crop toward Sam's reach on wide/mobile crops. */
+#live .s-offer__media img { object-position: 32% 12%; }

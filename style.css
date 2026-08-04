@@ -1885,14 +1885,11 @@ body { padding-top: var(--topbar-h); }
 .s-claim { padding-block: calc(var(--section) * 1.4); }
 .s-testimonials-slide { padding-block: calc(var(--section-sm) * 1.6); }
 
-/* ── Testimonials: crossfade instead of slide, calmer read ── */
-.ts-slide {
-  transform: none !important;
-  transition: opacity 0.9s ease;
-  opacity: 0;
+/* ── Testimonials: names carry more weight ── */
+.ts-cite {
+  font-size: clamp(1rem, 1.4vw, 1.25rem);
+  color: var(--ink);
 }
-.ts-slide.is-active { opacity: 1; }
-.ts-slide.is-exit   { opacity: 0; visibility: visible; }
 
 /* ── Where to begin: entry by need ── */
 .s-needs { padding: var(--section-sm) var(--page-pad); }

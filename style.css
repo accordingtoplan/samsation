@@ -1813,5 +1813,5 @@ body { padding-top: var(--topbar-h); }
 
 /* ── 31 · Coaching: online-sessions image framing (append-only) ──
    Portrait source; bias the crop toward Sam's reach on wide/mobile crops. */
-#live .s-offer__media img { object-position: 32% 12%; }
+#live .s-offer__media img { object-position: 32% 50%; }
 #group .s-offer__media img { object-position: 58% 30%; }

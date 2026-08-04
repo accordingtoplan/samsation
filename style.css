@@ -1815,3 +1815,4 @@ body { padding-top: var(--topbar-h); }
    Portrait source; bias the crop toward Sam's reach on wide/mobile crops. */
 #live .s-offer__media img { object-position: 32% 50%; }
 #group .s-offer__media img { object-position: 58% 30%; }
+#functional-strength-snacks .s-offer__media img { object-position: 50% 50%; }

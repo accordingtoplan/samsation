@@ -2017,3 +2017,13 @@ body { background-image: none; }
 .nav-pill__links a { color: rgba(255,255,255,0.7); }
 .nav-pill__links a:hover,
 .nav-pill__links a[aria-current="page"] { color: var(--accent2); }
+
+/* ── 36 · Nav wordmark as logo: Archivo 900, hero overlay retired (append-only, F 2026-08-05) ── */
+.nav-pill__wordmark {
+  font-family: var(--f-display);
+  font-weight: 900;
+  font-size: 1.15rem;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+.hero-full__wordmark { display: none; }

@@ -358,7 +358,7 @@
     var msg = form.message.value.trim();
     var body = msg + '\n\n' + name + '\n' + email;
     window.location.href = 'mailto:hello@samrabon.com'
-      + '?subject=' + encodeURIComponent('Enquiry from ' + name)
+      + '?subject=' + encodeURIComponent('Inquiry from ' + name)
       + '&body=' + encodeURIComponent(body);
   });
 })();

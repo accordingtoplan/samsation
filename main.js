@@ -44,6 +44,12 @@
       ticking = false;
     });
     ticking = true;
+
+    // Reveal on scroll-stop: after 900ms of no scroll events, bring the nav back
+    if (stopTimer) clearTimeout(stopTimer);
+    stopTimer = setTimeout(function () {
+      pill.classList.remove('is-hidden');
+    }, 900);
   }, { passive: true });
 }());
 

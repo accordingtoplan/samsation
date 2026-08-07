@@ -2121,3 +2121,11 @@ a:hover .tsh-link, .tsh-link:hover { color: var(--accent2); }
   .tsh-hero__title--bottom { bottom: 14vh; }
   .tsh-claim { padding: 8vh var(--page-pad) 6vh; }
 }
+
+/* ── TSH round 3: edge-to-edge nav, offer media centering, hero spacing ── */
+.tsh .nav-pill { top: 0 !important; left: 0 !important; transform: none !important; width: 100vw; }
+.tsh .nav-pill.is-expanded .nav-pill__inner { width: 100%; }
+.tsh .hero-full { margin-top: 0; }
+.tsh-offer__img img { object-position: center; }
+.tsh-offer__video { object-position: 68% 50%; }
+.tsh .s-patterns-module { margin-bottom: 0; }

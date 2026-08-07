@@ -32,7 +32,16 @@
       <circle cx="7" cy="25" r="1.2" fill="currentColor" stroke="none"/>
       <path d="M25.7 5 C27.1 5.2 28.1 6.4 27.9 7.7 C27.6 9.1 26.3 10.1 25 9.8 C23.7 9.6 22.9 8.5 23.1 7.2 C23.3 6.1 24.3 5.2 25.9 5.3"/>
     </symbol>
-  </svg>
+      <symbol id="glyph-hinge" viewBox="0 0 32 32" fill="none">
+      <path d="M11.5 5.8 C10.7 9 11.6 11.9 10.9 14.6 C10.7 15.7 11 16.9 11 18" stroke-linecap="round"/>
+      <path d="M11 18 C14 18.5 16.6 20 19.4 20.9 C21.3 21.6 23.3 22.4 25.2 23.1" stroke-linecap="round"/>
+      <path d="M11.1 16.2 C12.1 16.2 12.9 17 12.8 18 C12.7 19 11.7 19.8 10.7 19.7 C9.8 19.6 9.2 18.7 9.3 17.8 C9.4 16.9 10.1 16.3 11.3 16.3"/>
+    </symbol>
+    <symbol id="glyph-shift" viewBox="0 0 32 32" fill="none">
+      <path d="M6 12.3 C8.4 11.7 10.6 12.3 12.9 12 C14.3 11.9 15.6 12 17 12.1" stroke-linecap="round"/>
+      <path d="M15 20.2 C17.4 19.6 19.6 20.2 21.9 19.8 C23.3 19.7 24.6 20 26 20" stroke-linecap="round"/>
+    </symbol>
+</svg>
 
   <nav class="nav-pill" id="navPill">
     <div class="nav-pill__inner">
@@ -66,17 +75,24 @@
   <div class="page" id="main">
 
     <!-- ── TSH Hero: tonal image, type as hero, edge eyebrows ── -->
-    <section class="tsh-hero">
-      <picture class="tsh-hero__img">
+    <section class="hero-full">
+      <a href="coaching.html" class="hero-full__cover-link" aria-label="Move with Sam — coaching"></a>
+      <picture>
         <source srcset="img/hero-la-run.webp" type="image/webp">
         <img src="img/hero-la-run.jpg" alt="Group running toward the view above Los Angeles at dusk" loading="eager">
       </picture>
-      <span class="tsh-hero__eyebrow tsh-hero__eyebrow--l label">Prehab</span>
-      <span class="tsh-hero__eyebrow tsh-hero__eyebrow--r label">Freedom</span>
-      <h1 class="tsh-hero__title tsh-hero__title--bottom"><a href="coaching.html">A Practice in<br>Real Life Movement.</a></h1>
+      <div class="hero-full__overlay">
+        <h1 class="hero-full__title"><a class="hl-link" href="coaching.html">A Practice in<br>Real Life Movement</a></h1>
+        <p class="hero-full__line">Prepare your body for real life.</p>
+      </div>
     </section>
 
-    <!-- ── TSH Offers: two blocks, image + eyebrow + sentence + underlined link ── -->
+    <section class="s-claim s-claim--green fade-in">
+      <span class="label">Movement · Los Angeles</span>
+      <h2><a class="hl-link" href="about.html">SamSation is not a fitness program. It is a practice built around how bodies actually move in life, not in a gym.</a></h2>
+      <a href="about.html" class="pill-cta">About the practice</a>
+    </section>
+
     <section class="tsh-offers fade-in">
       <a class="tsh-offer" href="coaching.html">
         <div class="tsh-offer__img">
@@ -103,12 +119,10 @@
       </a>
     </section>
 
+
+    <!-- ── TSH Offers: two blocks, image + eyebrow + sentence + underlined link ── -->
+
     <!-- ── Claim: live-site styling (sentence case, green) ── -->
-    <section class="s-claim s-claim--green fade-in">
-      <span class="label">Movement · Los Angeles</span>
-      <h2><a class="hl-link" href="about.html">SamSation is not a fitness program. It is a practice built around how bodies actually move in life, not in a gym.</a></h2>
-      <a href="about.html" class="pill-cta">About the practice</a>
-    </section>
 
     <!-- ── Where to begin: entry by need, with images (copy pending Sam sign-off) ── -->
     <section class="s-needs fade-in" aria-label="Where to begin">
@@ -272,11 +286,36 @@
       </div>
     </section>
 
-    <!-- ── TSH Close: big centered statement, one underlined link ── -->
-    <section class="tsh-close fade-in">
-      <h2><a href="coaching.html">Prepare<br>your body<br>for real life.</a></h2>
-      <a class="tsh-link" href="coaching.html">Move with Sam</a>
+    <!-- ── Patterns module: full-height, own section ── -->
+    <section class="s-patterns-module fade-in">
+      <div class="s-patterns-module__inner">
+        <h2 class="s-patterns-module__title">The Patterns<br>of Daily Life</h2>
+        <div class="s-patterns-module__row">
+          <div class="s-patterns-module__item">
+            <svg class="glyph glyph--88" aria-hidden="true"><use href="#glyph-step"></use></svg>
+            <span>Step</span>
+          </div>
+          <div class="s-patterns-module__item">
+            <svg class="glyph glyph--88" aria-hidden="true"><use href="#glyph-hinge"></use></svg>
+            <span>Hinge</span>
+          </div>
+          <div class="s-patterns-module__item">
+            <svg class="glyph glyph--88" aria-hidden="true"><use href="#glyph-rotate"></use></svg>
+            <span>Rotate</span>
+          </div>
+          <div class="s-patterns-module__item">
+            <svg class="glyph glyph--88" aria-hidden="true"><use href="#glyph-reach"></use></svg>
+            <span>Reach</span>
+          </div>
+          <div class="s-patterns-module__item">
+            <svg class="glyph glyph--88" aria-hidden="true"><use href="#glyph-shift"></use></svg>
+            <span>Shift</span>
+          </div>
+        </div>
+      </div>
     </section>
+
+    <!-- ── TSH Close: big centered statement, one underlined link ── -->
 
   </div>
 

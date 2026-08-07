@@ -2087,3 +2087,18 @@ a:hover .tsh-link, .tsh-link:hover { color: var(--accent2); }
 .s-needs__pic img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; display: block; margin-bottom: 0.5rem; filter: grayscale(1); transition: filter var(--dur-med, 0.3s) ease; }
 @media (hover: hover) and (pointer: fine) { .s-needs__item:hover .s-needs__pic img { filter: grayscale(0); } }
 @media (hover: none) { .s-needs__pic img { filter: none; } }
+
+/* ── TSH nav: wordmark left, links right, mode toggle docked at the end ── */
+.tsh .nav-pill.is-expanded .nav-pill__inner { display: flex; align-items: center; gap: 1.5rem; width: calc(100vw - 2rem); padding: 0 1.5rem; }
+.tsh .nav-pill.is-expanded .nav-pill__hamburger { display: none; }
+.tsh .nav-pill__wordmark { position: static !important; transform: none !important; left: auto !important; top: auto !important; }
+.tsh .nav-pill.is-expanded .nav-pill__links { margin-left: auto; justify-content: flex-end; }
+.tsh .nav-pill__inner .mode-toggle { position: static; height: auto; padding: 0; color: rgba(255,255,255,0.7); }
+.tsh .nav-pill__inner .mode-toggle:hover { color: var(--accent2); }
+@media (max-width: 720px) {
+  .tsh .nav-pill__inner { display: flex; align-items: center; justify-content: space-between; padding: 0 0.9rem; gap: 0.75rem; }
+  .tsh .nav-pill__inner .nav-pill__wordmark { order: 1; }
+  .tsh .nav-pill__inner .nav-pill__hamburger { order: 0; display: flex; }
+  .tsh .nav-pill__inner .mode-toggle { order: 2; position: static; transform: none; }
+  .tsh .nav-pill__inner .nav-pill__links { display: none; }
+}

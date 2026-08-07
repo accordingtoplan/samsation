@@ -2139,3 +2139,6 @@ a:hover .tsh-link, .tsh-link:hover { color: var(--accent2); }
 }
 .tsh-offer__img img { object-position: 25% 80%; }
 .tsh-offer__video { object-position: 68% 100%; }
+
+/* ── TSH: air between glyph module and retreat ── */
+.tsh .s-patterns-module { margin-bottom: var(--section); }

@@ -2038,14 +2038,14 @@ body { background-image: none; }
 .tsh-hero { position: relative; min-height: 92vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
 .tsh-hero__img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(0.82) brightness(1.18); opacity: 0.55; }
 .tsh-hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(240,237,231,0.55) 0%, rgba(240,237,231,0.15) 45%, rgba(240,237,231,0.75) 100%); pointer-events: none; }
-.tsh-hero__title { position: relative; z-index: 2; font-family: 'Archivo', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 900; text-transform: uppercase; text-align: center; font-size: clamp(2.6rem, 8vw, 7.2rem); line-height: 0.92; letter-spacing: -0.02em; margin: 0; padding: 0 4vw; max-width: 100%; }
+.tsh-hero__title { position: relative; z-index: 2; font-family: var(--f-display); font-weight: 900; text-transform: uppercase; text-align: center; font-size: clamp(2.6rem, 8vw, 7.2rem); line-height: 0.95; letter-spacing: var(--ls-display); margin: 0; padding: 0 4vw; max-width: 100%; }
 .tsh-hero__title a { color: var(--ink); text-decoration: none; }
 .tsh-hero__eyebrow { position: absolute; top: 50%; z-index: 2; transform: translateY(-50%); }
 .tsh-hero__eyebrow--l { left: 4vw; }
 .tsh-hero__eyebrow--r { right: 4vw; }
 
 /* Underlined text link: the Snake Height CTA register */
-.tsh-link { display: inline-block; font-family: 'Courier Prime', monospace; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 1px; }
+.tsh-link { display: inline-block; font-family: var(--f-mono); font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 1px; }
 a:hover .tsh-link, .tsh-link:hover { color: var(--accent2); }
 .tsh-link--light { color: #fff; }
 
@@ -2056,11 +2056,11 @@ a:hover .tsh-link, .tsh-link:hover { color: var(--accent2); }
 .tsh-offer__img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
 @media (hover: hover) and (pointer: fine) { .tsh-offer:hover .tsh-offer__img img { transform: scale(1.03); } }
 .tsh-offer .label { display: block; margin-bottom: 12px; }
-.tsh-offer__line { font-family: 'Archivo', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 900; font-size: 1.3rem; line-height: 1.25; margin: 0 0 16px; max-width: 26ch; }
+.tsh-offer__line { font-family: var(--f-display); font-weight: 900; text-transform: uppercase; letter-spacing: var(--ls-caps); font-size: 1.3rem; line-height: 1.25; margin: 0 0 16px; max-width: 26ch; }
 
 /* Story: paragraph left, one large glyph + small photo right */
 .tsh-story { display: grid; grid-template-columns: 1.1fr 1fr; gap: 6vw; align-items: center; padding: 10vh 8vw 14vh; max-width: 1400px; margin: 0 auto; }
-.tsh-story__text p { font-family: 'Archivo', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 900; font-size: clamp(1.4rem, 2.4vw, 2rem); line-height: 1.25; margin: 0 0 24px; }
+.tsh-story__text p { font-family: var(--f-display); font-weight: 900; text-transform: uppercase; letter-spacing: var(--ls-caps); font-size: clamp(1.4rem, 2.4vw, 2rem); line-height: 1.25; margin: 0 0 24px; }
 .tsh-story__art { position: relative; display: flex; align-items: flex-end; justify-content: flex-end; min-height: 320px; }
 .tsh-story__glyph { position: absolute; left: 0; top: 0; width: min(260px, 24vw); height: min(260px, 24vw); color: var(--ink); stroke-width: 0.55; }
 .tsh-story__photo { display: block; width: min(220px, 20vw); }
@@ -2068,7 +2068,7 @@ a:hover .tsh-link, .tsh-link:hover { color: var(--accent2); }
 
 /* Close: big centered statement */
 .tsh-close { text-align: center; padding: 16vh 6vw 18vh; }
-.tsh-close h2 { font-family: 'Archivo', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 900; text-transform: uppercase; font-size: clamp(2.4rem, 6.5vw, 5.5rem); line-height: 0.95; letter-spacing: -0.02em; margin: 0 0 32px; }
+.tsh-close h2 { font-family: var(--f-display); font-weight: 900; text-transform: uppercase; font-size: clamp(2.4rem, 6.5vw, 5.5rem); line-height: 0.95; letter-spacing: var(--ls-display); margin: 0 0 32px; }
 .tsh-close h2 a { color: var(--ink); text-decoration: none; }
 @media (hover: hover) { .tsh-close h2 a:hover { color: var(--accent2); } }
 

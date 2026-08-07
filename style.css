@@ -2081,3 +2081,8 @@ a:hover .tsh-link, .tsh-link:hover { color: var(--accent2); }
   .tsh-story__glyph { left: auto; right: 0; width: 180px; height: 180px; }
   .tsh-story__photo { width: 160px; }
 }
+
+/* ── Where to begin: item images (4:5, grayscale at rest, color on hover) ── */
+.s-needs__pic img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; display: block; margin-bottom: 0.5rem; filter: grayscale(1); transition: filter var(--dur-med, 0.3s) ease; }
+@media (hover: hover) and (pointer: fine) { .s-needs__item:hover .s-needs__pic img { filter: grayscale(0); } }
+@media (hover: none) { .s-needs__pic img { filter: none; } }

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SamSation · Test · Snake Height exploration</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+  <link rel="stylesheet" href="style.css?v=test-sh-1">
+  <script>(function(){var t="light";try{t=localStorage.getItem("samsation-theme")||"light"}catch(e){}document.documentElement.setAttribute("data-theme",t);})();</script>
+</head>
+<body class="tsh">
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <svg style="display:none" aria-hidden="true">
+    <filter id="pencil" x="-30%" y="-30%" width="160%" height="160%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="1.8" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <symbol id="glyph-step" viewBox="0 0 32 32" fill="none">
+      <path d="M5.6 23.7 C5 21.4 7.1 19.7 10 20 C12.7 20.3 15.3 21.2 14.9 23.1 C14.5 25 12 26.2 9.4 25.8 C7.1 25.5 5.8 24.5 5.7 22.9 C5.7 22.5 6 22.2 6.3 22.1" transform="rotate(-25 10 23)"/>
+      <path d="M16.6 10.7 C16 8.4 18.1 6.7 21 7 C23.7 7.3 26.3 8.2 25.9 10.1 C25.5 12 23 13.2 20.4 12.8 C18.1 12.5 16.8 11.5 16.7 9.9 C16.7 9.5 17 9.2 17.3 9.1" transform="rotate(-25 21 10)"/>
+    </symbol>
+    <symbol id="glyph-rotate" viewBox="0 0 32 32" fill="none">
+      <path d="M25.1 11.8 C26.6 17 23.2 23.6 17 24.9 C10.7 26.2 5.4 21.9 5.9 16.1 C6.3 11.4 8.6 8.9 11.5 8.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M11.5 8.2 C10.1 8.5 8.7 9.3 7.2 9.6 M11.5 8.2 C11.5 6.8 11.1 5.3 11.1 3.8" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="16.3" cy="17" r="1" fill="currentColor" stroke="none"/>
+    </symbol>
+    <symbol id="glyph-reach" viewBox="0 0 32 32" fill="none">
+      <path d="M7.5 24.6 C11.4 20.8 14.6 17.9 18.2 14.5 C20.5 12.3 22.8 10.1 25 8" stroke-linecap="round"/>
+      <circle cx="7" cy="25" r="1.2" fill="currentColor" stroke="none"/>
+      <path d="M25.7 5 C27.1 5.2 28.1 6.4 27.9 7.7 C27.6 9.1 26.3 10.1 25 9.8 C23.7 9.6 22.9 8.5 23.1 7.2 C23.3 6.1 24.3 5.2 25.9 5.3"/>
+    </symbol>
+  </svg>
+
+  <nav class="nav-pill" id="navPill">
+    <div class="nav-pill__inner">
+      <button class="nav-pill__hamburger" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+      <nav class="nav-pill__links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="coaching.html">Coaching</a>
+        <a href="on-demand.html">On-Demand</a>
+        <a href="retreat.html">Retreat</a>
+        <a href="library.html">Library</a>
+      </nav>
+      <a href="index.html" class="nav-pill__wordmark">SamSation</a>
+    </div>
+  </nav>
+
+  <div class="nav-overlay" id="navOverlay" aria-hidden="true">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="coaching.html">Coaching</a>
+    <a href="on-demand.html">On-Demand</a>
+    <a href="retreat.html">Retreat</a>
+    <a href="library.html">Library</a>
+    <div class="nav-overlay__foot">
+      <a href="https://www.instagram.com/samrabon_" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://samrabon.substack.com" target="_blank" rel="noopener">Substack</a>
+    </div>
+  </div>
+
+  <div class="page" id="main">
+
+    <!-- ── TSH Hero: tonal image, type as hero, edge eyebrows ── -->
+    <section class="tsh-hero">
+      <picture class="tsh-hero__img">
+        <source srcset="img/hero-session.webp" type="image/webp">
+        <img src="img/hero-session.jpg" alt="Sam guiding a movement session" loading="eager">
+      </picture>
+      <span class="tsh-hero__eyebrow tsh-hero__eyebrow--l label">Movement</span>
+      <span class="tsh-hero__eyebrow tsh-hero__eyebrow--r label">Los Angeles</span>
+      <h1 class="tsh-hero__title"><a href="coaching.html">A Practice<br>in Real Life<br>Movement.</a></h1>
+    </section>
+
+    <!-- ── TSH Offers: two blocks, image + eyebrow + sentence + underlined link ── -->
+    <section class="tsh-offers fade-in">
+      <a class="tsh-offer" href="coaching.html">
+        <div class="tsh-offer__img">
+          <picture>
+            <source srcset="img/hero-session-tight.webp" type="image/webp">
+            <img src="img/hero-session-tight.jpg" alt="Sam coaching a private session" loading="lazy">
+          </picture>
+        </div>
+        <span class="label">Sessions</span>
+        <p class="tsh-offer__line">Private, group, and live sessions in Los Angeles and online.</p>
+        <span class="tsh-link">Move with Sam</span>
+      </a>
+      <a class="tsh-offer" href="on-demand.html">
+        <div class="tsh-offer__img">
+          <picture>
+            <source srcset="img/ondemand-strength.webp" type="image/webp">
+            <img src="img/ondemand-strength.jpg" alt="On-demand strength program" loading="lazy">
+          </picture>
+        </div>
+        <span class="label">On-Demand</span>
+        <p class="tsh-offer__line">The same precision Sam brings to a private session, guided step by step, ready when you are.</p>
+        <span class="tsh-link">Explore the programs</span>
+      </a>
+    </section>
+
+    <!-- ── TSH Story: paragraph beside one large glyph + small photo ── -->
+    <section class="tsh-story fade-in">
+      <div class="tsh-story__text">
+        <p>SamSation is not a fitness program. It is a practice built around how bodies actually move in life, not in a gym.</p>
+        <a class="tsh-link" href="about.html">About the practice</a>
+      </div>
+      <div class="tsh-story__art">
+        <svg class="tsh-story__glyph glyph" aria-hidden="true"><use href="#glyph-rotate"></use></svg>
+        <picture class="tsh-story__photo">
+          <source srcset="img/coach-11.webp" type="image/webp">
+          <img src="img/coach-11.jpg" alt="Sam in a one-to-one session" loading="lazy">
+        </picture>
+      </div>
+    </section>
+
+    <!-- ── Retreat band: kept from live site ── -->
+    <section class="s-retreat fade-in">
+      <div class="s-retreat__inner">
+        <a class="media-link" href="retreat.html" aria-label="Retreats">
+        <picture>
+          <source srcset="img/retreat-pantelleria.webp" type="image/webp">
+          <img src="img/retreat-pantelleria.jpg" alt="Waves breaking against volcanic rock, Pantelleria">
+        </picture>
+        </a>
+        <div class="s-retreat__caption">
+          <div>
+            <span class="label label--accent">Retreats &middot; First access</span>
+            <h3><a class="hl-link" href="retreat.html">Greece · Fall 2026 · A small group, by the sea.</a></h3>
+          </div>
+          <div class="s-retreat__caption-right">
+            <a href="retreat.html" class="tsh-link tsh-link--light">Join the waitlist</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── TSH Close: big centered statement, one underlined link ── -->
+    <section class="tsh-close fade-in">
+      <h2><a href="coaching.html">Prepare<br>your body<br>for real life.</a></h2>
+      <a class="tsh-link" href="coaching.html">Move with Sam</a>
+    </section>
+
+  </div>
+
+  <footer class="footer">
+    <div class="footer__inner footer__inner--cols">
+      <div class="footer__col footer__col--news">
+        <span class="label footer__newsletter-label">Stay in it</span>
+        <p class="footer__newsletter-text">A letter, not a newsletter. Twice a month, when there is something worth saying.</p>
+        <form class="footer__form" action="https://samrabon.substack.com/subscribe" method="get" target="_blank">
+          <input type="email" name="email" class="footer__input" placeholder="Your email" autocomplete="email">
+          <button type="submit" class="footer__submit">Subscribe</button>
+        </form>
+      </div>
+      <nav class="footer__col" aria-label="Footer site navigation">
+        <span class="label footer__col-label">Explore</span>
+        <div class="footer__nav footer__nav--stack">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="coaching.html">Coaching</a>
+          <a href="on-demand.html">On-Demand</a>
+          <a href="retreat.html">Retreat</a>
+          <a href="library.html">Library</a>
+        </div>
+      </nav>
+      <div class="footer__col">
+        <span class="label footer__col-label">Connect</span>
+        <div class="footer__nav footer__nav--stack">
+          <a href="https://www.instagram.com/samrabon_" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://samrabon.substack.com" target="_blank" rel="noopener">Substack</a>
+          <a href="about.html#contact">Contact</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__meta">SamSation · A Practice in Real Life Movement · Los Angeles</p>
+      <a class="footer__privacy" href="privacy.html">Privacy</a>
+    </div>
+    <div class="footer__wordmark-wrap">
+      <div class="footer__wordmark" aria-hidden="true">SamSation</div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

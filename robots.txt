@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /styleguide.html
 
-Sitemap: https://samsation.co/sitemap.xml
+Sitemap: https://samrabon.com/sitemap.xml

@@ -2224,3 +2224,11 @@ a:hover .tsh-link, .tsh-link:hover { color: var(--accent2); }
   .tsh .s-needs { padding-top: 3rem; padding-bottom: 3rem; }
   .tsh .s-music__embed { height: 152px; }
 }
+
+/* ── 41 · TSH needs: uniform two-up boxes (append-only, F 2026-08-23) ──
+   Every tile same size, same hierarchy: names and lines reserve
+   two lines, CTA sits on one shared baseline. */
+@media (max-width: 560px) {
+  .tsh .s-needs__name { min-height: 2.3em; }
+  .tsh .s-needs__line { min-height: 3.4em; }
+}

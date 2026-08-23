@@ -2142,3 +2142,46 @@ a:hover .tsh-link, .tsh-link:hover { color: var(--accent2); }
 
 /* ── TSH: air between glyph module and retreat ── */
 .tsh .s-patterns-module { margin-bottom: var(--section); }
+
+/* ── 37 · FAQ page (append-only, 2026-08-23) ──
+   Open ledger of questions. Hairline dividers, display questions,
+   mono answers. details/summary, no JS. */
+.s-faq {
+  padding: 0 var(--page-pad);
+  margin-bottom: var(--section-sm);
+}
+.s-faq__label { display: block; margin-bottom: 1.25rem; }
+.s-faq__item { border-top: 1px solid var(--hairline); }
+.s-faq__item:last-child { border-bottom: 1px solid var(--hairline); }
+.s-faq__q {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.4rem 0;
+  cursor: pointer;
+  list-style: none;
+  transition: color var(--dur-fast) var(--ease);
+}
+.s-faq__q::-webkit-details-marker { display: none; }
+.s-faq__q h2 {
+  font-size: var(--t-h3);
+  letter-spacing: var(--ls-caps);
+  line-height: var(--lh-tight);
+}
+.s-faq__q:hover { color: var(--accent2); }
+.s-faq__mark {
+  flex: 0 0 auto;
+  font-family: var(--f-mono);
+  font-size: var(--t-body);
+  align-self: center;
+}
+.s-faq__mark::before { content: "+"; }
+.s-faq__item[open] .s-faq__mark::before { content: "\2212"; }
+.s-faq__a { max-width: 62ch; padding: 0 0 1.75rem; }
+.s-faq__a p { line-height: var(--lh-mono); }
+.s-faq__a p + p { margin-top: 0.75rem; }
+@media (max-width: 640px) {
+  .s-faq__q { padding: 1.1rem 0; gap: 1rem; }
+  .s-faq__a { padding-bottom: 1.4rem; }
+}

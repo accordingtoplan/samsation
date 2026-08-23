@@ -6,7 +6,7 @@
   <title>SamSation · Test</title>
   <meta name="robots" content="noindex, nofollow">
   <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
-  <link rel="stylesheet" href="style.css?v=20260823-3">
+  <link rel="stylesheet" href="style.css?v=20260807-2">
   <script>(function(){var t="light";try{t=localStorage.getItem("samsation-theme")||"light"}catch(e){}document.documentElement.setAttribute("data-theme",t);})();</script>
 </head>
 <body class="tsh">
@@ -55,7 +55,6 @@
         <a href="on-demand.html">On-Demand</a>
         <a href="retreat.html">Retreat</a>
         <a href="library.html">Library</a>
-        <a href="faq.html">FAQ</a>
       </nav>
     </div>
   </nav>
@@ -67,7 +66,6 @@
     <a href="on-demand.html">On-Demand</a>
     <a href="retreat.html">Retreat</a>
     <a href="library.html">Library</a>
-    <a href="faq.html">FAQ</a>
     <div class="nav-overlay__foot">
       <a href="https://www.instagram.com/samrabon_" target="_blank" rel="noopener">Instagram</a>
       <a href="https://samrabon.substack.com" target="_blank" rel="noopener">Substack</a>
@@ -95,65 +93,34 @@
       <a href="about.html" class="pill-cta">About the practice</a>
     </section>
 
-    <!-- ── Shelf: the three formats (ported from index, replaces two-box offers per F 2026-08-23) ── -->
-    <section class="s-shelf s-shelf--v2 fade-in">
-      <a href="coaching.html#private" class="s-shelf__item">
-        <div class="s-shelf__head">
-          <span class="label">One to one</span>
-          <h2 class="s-shelf__name">Private Sessions</h2>
-        </div>
-        <div class="s-shelf__img">
+    <section class="tsh-offers fade-in">
+      <a class="tsh-offer" href="coaching.html">
+        <div class="tsh-offer__img">
           <picture>
-            <source srcset="img/hero-session.webp" type="image/webp">
-            <img src="img/hero-session.jpg" alt="Private session with Sam" loading="lazy">
+            <source srcset="img/hero-session-tight.webp" type="image/webp">
+            <img src="img/hero-session-tight.jpg" alt="Sam coaching a private session" loading="lazy">
           </picture>
         </div>
-        <picture class="s-shelf__hoverimg">
-          <source srcset="img/hero-session-tight.webp" type="image/webp">
-          <img src="img/hero-session-tight.jpg" alt="" loading="lazy" aria-hidden="true">
-        </picture>
-        <p class="s-shelf__meta">1:1 in Los Angeles<br>1:1 online</p>
-        <span class="s-shelf__cta">Inquire <span aria-hidden="true">&rarr;</span></span>
+        <div class="tsh-offer__text">
+          <span class="label">Sessions</span>
+          <p class="tsh-offer__line">Private, group, and live sessions in Los Angeles and online.</p>
+          <span class="tsh-link tsh-link--light">Move with Sam</span>
+        </div>
       </a>
-      <a href="coaching.html#book" class="s-shelf__item">
-        <div class="s-shelf__head">
-          <span class="label">Real time</span>
-          <h2 class="s-shelf__name">Live Sessions</h2>
+      <a class="tsh-offer" href="on-demand.html">
+        <div class="tsh-offer__img">
+          <video class="tsh-offer__video" data-src="video/solin-ondemand.mp4" preload="none" poster="img/solin-ondemand-poster.jpg" muted loop playsinline aria-label="Preview of a Solin on-demand session"></video>
         </div>
-        <div class="s-shelf__img">
-          <picture>
-            <source srcset="img/sam-beach.webp" type="image/webp">
-            <img src="img/sam-beach.jpg" alt="Sam training on the beach" loading="lazy">
-          </picture>
+        <div class="tsh-offer__text">
+          <span class="label">On-Demand</span>
+          <p class="tsh-offer__line">The same precision Sam brings to a private session, guided step by step, ready when you are.</p>
+          <span class="tsh-link tsh-link--light">Explore the programs</span>
         </div>
-        <picture class="s-shelf__hoverimg">
-          <source srcset="img/sam-beach-tight.webp" type="image/webp">
-          <img src="img/sam-beach-tight.jpg" alt="" loading="lazy" aria-hidden="true">
-        </picture>
-        <p class="s-shelf__meta">Group class in Los Angeles<br>Live online, group or 1:1</p>
-        <span class="s-shelf__cta">See the schedule <span aria-hidden="true">&rarr;</span></span>
-      </a>
-      <a href="on-demand.html" class="s-shelf__item">
-        <div class="s-shelf__head">
-          <span class="label">Anytime</span>
-          <h2 class="s-shelf__name">On-Demand</h2>
-        </div>
-        <div class="s-shelf__img">
-          <video
-            data-src="video/solin-ondemand.mp4" preload="none"
-            poster="img/solin-ondemand-poster.jpg"
-            muted loop playsinline
-            aria-label="Sam training, preview of an On-Demand program">
-          </video>
-        </div>
-        <picture class="s-shelf__hoverimg">
-          <source srcset="img/ondemand-strength-tight.webp" type="image/webp">
-          <img src="img/ondemand-strength-tight.jpg" alt="" loading="lazy" aria-hidden="true">
-        </picture>
-        <p class="s-shelf__meta">Functional Strength Snacks<br>Movement Snacks for Daily Life</p>
-        <span class="s-shelf__cta">Explore the programs <span aria-hidden="true">&rarr;</span></span>
       </a>
     </section>
+
+
+    <!-- ── TSH Offers: two blocks, image + eyebrow + sentence + underlined link ── -->
 
     <!-- ── Claim: live-site styling (sentence case, green) ── -->
 
@@ -262,7 +229,7 @@
         <a class="s-needs__item" href="coaching.html#private">
           <picture class="s-needs__pic">
             <source srcset="img/needs-surgery.webp" type="image/webp">
-            <img src="img/needs-surgery.jpg" alt="Sam placing a socked foot on an incline board, step by step" loading="lazy">
+            <img src="img/needs-surgery.jpg" alt="Engraved anatomical study of two feet" loading="lazy">
           </picture>
           <span class="s-needs__name">After surgery</span>
           <span class="s-needs__line">Rehab, made safer</span>
@@ -271,7 +238,7 @@
         <a class="s-needs__item" href="coaching.html#private">
           <picture class="s-needs__pic">
             <source srcset="img/needs-postpartum.webp" type="image/webp">
-            <img src="img/needs-postpartum.jpg" alt="Sam standing in a calm forward reach" loading="lazy">
+            <img src="img/needs-postpartum.jpg" alt="Bare foot resting against striped bedding" loading="lazy">
           </picture>
           <span class="s-needs__name">Pregnant or postpartum</span>
           <span class="s-needs__line">Strength that adapts</span>
@@ -342,65 +309,7 @@
             <h3><a class="hl-link" href="retreat.html">Greece · Fall 2026 · A small group, by the sea.</a></h3>
           </div>
           <div class="s-retreat__caption-right">
-            <a href="retreat.html" class="pill-cta pill-cta--light">Join the waitlist</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ── On-Demand: full-bleed video moment (ported from index) ── -->
-    <section class="s-ondemand fade-in">
-      <div class="s-ondemand__inner">
-        <a class="media-link" href="on-demand.html" aria-label="On-Demand programs">
-        <div class="s-ondemand__videos">
-          <video
-            class="s-ondemand__video"
-            data-src="video/solin-ondemand.mp4" preload="none"
-            poster="img/solin-ondemand-poster.jpg"
-            muted loop playsinline
-            aria-label="Preview of a Solin on-demand session">
-          </video>
-          <video
-            class="s-ondemand__video"
-            data-src="video/sam-solin-reel.mp4" preload="none"
-            poster="img/sam-solin-reel-poster.jpg"
-            muted loop playsinline
-            aria-label="Sam leading a Solin on-demand session">
-          </video>
-        </div>
-        </a>
-        <div class="s-ondemand__caption">
-          <div>
-            <span class="label">On-Demand &middot; Solin</span>
-            <h2 class="s-ondemand__title"><a class="hl-link" href="on-demand.html">The practice,<br>at your own pace.</a></h2>
-            <p class="s-ondemand__text">Programs you can follow from anywhere. The same precision Sam brings to a private session, guided step by step, ready when you are.</p>
-          </div>
-          <div class="s-ondemand__caption-right">
-            <a href="on-demand.html" class="pill-cta pill-cta--light">Explore programs</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ── Library / Listen Up: full-bleed music moment (ported from index) ── -->
-    <section class="s-music fade-in">
-      <div class="s-music__inner">
-        <a class="s-music__cover" href="library.html" aria-label="Visit the library"></a>
-        <video
-          class="s-music__video"
-          data-src="video/library-music.mp4" preload="none"
-          poster="img/library-music-poster.jpg"
-          muted loop playsinline
-          aria-label="Dancers moving barefoot on the grass"></video>
-        <div class="s-music__caption">
-          <div>
-            <span class="label">Library &middot; Listen Up</span>
-            <h2 class="s-music__title"><a class="hl-link" href="library.html">Music moves<br>everything for me.</a></h2>
-            <p class="s-music__text">It shapes how I feel, how I teach, how I move. These playlists are pieces of that rhythm.</p>
-            <iframe class="s-music__embed" src="https://open.spotify.com/embed/playlist/3uNQjEUZgDPPNUtaXAe1pN?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" title="Été 2026 &middot; playlist by Sam Rabon on Spotify"></iframe>
-          </div>
-          <div class="s-music__caption-right">
-            <a href="library.html" class="pill-cta pill-cta--light">Visit the library</a>
+            <a href="retreat.html" class="tsh-link tsh-link--light">Join the waitlist</a>
           </div>
         </div>
       </div>
@@ -431,7 +340,6 @@
           <a href="on-demand.html">On-Demand</a>
           <a href="retreat.html">Retreat</a>
           <a href="library.html">Library</a>
-          <a href="faq.html">FAQ</a>
         </div>
       </nav>
       <div class="footer__col">

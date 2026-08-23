@@ -2185,3 +2185,18 @@ a:hover .tsh-link, .tsh-link:hover { color: var(--accent2); }
   .s-faq__q { padding: 1.1rem 0; gap: 1rem; }
   .s-faq__a { padding-bottom: 1.4rem; }
 }
+
+/* ── 38 · TSH offers v3 (append-only, F 2026-08-23) ──
+   Gap between the two boxes, text moved to the top, boxes lower.
+   Scrim flips to the top edge so the type keeps its ground. */
+.tsh-offers { gap: var(--gap); }
+.tsh-offer__img { aspect-ratio: 1 / 1; }
+.tsh-offer__video { aspect-ratio: 1 / 1; }
+.tsh-offer__text { top: 1.8rem; bottom: auto; }
+.tsh-offer__img::after {
+  background: linear-gradient(0deg, rgba(28,28,26,0) 55%, rgba(28,28,26,0.55) 100%);
+}
+@media (max-width: 640px) {
+  .tsh-offers { gap: var(--gap); }
+  .tsh-offer__text { top: 1.4rem; }
+}

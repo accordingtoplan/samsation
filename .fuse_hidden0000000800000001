@@ -3,53 +3,133 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SamSation · Test</title>
-  <meta name="robots" content="noindex, nofollow">
+  <title>SamSation · A Practice in Real Life Movement</title>
+  <meta name="description" content="SamSation, a practice in real life movement. Private, group, and live sessions in Los Angeles and online. Prepare your body for real life.">
+  <!-- SEO/AEO block -->
+  <link rel="canonical" href="https://samrabon.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="SamSation">
+  <meta property="og:title" content="SamSation · A Practice in Real Life Movement">
+  <meta property="og:description" content="SamSation, a practice in real life movement. Private, group, and live sessions in Los Angeles and online. Prepare your body for real life.">
+  <meta property="og:url" content="https://samrabon.com/">
+  <meta property="og:image" content="https://samrabon.com/img/og-home.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Two dancers mid-air above the Los Angeles skyline">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SamSation · A Practice in Real Life Movement">
+  <meta name="twitter:description" content="SamSation, a practice in real life movement. Private, group, and live sessions in Los Angeles and online. Prepare your body for real life.">
+  <meta name="twitter:image" content="https://samrabon.com/img/og-home.jpg">
   <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
-  <link rel="stylesheet" href="style.css?v=20260823-3">
-  <script>(function(){var t="light";try{t=localStorage.getItem("samsation-theme")||"light"}catch(e){}document.documentElement.setAttribute("data-theme",t);})();</script>
+  <link rel="icon" type="image/png" sizes="64x64" href="img/favicon-64.png">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  <link rel="stylesheet" href="style.css?v=20260823-1">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://samrabon.com/#website",
+      "name": "SamSation",
+      "url": "https://samrabon.com/",
+      "publisher": {
+        "@id": "https://samrabon.com/#samsation"
+      }
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://samrabon.com/#samsation",
+      "name": "SamSation",
+      "description": "A practice in real life movement. Private, group, and live sessions in Los Angeles and online.",
+      "url": "https://samrabon.com/",
+      "email": "hello@samrabon.com",
+      "founder": {
+        "@id": "https://samrabon.com/#sam"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Los Angeles",
+        "addressRegion": "CA",
+        "addressCountry": "US"
+      },
+      "areaServed": [
+        "Los Angeles",
+        "Online"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://samrabon.com/#sam",
+      "name": "Sam Rabon",
+      "jobTitle": "Movement coach",
+      "description": "Sam Rabon has spent more than 40 years in movement, first as a professional dancer, then building and running studios in Sydney and Los Angeles. Today she coaches privately.",
+      "url": "https://samrabon.com/about.html",
+      "sameAs": [
+        "https://solin.stream/samrabon",
+        "https://www.instagram.com/samrabon_",
+        "https://samrabon.substack.com"
+      ]
+    }
+  ]
+}
+  </script>
+
+<script>(function(){var t="light";try{t=localStorage.getItem("samsation-theme")||"light"}catch(e){}document.documentElement.setAttribute("data-theme",t);})();</script>
 </head>
-<body class="tsh">
+<body>
 
   <a class="skip-link" href="#main">Skip to content</a>
 
+  <!-- ── Top bar: booking, Rhode-style announcement band ── -->
+  <a class="topbar" href="coaching.html#book">Book a live online session</a>
+
+  <!-- ── Glyph sprite: minimal geometric marks, one motif per pattern —
+       no figures, just the object/gesture each pattern is named for ── -->
   <svg style="display:none" aria-hidden="true">
     <filter id="pencil" x="-30%" y="-30%" width="160%" height="160%">
       <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7" result="n"/>
       <feDisplacementMap in="SourceGraphic" in2="n" scale="1.8" xChannelSelector="R" yChannelSelector="G"/>
     </filter>
+    <!-- STEP: two footprints, ascending diagonal — the gait pattern -->
     <symbol id="glyph-step" viewBox="0 0 32 32" fill="none">
       <path d="M5.6 23.7 C5 21.4 7.1 19.7 10 20 C12.7 20.3 15.3 21.2 14.9 23.1 C14.5 25 12 26.2 9.4 25.8 C7.1 25.5 5.8 24.5 5.7 22.9 C5.7 22.5 6 22.2 6.3 22.1" transform="rotate(-25 10 23)"/>
       <path d="M16.6 10.7 C16 8.4 18.1 6.7 21 7 C23.7 7.3 26.3 8.2 25.9 10.1 C25.5 12 23 13.2 20.4 12.8 C18.1 12.5 16.8 11.5 16.7 9.9 C16.7 9.5 17 9.2 17.3 9.1" transform="rotate(-25 21 10)"/>
     </symbol>
+    <!-- HINGE: a single bracket folding at a pivot — the geometry of bending -->
+    <symbol id="glyph-hinge" viewBox="0 0 32 32" fill="none">
+      <path d="M11.5 5.8 C10.7 9 11.6 11.9 10.9 14.6 C10.7 15.7 11 16.9 11 18" stroke-linecap="round"/>
+      <path d="M11 18 C14 18.5 16.6 20 19.4 20.9 C21.3 21.6 23.3 22.4 25.2 23.1" stroke-linecap="round"/>
+      <path d="M11.1 16.2 C12.1 16.2 12.9 17 12.8 18 C12.7 19 11.7 19.8 10.7 19.7 C9.8 19.6 9.2 18.7 9.3 17.8 C9.4 16.9 10.1 16.3 11.3 16.3"/>
+    </symbol>
+    <!-- ROTATE: an orbit with a clear arrowhead and a still center -->
     <symbol id="glyph-rotate" viewBox="0 0 32 32" fill="none">
       <path d="M25.1 11.8 C26.6 17 23.2 23.6 17 24.9 C10.7 26.2 5.4 21.9 5.9 16.1 C6.3 11.4 8.6 8.9 11.5 8.2" stroke-linecap="round" stroke-linejoin="round"/>
       <path d="M11.5 8.2 C10.1 8.5 8.7 9.3 7.2 9.6 M11.5 8.2 C11.5 6.8 11.1 5.3 11.1 3.8" stroke-linecap="round" stroke-linejoin="round"/>
-      <circle cx="16.3" cy="17" r="1" fill="currentColor" stroke="none"/>
+      <circle cx="16.3" cy="17" r="1"  fill="currentColor" stroke="none"/>
     </symbol>
+    <!-- REACH: a line of extension from a fixed base to the point it meets -->
     <symbol id="glyph-reach" viewBox="0 0 32 32" fill="none">
       <path d="M7.5 24.6 C11.4 20.8 14.6 17.9 18.2 14.5 C20.5 12.3 22.8 10.1 25 8" stroke-linecap="round"/>
       <circle cx="7" cy="25" r="1.2" fill="currentColor" stroke="none"/>
       <path d="M25.7 5 C27.1 5.2 28.1 6.4 27.9 7.7 C27.6 9.1 26.3 10.1 25 9.8 C23.7 9.6 22.9 8.5 23.1 7.2 C23.3 6.1 24.3 5.2 25.9 5.3"/>
     </symbol>
-      <symbol id="glyph-hinge" viewBox="0 0 32 32" fill="none">
-      <path d="M11.5 5.8 C10.7 9 11.6 11.9 10.9 14.6 C10.7 15.7 11 16.9 11 18" stroke-linecap="round"/>
-      <path d="M11 18 C14 18.5 16.6 20 19.4 20.9 C21.3 21.6 23.3 22.4 25.2 23.1" stroke-linecap="round"/>
-      <path d="M11.1 16.2 C12.1 16.2 12.9 17 12.8 18 C12.7 19 11.7 19.8 10.7 19.7 C9.8 19.6 9.2 18.7 9.3 17.8 C9.4 16.9 10.1 16.3 11.3 16.3"/>
-    </symbol>
+    <!-- SHIFT: two bars, offset — the visual fact of lateral displacement -->
     <symbol id="glyph-shift" viewBox="0 0 32 32" fill="none">
       <path d="M6 12.3 C8.4 11.7 10.6 12.3 12.9 12 C14.3 11.9 15.6 12 17 12.1" stroke-linecap="round"/>
       <path d="M15 20.2 C17.4 19.6 19.6 20.2 21.9 19.8 C23.3 19.7 24.6 20 26 20" stroke-linecap="round"/>
     </symbol>
-</svg>
+  </svg>
 
+
+  <!-- ── Nav pill ── -->
   <nav class="nav-pill" id="navPill">
     <div class="nav-pill__inner">
-      <a href="index.html" class="nav-pill__wordmark">SamSation</a>
       <button class="nav-pill__hamburger" id="navToggle" aria-label="Open menu" aria-expanded="false">
         <span></span><span></span>
       </button>
       <nav class="nav-pill__links">
+        <a href="index.html" aria-current="page">Home</a>
         <a href="about.html">About</a>
         <a href="coaching.html">Coaching</a>
         <a href="on-demand.html">On-Demand</a>
@@ -57,11 +137,15 @@
         <a href="library.html">Library</a>
         <a href="faq.html">FAQ</a>
       </nav>
+      <a href="index.html" class="nav-pill__wordmark">SamSation</a>
     </div>
   </nav>
 
+  <!-- ── Nav menu removed: pill expands inline ── -->
+
+  <!-- ── Mobile full-screen overlay menu ── -->
   <div class="nav-overlay" id="navOverlay" aria-hidden="true">
-    <a href="index.html">Home</a>
+    <a href="index.html" aria-current="page">Home</a>
     <a href="about.html">About</a>
     <a href="coaching.html">Coaching</a>
     <a href="on-demand.html">On-Demand</a>
@@ -76,7 +160,7 @@
 
   <div class="page" id="main">
 
-    <!-- ── TSH Hero: tonal image, type as hero, edge eyebrows ── -->
+    <!-- ── Hero: one full-bleed image, one statement ── -->
     <section class="hero-full">
       <a href="coaching.html" class="hero-full__cover-link" aria-label="Move with Sam — coaching"></a>
       <picture>
@@ -89,75 +173,7 @@
       </div>
     </section>
 
-    <section class="s-claim s-claim--green fade-in">
-      <span class="label">Movement · Los Angeles</span>
-      <h2><a class="hl-link" href="about.html">SamSation is not a fitness program. It is a practice built around how bodies actually move in life, not in a gym.</a></h2>
-      <a href="about.html" class="pill-cta">About the practice</a>
-    </section>
-
-    <!-- ── Shelf: the three formats (ported from index, replaces two-box offers per F 2026-08-23) ── -->
-    <section class="s-shelf s-shelf--v2 fade-in">
-      <a href="coaching.html#private" class="s-shelf__item">
-        <div class="s-shelf__head">
-          <span class="label">One to one</span>
-          <h2 class="s-shelf__name">Private Sessions</h2>
-        </div>
-        <div class="s-shelf__img">
-          <picture>
-            <source srcset="img/hero-session.webp" type="image/webp">
-            <img src="img/hero-session.jpg" alt="Private session with Sam" loading="lazy">
-          </picture>
-        </div>
-        <picture class="s-shelf__hoverimg">
-          <source srcset="img/hero-session-tight.webp" type="image/webp">
-          <img src="img/hero-session-tight.jpg" alt="" loading="lazy" aria-hidden="true">
-        </picture>
-        <p class="s-shelf__meta">1:1 in Los Angeles<br>1:1 online</p>
-        <span class="s-shelf__cta">Inquire <span aria-hidden="true">&rarr;</span></span>
-      </a>
-      <a href="coaching.html#book" class="s-shelf__item">
-        <div class="s-shelf__head">
-          <span class="label">Real time</span>
-          <h2 class="s-shelf__name">Live Sessions</h2>
-        </div>
-        <div class="s-shelf__img">
-          <picture>
-            <source srcset="img/sam-beach.webp" type="image/webp">
-            <img src="img/sam-beach.jpg" alt="Sam training on the beach" loading="lazy">
-          </picture>
-        </div>
-        <picture class="s-shelf__hoverimg">
-          <source srcset="img/sam-beach-tight.webp" type="image/webp">
-          <img src="img/sam-beach-tight.jpg" alt="" loading="lazy" aria-hidden="true">
-        </picture>
-        <p class="s-shelf__meta">Group class in Los Angeles<br>Live online, group or 1:1</p>
-        <span class="s-shelf__cta">See the schedule <span aria-hidden="true">&rarr;</span></span>
-      </a>
-      <a href="on-demand.html" class="s-shelf__item">
-        <div class="s-shelf__head">
-          <span class="label">Anytime</span>
-          <h2 class="s-shelf__name">On-Demand</h2>
-        </div>
-        <div class="s-shelf__img">
-          <video
-            data-src="video/solin-ondemand.mp4" preload="none"
-            poster="img/solin-ondemand-poster.jpg"
-            muted loop playsinline
-            aria-label="Sam training, preview of an On-Demand program">
-          </video>
-        </div>
-        <picture class="s-shelf__hoverimg">
-          <source srcset="img/ondemand-strength-tight.webp" type="image/webp">
-          <img src="img/ondemand-strength-tight.jpg" alt="" loading="lazy" aria-hidden="true">
-        </picture>
-        <p class="s-shelf__meta">Functional Strength Snacks<br>Movement Snacks for Daily Life</p>
-        <span class="s-shelf__cta">Explore the programs <span aria-hidden="true">&rarr;</span></span>
-      </a>
-    </section>
-
-    <!-- ── Claim: live-site styling (sentence case, green) ── -->
-
-    <!-- ── Where to begin: entry by need, with images (copy pending Sam sign-off) ── -->
+    <!-- ── Testimonials: auto-carousel, arrows flank quote, whole slide is CTA ── -->
     <section class="s-testimonials-slide fade-in" aria-label="Client testimonials">
 
       <div class="ts-stage">
@@ -255,42 +271,86 @@
       </div><!-- /.ts-stage -->
 
     </section>
+    <!-- ── Shelf: the four products under the hero (Rhode-style, no boxes) ── -->
+    <section class="s-shelf s-shelf--v2 fade-in">
+      <a href="coaching.html#private" class="s-shelf__item">
+        <div class="s-shelf__head">
+          <span class="label">One to one</span>
+          <h2 class="s-shelf__name">Private Sessions</h2>
+        </div>
+        <div class="s-shelf__img">
+          <picture>
+            <source srcset="img/hero-session.webp" type="image/webp">
+            <img src="img/hero-session.jpg" alt="Private session with Sam" loading="lazy">
+          </picture>
+        </div>
+        <picture class="s-shelf__hoverimg">
+          <source srcset="img/hero-session-tight.webp" type="image/webp">
+          <img src="img/hero-session-tight.jpg" alt="" loading="lazy" aria-hidden="true">
+        </picture>
+        <p class="s-shelf__meta">1:1 in Los Angeles<br>1:1 online</p>
+        <span class="s-shelf__cta">Inquire <span aria-hidden="true">&rarr;</span></span>
+      </a>
+      <a href="coaching.html#book" class="s-shelf__item">
+        <div class="s-shelf__head">
+          <span class="label">Real time</span>
+          <h2 class="s-shelf__name">Live Sessions</h2>
+        </div>
+        <div class="s-shelf__img">
+          <picture>
+            <source srcset="img/sam-beach.webp" type="image/webp">
+            <img src="img/sam-beach.jpg" alt="Sam training on the beach" loading="lazy">
+          </picture>
+        </div>
+        <picture class="s-shelf__hoverimg">
+          <source srcset="img/sam-beach-tight.webp" type="image/webp">
+          <img src="img/sam-beach-tight.jpg" alt="" loading="lazy" aria-hidden="true">
+        </picture>
+        <p class="s-shelf__meta">Group class in Los Angeles<br>Live online, group or 1:1</p>
+        <span class="s-shelf__cta">See the schedule <span aria-hidden="true">&rarr;</span></span>
+      </a>
+      <a href="on-demand.html" class="s-shelf__item">
+        <div class="s-shelf__head">
+          <span class="label">Anytime</span>
+          <h2 class="s-shelf__name">On-Demand</h2>
+        </div>
+        <div class="s-shelf__img">
+          <video
+            data-src="video/solin-ondemand.mp4" preload="none"
+            poster="img/solin-ondemand-poster.jpg"
+            muted loop playsinline
+            aria-label="Sam training, preview of an On-Demand program">
+          </video>
+        </div>
+        <picture class="s-shelf__hoverimg">
+          <source srcset="img/ondemand-strength-tight.webp" type="image/webp">
+          <img src="img/ondemand-strength-tight.jpg" alt="" loading="lazy" aria-hidden="true">
+        </picture>
+        <p class="s-shelf__meta">Functional Strength Snacks<br>Movement Snacks for Daily Life</p>
+        <span class="s-shelf__cta">Explore the programs <span aria-hidden="true">&rarr;</span></span>
+      </a>
+    </section>
 
+        <!-- ── Where to begin: entry by need (copy pending Sam sign-off) ── -->
     <section class="s-needs fade-in" aria-label="Where to begin">
       <span class="label">Where to begin</span>
       <div class="s-needs__grid">
         <a class="s-needs__item" href="coaching.html#private">
-          <picture class="s-needs__pic">
-            <source srcset="img/needs-surgery.webp" type="image/webp">
-            <img src="img/needs-surgery.jpg" alt="Sam placing a socked foot on an incline board, step by step" loading="lazy">
-          </picture>
           <span class="s-needs__name">After surgery</span>
           <span class="s-needs__line">Rehab, made safer</span>
           <span class="s-needs__cta">Private sessions &rarr;</span>
         </a>
         <a class="s-needs__item" href="coaching.html#private">
-          <picture class="s-needs__pic">
-            <source srcset="img/needs-postpartum.webp" type="image/webp">
-            <img src="img/needs-postpartum.jpg" alt="Sam standing in a calm forward reach" loading="lazy">
-          </picture>
           <span class="s-needs__name">Pregnant or postpartum</span>
           <span class="s-needs__line">Strength that adapts</span>
           <span class="s-needs__cta">Private sessions &rarr;</span>
         </a>
         <a class="s-needs__item" href="coaching.html">
-          <picture class="s-needs__pic">
-            <source srcset="img/needs-performance.webp" type="image/webp">
-            <img src="img/needs-performance.jpg" alt="Two people stacked in a plank position" loading="lazy">
-          </picture>
           <span class="s-needs__name">Training for performance</span>
           <span class="s-needs__line">Precision for working bodies</span>
           <span class="s-needs__cta">Move with Sam &rarr;</span>
         </a>
         <a class="s-needs__item" href="on-demand.html">
-          <picture class="s-needs__pic">
-            <source srcset="img/needs-desk.webp" type="image/webp">
-            <img src="img/needs-desk.jpg" alt="Desk and chair by a sunlit window full of trees" loading="lazy">
-          </picture>
           <span class="s-needs__name">At a desk all day</span>
           <span class="s-needs__line">Movement snacks for daily life</span>
           <span class="s-needs__cta">On-demand &rarr;</span>
@@ -298,8 +358,36 @@
       </div>
     </section>
 
-    <!-- ── Testimonials: auto-carousel, arrows flank quote, whole slide is CTA ── -->
-<!-- ── Retreat band: kept from live site ── -->
+    <!-- ── Claim: full-width statement, after testimonials ── -->
+    <section class="s-claim s-claim--green fade-in">
+      <span class="label">Movement · Los Angeles</span>
+      <h2><a class="hl-link" href="about.html">SamSation is not a fitness program. It is a practice built around how bodies actually move in life, not in a gym.</a></h2>
+      <a href="about.html" class="pill-cta">About the practice</a>
+    </section>
+
+
+    <!-- ── Retreat: the one full-bleed image moment (Habitas-style) ── -->
+    <section class="s-retreat fade-in">
+      <div class="s-retreat__inner">
+        <a class="media-link" href="retreat.html" aria-label="Retreats">
+        <picture>
+          <source srcset="img/retreat-pantelleria.webp" type="image/webp">
+          <img src="img/retreat-pantelleria.jpg" alt="Waves breaking against volcanic rock, Pantelleria">
+        </picture>
+        </a>
+        <div class="s-retreat__caption">
+          <div>
+            <span class="label label--accent">Retreats &middot; First access</span>
+            <h3><a class="hl-link" href="retreat.html">Greece · Fall 2026 · A small group, by the sea.</a></h3>
+          </div>
+          <div class="s-retreat__caption-right">
+            <a href="retreat.html" class="pill-cta pill-cta--light">Join the waitlist</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Patterns module: full-height, own section ── -->
     <section class="s-patterns-module fade-in">
       <div class="s-patterns-module__inner">
         <h2 class="s-patterns-module__title">The Patterns<br>of Daily Life</h2>
@@ -328,27 +416,7 @@
       </div>
     </section>
 
-    <section class="s-retreat fade-in">
-      <div class="s-retreat__inner">
-        <a class="media-link" href="retreat.html" aria-label="Retreats">
-        <picture>
-          <source srcset="img/retreat-pantelleria.webp" type="image/webp">
-          <img src="img/retreat-pantelleria.jpg" alt="Waves breaking against volcanic rock, Pantelleria">
-        </picture>
-        </a>
-        <div class="s-retreat__caption">
-          <div>
-            <span class="label label--accent">Retreats &middot; First access</span>
-            <h3><a class="hl-link" href="retreat.html">Greece · Fall 2026 · A small group, by the sea.</a></h3>
-          </div>
-          <div class="s-retreat__caption-right">
-            <a href="retreat.html" class="pill-cta pill-cta--light">Join the waitlist</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ── On-Demand: full-bleed video moment (ported from index) ── -->
+    <!-- ── On-Demand: full-bleed video moment, before footer (Retreats treatment) ── -->
     <section class="s-ondemand fade-in">
       <div class="s-ondemand__inner">
         <a class="media-link" href="on-demand.html" aria-label="On-Demand programs">
@@ -382,7 +450,7 @@
       </div>
     </section>
 
-    <!-- ── Library / Listen Up: full-bleed music moment (ported from index) ── -->
+    <!-- ── Library / Listen Up: full-bleed music moment (Retreats treatment) ── -->
     <section class="s-music fade-in">
       <div class="s-music__inner">
         <a class="s-music__cover" href="library.html" aria-label="Visit the library"></a>
@@ -406,13 +474,27 @@
       </div>
     </section>
 
-    <!-- ── Patterns module: full-height, own section ── -->
+  </div><!-- /.page -->
 
-    <!-- ── TSH Close: big centered statement, one underlined link ── -->
-
-  </div>
-
+  <!-- ── Footer ── -->
   <footer class="footer">
+
+    <!-- ── Footer ticker: patterns strip, full-width top band ── -->
+    <div class="footer__ticker" aria-hidden="true">
+      <div class="s-ticker__track">
+        <span class="s-ticker__item"><svg class="glyph glyph--14"><use href="#glyph-step"></use></svg>Step</span>
+        <span class="s-ticker__item"><svg class="glyph glyph--14"><use href="#glyph-hinge"></use></svg>Hinge</span>
+        <span class="s-ticker__item"><svg class="glyph glyph--14"><use href="#glyph-rotate"></use></svg>Rotate</span>
+        <span class="s-ticker__item"><svg class="glyph glyph--14"><use href="#glyph-reach"></use></svg>Reach</span>
+        <span class="s-ticker__item"><svg class="glyph glyph--14"><use href="#glyph-shift"></use></svg>Shift</span>
+        <span class="s-ticker__item"><svg class="glyph glyph--14"><use href="#glyph-step"></use></svg>Step</span>
+        <span class="s-ticker__item"><svg class="glyph glyph--14"><use href="#glyph-hinge"></use></svg>Hinge</span>
+        <span class="s-ticker__item"><svg class="glyph glyph--14"><use href="#glyph-rotate"></use></svg>Rotate</span>
+        <span class="s-ticker__item"><svg class="glyph glyph--14"><use href="#glyph-reach"></use></svg>Reach</span>
+        <span class="s-ticker__item"><svg class="glyph glyph--14"><use href="#glyph-shift"></use></svg>Shift</span>
+      </div>
+    </div>
+
     <div class="footer__inner footer__inner--cols">
       <div class="footer__col footer__col--news">
         <span class="label footer__newsletter-label">Stay in it</span>
@@ -425,7 +507,7 @@
       <nav class="footer__col" aria-label="Footer site navigation">
         <span class="label footer__col-label">Explore</span>
         <div class="footer__nav footer__nav--stack">
-          <a href="index.html">Home</a>
+          <a href="index.html" aria-current="page">Home</a>
           <a href="about.html">About</a>
           <a href="coaching.html">Coaching</a>
           <a href="on-demand.html">On-Demand</a>
@@ -453,12 +535,5 @@
   </footer>
 
   <script src="main.js"></script>
-  <script>
-  (function(){
-    var t = document.querySelector('.mode-toggle');
-    var inner = document.querySelector('.nav-pill__inner');
-    if (t && inner) inner.appendChild(t);
-  })();
-  </script>
 </body>
 </html>

@@ -2200,3 +2200,27 @@ a:hover .tsh-link, .tsh-link:hover { color: var(--accent2); }
   .tsh-offers { gap: var(--gap); }
   .tsh-offer__text { top: 1.4rem; }
 }
+
+/* ── 39 · Needs tile video (append-only, F 2026-08-23) ──
+   Video variant of the 4:5 needs tile — same grayscale-at-rest,
+   color-on-hover behavior as the image tiles. */
+.s-needs__pic { display: block; }
+.s-needs__pic video { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; display: block; margin-bottom: 0.5rem; filter: grayscale(1); transition: filter var(--dur-med, 0.3s) ease; }
+@media (hover: hover) and (pointer: fine) { .s-needs__item:hover .s-needs__pic video { filter: grayscale(0); } }
+@media (hover: none) { .s-needs__pic video { filter: none; } }
+
+/* ── 40 · TSH mobile pass (append-only, F 2026-08-23) ──
+   390px: needs grid stays two-up (halves page length), tighter
+   vertical air on claim + testimonials, smaller needs names,
+   hero line given room above the fold. */
+@media (max-width: 560px) {
+  .tsh .s-needs__grid { grid-template-columns: 1fr 1fr; gap: 0.75rem 0.75rem; }
+  .tsh .s-needs__name { font-size: 1.15rem; }
+  .tsh .s-needs__item { gap: 0.5rem; padding: 0.9rem 0 1rem; }
+}
+@media (max-width: 640px) {
+  .tsh .s-claim { padding-top: 3rem; padding-bottom: 3rem; }
+  .tsh .s-testimonials-slide { padding-top: 3.5rem; padding-bottom: 3.5rem; }
+  .tsh .s-needs { padding-top: 3rem; padding-bottom: 3rem; }
+  .tsh .s-music__embed { height: 152px; }
+}

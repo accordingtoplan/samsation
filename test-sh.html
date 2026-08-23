@@ -6,7 +6,7 @@
   <title>SamSation · Test</title>
   <meta name="robots" content="noindex, nofollow">
   <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
-  <link rel="stylesheet" href="style.css?v=20260823-3">
+  <link rel="stylesheet" href="style.css?v=20260823-5">
   <script>(function(){var t="light";try{t=localStorage.getItem("samsation-theme")||"light"}catch(e){}document.documentElement.setAttribute("data-theme",t);})();</script>
 </head>
 <body class="tsh">
@@ -89,13 +89,7 @@
       </div>
     </section>
 
-    <section class="s-claim s-claim--green fade-in">
-      <span class="label">Movement · Los Angeles</span>
-      <h2><a class="hl-link" href="about.html">SamSation is not a fitness program. It is a practice built around how bodies actually move in life, not in a gym.</a></h2>
-      <a href="about.html" class="pill-cta">About the practice</a>
-    </section>
-
-    <!-- ── Shelf: the three formats (ported from index, replaces two-box offers per F 2026-08-23) ── -->
+    <!-- ── Shelf: the three formats, directly under the hero (order swapped with claim per F 2026-08-23) ── -->
     <section class="s-shelf s-shelf--v2 fade-in">
       <a href="coaching.html#private" class="s-shelf__item">
         <div class="s-shelf__head">
@@ -153,6 +147,12 @@
         <p class="s-shelf__meta">Functional Strength Snacks<br>Movement Snacks for Daily Life</p>
         <span class="s-shelf__cta">Explore the programs <span aria-hidden="true">&rarr;</span></span>
       </a>
+    </section>
+
+    <section class="s-claim s-claim--green fade-in">
+      <span class="label">Movement · Los Angeles</span>
+      <h2><a class="hl-link" href="about.html">SamSation is a practice built around how bodies actually move in life, not in a gym.</a></h2>
+      <a href="about.html" class="pill-cta">About the practice</a>
     </section>
 
     <!-- ── Claim: live-site styling (sentence case, green) ── -->
@@ -219,15 +219,6 @@
             </blockquote>
           </a>
 
-          <a class="ts-slide" href="coaching.html#private" aria-hidden="true">
-            <blockquote>
-              <p class="ts-quote">"Sam guided me back with patience and strength. I regained confidence I thought I'd lost forever."</p>
-              <footer class="ts-foot">
-                <cite class="ts-cite">Postnatal Recovery Client</cite>
-              </footer>
-            </blockquote>
-          </a>
-
           <a class="ts-slide" href="coaching.html" aria-hidden="true">
             <blockquote>
               <p class="ts-quote">"Sam is the coaches' coach. Her eye for detail transformed not only my body but my teaching."</p>
@@ -249,7 +240,6 @@
           <button class="ts-dot" role="tab" aria-selected="false" aria-label="Testimonial 5"></button>
           <button class="ts-dot" role="tab" aria-selected="false" aria-label="Testimonial 6"></button>
           <button class="ts-dot" role="tab" aria-selected="false" aria-label="Testimonial 7"></button>
-          <button class="ts-dot" role="tab" aria-selected="false" aria-label="Testimonial 8"></button>
         </div>
 
       </div><!-- /.ts-stage -->
@@ -269,10 +259,9 @@
           <span class="s-needs__cta">Private sessions &rarr;</span>
         </a>
         <a class="s-needs__item" href="coaching.html#private">
-          <picture class="s-needs__pic">
-            <source srcset="img/needs-postpartum.webp" type="image/webp">
-            <img src="img/needs-postpartum.jpg" alt="Sam standing in a calm forward reach" loading="lazy">
-          </picture>
+          <span class="s-needs__pic">
+            <video data-src="video/sam-solin-reel.mp4" preload="none" poster="img/sam-solin-reel-poster.jpg" muted loop playsinline aria-label="Sam leading a session, mid-movement"></video>
+          </span>
           <span class="s-needs__name">Pregnant or postpartum</span>
           <span class="s-needs__line">Strength that adapts</span>
           <span class="s-needs__cta">Private sessions &rarr;</span>
@@ -348,39 +337,7 @@
       </div>
     </section>
 
-    <!-- ── On-Demand: full-bleed video moment (ported from index) ── -->
-    <section class="s-ondemand fade-in">
-      <div class="s-ondemand__inner">
-        <a class="media-link" href="on-demand.html" aria-label="On-Demand programs">
-        <div class="s-ondemand__videos">
-          <video
-            class="s-ondemand__video"
-            data-src="video/solin-ondemand.mp4" preload="none"
-            poster="img/solin-ondemand-poster.jpg"
-            muted loop playsinline
-            aria-label="Preview of a Solin on-demand session">
-          </video>
-          <video
-            class="s-ondemand__video"
-            data-src="video/sam-solin-reel.mp4" preload="none"
-            poster="img/sam-solin-reel-poster.jpg"
-            muted loop playsinline
-            aria-label="Sam leading a Solin on-demand session">
-          </video>
-        </div>
-        </a>
-        <div class="s-ondemand__caption">
-          <div>
-            <span class="label">On-Demand &middot; Solin</span>
-            <h2 class="s-ondemand__title"><a class="hl-link" href="on-demand.html">The practice,<br>at your own pace.</a></h2>
-            <p class="s-ondemand__text">Programs you can follow from anywhere. The same precision Sam brings to a private session, guided step by step, ready when you are.</p>
-          </div>
-          <div class="s-ondemand__caption-right">
-            <a href="on-demand.html" class="pill-cta pill-cta--light">Explore programs</a>
-          </div>
-        </div>
-      </div>
-    </section>
+    <!-- ── On-Demand video moment removed 2026-08-23: redundant next to the shelf's On-Demand video (F) ── -->
 
     <!-- ── Library / Listen Up: full-bleed music moment (ported from index) ── -->
     <section class="s-music fade-in">
